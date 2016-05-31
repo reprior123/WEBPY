@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+<!-- <h1>{{=message}}</h1> -->
+
+<h1>For loop</h1>
+
+{{for number in ['one','two','three']:}}
+  <h2>{{=number.capitalize()}}</h2>
+  <!-- {{sleep 55}} -->
+{{pass}}

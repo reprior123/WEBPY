@@ -1,0 +1,628 @@
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?-yqn9of");
+  src: url("../fonts/icomoon.eot?#iefix-yqn9of") format("embedded-opentype"), url("../fonts/icomoon.woff?-yqn9of") format("woff"), url("../fonts/icomoon.ttf?-yqn9of") format("truetype"), url("../fonts/icomoon.svg?-yqn9of#icomoon") format("svg");
+  /*src: url('../fonts/icomoon.ttf');*/
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+	margin: 0px 0;
+	padding: 0;
+	background: #404B4D; 
+	/* this is gray */
+	font-family: 'Lato', sans-serif;
+	/* Georgia, "Times New Roman", Times, serif; */
+	font-size: 14px;
+	color: black;
+	/* #333; */
+}
+
+form {
+	margin: 0;
+	padding: 0px;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+input, textarea {
+	padding: 2px 5px;
+	background: white repeat-x;
+	/* black url(images/img03.gif) repeat-x; */
+	border: 1px solid #D2BA29;
+	font: bold 1em Georgia, "Times New Roman", Times, serif;
+	color: black;
+}
+
+h1, h2, h3 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	color: black;
+}
+
+h1 a, h2 a, h3 a {
+	color: black;
+}
+
+h1 a:hover, h2 a:hover, h3 a:hover {
+	color: gray;
+}
+
+h1 {
+	letter-spacing: -2px;
+	font-size: 2.8em;
+}
+
+h2 {
+	letter-spacing: -1px;
+	font-size: 2em;
+}
+
+h3 {
+	letter-spacing: -1px;
+	font-size: 1.6em;
+}
+
+p, ul, ol {
+	margin-bottom: 2em;
+	line-height: 180%;
+}
+
+blockquote {
+	margin: 0 0 0 2em;
+	padding: 0 0 0 1em;
+	font-style: italic;
+	border-left: 4px solid black;
+}
+
+a {
+	border-bottom: 1px solid #F2EAB8;
+	text-decoration: none;
+	color: #B29A29;
+}
+
+a:hover {
+	border: none;
+	color: red;
+}
+
+
+/* Header */
+
+#header {
+	width: 1200px;
+	height: 50px;
+	margin: 0 auto;
+}
+
+/* Logo */
+
+#logo {
+	float: left;
+	height: 50px;
+	padding: 0 30px;
+	background: #black url(images/companylogo.jpg) no-repeat right top;
+}
+
+#logo h1, #logo h2 {
+	float: left;
+	margin: 0;
+	color: #EDEFF0;
+}
+
+#logo h1 {
+	padding-top: 10px;
+	text-transform: lowercase;
+	letter-spacing: 2px;
+	font-size: 2.6em;
+	font-weight: normal;
+}
+
+#logo h2 {
+	padding-top: 30px;
+	font-size: .9em;
+}
+
+#logo a {
+	border: none;
+	color: black ;
+	/* #FFFFFF; */
+}
+
+/* Search */
+
+#search {
+	float: right;
+	padding-top: 15px;
+}
+
+#searchsubmit {
+	background: white repeat-x;
+	/* #D5BF36 url(images/img04.gif) repeat-x; */
+	font-size: .9em;
+	color: black;
+	/* #FFFFFF; */
+}
+
+/* Menu */
+
+#menu {
+	width: 200px;
+	/* was 1200 */
+	height: 35px;
+	margin: 0 auto;
+	background: #EDEFF0;
+	/* off white color */
+	/* #242424 url(images/img02.jpg) no-repeat; */
+}
+
+#menu ul {
+	margin: 0;
+	padding: 18px 0 0 10px;
+	list-style: none;
+}
+
+#menu li {
+	float: left;
+}
+
+#menu a {
+	padding: 0 20px;
+	border: none;
+	letter-spacing: -1px;
+	font: normal 1.4em 'Lato', sans-serif;
+	/* normal 1.4em "Trebuchet MS", Arial, Helvetica, sans-serif; */
+	color: black;
+	/* #CABFB4; */
+}
+
+#menu a:hover {
+	color: red;
+	/* #FFFFFF; */
+}
+
+/* Page */
+
+#page {
+	width: 1260px;
+	margin: 0 auto;
+	background:  #EDEFF0;
+	/* this is now offwhite black repeat-y ; */
+	/* url(images/img05.gif) repeat-y; */
+}
+
+/* Content */
+
+#content {
+	float: right;
+	width: 910px;
+}
+
+#main {
+	padding: 10px;
+}
+
+/* Post */
+
+.post {
+	padding: 25px;
+}
+
+.post .title {
+	margin: 0;
+	border-bottom: 2px solid #F2EAB8;
+}
+
+.post .meta {
+	height: 11px;
+	margin: 0;
+	padding: 5px 0;
+	border-bottom: 1px solid #F2EAB8;
+	line-height: normal;
+	font: bold .8em Arial, Helvetica, sans-serif;
+	color: #C5C3BC;
+}
+
+.post .meta .author {
+	float: left;
+}
+
+.post .meta .date {
+	float: right;
+}
+
+.post .meta a {
+	border: none;
+}
+
+.post .entry {
+}
+
+.post .tags {
+	margin: 0;
+	padding: 5px 0;
+	border-top: 2px solid #F2EAB8;
+	line-height: normal;
+	font-size: smaller;
+}
+
+.post .links {
+	margin: 0;
+	padding: 5px 0;
+	border-top: 1px solid #F2EAB8;
+	border-bottom: 1px solid #F2EAB8;
+	line-height: normal;
+	font-size: smaller;
+}
+
+/* Posts */
+
+.posts {
+	padding: 20px;
+}
+
+.posts h2 {
+	margin: 0;
+	border-bottom: 2px solid #F2EAB8;
+}
+
+.posts ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.posts li {
+	padding-bottom: 1px;
+}
+
+.posts .title {
+	margin: 30px 0 0 0;
+	border-bottom: 2px solid #F2EAB8;
+}
+
+.posts .title a {
+	border: none;
+}
+
+.posts .meta {
+	height: 11px;
+	margin: 0;
+	padding: 5px 0;
+	border-bottom: 1px solid #F2EAB8;
+	line-height: normal;
+	font: bold .8em Arial, Helvetica, sans-serif;
+	color: #C5C3BC;
+}
+
+.posts .meta .author {
+	float: left;
+}
+
+.posts .meta .date {
+	float: right;
+}
+
+.posts .meta a {
+	border: none;
+}
+
+/* Latest Post */
+
+#latest-post {
+	float: right;
+	width: 350px;
+}
+
+/* Recent Posts */
+
+#recent-posts {
+	float: right;
+	width: 270px;
+	padding-top: 36px;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: right;
+	width: 100px;
+	padding: 20px;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#sidebar li {
+}
+
+#sidebar li ul {
+	padding-left: 5px;
+}
+
+#sidebar li li {
+	padding-left: 5px;
+	background: #EDEFF0;
+	/* url(images/img06.gif) no-repeat left center; */
+}
+
+#sidebar h2 {
+	margin: 0;
+	padding: 10px 0;
+}
+
+#sidebar a {
+	border-bottom-color: #B4AF8E;
+	color: black;
+}
+
+#sidebar a:hover {
+	color: green;
+}
+
+/* Calendar 
+
+#calendar {
+	padding-left: 10px;
+}
+
+#calendar table {
+	width:  190px;
+	border-collapse: collapse;
+}
+
+#calendar thead th {
+	border-top: 2px solid #B4AF8E;
+	border-bottom: 2px solid #B4AF8E;
+}
+
+#calendar tbody td {
+	border-bottom: 1px solid #B4AF8E;
+	text-align: center;
+}
+
+#calendar tfoot td {
+	border-top: 2px solid #B4AF8E;
+	font-weight: bold;
+}
+
+#calendar #today {
+	background: #B4AF8E;
+	font-weight: bold;
+	color: #FDFBED;
+}
+
+#calendar #next {
+	text-align: right;
+}
+
+#calendar a {
+	font-weight: bold;
+}
+*/
+/* Footer */
+
+#footer {
+	width: 1015px;
+	height: 40px;
+	padding: 0px 0 0 250px;
+	margin: 0 auto;
+	background: #EDEFF0;
+	/* url(images/img07.gif) no-repeat; */
+}
+
+#footer p {
+	margin: 0;
+	font: bold .8em Arial, Helvetica, sans-serif;
+	color: black;
+}
+
+#footer a {
+	color: black;
+}
+
+div.flash {
+    position: absolute;
+    float: right;
+    padding: 10px;
+    top: 0px;
+    right: 0px;
+    opacity: 0.75;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+    clear: both;
+    color: #fff;
+    font-size: 11pt;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background: black;
+    border: 2px solid #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    z-index: 2;
+}
+
+div.error {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: red;
+    color: white;
+    padding: 3px;
+    border: 1px solid #666;
+}
+
+.plugin_tagging span {
+  color: #B29A29;
+  font-size: 1.2em;
+}
+
+.plugin_tagging_tag_cloud {
+   border: 1px solid #666;
+   color: #666; 
+   padding: 5px;
+}		
+
+<style type="text/css">
+
+#contactform{
+width: 100%;
+font-size: 16px; /* Primary font size of form. Contained elements' font size are all relative to this setting */
+}
+
+
+#contactform input, #contactform textarea{
+width: 98%;
+border-radius: 5px;
+border: 1px solid gray;
+font: normal 1.5em auto; /* 24px, or 16px x 1.5 */
+padding: 0.4166666666666667em; /* 10px, or 24px x 0.4166666666666667 */
+box-shadow: 0 0 10px gray inset;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+#contactform textarea{
+resize:vertical; /* allow vertical resize of textarea */
+height: 200px;
+}
+
+
+#contactform input:focus, #contactform textarea:focus{
+box-shadow: 0 0 10px green inset;
+}
+
+
+#contactform input[type="radio"], #contactform input[type="checkbox"]{
+padding: 0;
+width: auto;
+height: auto;
+border-radius: 0;
+}
+
+#contactform select{
+width: 80%;
+font-size: 1.5em;
+border: 2px solid #eee;
+}
+
+#contactform .formcolumn{ /* column div inside form */
+width: 49%;
+float: left;
+}
+
+#contactform .formcolumn:first-of-type{
+margin-right: 2%; /* 2% margin after first column */
+}
+
+#contactform .formcolumn label, #contactform .formcolumn fieldset{
+font: bold 0.8em Verdana; /* font size is 12.8px, or 16 x 0.8 */
+text-transform: uppercase;
+display: block;
+margin-top: 2em;
+margin-bottom: 3px;
+}
+
+#contactform fieldset{
+width: 98%;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+#contactform .formcolumn label:first-child, #contactform .formcolumn fieldset:first-child{
+margin-top: 0; /* first label or fieldset within each column should not no top margin */
+}
+
+#contactform fieldset ul{
+list-type: none;
+margin: 0;
+padding: 0;
+}
+
+#contactform fieldset ul li{
+display: inline-block;
+margin-bottom: 5px;
+margin-right: 1em;
+}
+
+#contactform div.buttons{
+clear: both;
+text-align: center;
+}
+
+#contactform input.button{
+margin-top: 1.5EM;
+width: 50%;
+box-shadow: 0 0 10px gray;
+text-transform: uppercase;
+cursor: pointer;
+min-width: 100px;
+max-width: 600px;
+color: white;
+font-weight: bold;
+letter-spacing: 7px;
+text-shadow: 0 -2px 1px #8a8a8a;
+background: rgb(169,3,41);
+background: -moz-linear-gradient(top,  rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(169,3,41,1)), color-stop(44%,rgba(143,2,34,1)), color-stop(100%,rgba(109,0,25,1)));
+background: -webkit-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+background: -o-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+background: -ms-linear-gradient(top,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+background: linear-gradient(to bottom,  rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(109,0,25,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 );
+}
+
+#contactform input.button:active{
+text-shadow: 0 0 1px #8a8a8a;
+background: rgb(109,0,25);
+background: -moz-linear-gradient(top,  rgba(109,0,25,1) 0%, rgba(143,2,34,1) 56%, rgba(169,3,41,1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(109,0,25,1)), color-stop(56%,rgba(143,2,34,1)), color-stop(100%,rgba(169,3,41,1)));
+background: -webkit-linear-gradient(top,  rgba(109,0,25,1) 0%,rgba(143,2,34,1) 56%,rgba(169,3,41,1) 100%);
+background: -o-linear-gradient(top,  rgba(109,0,25,1) 0%,rgba(143,2,34,1) 56%,rgba(169,3,41,1) 100%);
+background: -ms-linear-gradient(top,  rgba(109,0,25,1) 0%,rgba(143,2,34,1) 56%,rgba(169,3,41,1) 100%);
+background: linear-gradient(to bottom,  rgba(109,0,25,1) 0%,rgba(143,2,34,1) 56%,rgba(169,3,41,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d0019', endColorstr='#a90329',GradientType=0 );
+}
+
+@media screen and (max-width: 480px){ /* responsive form settings, when window width is 480px or less */
+
+	#contactform{
+	font-size: 14px; /* decrease form font size */
+	}
+
+	#contactform .formcolumn{
+	width: 100%;
+	float: none;
+	}
+	
+	#contactform .formcolumn:first-of-type{
+	margin-right: 0; /* remove right margin from first form column */
+	}
+
+	#contactform .formcolumn:nth-of-type(2){
+	padding-top: 2em; /* add padding to top of 2nd form column, so there is a gap between the 1st and 2nd column */
+	}
+
+	#contactform select{
+	width: 98%;
+	}
+
+}
+
+</style>
+	  

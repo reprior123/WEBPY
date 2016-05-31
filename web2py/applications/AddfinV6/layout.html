@@ -1,0 +1,1524 @@
+
+<!DOCTYPE html>
+
+<!--[if IEMobile 7]><html class="no-js iem7 oldie"><![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js ie7 oldie" lang="lang='en_us'"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js ie8 oldie" lang="lang='en_us'"><![endif]-->
+<!--[if (IE 9)&!(IEMobile)]><html class="no-js ie9" lang="lang='en_us'"><![endif]-->
+<!--[if (gt IE 9)|(gt IEMobile 7)]><!--><html class="no-js" lang="lang='en_us'"><!--<![endif]-->
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>AddFin</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- http://davidbcalhoun.com/2010/viewport-metatag -->
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<link rel="stylesheet" type="text/css" href="cache/themes/AddfinV3/css/yui.css?v=dIDb5q_rd7tYoNHykHZ6EQ" /><link rel="stylesheet" type="text/css" href="include/javascript/jquery/themes/base/jquery.ui.all.css" /><link rel="stylesheet" type="text/css" href="cache/themes/AddfinV3/css/deprecated.css?v=dIDb5q_rd7tYoNHykHZ6EQ" /><link rel="stylesheet" type="text/css" href="cache/themes/AddfinV3/css/style.css?v=dIDb5q_rd7tYoNHykHZ6EQ" />
+	<script>jscal_today = 1000*1464247829; if(typeof app_strings == "undefined") app_strings = new Array();</script><script type="text/javascript" src="cache/include/javascript/sugar_grp1_jquery.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script><script type="text/javascript" src="cache/include/javascript/sugar_grp1_yui.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script><script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script><script type="text/javascript" src="include/javascript/calendar.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script><script>
+SUGAR.config.stockAjaxBannedModules = ["Calendar","Emails","Campaigns","Documents","DocumentRevisions","Project","ProjectTask","EmailMarketing","CampaignLog","CampaignTrackers","Releases","Groups","EmailMan","Administration","ModuleBuilder","Schedulers","SchedulersJobs","DynamicFields","EditCustomFields","EmailTemplates","Users","Currencies","Trackers","Connectors","Import_1","Import_2","Versions","vCals","CustomFields","Roles","Audit","InboundEmail","SavedSearch","UserPreferences","MergeRecords","EmailAddresses","Relationships","Employees","Import","OAuthKeys","Calls","Contacts","Meetings","Home","Leads","Notes","nxc_Documents","Accounts","nxc_RSS","nxc_News","Bugs","Cases","ProspectLists","Prospects","Opportunities","Tasks","SecurityGroups","KReports","KBE_KUBE","KBE_VQF","KReports"];
+SUGAR.config.disableAjaxUI = true;
+SUGAR.config.addAjaxBannedModules = ["Calls","Contacts","Meetings","Home","Leads","Notes","nxc_Documents","Accounts","nxc_RSS","nxc_News","Bugs","Cases","ProspectLists","Prospects","Opportunities","Tasks","SecurityGroups","KReports","KBE_KUBE","KBE_VQF","KReports"];</script>
+<script type="text/javascript">SUGAR.themes.image_server="";</script><script type="text/javascript">var name_format = "s f l";</script><script type="text/javascript">
+	var time_reg_format = '([0-9]{1,2}):([0-9]{1,2})';
+	var date_reg_format = '([0-9]{1,2})/([0-9]{1,2})/([0-9]{4})';
+	var date_reg_positions = { 'm': 1,'d': 2,'Y': 3 };
+	var time_separator = ':';
+	var cal_date_format = '%m/%d/%Y';
+	var time_offset = 7200;
+	var num_grp_sep = ',';
+	var dec_sep = '.';
+</script><script type="text/javascript" src="cache/jsLanguage/en_us.js?v=NX55RMZiBaU8HhIJXTKiOQ"></script><script type="text/javascript" src="cache/jsLanguage/Home/en_us.js?v=NX55RMZiBaU8HhIJXTKiOQ"></script><script type='text/javascript'>
+var sugar_cache_dir = 'cache/';
+var action_sugar_grp1 = 'index';
+</script>
+<script type="text/javascript" src="cache/themes/AddfinV3/js/style.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+    	
+	<!-- For all browsers -->
+	
+	
+	<link rel="stylesheet" href="themes/AddfinV3/css/styles.css?v=dIDb5q_rd7tYoNHykHZ6EQ">
+	<!-- Webfonts -->
+	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+
+	<!-- JavaScript at bottom except for Modernizr -->
+	<script src="themes/AddfinV3/js/libs/modernizr.custom.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+
+	<!-- For Modern Browsers -->
+	<link rel="shortcut icon" href="themes/AddfinV3/images/favicons/favicon.png">
+	<!-- For everything else -->
+	<link rel="shortcut icon" href="themes/AddfinV3/images/favicons/favicon.ico">
+	<!-- For retina screens -->
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="themes/AddfinV3/images/favicons/apple-touch-icon-retina.png">
+	<!-- For iPad 1-->
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/AddfinV3/images/favicons/apple-touch-icon-ipad.png">
+	<!-- For iPhone 3G, iPod Touch and Android -->
+	<link rel="apple-touch-icon-precomposed" href="themes/AddfinV3/images/favicons/apple-touch-icon.png">
+
+	<!-- iOS web-app metas -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<!-- Startup image for web apps -->
+	<link rel="apple-touch-startup-image" href="themes/AddfinV3/images/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+	<link rel="apple-touch-startup-image" href="themes/AddfinV3/images/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+	<link rel="apple-touch-startup-image" href="themes/AddfinV3/images/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+	<!-- Microsoft clear type rendering -->
+	<meta http-equiv="cleartype" content="on">
+
+	<!-- IE9 Pinned Sites: http://msdn.microsoft.com/en-us/library/gg131029.aspx -->
+	<meta name="application-name" content="Developr Admin Skin">
+	<meta name="msapplication-tooltip" content="Cross-platform admin template.">
+	<meta name="msapplication-starturl" content="http://www.display-inline.fr/demo/developr">
+	<!-- These custom tasks are examples, you need to edit them to show actual pages -->
+	<meta name="msapplication-task" content="name=Agenda;action-uri=http://www.display-inline.fr/demo/developr/agenda.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
+	<meta name="msapplication-task" content="name=My profile;action-uri=http://www.display-inline.fr/demo/developr/profile.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
+	
+	
+
+<script type="text/javascript">
+//<![CDATA[
+SUGAR.themes.theme_name      = 'AddfinV3';
+SUGAR.themes.theme_ie6compat = false;
+SUGAR.themes.hide_image      = 'themes/default/images/hide.gif?v=dIDb5q_rd7tYoNHykHZ6EQ';
+SUGAR.themes.show_image      = 'themes/default/images/show.gif?v=dIDb5q_rd7tYoNHykHZ6EQ';
+SUGAR.themes.loading_image      = 'themes/default/images/img_loading.gif?v=dIDb5q_rd7tYoNHykHZ6EQ';
+SUGAR.themes.allThemes       = eval();
+if ( YAHOO.env.ua )
+		UA = YAHOO.env.ua;
+//]]>
+</script>
+
+	<script type="text/javascript" src='cache/include/javascript/sugar_field_grp.js?v=dIDb5q_rd7tYoNHykHZ6EQ'></script>
+
+	<script src="/custom/nxc/alfresco_api/jquery.malsup.form.js"></script>
+	<script src="/custom/include/Alfresco/api.js"></script>
+</head><body onMouseOut="closeMenus();" class="clearfix with-menu with-shortcuts menu-hidden">
+	<header role="banner" id="title-bar">
+		<div class="logo">
+			<div class="quick-access">
+				
+<div class="quick-access-wrapper">
+	<ul>
+		<li class="create-report disabled">
+			<a href="javascript:void(0)" class="link-iframe">Create a Report</a>
+		</li> 
+		<li class="create-client">
+			<a href="/index.php?module=QuickLinks&action=QuickLinks&manage_quick_link=create_client" class="link-iframe">Create a Client</a>
+		</li>
+		<li class="set-meeting">
+			<a href="/index.php?module=QuickLinks&action=QuickLinks&manage_quick_link=create_meeting" class="link-iframe">Set a Meeting</a>
+		</li>
+		<li class="client-note">
+			<a href="/index.php?module=QuickLinks&action=QuickLinks&manage_quick_link=create_note" class="link-iframe">Client Note</a>
+		</li>
+
+		<li class="set-alert">
+			<a href="/index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView" class="link-iframe">Set Alert</a>
+		</li>
+		<li class="see-complience disabled">
+			<a href="javascript:void(0)" class="link-iframe">See Complience</a>
+		</li>
+		<li class="upload-doc disabled">
+			<a href="javascript:void(0)" class="link-iframe">Upload Doc</a>
+		</li>
+		<li class="statistics disabled">
+			<a href="javascript:void(0)" class="link-iframe">Statistics</a>
+		</li>
+	</ul>
+		
+<script>
+	
+	$(document).ready(function(){
+		$(".link-iframe").colorbox({iframe:true, width:"80%", height:"60%"});
+	});
+	
+	
+	</script>
+
+</div>			</div>
+			<a href="#" class="logo-img"></a>
+		</div>
+
+		<div class="quick-search-wrapper">
+			<div class="quick-search">
+				<input type="text" name="search" value="" />
+			</div>
+			<div class="autocompleted-list"></div>
+		</div>
+	</header>
+	<noscript class="message black-gradient simpler">Your browser does not support JavaScript! Some features won't work as expected...</noscript>
+
+	<!-- Prompt IE 6 users to install Chrome Frame -->
+	<!--[if lt IE 7]><p class="message red-gradient simpler">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
+			<nav class="main">
+	<ul class="level1">
+		
+						<li class="icon dashboard current">
+				<a class="link primary" href="index.php?module=Home&action=index"><span>Dashboard</span></a>
+					
+			</li>
+		
+						<li class="icon customers">
+				<a class="link primary" href="index.php?module=Accounts&action=index"><span>Relationship Management</span></a>
+														<div class="submenu-wrapper">
+						<ul class="level2">
+															<li class="submenu-title">
+									<span>Relationship Management</span>
+									<a href="javascript:void(0)" class="collapse-link"></a>
+								</li>
+																						<li class="accordion-item">
+																			<a class="link" href="index.php?module=Leads&action=index"  >Leads</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=Leads&action=EditView&return_module=Leads&return_action=DetailView">Create Lead</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Leads&action=ImportVCard">Create Lead From VCard</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Leads&action=index&return_module=Leads&return_action=DetailView">View Leads</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Import&action=Step1&import_module=Leads&return_module=Leads&return_action=index">Import Leads</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=Opportunities&action=index"  >Opportunities</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=Opportunities&action=EditView&return_module=Opportunities&return_action=DetailView">Create Opportunity</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Opportunities&action=index&return_module=Opportunities&return_action=DetailView">View Opportunities</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Import&action=Step1&import_module=Opportunities&return_module=Opportunities&return_action=index">Import Opportunities</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=Contacts&action=index"  >Contacts</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=Contacts&action=EditView&return_module=Contacts&return_action=index">Create Contact</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Contacts&action=ImportVCard">Create Contact From VCard</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Contacts&action=index&return_module=Contacts&return_action=DetailView">View Contacts</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Import&action=Step1&import_module=Contacts&return_module=Contacts&return_action=index">Import Contacts</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=Accounts&action=index"  >Organisations</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=Accounts&action=EditView&return_module=Accounts&return_action=index">Create Organisation</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Accounts&action=index&return_module=Accounts&return_action=DetailView">View Organisations</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Import&action=Step1&import_module=Accounts&return_module=Accounts&return_action=index">Import Organisations</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=KBE_KUBE&action=index"  >Client Relationships</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=KBE_KUBE&action=EditView&return_module=KBE_KUBE&return_action=DetailView">Create Client Relationship</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=KBE_KUBE&action=index">View Client Relationship</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=Notes&action=index"  >Notes</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=Notes&action=EditView&return_module=Notes&return_action=DetailView">Create Note or Attachment</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Notes&action=index&return_module=Notes&return_action=DetailView">View Notes</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Import&action=Step1&import_module=Notes&return_module=Notes&return_action=index">Import Notes</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=Tasks&action=index"  >Tasks</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView">Create Task</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Tasks&action=index&return_module=Tasks&return_action=DetailView">View Tasks</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Import&action=Step1&import_module=Tasks&return_module=Tasks&return_action=index">Import Tasks</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=Calls&action=index"  >Calls</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=Calls&action=EditView&return_module=Calls&return_action=DetailView">Log Call</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Calls&action=index&return_module=Calls&return_action=DetailView">View Calls</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Import&action=Step1&import_module=Calls&return_module=Calls&return_action=index">Import Calls</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=Meetings&action=index"  >Meetings</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=Meetings&action=EditView&return_module=Meetings&return_action=DetailView">Schedule Meeting</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Meetings&action=index&return_module=Meetings&return_action=DetailView">View Meetings</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=Import&action=Step1&import_module=Meetings&return_module=Meetings&return_action=index">Import Meetings</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=Calendar&action=index"  >Agenda</a>
+																										</li>
+								
+						</ul>
+					</div>
+					
+			</li>
+		
+						<li class="icon documents">
+				<a class="link primary" href="index.php?module=nxc_Documents&action=index"><span>Document Center</span></a>
+					
+			</li>
+		
+						<li class="icon database">
+				<a class="link primary" href="index.php?module=DatabaseIndexes&action=show"><span>Financial Information</span></a>
+														<div class="submenu-wrapper">
+						<ul class="level2">
+															<li class="submenu-title">
+									<span>Financial Information</span>
+									<a href="javascript:void(0)" class="collapse-link"></a>
+								</li>
+																						<li class="">
+																			<a class="link" href="index.php?module=DatabaseIndexes&action=show"  >Indexes</a>
+																										</li>
+															<li class="">
+																			<a class="link" href="index.php?module=DatabaseProducts&action=show"  >Products</a>
+																										</li>
+															<li class="accordion-item">
+																			<a class="link" href="index.php?module=DatabaseCurrencies&action=index"  >Currencies</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=DatabaseCurrencies&action=adminIndex">Manage Currencies</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="">
+																			<a class="link" href="index.php?module=Database_Fundinfo&action=index"  >Fundinfo</a>
+																										</li>
+								
+						</ul>
+					</div>
+					
+			</li>
+		
+						<li class="icon investment-section">
+				<a class="link primary" href="index.php?module=Portfolio&action=index"><span>Portfolio Management</span></a>
+														<div class="submenu-wrapper">
+						<ul class="level2">
+															<li class="submenu-title">
+									<span>Portfolio Management</span>
+									<a href="javascript:void(0)" class="collapse-link"></a>
+								</li>
+																						<li class="">
+																			<a class="link" href="index.php?module=Portfolio&action=index"  >Overview</a>
+																										</li>
+															<li class="">
+																			<a class="link" href="index.php?module=Portfolio&action=SearchClient"  >by Client</a>
+																										</li>
+															<li class="">
+																			<a class="link" href="index.php?module=Portfolio&action=SearchPortfolio"  >by Portfolio</a>
+																										</li>
+															<li class="">
+																			<a class="link" href="index.php?module=Portfolio_Allocation&action=index"  >Portfolio Allocation</a>
+																										</li>
+															<li class="quick-links-header">
+																			<span class="" >Quick Links</span>
+																										</li>
+															<li class="quick-link">
+																			<a class="icon icon-more" href="index.php?module=Portfolio_Allocation&action=EditView"  >Create a new allocation</a>
+																										</li>
+								
+						</ul>
+					</div>
+					
+			</li>
+		
+						<li class="icon report">
+				<a class="link primary" href="index.php?module=ComplianceReports&action=Overview"><span>Compliance</span></a>
+														<div class="submenu-wrapper">
+						<ul class="level2">
+															<li class="submenu-title">
+									<span>Compliance</span>
+									<a href="javascript:void(0)" class="collapse-link"></a>
+								</li>
+																						<li class="">
+																			<a class="link" href="index.php?module=ComplianceReports&action=Overview"  >Overview</a>
+																										</li>
+															<li class="accordion-item">
+																			<a class="" href="index.php?module=KBE_VQF&action=index"  >Regulatory</a>
+																																						<ul class="level3">
+																							<li class="">
+													<a href="index.php?module=KBE_VQF&action=index">View all cases</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=KBE_VQF&action=EditView&return_module=KBE_VQF&return_action=DetailView">Create Case</a>
+												</li>
+																					</ul>
+																	</li>
+															<li class="accordion-item">
+																			<a class="" href="index.php?module=ComplianceReports&action=Overview"  >Investment</a>
+																																						<ul class="level3">
+																							<li class="accordion-item">
+													<a href="index.php?module=ComplianceReports&action=Overview">View all cases</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=GII&action=index">GII</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=GII&action=EditView&return_module=GII&return_action=DetailView">Create GII</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=PII&action=index">PII</a>
+												</li>
+																							<li class="">
+													<a href="index.php?module=PII&action=EditView&return_module=PII&return_action=DetailView">Create PII</a>
+												</li>
+																					</ul>
+																	</li>
+								
+						</ul>
+					</div>
+					
+			</li>
+		
+						<li class="icon addfin-circle">
+				<a class="link primary" href="index.php?module=nxcAddfinCircle&action=index"><span>ADDFIN Circle</span></a>
+														<div class="submenu-wrapper">
+						<ul class="level2">
+															<li class="submenu-title">
+									<span>Compliance</span>
+									<a href="javascript:void(0)" class="collapse-link"></a>
+								</li>
+																						<li class="">
+																			<a class="link" href="javascript:void(0)"  >Companies</a>
+																										</li>
+															<li class="">
+																			<a class="link" href="javascript:void(0)"  >Library</a>
+																										</li>
+								
+						</ul>
+					</div>
+					
+			</li>
+			</ul>
+</nav>	
+	<section role="main" class="main row personal-open">
+		<div id="content" class="small-12 column">
+			
+			<iframe id='ajaxUI-history-iframe' src='index.php?entryPoint=getImage&amp;imageName=blank.png'  title='empty' style='display:none'></iframe>
+			<input id='ajaxUI-history-field' type='hidden'>
+			<script type='text/javascript'>
+			if (SUGAR.ajaxUI && !SUGAR.ajaxUI.hist_loaded)
+			{
+					YAHOO.util.History.register('ajaxUILoc', "", SUGAR.ajaxUI.go);
+										// quick find
+					YAHOO.util.History.initialize("ajaxUI-history-field", "ajaxUI-history-iframe");
+					
+			}
+			</script>
+			
+			<script>
+            $(document).ready(function(){
+				var data = 1;
+				if( data ) {
+					$("span#ribbon-text__1ded81c7-99a9-e05c-ea19-5739dfd1bfa3").html(data).parent().removeClass('hidden');
+				}
+	        });
+        </script>	<script>
+	(function($){
+		var data = {
+			id: '1e1548f3-347b-8149-c34e-5739df3d04bc',
+			url: 'index.php',
+			action: 'MyOpportunities',
+			dashlet: 'Opportunities',
+			selector: '.myopportunities.search-field',
+			clearSelector: '.myopportunities.clear-search span',
+		};
+##################################
+    <style>
+        .menu{
+            z-index:100;
+        }
+
+        .subDmenu{
+            z-index:100;
+        }
+
+        div.moduleTitle {
+            height: 10px;
+        }
+    </style>
+
+
+
+
+<script type="text/javascript" src="cache/include/javascript/sugar_grp_yui_widgets.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+<script type="text/javascript" src="include/javascript/dashlets.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+
+
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="include/SugarCharts/Jit/FlashCanvas/flashcanvas.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+		<![endif]-->
+		<script language="javascript" type="text/javascript" src="include/SugarCharts/Jit/js/Jit/jit.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+		<script language="javascript" type="text/javascript" src="include/SugarCharts/Jit/js/sugarCharts.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+		
+
+		<script language="javascript" type="text/javascript" src="include/SugarCharts/Jit/js/mySugarCharts.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+		
+
+
+
+<div class="current-date"><span>May</span><strong>26</strong></div>
+
+<div class="moduleTitle">
+        <img id="company_logo_image" src='custom/themes/default/images/company_logo.png' alt='' class="left" />
+    <div class="left">
+        <h2>Dashboard</h2>
+        <button id="add_dashlets" class="button icon icon-plus" title="Add Dashlets" onclick="return SUGAR.mySugar.showDashletsDialog();"></button>    </div>
+    </div>
+
+<div id="pageContainer" class="yui-skin-sam">
+    <div id="pageNum_0_div">
+        <table class="span9" cellspacing="0" cellpadding="0" border="0">
+            <tbody class="span9">
+                <tr class="main-chart-row">
+                    <td colspan="2">
+                        <div class="chart">
+	<div class="chart-map"></div>
+	<ul class="chart-legend">
+		<li class="live">
+			<span class="graf-color"></span>
+			<span class="graf-name">Live Portfolios</span>
+		</li>
+		<li class="ben">
+			<span class="graf-color"></span>
+			<span class="graf-name">Benchmark Portfolios</span>
+		</li>
+		<li class="sim">
+			<span class="graf-color"></span>
+			<span class="graf-name">Simulation Portfolios</span>
+		</li>
+	</ul>
+</div>
+<div class="chart-right-menu">
+	<div class="menu-header">
+		<a class="icon-settings" href="javascript:void(0)"></a>
+		<a class="refreshIcon" href="javascript:void(0)"></a>
+	</div>
+	<table class="menu-entries">
+		<tbody>
+			<tr>
+				<td class="icon icon-tasks"></td>
+				<td class="counter">6</td>
+				<td colspan="2" class="menu-title"><a href="index.php?module=Tasks&action=index">Open<br>Tasks</a></td>
+			</tr>
+			<tr>
+				<td class="icon icon-target"></td>
+				<td class="counter">8</td>
+				<td class="menu-title"><a href="index.php?module=Leads&action=index">New<br>Leads</a></td>
+				<td class="leads-progress">
+					<div class="in-progress">
+						<span class="counter">1</span>
+						<span>in progress</span>
+					</div>
+					<div class="not-started">
+						<span class="counter">1</span>
+						<span>not started</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="icon icon-portfolios"></td>
+				<td class="counter">3</td>
+				<td colspan="2" class="menu-title">
+					<a href="#">Portfolios</a>
+					<span>under management</span>	
+				</td>
+			</tr>
+			<tr>
+				<td class="icon icon-office-management"></td>
+				<td class="counter">26</td>
+				<td class="menu-title">
+					<a href="index.php?module=Contacts&action=index">Accounts</a>
+					<span>under management</span>	
+				</td>
+				<td class="account-groups">
+					<div>
+						<span class="counter">6</span>
+						<span>Clients</span>
+					</div>
+					<div>
+						<span class="counter">2</span>
+						<span>Prospects</span>
+					</div
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+                    </td>
+                </tr>
+                <tr class="span9">
+                    
+                                            <td valign='top' width='50%' class="span6">
+                            <ul class='noBullet' id='col_0_0'>
+                                <li id='page_0_hidden0b' style='height: 5px; margin-top:12px;' class='noBullet'>&nbsp;&nbsp;&nbsp;</li>
+                                                                        <li class='noBullet' id='dashlet_1ded81c7-99a9-e05c-ea19-5739dfd1bfa3'>
+                                        <div id='dashlet_entire_1ded81c7-99a9-e05c-ea19-5739dfd1bfa3' class='dashletPanel'>
+                                            
+                                            <div onmouseover="this.style.cursor = 'move';" id="dashlet_header_1ded81c7-99a9-e05c-ea19-5739dfd1bfa3" class="hd"><div class="tl"></div><div class="hd-center"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tr>
+<td>
+	<h3><span>My Calls</span></h3>
+	<span class="ribbon tiny hidden"><span class="ribbon-inner" id="ribbon-text__1ded81c7-99a9-e05c-ea19-5739dfd1bfa3"></span></span>
+	
+</td><td valign='middle' nowrap><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td></td><td><div class="dashletToolSet"><a href="javascript:void(0)" onclick="SUGAR.mySugar.configureDashlet('1ded81c7-99a9-e05c-ea19-5739dfd1bfa3'); return false;"><span class="icon-settings icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.retrieveDashlet('1ded81c7-99a9-e05c-ea19-5739dfd1bfa3'); return false;"><span class="icon-undo icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.deleteDashlet('1ded81c7-99a9-e05c-ea19-5739dfd1bfa3'); return false;"><span class="icon-cross icon-size2"></span></a></div></td></tr></table></td></tr>
+</table></div><div class="tr"></div></div><div class="bd"><div class="ml"></div><div class="bd-center">
+                                            
+
+<table cellpadding='0' cellspacing='0' width='100%' border='0' class='list view'>
+    <tr class="pagination" role=”presentation”>
+        <td colspan='17' align='right'>
+            <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                <tr>
+                    <!--td align='left'>&nbsp;</td-->
+                    <td align='right' nowrap='nowrap' class="pagination-buttons">
+											
+																							<button class='button icon-last disabled' title='End'></button>
+											
+                      												<button class='button icon-forward disabled' title='Next'></button>
+
+											
+
+											<span class='pageNumbers'>1 - 1 of 1</span>
+
+																							<button class='button icon-backward disabled' title='Previous'></button>
+											
+																							<button title='Start' class='button icon-first disabled'></button>
+
+											                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr class="widget-sort-row" height='20'>
+        			<th scope='col' width='4%' align='left' class="unsortable">
+															<span>Close</span>
+												</th>
+        			<th scope='col' width='37%' align='left' class="unsortable">
+															<span>Subject</span>
+												</th>
+        			<th scope='col' width='27%' align='left' class="unsortable">
+															<span>Related to</span>
+												</th>
+        			<th scope='col' width='14%' align='left' class="unsortable">
+															<span>Start Date</span>
+												</th>
+        			<th scope='col' width='9%' align='left' class="unsortable">
+															<span>Accept?</span>
+												</th>
+        			<th scope='col' width='7%' align='left' class="unsortable">
+															<span>Status</span>
+												</th>
+        				<td  class='td_alt' nowrap="nowrap" width='1%'>&nbsp;</td>
+		    </tr>
+        
+										<tr height='20' class='oddListRowS1'>
+						
+						    <td scope='row' align='left' valign="top" >
+<a class='icon-delete' id='644bad6e-84c6-4eca-ba91-5742947198b2' onclick='SUGAR.util.closeActivityPanel.show("Calls","644bad6e-84c6-4eca-ba91-5742947198b2","Held","listview","1");'></a></td>
+				
+						    <td scope='row' align='left' valign="top" ><b><a href='index.php?action=DetailView&module=Calls&record=644bad6e-84c6-4eca-ba91-5742947198b2&offset=1&stamp=1464240629086099900'>
+spoke re meeting next week and the week after</a></b></td>
+				
+						    <td scope='row' align='left' valign="top" ><a href='index.php?action=DetailView&module=Contacts&record=b6b56ae8-e4fd-c1b2-dde2-574056ceb50f&offset=1&stamp=1464240629086099900'>
+&nbsp;</a></td>
+				
+						    <td scope='row' align='left' valign="top" >
+<font class='overdueTask'>05/23/2016 07:30</font></td>
+				
+						    <td scope='row' align='left' valign="top" >
+Accepted</td>
+				
+						    <td scope='row' align='left' valign="top" >
+Planned</td>
+				
+									<td width='1%' class='oddListRowS1' bgcolor='' nowrap>
+				                                        					<a
+                        title='Edit' href='index.php?action=EditView&module=Calls&record=644bad6e-84c6-4eca-ba91-5742947198b2&offset=1&stamp=1464240629086099900&return_module=Home&return_action=index'><img src="themes/default/images/edit_inline.gif?v=dIDb5q_rd7tYoNHykHZ6EQ"    border="0"  alt="edit" /></a>
+													<a title='View' href='index.php?action=DetailView&module=Calls&record=644bad6e-84c6-4eca-ba91-5742947198b2&offset=1&stamp=1464240629086099900&return_module=Home&return_action=index' title="View><img src="themes/default/images/view_inline.gif?v=dIDb5q_rd7tYoNHykHZ6EQ"    border="0"  alt="View" /></a>
+							</td>
+				    	</tr>
+	</table><input type="hidden" id="1ded81c7-99a9-e05c-ea19-5739dfd1bfa3_offset" name="1ded81c7-99a9-e05c-ea19-5739dfd1bfa3_offset" value="0">
+<input type="hidden" id="1ded81c7-99a9-e05c-ea19-5739dfd1bfa3_interval" name="1ded81c7-99a9-e05c-ea19-5739dfd1bfa3_interval" value="0">
+<script type='text/javascript'>
+<!--
+var autoRefreshProcId1ded81c799a9e05cea195739dfd1bfa3 = '';
+if (document.getElementById("1ded81c7-99a9-e05c-ea19-5739dfd1bfa3_interval").value > 0) {
+    autoRefreshProcId1ded81c799a9e05cea195739dfd1bfa3 = setInterval('refreshDashlet1ded81c799a9e05cea195739dfd1bfa3()', "0");
+}	
+function refreshDashlet1ded81c799a9e05cea195739dfd1bfa3() 
+{
+    //refresh only if offset is 0
+    if ( SUGAR.mySugar && document.getElementById("1ded81c7-99a9-e05c-ea19-5739dfd1bfa3_offset").value == '0' ) {
+        SUGAR.mySugar.retrieveDashlet("1ded81c7-99a9-e05c-ea19-5739dfd1bfa3","");
+    }
+}
+-->
+</script>
+                                            </div><div class="mr"></div></div><div class="ft"><div class="bl"></div><div class="ft-center"></div><div class="br"></div></div>
+                                        </div>
+                                    </li>
+                                                                    <li class='noBullet' id='dashlet_1e1548f3-347b-8149-c34e-5739df3d04bc'>
+                                        <div id='dashlet_entire_1e1548f3-347b-8149-c34e-5739df3d04bc' class='dashletPanel'>
+                                            
+                                            <div onmouseover="this.style.cursor = 'move';" id="dashlet_header_1e1548f3-347b-8149-c34e-5739df3d04bc" class="hd"><div class="tl"></div><div class="hd-center"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tr>
+<td>
+	<h3><span>My Top Open Opportunities</span></h3>
+	<span class="ribbon tiny hidden"><span class="ribbon-inner" id="ribbon-text__1e1548f3-347b-8149-c34e-5739df3d04bc"></span></span>
+	
+</td><td valign='middle' nowrap><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td></td><td><div class="dashletToolSet"><a href="javascript:void(0)" onclick="SUGAR.mySugar.configureDashlet('1e1548f3-347b-8149-c34e-5739df3d04bc'); return false;"><span class="icon-settings icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.retrieveDashlet('1e1548f3-347b-8149-c34e-5739df3d04bc'); return false;"><span class="icon-undo icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.deleteDashlet('1e1548f3-347b-8149-c34e-5739df3d04bc'); return false;"><span class="icon-cross icon-size2"></span></a></div></td></tr></table></td></tr>
+</table></div><div class="tr"></div></div><div class="bd"><div class="ml"></div><div class="bd-center">
+                                            
+
+<table cellpadding='0' cellspacing='0' width='100%' border='0' class='list view'>
+    <tr class="pagination" role=”presentation”>
+        <td colspan='15' align='right'>
+            <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                <tr>
+                    <td class="mydashlet-search" align='left'>
+						<input type="text" class='myopportunities search-field' />
+						<button class='my-opportunities clear-search'><span>Clear search</span></button>
+					</td>
+                    <td align='right' nowrap='nowrap' class="pagination-buttons">
+						
+																							<button class='button icon-last disabled' title='End'></button>
+											
+                      												<button class='button icon-forward disabled' title='Next'></button>
+
+											
+
+											<span class='pageNumbers'>0 - 0 of 0</span>
+
+																							<button class='button icon-backward disabled' title='Previous'></button>
+											
+																							<button title='Start' class='button icon-first disabled'></button>
+
+											                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr class="widget-sort-row" height='20'>
+        			<th scope='col' width='35%' align='left' class="unsortable">
+															<span>Opportunity Name</span>
+												</th>
+        			<th scope='col' width='35%' align='left' class="unsortable">
+															<span>Organisation</span>
+												</th>
+        			<th scope='col' width='15%' align='left' class="unsortable">
+															<span>Amount</span>
+												</th>
+        			<th scope='col' width='15%' align='left' class="unsortable">
+															<span>Expected Close Date</span>
+												</th>
+        				<td  class='td_alt' nowrap="nowrap" width='1%'>&nbsp;</td>
+		    </tr>
+        
+		<tr height='20' class='oddListRowS1'>
+	    <td colspan="14">
+	        <em>No Data</em>
+	    </td>
+	</tr>
+	</table><input type="hidden" id="1e1548f3-347b-8149-c34e-5739df3d04bc_offset" name="1e1548f3-347b-8149-c34e-5739df3d04bc_offset" value="0">
+<input type="hidden" id="1e1548f3-347b-8149-c34e-5739df3d04bc_interval" name="1e1548f3-347b-8149-c34e-5739df3d04bc_interval" value="0">
+<script type='text/javascript'>
+<!--
+var autoRefreshProcId1e1548f3347b8149c34e5739df3d04bc = '';
+if (document.getElementById("1e1548f3-347b-8149-c34e-5739df3d04bc_interval").value > 0) {
+    autoRefreshProcId1e1548f3347b8149c34e5739df3d04bc = setInterval('refreshDashlet1e1548f3347b8149c34e5739df3d04bc()', "0");
+}	
+function refreshDashlet1e1548f3347b8149c34e5739df3d04bc() 
+{
+    //refresh only if offset is 0
+    if ( SUGAR.mySugar && document.getElementById("1e1548f3-347b-8149-c34e-5739df3d04bc_offset").value == '0' ) {
+        SUGAR.mySugar.retrieveDashlet("1e1548f3-347b-8149-c34e-5739df3d04bc","");
+    }
+}
+-->
+</script> 
+                                            </div><div class="mr"></div></div><div class="ft"><div class="bl"></div><div class="ft-center"></div><div class="br"></div></div>
+                                        </div>
+                                    </li>
+                                                                    <li class='noBullet' id='dashlet_1e4558c9-50b5-6756-e39f-5739df193683'>
+                                        <div id='dashlet_entire_1e4558c9-50b5-6756-e39f-5739df193683' class='dashletPanel'>
+                                            
+                                            <div onmouseover="this.style.cursor = 'move';" id="dashlet_header_1e4558c9-50b5-6756-e39f-5739df193683" class="hd"><div class="tl"></div><div class="hd-center"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tr>
+<td>
+	<h3><span>My Organisations</span></h3>
+	<span class="ribbon tiny hidden"><span class="ribbon-inner" id="ribbon-text__1e4558c9-50b5-6756-e39f-5739df193683"></span></span>
+	
+</td><td valign='middle' nowrap><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td></td><td><div class="dashletToolSet"><a href="javascript:void(0)" onclick="SUGAR.mySugar.configureDashlet('1e4558c9-50b5-6756-e39f-5739df193683'); return false;"><span class="icon-settings icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.retrieveDashlet('1e4558c9-50b5-6756-e39f-5739df193683'); return false;"><span class="icon-undo icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.deleteDashlet('1e4558c9-50b5-6756-e39f-5739df193683'); return false;"><span class="icon-cross icon-size2"></span></a></div></td></tr></table></td></tr>
+</table></div><div class="tr"></div></div><div class="bd"><div class="ml"></div><div class="bd-center">
+                                            
+
+<table cellpadding='0' cellspacing='0' width='100%' border='0' class='list view'>
+    <tr class="pagination" role=”presentation”>
+        <td colspan='15' align='right'>
+            <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                <tr>
+                    <!--td align='left'>&nbsp;</td-->
+                    <td align='right' nowrap='nowrap' class="pagination-buttons">
+											
+																							<button class='button icon-last disabled' title='End'></button>
+											
+                      												<button class='button icon-forward disabled' title='Next'></button>
+
+											
+
+											<span class='pageNumbers'>1 - 1 of 1</span>
+
+																							<button class='button icon-backward disabled' title='Previous'></button>
+											
+																							<button title='Start' class='button icon-first disabled'></button>
+
+											                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr class="widget-sort-row" height='20'>
+        			<th scope='col' width='56%' align='left' class="unsortable">
+															<span>Name</span>
+												</th>
+        			<th scope='col' width='11%' align='left' class="unsortable">
+															<span>Website</span>
+												</th>
+        			<th scope='col' width='21%' align='left' class="unsortable">
+															<span>Phone</span>
+												</th>
+        			<th scope='col' width='11%' align='left' class="unsortable">
+															<span>Billing Country</span>
+												</th>
+        				<td  class='td_alt' nowrap="nowrap" width='1%'>&nbsp;</td>
+		    </tr>
+        
+										<tr height='20' class='oddListRowS1'>
+						
+						    <td scope='row' align='left' valign="top" ><b><a href='index.php?action=DetailView&module=Accounts&record=619c0b3d-9374-fba8-e672-574292fd4449&offset=1&stamp=1464240629089931500'>
+Addfin</a></b></td>
+				
+						    <td scope='row' align='left' valign="top" >
+<a href="http://" >http://</a></td>
+				
+						    <td scope='row' align='left' valign="top" >
+&nbsp;</td>
+				
+						    <td scope='row' align='left' valign="top" >
+&nbsp;</td>
+				
+									<td width='1%' class='oddListRowS1' bgcolor='' nowrap>
+				                                        					<a
+                        title='Edit' href='index.php?action=EditView&module=Accounts&record=619c0b3d-9374-fba8-e672-574292fd4449&offset=1&stamp=1464240629089931500&return_module=Home&return_action=index'><img src="themes/default/images/edit_inline.gif?v=dIDb5q_rd7tYoNHykHZ6EQ"    border="0"  alt="edit" /></a>
+													<a title='View' href='index.php?action=DetailView&module=Accounts&record=619c0b3d-9374-fba8-e672-574292fd4449&offset=1&stamp=1464240629089931500&return_module=Home&return_action=index' title="View><img src="themes/default/images/view_inline.gif?v=dIDb5q_rd7tYoNHykHZ6EQ"    border="0"  alt="View" /></a>
+							</td>
+				    	</tr>
+	</table><input type="hidden" id="1e4558c9-50b5-6756-e39f-5739df193683_offset" name="1e4558c9-50b5-6756-e39f-5739df193683_offset" value="0">
+<input type="hidden" id="1e4558c9-50b5-6756-e39f-5739df193683_interval" name="1e4558c9-50b5-6756-e39f-5739df193683_interval" value="0">
+<script type='text/javascript'>
+<!--
+var autoRefreshProcId1e4558c950b56756e39f5739df193683 = '';
+if (document.getElementById("1e4558c9-50b5-6756-e39f-5739df193683_interval").value > 0) {
+    autoRefreshProcId1e4558c950b56756e39f5739df193683 = setInterval('refreshDashlet1e4558c950b56756e39f5739df193683()', "0");
+}	
+function refreshDashlet1e4558c950b56756e39f5739df193683() 
+{
+    //refresh only if offset is 0
+    if ( SUGAR.mySugar && document.getElementById("1e4558c9-50b5-6756-e39f-5739df193683_offset").value == '0' ) {
+        SUGAR.mySugar.retrieveDashlet("1e4558c9-50b5-6756-e39f-5739df193683","");
+    }
+}
+-->
+</script>
+                                            </div><div class="mr"></div></div><div class="ft"><div class="bl"></div><div class="ft-center"></div><div class="br"></div></div>
+                                        </div>
+                                    </li>
+                                                                <li id='page_0_hidden0' style='height: 5px' class='noBullet'>&nbsp;&nbsp;&nbsp;</li>
+                            </ul>
+                        </td>
+                        
+                                            <td valign='top' width='50%' class="span6">
+                            <ul class='noBullet' id='col_0_1'>
+                                <li id='page_0_hidden1b' style='height: 5px; margin-top:12px;' class='noBullet'>&nbsp;&nbsp;&nbsp;</li>
+                                                                        <li class='noBullet' id='dashlet_1dd24bbe-3068-66e8-68e4-5739df527104'>
+                                        <div id='dashlet_entire_1dd24bbe-3068-66e8-68e4-5739df527104' class='dashletPanel'>
+                                            
+
+
+<script type="text/javascript">
+if(typeof SugarFeed == 'undefined') { // since the dashlet can be included multiple times a page, don't redefine these functions
+	SugarFeed = function() {
+	    return {
+	    	/**
+	    	 * Called when the textarea is blurred
+	    	 */
+	        pushUserFeed: function(id) {
+	        	ajaxStatus.showStatus('Saving...'); // show that AJAX call is happening
+	        	// what data to post to the dashlet
+    	    	
+    	    	postData = 'to_pdf=1&module=Home&action=CallMethodDashlet&method=pushUserFeed&id=' + id ;
+				YAHOO.util.Connect.setForm(document.getElementById('form_' + id));
+				var cObj = YAHOO.util.Connect.asyncRequest('POST','index.php', 
+								  {success: SugarFeed.saved, failure: SugarFeed.saved, argument: id}, postData);
+	        },
+		    /**
+	    	 * handle the response of the saveText method
+	    	 */
+	        saved: function(data) {
+	        	SUGAR.mySugar.retrieveDashlet(data.argument);
+	           	ajaxStatus.flashStatus('');
+	        }, 
+	        deleteFeed: function(record, id){
+				postData = 'to_pdf=1&module=Home&action=CallMethodDashlet&method=deleteUserFeed&id=' + id + '&record=' +  record;
+				var cObj = YAHOO.util.Connect.asyncRequest('POST','index.php', 
+								  {success: SugarFeed.saved, failure: SugarFeed.saved, argument: id}, postData);	        
+	        },
+            buildReplyForm: function(record, id, elem) {
+               // See if we already have a blockquote
+               var myParentElem = elem.parentNode.parentNode.parentNode;
+               
+               var blockElem = myParentElem.getElementsByTagName('blockquote')[0];
+               if ( typeof(blockElem) == 'undefined' || typeof(blockElem[0]) == 'undefined' ) {
+                  // Need to create a blockquote element
+                  // With a "clear" div in front of it.
+                  var divElem = document.createElement('div');
+                  divElem.className = 'clear';
+                  myParentElem.appendChild(divElem);
+                  blockElem = document.createElement('blockquote');
+                  myParentElem.appendChild(blockElem);
+               } else {
+                 // Should only be one child blockquote element, so we'll just grab the first one
+                 blockElem = blockElem[0];
+               }
+
+               // Move the reply form up over here
+               var formElem = document.getElementById('SugarFeedReplyForm_'+id);
+               formElem.parentNode.removeChild(formElem);
+               blockElem.appendChild(formElem);
+               formElem.getElementsByTagName('div')[0].style.display = 'block';
+               formElem.parentFeed.value = record;
+
+            },
+            replyToFeed: function( id ) {
+	        	ajaxStatus.showStatus('Saving...'); // show that AJAX call is happening
+	        	// what data to post to the dashlet
+    	    	
+                var formElem = document.getElementById('SugarFeedReplyForm_' + id);
+    	    	postData = 'to_pdf=1&module=Home&action=CallMethodDashlet&method=pushUserFeedReply&id=' + id ;
+				YAHOO.util.Connect.setForm(formElem);
+				var cObj = YAHOO.util.Connect.asyncRequest('POST','index.php', 
+								  {success: SugarFeed.saved, failure: SugarFeed.saved, argument: id}, postData);
+               
+            },
+            loaded: function(id) {
+            	var scrollConent;
+            	scrollContent = new iScroll('contentScroller' + id);
+            }
+	    };
+	}();
+}
+
+if(SUGAR.util.isTouchScreen()) {
+	document.addEventListener('DOMContentLoaded', function(){SugarFeed.loaded('ddbbeeedf')}, false);	
+}
+</script>
+
+<script type="text/javascript" src="include/javascript/popup_helper.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+                                            <div onmouseover="this.style.cursor = 'move';" id="dashlet_header_1dd24bbe-3068-66e8-68e4-5739df527104" class="hd"><div class="tl"></div><div class="hd-center"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tr>
+<td>
+	<h3><span>My Activity Stream</span></h3>
+	<span class="ribbon tiny hidden"><span class="ribbon-inner" id="ribbon-text__1dd24bbe-3068-66e8-68e4-5739df527104"></span></span>
+	
+</td><td valign='middle' nowrap><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td></td><td><div class="dashletToolSet"><a href="javascript:void(0)" onclick="SUGAR.mySugar.configureDashlet('1dd24bbe-3068-66e8-68e4-5739df527104'); return false;"><span class="icon-settings icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.retrieveDashlet('1dd24bbe-3068-66e8-68e4-5739df527104'); return false;"><span class="icon-undo icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.deleteDashlet('1dd24bbe-3068-66e8-68e4-5739df527104'); return false;"><span class="icon-cross icon-size2"></span></a></div></td></tr></table></td></tr>
+</table></div><div class="tr"></div></div><div class="bd"><div class="ml"></div><div class="bd-center">
+<form name='form_1dd24bbe-3068-66e8-68e4-5739df527104' id='form_1dd24bbe-3068-66e8-68e4-5739df527104'>
+<div class="dashletNonTable" style='white-space:nowrap;'>
+  <table border=0 cellspacing=0 cellpadding=2>
+    <tr>
+      <td nowrap="nowrap"><span id='more_img_1dd24bbe-3068-66e8-68e4-5739df527104'><img src="themes/default/images/advanced_search.gif?v=dIDb5q_rd7tYoNHykHZ6EQ"    onclick="toggleDisplay('more_1dd24bbe-3068-66e8-68e4-5739df527104'); toggleDisplay('more_img_1dd24bbe-3068-66e8-68e4-5739df527104'); toggleDisplay('less_img_1dd24bbe-3068-66e8-68e4-5739df527104');" alt="Show More Options" /></span><span id='less_img_1dd24bbe-3068-66e8-68e4-5739df527104' style="display:none;"><img src="themes/default/images/basic_search.gif?v=dIDb5q_rd7tYoNHykHZ6EQ"    onclick="toggleDisplay('more_1dd24bbe-3068-66e8-68e4-5739df527104'); toggleDisplay('more_img_1dd24bbe-3068-66e8-68e4-5739df527104'); toggleDisplay('less_img_1dd24bbe-3068-66e8-68e4-5739df527104');" alt="Hide Options" /></span> <b>rprior</b>&nbsp;</td>
+      <td style="padding-right: 5px;"><textarea id="text" name="text" value="" title="Post Status Update for  rprior "></textarea></td>
+      <td nowrap="nowrap">
+      <input type="submit" value="Post" class="button gen-button" style="vertical-align:top" onclick="SugarFeed.pushUserFeed('1dd24bbe-3068-66e8-68e4-5739df527104'); return false;"></td>
+    </tr>
+</table>
+<div id='more_1dd24bbe-3068-66e8-68e4-5739df527104' style='display:none;padding-top:5px'>
+<table>
+<tr>
+    <td><select name="link_type">
+<option label="YouTube&#153;" value="YouTube">YouTube&#153;</option>
+<option label="Link" value="Link">Link</option>
+<option label="Image" value="Image">Image</option>
+</select>
+</td>
+    <td><input type='text' name='link_url' title="URL Link to use"  size='30'/></td>
+</tr>
+</table>
+</div>
+</div>
+
+</form>
+
+<form name='SugarFeedReplyForm_1dd24bbe-3068-66e8-68e4-5739df527104' id='SugarFeedReplyForm_1dd24bbe-3068-66e8-68e4-5739df527104'>
+<input type='hidden' name='parentFeed' value=''>
+<div style='white-space:nowrap; display: none;'>
+ <table border=0 cellspacing=0 cellpadding=2>
+    <tr>
+      <td nowrap="nowrap"><b>rprior</b>&nbsp;</td>
+      <td style="padding-right: 5px;"><input id="text" name="text" type="text" size='25' maxlength='100' value="" /></td>
+      <td nowrap="nowrap">
+      <input type="submit" value="Post" class="button" style="vertical-align:top" onclick="SugarFeed.replyToFeed('1dd24bbe-3068-66e8-68e4-5739df527104'); return false;"></td>
+    </tr>
+</table>
+</div>
+</form>
+<div class="sugarFeedDashlet"><div id="contentScrollerddbbeeedf">
+                                            
+
+<table cellpadding='0' cellspacing='0' width='100%' border='0' class='list view'>
+    <tr class="pagination" role=”presentation”>
+        <td colspan='12' align='right'>
+            <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                <tr>
+                    <!--td align='left'>&nbsp;</td-->
+                    <td align='right' nowrap='nowrap' class="pagination-buttons">
+											
+																							<button class='button icon-last disabled' title='End'></button>
+											
+                      												<button class='button icon-forward disabled' title='Next'></button>
+
+											
+
+											<span class='pageNumbers'>1 - 4 of 4</span>
+
+																							<button class='button icon-backward disabled' title='Previous'></button>
+											
+																							<button title='Start' class='button icon-first disabled'></button>
+
+											                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr class="widget-sort-row" height='20'>
+        			<th scope='col' width='100%' align='left' class="unsortable">
+															<span></span>
+												</th>
+        		    </tr>
+        
+										<tr height='20' class='oddListRowS1'>
+						
+						    <td scope='row' align='left' valign="top" ><b>
+</b><div style="padding:3px"><b>peterhegglin</b> created a <b>new</b> contact <a href="index.php?module=Contacts&action=DetailView&record=18f58eca-de47-3b4f-f3e8-5743528b5433"><img src="themes/default/images/Contacts.gif" border=0 alt="View Contact">Sandra Meier</a><div class="byLineBox"><span class="byLineLeft">2 Days  ago&nbsp;</span><div class="byLineRight"><a id="sugarFeedReplyLink1ff2c656-ca03-db94-cee7-574352dd9340" href="#" onclick='SugarFeed.buildReplyForm("1ff2c656-ca03-db94-cee7-574352dd9340", "1dd24bbe-3068-66e8-68e4-5739df527104", this); return false;'>Reply</a> - <a class="icon-delete" id="sugarFeedDeleteLink1ff2c656-ca03-db94-cee7-574352dd9340" href="#" onclick='SugarFeed.deleteFeed("1ff2c656-ca03-db94-cee7-574352dd9340", "1dd24bbe-3068-66e8-68e4-5739df527104"); return false;'></a></div></div></b></td>
+				
+							    	</tr>
+										<tr height='20' class='evenListRowS1'>
+						
+						    <td scope='row' align='left' valign="top" ><b>
+</b><div style="padding:3px"><b>peterhegglin</b> created a <b>new</b> opportunity <a href="index.php?module=Opportunities&action=DetailView&record=3efdfb4a-0072-7bb1-500c-57434fb318fb"><img src="themes/default/images/Opportunities.gif" border=0 alt="View Opportunity">Balanced Mandate</a> with <a href="index.php?module=Accounts&action=DetailView&record="><img src="themes/default/images/Accounts.gif" border=0 alt="View Organisation"></a> for SFr.1,500,000.00<div class="byLineBox"><span class="byLineLeft">2 Days  ago&nbsp;</span><div class="byLineRight"><a id="sugarFeedReplyLink40d14bcc-cbcf-ee18-2f3f-57434f01e38a" href="#" onclick='SugarFeed.buildReplyForm("40d14bcc-cbcf-ee18-2f3f-57434f01e38a", "1dd24bbe-3068-66e8-68e4-5739df527104", this); return false;'>Reply</a> - <a class="icon-delete" id="sugarFeedDeleteLink40d14bcc-cbcf-ee18-2f3f-57434f01e38a" href="#" onclick='SugarFeed.deleteFeed("40d14bcc-cbcf-ee18-2f3f-57434f01e38a", "1dd24bbe-3068-66e8-68e4-5739df527104"); return false;'></a></div></div></b></td>
+				
+							    	</tr>
+										<tr height='20' class='oddListRowS1'>
+						
+						    <td scope='row' align='left' valign="top" ><b>
+</b><div style="padding:3px"><b>peterhegglin</b> created a <b>new</b> lead <a href="index.php?module=Leads&action=DetailView&record=352cf15e-e026-8ddb-c4bc-57434e4fb2f9"><img src="themes/default/images/Leads.gif" border=0 alt="View Lead">Thomas Müller</a><div class="byLineBox"><span class="byLineLeft">2 Days  ago&nbsp;</span><div class="byLineRight"><a id="sugarFeedReplyLink376b1d7a-fdea-f88a-4a5f-57434e998ca4" href="#" onclick='SugarFeed.buildReplyForm("376b1d7a-fdea-f88a-4a5f-57434e998ca4", "1dd24bbe-3068-66e8-68e4-5739df527104", this); return false;'>Reply</a> - <a class="icon-delete" id="sugarFeedDeleteLink376b1d7a-fdea-f88a-4a5f-57434e998ca4" href="#" onclick='SugarFeed.deleteFeed("376b1d7a-fdea-f88a-4a5f-57434e998ca4", "1dd24bbe-3068-66e8-68e4-5739df527104"); return false;'></a></div></div></b></td>
+				
+							    	</tr>
+										<tr height='20' class='evenListRowS1'>
+						
+						    <td scope='row' align='left' valign="top" ><b>
+</b><div style="padding:3px"><b>peterhegglin</b> John Miller onboarding completed<div class="byLineBox"><span class="byLineLeft">3 Days  ago&nbsp;</span><div class="byLineRight"><a id="sugarFeedReplyLink41852e38-3592-05e6-e4a3-5741ecdf02cc" href="#" onclick='SugarFeed.buildReplyForm("41852e38-3592-05e6-e4a3-5741ecdf02cc", "1dd24bbe-3068-66e8-68e4-5739df527104", this); return false;'>Reply</a> - <a class="icon-delete" id="sugarFeedDeleteLink41852e38-3592-05e6-e4a3-5741ecdf02cc" href="#" onclick='SugarFeed.deleteFeed("41852e38-3592-05e6-e4a3-5741ecdf02cc", "1dd24bbe-3068-66e8-68e4-5739df527104"); return false;'></a></div></div></b></td>
+				
+							    	</tr>
+	</table><input type="hidden" id="1dd24bbe-3068-66e8-68e4-5739df527104_offset" name="1dd24bbe-3068-66e8-68e4-5739df527104_offset" value="0">
+<input type="hidden" id="1dd24bbe-3068-66e8-68e4-5739df527104_interval" name="1dd24bbe-3068-66e8-68e4-5739df527104_interval" value="0">
+<script type='text/javascript'>
+<!--
+var autoRefreshProcId1dd24bbe306866e868e45739df527104 = '';
+if (document.getElementById("1dd24bbe-3068-66e8-68e4-5739df527104_interval").value > 0) {
+    autoRefreshProcId1dd24bbe306866e868e45739df527104 = setInterval('refreshDashlet1dd24bbe306866e868e45739df527104()', "0");
+}	
+function refreshDashlet1dd24bbe306866e868e45739df527104() 
+{
+    //refresh only if offset is 0
+    if ( SUGAR.mySugar && document.getElementById("1dd24bbe-3068-66e8-68e4-5739df527104_offset").value == '0' ) {
+        SUGAR.mySugar.retrieveDashlet("1dd24bbe-3068-66e8-68e4-5739df527104","");
+    }
+}
+-->
+</script></div></div>
+                                            </div><div class="mr"></div></div><div class="ft"><div class="bl"></div><div class="ft-center"></div><div class="br"></div></div>
+                                        </div>
+                                    </li>
+                                                                    <li class='noBullet' id='dashlet_1e5e51bd-d597-fd73-8e1b-5739dfd97531'>
+                                        <div id='dashlet_entire_1e5e51bd-d597-fd73-8e1b-5739dfd97531' class='dashletPanel'>
+                                            
+                                            <div onmouseover="this.style.cursor = 'move';" id="dashlet_header_1e5e51bd-d597-fd73-8e1b-5739dfd97531" class="hd"><div class="tl"></div><div class="hd-center"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tr>
+<td>
+	<h3><span>My Leads</span></h3>
+	<span class="ribbon tiny hidden"><span class="ribbon-inner" id="ribbon-text__1e5e51bd-d597-fd73-8e1b-5739dfd97531"></span></span>
+	
+</td><td valign='middle' nowrap><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td></td><td><div class="dashletToolSet"><a href="javascript:void(0)" onclick="SUGAR.mySugar.configureDashlet('1e5e51bd-d597-fd73-8e1b-5739dfd97531'); return false;"><span class="icon-settings icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.retrieveDashlet('1e5e51bd-d597-fd73-8e1b-5739dfd97531'); return false;"><span class="icon-undo icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.deleteDashlet('1e5e51bd-d597-fd73-8e1b-5739dfd97531'); return false;"><span class="icon-cross icon-size2"></span></a></div></td></tr></table></td></tr>
+</table></div><div class="tr"></div></div><div class="bd"><div class="ml"></div><div class="bd-center">
+                                            
+
+<table cellpadding='0' cellspacing='0' width='100%' border='0' class='list view'>
+    <tr class="pagination" role=”presentation”>
+        <td colspan='15' align='right'>
+            <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                <tr>
+                    <!--td align='left'>&nbsp;</td-->
+                    <td align='right' nowrap='nowrap' class="pagination-buttons">
+											
+																							<button class='button icon-last disabled' title='End'></button>
+											
+                      												<button class='button icon-forward disabled' title='Next'></button>
+
+											
+
+											<span class='pageNumbers'>0 - 0 of 0</span>
+
+																							<button class='button icon-backward disabled' title='Previous'></button>
+											
+																							<button title='Start' class='button icon-first disabled'></button>
+
+											                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr class="widget-sort-row" height='20'>
+        			<th scope='col' width='30%' align='left' class="sortable">
+																									<a class="" href='javascript:void(0);' onclick='return SUGAR.mySugar.retrieveDashlet("1e5e51bd-d597-fd73-8e1b-5739dfd97531", "index.php?module=Home&action=DynamicAction&DynamicAction=displayDashlet&lvso=ASC&Home2_LEAD_ORDER_BY=last_name&sugar_body_only=1&id=1e5e51bd-d597-fd73-8e1b-5739dfd97531");' class='listViewThLinkS1' title="Sort"><span>Name</span></a>
+							</th>
+        			<th scope='col' width='20%' align='left' class="sortable">
+																									<a class="" href='javascript:void(0);' onclick='return SUGAR.mySugar.retrieveDashlet("1e5e51bd-d597-fd73-8e1b-5739dfd97531", "index.php?module=Home&action=DynamicAction&DynamicAction=displayDashlet&lvso=ASC&Home2_LEAD_ORDER_BY=title&sugar_body_only=1&id=1e5e51bd-d597-fd73-8e1b-5739dfd97531");' class='listViewThLinkS1' title="Sort"><span>Title</span></a>
+							</th>
+        			<th scope='col' width='20%' align='left' class="unsortable">
+															<span>Office Phone</span>
+												</th>
+        			<th scope='col' width='30%' align='left' class="unsortable">
+															<span>Email Address</span>
+												</th>
+        				<td  class='td_alt' nowrap="nowrap" width='1%'>&nbsp;</td>
+		    </tr>
+        
+		<tr height='20' class='oddListRowS1'>
+	    <td colspan="14">
+	        <em>No Data</em>
+	    </td>
+	</tr>
+	</table><input type="hidden" id="1e5e51bd-d597-fd73-8e1b-5739dfd97531_offset" name="1e5e51bd-d597-fd73-8e1b-5739dfd97531_offset" value="0">
+<input type="hidden" id="1e5e51bd-d597-fd73-8e1b-5739dfd97531_interval" name="1e5e51bd-d597-fd73-8e1b-5739dfd97531_interval" value="0">
+<script type='text/javascript'>
+<!--
+var autoRefreshProcId1e5e51bdd597fd738e1b5739dfd97531 = '';
+if (document.getElementById("1e5e51bd-d597-fd73-8e1b-5739dfd97531_interval").value > 0) {
+    autoRefreshProcId1e5e51bdd597fd738e1b5739dfd97531 = setInterval('refreshDashlet1e5e51bdd597fd738e1b5739dfd97531()', "0");
+}	
+function refreshDashlet1e5e51bdd597fd738e1b5739dfd97531() 
+{
+    //refresh only if offset is 0
+    if ( SUGAR.mySugar && document.getElementById("1e5e51bd-d597-fd73-8e1b-5739dfd97531_offset").value == '0' ) {
+        SUGAR.mySugar.retrieveDashlet("1e5e51bd-d597-fd73-8e1b-5739dfd97531","");
+    }
+}
+-->
+</script>
+                                            </div><div class="mr"></div></div><div class="ft"><div class="bl"></div><div class="ft-center"></div><div class="br"></div></div>
+                                        </div>
+                                    </li>
+                                                                    <li class='noBullet' id='dashlet_1e057d42-8430-33ff-cf41-5739dfe440e2'>
+                                        <div id='dashlet_entire_1e057d42-8430-33ff-cf41-5739dfe440e2' class='dashletPanel'>
+                                            
+                                            <div onmouseover="this.style.cursor = 'move';" id="dashlet_header_1e057d42-8430-33ff-cf41-5739dfe440e2" class="hd"><div class="tl"></div><div class="hd-center"><table width="100%" cellpadding="0" cellspacing="0" border="0" class="formHeader h3Row">
+<tr>
+<td>
+	<h3><span>My Meetings</span></h3>
+	<span class="ribbon tiny hidden"><span class="ribbon-inner" id="ribbon-text__1e057d42-8430-33ff-cf41-5739dfe440e2"></span></span>
+	
+</td><td valign='middle' nowrap><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td></td><td><div class="dashletToolSet"><a href="javascript:void(0)" onclick="SUGAR.mySugar.configureDashlet('1e057d42-8430-33ff-cf41-5739dfe440e2'); return false;"><span class="icon-settings icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.retrieveDashlet('1e057d42-8430-33ff-cf41-5739dfe440e2'); return false;"><span class="icon-undo icon-size2"></span></a><a href="javascript:void(0)" onclick="SUGAR.mySugar.deleteDashlet('1e057d42-8430-33ff-cf41-5739dfe440e2'); return false;"><span class="icon-cross icon-size2"></span></a></div></td></tr></table></td></tr>
+</table></div><div class="tr"></div></div><div class="bd"><div class="ml"></div><div class="bd-center">
+                                            
+
+<table cellpadding='0' cellspacing='0' width='100%' border='0' class='list view'>
+    <tr class="pagination" role=”presentation”>
+        <td colspan='16' align='right'>
+            <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+                <tr>
+                    <!--td align='left'>&nbsp;</td-->
+                    <td align='right' nowrap='nowrap' class="pagination-buttons">
+											
+																							<button class='button icon-last disabled' title='End'></button>
+											
+                      												<button class='button icon-forward disabled' title='Next'></button>
+
+											
+
+											<span class='pageNumbers'>0 - 0 of 0</span>
+
+																							<button class='button icon-backward disabled' title='Previous'></button>
+											
+																							<button title='Start' class='button icon-first disabled'></button>
+
+											                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr class="widget-sort-row" height='20'>
+        			<th scope='col' width='1%' align='left' class="unsortable">
+															<span>Close</span>
+												</th>
+        			<th scope='col' width='42%' align='left' class="unsortable">
+															<span>Subject</span>
+												</th>
+        			<th scope='col' width='30%' align='left' class="unsortable">
+															<span>Related to</span>
+												</th>
+        			<th scope='col' width='15%' align='left' class="unsortable">
+															<span>Start Date</span>
+												</th>
+        			<th scope='col' width='10%' align='left' class="unsortable">
+															<span>Accept?</span>
+												</th>
+        				<td  class='td_alt' nowrap="nowrap" width='1%'>&nbsp;</td>
+		    </tr>
+        
+		<tr height='20' class='oddListRowS1'>
+	    <td colspan="15">
+	        <em>No Data</em>
+	    </td>
+	</tr>
+	</table><input type="hidden" id="1e057d42-8430-33ff-cf41-5739dfe440e2_offset" name="1e057d42-8430-33ff-cf41-5739dfe440e2_offset" value="0">
+<input type="hidden" id="1e057d42-8430-33ff-cf41-5739dfe440e2_interval" name="1e057d42-8430-33ff-cf41-5739dfe440e2_interval" value="0">
+<script type='text/javascript'>
+<!--
+var autoRefreshProcId1e057d42843033ffcf415739dfe440e2 = '';
+if (document.getElementById("1e057d42-8430-33ff-cf41-5739dfe440e2_interval").value > 0) {
+    autoRefreshProcId1e057d42843033ffcf415739dfe440e2 = setInterval('refreshDashlet1e057d42843033ffcf415739dfe440e2()', "0");
+}	
+function refreshDashlet1e057d42843033ffcf415739dfe440e2() 
+{
+    //refresh only if offset is 0
+    if ( SUGAR.mySugar && document.getElementById("1e057d42-8430-33ff-cf41-5739dfe440e2_offset").value == '0' ) {
+        SUGAR.mySugar.retrieveDashlet("1e057d42-8430-33ff-cf41-5739dfe440e2","");
+    }
+}
+-->
+</script>
+                                            </div><div class="mr"></div></div><div class="ft"><div class="bl"></div><div class="ft-center"></div><div class="br"></div></div>
+                                        </div>
+                                    </li>
+                                                                <li id='page_0_hidden1' style='height: 5px' class='noBullet'>&nbsp;&nbsp;&nbsp;</li>
+                            </ul>
+                        </td>
+                        
+                                    </tr>
+            </tbody>
+        </table>
+    </div>
+
+            <div id="pageNum_0_div" style="display:none;">
+        </div>
+    
+
+
+    <div id="dashletsDialog" style="display:none;">
+        <div class="hd" id="dashletsDialogHeader"><a href="javascript:void(0)" onClick="javascript:SUGAR.mySugar.closeDashletsDialog();">
+                <div class="container-close icon-cross">&nbsp;</div></a>Add
+        </div>
+        <div class="bd" id="dashletsList">
+            <form></form>
+        </div>
+
+    </div>
+
+
+</div>
+
+<div class="disclaimer">Data Provider: SIX Financial Information - disclaimer</div><script>if(typeof(qe_init) != 'undefined'){qe_init();}</script><script>secondsSinceLoad = 0; alertList = [];		if (!alertsTimeoutId) {
+		    checkAlerts();
+		}
+</script>		</div>
+		</div>
+	</section>
+	<!-- End main content -->
+
+	<!-- Scripts -->
+	<script src="themes/AddfinV3/js/libs/big.min.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	<script src="themes/AddfinV3/js/jquery.cookie.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	<script src="/themes/AddfinV3/js/libs/colorbox/jquery.colorbox.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	<script src="/themes/AddfinV3/js/libs/chosen/chosen.jquery.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	<script src="/themes/AddfinV3/js/libs/chosen/docsupport/prism.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	<script src="themes/AddfinV3/js/setup.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	<script src="/themes/AddfinV3/js/lateral-menu.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	<script src="/themes/AddfinV3/js/search.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	<script src="/themes/AddfinV3/js/ajaxdashlets.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	<script src="/themes/AddfinV3/js/core.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	
+	<!-- Tinycon -->
+	<script src="themes/AddfinV3/js/libs/tinycon.min.js?v=dIDb5q_rd7tYoNHykHZ6EQ"></script>
+	
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/none.js"></script>
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/amstock.js"></script>
+	
+	<script>
+	
+		// Call template init (optional, but faster if called manually)
+		$.template.init();
+
+		// Favicon count
+		//Tinycon.setBubble(2);
+		//chosen init
+		$("select[multiple='true']").chosen();
+	
+	</script>
+
+	<script>
+
+if(SUGAR.util.isTouchScreen()) {
+        setTimeout(resizeHeader,10000);
+}
+
+//qe_init function sets listeners to click event on elements of 'quickEdit' class
+ if(typeof(DCMenu) !='undefined'){
+    DCMenu.qe_refresh = false;
+    DCMenu.qe_handle;
+ }
+function qe_init(){
+
+    //do not process if YUI is undefined
+    if(typeof(YUI)=='undefined' || typeof(DCMenu) == 'undefined'){
+        return;
+    }
+
+
+    //remove all existing listeners.  This will prevent adding multiple listeners per element and firing multiple events per click
+    if(typeof(DCMenu.qe_handle) !='undefined'){
+        DCMenu.qe_handle.detach();
+    }
+
+    //set listeners on click event, and define function to call
+    YUI().use('node', function(Y) {
+        var qe = Y.all('.quickEdit');
+        var refreshDashletID;
+        var refreshListID;
+
+        //store event listener handle for future use, and define function to call on click event
+        DCMenu.qe_handle = qe.on('click', function(e) {
+            //function will flash message, and retrieve data from element to pass on to DC.miniEditView function
+            ajaxStatus.flashStatus(SUGAR.language.get('app_strings', 'LBL_LOADING'),800);
+            e.preventDefault();
+            if(typeof(e.currentTarget.getAttribute('data-dashlet-id'))!='undefined'){
+                refreshDashletID = e.currentTarget.getAttribute('data-dashlet-id');
+            }
+            if(typeof(e.currentTarget.getAttribute('data-list'))!='undefined'){
+                refreshListID = e.currentTarget.getAttribute('data-list');
+            }
+            DCMenu.miniEditView(e.currentTarget.getAttribute('data-module'), e.currentTarget.getAttribute('data-record'),refreshListID,refreshDashletID);
+        });
+
+    });
+}
+
+    qe_init();
+
+
+	SUGAR_callsInProgress++;
+	SUGAR._ajax_hist_loaded = true;
+    if(SUGAR.ajaxUI)
+    	YAHOO.util.Event.onContentReady('ajaxUI-history-field', SUGAR.ajaxUI.firstLoad);
+</script>
+<a href="#" id="open-menu"><span></span></a>
+<nav class="personal locked-animation open">
+	<div id="menu-content">
+		
+<header>
+	<span>Administrator</span>
+	<a href="javascript:void(0)" class="collapse-link"></a>
+</header>
+
+
+<div id="profile">
+	<div class="profile-image">
+		<img src="https://s.gravatar.com/avatar/e49a82581f75877325f9ade643b3eb37?s=75&d=404" width="75" height="75" alt="rprior " class="user-icon">
+	</div>
+	<span class="greeting">Welcome</span>
+	<span class="name"><span class="fn">rprior</span><span class="ln">rprior</span></span>
+	<span class="profile-logout">[ <a id="logout_link" href='index.php?module=Users&action=Logout' class='utilsLink'>Log out</a> ]</span>
+</div>
+
+<script type="text/javascript">
+	$('#profile img').bind('error',function(e){
+		$('#profile img').attr('src','/themes/AddfinV2/img/user.png');
+	});
+</script>
+		<ul id="access" class="children-tooltip">
+			<li><a href="index.php?module=Emails&action=index" title="Messages"><span class="icon icon-inbox"></span><span class="count" id="children-tooltip__unreaded_mail">44</span></a></li>
+			<li><a href="index.php?module=Calendar&action=index" title="Calendar"><span class="icon icon-calendar"></span></a></li>
+			<li><a href="index.php?module=Users&action=DetailView&record=5c79491f-9385-b7f4-c973-5739dfc0925a" title="Profile"><span class="icon icon-user"></span></a></li>
+						<li><a href="index.php?module=Administration&action=index" title="Admin"><span class="icon icon-gear"></span></a></li>
+					</ul>
+
+		<section class="navigable">
+			<ul class="big-menu">
+				<li class="with-right-arrow">
+					<a href="index.php?module=Tasks&action=index">Tasks</a>
+				</li>
+				<li class="with-right-arrow">
+					<a href="index.php?module=Calls&action=index">Calls</a>
+				</li>
+				<li class="with-right-arrow">
+					<a href="index.php?module=Leads&action=index">Leads</a>
+				</li>
+				<li class="with-right-arrow">
+					<a href="index.php?module=Opportunities&action=index">Opportunities</a>
+				</li>
+				<li class="with-right-arrow">
+					<a href="index.php?module=Notes&action=index">Notes</a>
+				</li>
+			</ul>
+		</section>
+
+		<ul class="notifications">
+			
+								</ul>
+		    <div class="language-select">
+      <select class="select" style="width: 100%" name='login_language' onchange="switchMainLanguage(this.value)">
+<OPTION selected value='en_us'>English (US)</OPTION>
+<OPTION value='de_de'>Deutsch</OPTION></select>
+    </div>
+
+    
+    <script type='text/javascript'>
+        function switchMainLanguage(lang){
+               var loc=window.location+"";
+               loc=loc.replace(/\&login_language=[^&]*/i,"");
+               loc=loc.replace(/\?login_language=[^&]*/i,"");
+               if(loc.indexOf("?") >= 0) {
+                   loc+="&login_language="+lang;
+               }
+               else {
+                   loc+="?login_language="+lang;
+               }
+               window.location=loc;
+        }
+    </script>
+    
+		<footer id="menu-footer">
+			<p class="button-height">
+				<input type="checkbox" name="auto-refresh" id="auto-refresh" checked="checked" class="switch right">
+				<label for="auto-refresh">Auto-refresh</label>
+			</p>
+		</footer>
+	</div>
+</nav>
+
+<script type="text/javascript">
+(function($){
+	var menu = $('nav.personal');
+
+	function updatePersonalMenu(){
+		if($.cookie('personal-menu') === 'expanded'){
+			$('section.main').addClass('personal-open');
+			menu.addClass('open');
+		}else{
+			$('section.main').removeClass('personal-open');
+			menu.removeClass('open');
+		}
+	}
+	updatePersonalMenu();
+	$('#open-menu').on('touchend click', function(event){
+		event.preventDefault();
+		$.cookie('personal-menu', 'expanded');
+		updatePersonalMenu();
+		if(SUGAR.hasOwnProperty('email2') && SUGAR.email2.hasOwnProperty('e2Layout')){
+			SUGAR.email2.e2Layout.resizeHorizontaly();
+		}
+	});
+	$('nav.personal .collapse-link').on('touchend click', function(){
+		$.removeCookie('personal-menu');
+		menu.removeClass('locked-animation');
+		updatePersonalMenu();
+		if(SUGAR.hasOwnProperty('email2') && SUGAR.email2.hasOwnProperty('e2Layout')){
+			SUGAR.email2.e2Layout.resizeHorizontaly();
+		}
+	});
+})(jQuery);
+</script>
+
+
+<script src="/themes/AddfinV3/js/controls.js"></script>
+
+</body>
+</html>

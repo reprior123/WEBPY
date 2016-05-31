@@ -1,0 +1,423 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.AttributeError'> 'DAL' object has no attribute 'accounts_cases'"
+p3
+sS'layer'
+p4
+S'C:\\WEB2PY\\EXE_RP\\web2py\\applications\\AddfinV3\\controllers/default.py'
+p5
+sS'code'
+p6
+S'# coding: utf8\n\n#########################################################################\n## This is a samples controller\n## - index is the default action of any application\n## - user is required for authentication and authorization\n## - download is for downloading files uploaded in the db (does streaming)\n## - call exposes all registered services (none by default)\n#########################################################################\n\nerror_page=URL(\'error\')\n\nif not session.recent_companies: session.recent_companies=[]\nif not session.recent_persons: session.recent_persons=[]\nif not session.recent_tasks: session.recent_tasks=[]\nif not session.recent_accounts: session.recent_accounts=[]\n\n\nresponse.menu=[\n  [\'Companies\',False,url(\'list_companies\')],\n  [\'Contacts\',False,url(\'list_persons\')],\n  [\'Tasks\',False,url(\'list_tasks\')],\n  [\'Accounts\',False,url(\'list_accounts\')],\n  [\'accounts_bugs\',False,url(\'list_accounts_bugs\')],\n  [\'accounts_cases\',False,url(\'list_accounts_cases\')],\n  [\'accounts_contacts\',False,url(\'list_accounts_contacts\')],\n  [\'accounts_cstm\',False,url(\'list_accounts_cstm\')],\n  [\'accounts_opportunities\',False,url(\'list_accounts_opportunities\')],\n  [\'acl_actions\',False,url(\'list_acl_actions\')],\n  [\'acl_roles\',False,url(\'list_acl_roles\')],\n  [\'address_book\',False,url(\'list_address_book\')],\n  [\'bugs\',False,url(\'list_bugs\')],\n  [\'calls\',False,url(\'list_calls\')],\n  [\'cases\',False,url(\'list_cases\')],\n  [\'client_roles\',False,url(\'list_client_roles\')],\n  [\'clientroles_accounts_c\',False,url(\'list_clientroles_accounts_c\')],\n  [\'contacts\',False,url(\'list_contacts\')],\n  [\'contacts_audit\',False,url(\'list_contacts_audit\')],\n  [\'contacts_nxcaddfinportfolio_1_c\',False,url(\'list_contacts_nxcaddfinportfolio_1_c\')],\n  [\'currencies\',False,url(\'list_currencies\')],\n  [\'custom_fields\',False,url(\'list_custom_fields\')],\n  [\'database_currencies\',False,url(\'list_database_currencies\')],\n  [\'database_currencies_history\',False,url(\'list_database_currencies_history\')],\n  [\'database_fundinfo\',False,url(\'list_database_fundinfo\')],\n  [\'database_products\',False,url(\'list_database_products\')],\n  [\'document_revisions\',False,url(\'list_document_revisions\')],\n  [\'documents\',False,url(\'list_documents\')],\n  [\'documents_accounts\',False,url(\'list_documents_accounts\')],\n  [\'email_addresses\',False,url(\'list_email_addresses\')],\n  [\'fields_meta_data\',False,url(\'list_fields_meta_data\')],\n  [\'folders\',False,url(\'list_folders\')],\n  [\'folders_rel\',False,url(\'list_folders_rel\')],\n  [\'folders_subscriptions\',False,url(\'list_folders_subscriptions\')],\n  [\'gii\',False,url(\'list_gii\')],\n  [\'job_queue\',False,url(\'list_job_queue\')],\n  [\'kbe_kube\',False,url(\'list_kbe_kube\')],\n  [\'kbe_vqf\',False,url(\'list_kbe_vqf\')],\n  [\'kreports\',False,url(\'list_kreports\')],\n  [\'leads\',False,url(\'list_leads\')],\n  [\'linked_documents\',False,url(\'list_linked_documents\')],\n]\n\ndef add(mylist,item):\n    if not item.id in [x[0] for x in mylist]:\n        return mylist[:9]+[(item.id,item.name)]\n    else:\n        return mylist\n\ndef index():\n    return dict()\n\n@auth.requires_login()\ndef list_accounts():\n    form=crud.create(db.accounts)\n    accounts=db(db.accounts.id>0).select(orderby=db.accounts.name)\n    return dict(accounts=accounts,form=form)\n\n\n\ndef list_accounts_bugs():\n\tform=crud.create(db.accounts_bugs )\n\taccounts_bugs=db(db.accounts_bugs.id>0).select(orderby=db.accounts_bugs.id)\n\treturn dict(accounts_bugs=accounts_bugs,form=form)\ndef list_accounts_cases():\n\tform=crud.create(db.accounts_cases )\n\taccounts_cases=db(db.accounts_cases.id>0).select(orderby=db.accounts_cases.id)\n\treturn dict(accounts_cases=accounts_cases,form=form)\ndef list_accounts_contacts():\n\tform=crud.create(db.accounts_contacts )\n\taccounts_contacts=db(db.accounts_contacts.id>0).select(orderby=db.accounts_contacts.id)\n\treturn dict(accounts_contacts=accounts_contacts,form=form)\ndef list_accounts_cstm():\n\tform=crud.create(db.accounts_cstm )\n\taccounts_cstm=db(db.accounts_cstm.id>0).select(orderby=db.accounts_cstm.id)\n\treturn dict(accounts_cstm=accounts_cstm,form=form)\ndef list_accounts_opportunities():\n\tform=crud.create(db.accounts_opportunities )\n\taccounts_opportunities=db(db.accounts_opportunities.id>0).select(orderby=db.accounts_opportunities.id)\n\treturn dict(accounts_opportunities=accounts_opportunities,form=form)\ndef list_acl_actions():\n\tform=crud.create(db.acl_actions )\n\tacl_actions=db(db.acl_actions.id>0).select(orderby=db.acl_actions.id)\n\treturn dict(acl_actions=acl_actions,form=form)\ndef list_acl_roles():\n\tform=crud.create(db.acl_roles )\n\tacl_roles=db(db.acl_roles.id>0).select(orderby=db.acl_roles.id)\n\treturn dict(acl_roles=acl_roles,form=form)\ndef list_address_book():\n\tform=crud.create(db.address_book )\n\taddress_book=db(db.address_book.id>0).select(orderby=db.address_book.id)\n\treturn dict(address_book=address_book,form=form)\ndef list_bugs():\n\tform=crud.create(db.bugs )\n\tbugs=db(db.bugs.id>0).select(orderby=db.bugs.id)\n\treturn dict(bugs=bugs,form=form)\ndef list_calls():\n\tform=crud.create(db.calls )\n\tcalls=db(db.calls.id>0).select(orderby=db.calls.id)\n\treturn dict(calls=calls,form=form)\ndef list_cases():\n\tform=crud.create(db.cases )\n\tcases=db(db.cases.id>0).select(orderby=db.cases.id)\n\treturn dict(cases=cases,form=form)\ndef list_client_roles():\n\tform=crud.create(db.client_roles )\n\tclient_roles=db(db.client_roles.id>0).select(orderby=db.client_roles.id)\n\treturn dict(client_roles=client_roles,form=form)\ndef list_clientroles_accounts_c():\n\tform=crud.create(db.clientroles_accounts_c )\n\tclientroles_accounts_c=db(db.clientroles_accounts_c.id>0).select(orderby=db.clientroles_accounts_c.id)\n\treturn dict(clientroles_accounts_c=clientroles_accounts_c,form=form)\ndef list_contacts():\n\tform=crud.create(db.contacts )\n\tcontacts=db(db.contacts.id>0).select(orderby=db.contacts.id)\n\treturn dict(contacts=contacts,form=form)\ndef list_contacts_audit():\n\tform=crud.create(db.contacts_audit )\n\tcontacts_audit=db(db.contacts_audit.id>0).select(orderby=db.contacts_audit.id)\n\treturn dict(contacts_audit=contacts_audit,form=form)\ndef list_contacts_nxcaddfinportfolio_1_c():\n\tform=crud.create(db.contacts_nxcaddfinportfolio_1_c )\n\tcontacts_nxcaddfinportfolio_1_c=db(db.contacts_nxcaddfinportfolio_1_c.id>0).select(orderby=db.contacts_nxcaddfinportfolio_1_c.id)\n\treturn dict(contacts_nxcaddfinportfolio_1_c=contacts_nxcaddfinportfolio_1_c,form=form)\ndef list_currencies():\n\tform=crud.create(db.currencies )\n\tcurrencies=db(db.currencies.id>0).select(orderby=db.currencies.id)\n\treturn dict(currencies=currencies,form=form)\ndef list_custom_fields():\n\tform=crud.create(db.custom_fields )\n\tcustom_fields=db(db.custom_fields.id>0).select(orderby=db.custom_fields.id)\n\treturn dict(custom_fields=custom_fields,form=form)\ndef list_database_currencies():\n\tform=crud.create(db.database_currencies )\n\tdatabase_currencies=db(db.database_currencies.id>0).select(orderby=db.database_currencies.id)\n\treturn dict(database_currencies=database_currencies,form=form)\ndef list_database_currencies_history():\n\tform=crud.create(db.database_currencies_history )\n\tdatabase_currencies_history=db(db.database_currencies_history.id>0).select(orderby=db.database_currencies_history.id)\n\treturn dict(database_currencies_history=database_currencies_history,form=form)\ndef list_database_fundinfo():\n\tform=crud.create(db.database_fundinfo )\n\tdatabase_fundinfo=db(db.database_fundinfo.id>0).select(orderby=db.database_fundinfo.id)\n\treturn dict(database_fundinfo=database_fundinfo,form=form)\ndef list_database_products():\n\tform=crud.create(db.database_products )\n\tdatabase_products=db(db.database_products.id>0).select(orderby=db.database_products.id)\n\treturn dict(database_products=database_products,form=form)\ndef list_document_revisions():\n\tform=crud.create(db.document_revisions )\n\tdocument_revisions=db(db.document_revisions.id>0).select(orderby=db.document_revisions.id)\n\treturn dict(document_revisions=document_revisions,form=form)\ndef list_documents():\n\tform=crud.create(db.documents )\n\tdocuments=db(db.documents.id>0).select(orderby=db.documents.id)\n\treturn dict(documents=documents,form=form)\ndef list_documents_accounts():\n\tform=crud.create(db.documents_accounts )\n\tdocuments_accounts=db(db.documents_accounts.id>0).select(orderby=db.documents_accounts.id)\n\treturn dict(documents_accounts=documents_accounts,form=form)\ndef list_email_addresses():\n\tform=crud.create(db.email_addresses )\n\temail_addresses=db(db.email_addresses.id>0).select(orderby=db.email_addresses.id)\n\treturn dict(email_addresses=email_addresses,form=form)\ndef list_fields_meta_data():\n\tform=crud.create(db.fields_meta_data )\n\tfields_meta_data=db(db.fields_meta_data.id>0).select(orderby=db.fields_meta_data.id)\n\treturn dict(fields_meta_data=fields_meta_data,form=form)\ndef list_folders():\n\tform=crud.create(db.folders )\n\tfolders=db(db.folders.id>0).select(orderby=db.folders.id)\n\treturn dict(folders=folders,form=form)\ndef list_folders_rel():\n\tform=crud.create(db.folders_rel )\n\tfolders_rel=db(db.folders_rel.id>0).select(orderby=db.folders_rel.id)\n\treturn dict(folders_rel=folders_rel,form=form)\ndef list_folders_subscriptions():\n\tform=crud.create(db.folders_subscriptions )\n\tfolders_subscriptions=db(db.folders_subscriptions.id>0).select(orderby=db.folders_subscriptions.id)\n\treturn dict(folders_subscriptions=folders_subscriptions,form=form)\ndef list_gii():\n\tform=crud.create(db.gii )\n\tgii=db(db.gii.id>0).select(orderby=db.gii.id)\n\treturn dict(gii=gii,form=form)\ndef list_job_queue():\n\tform=crud.create(db.job_queue )\n\tjob_queue=db(db.job_queue.id>0).select(orderby=db.job_queue.id)\n\treturn dict(job_queue=job_queue,form=form)\ndef list_kbe_kube():\n\tform=crud.create(db.kbe_kube )\n\tkbe_kube=db(db.kbe_kube.id>0).select(orderby=db.kbe_kube.id)\n\treturn dict(kbe_kube=kbe_kube,form=form)\ndef list_kbe_vqf():\n\tform=crud.create(db.kbe_vqf )\n\tkbe_vqf=db(db.kbe_vqf.id>0).select(orderby=db.kbe_vqf.id)\n\treturn dict(kbe_vqf=kbe_vqf,form=form)\ndef list_kreports():\n\tform=crud.create(db.kreports )\n\tkreports=db(db.kreports.id>0).select(orderby=db.kreports.id)\n\treturn dict(kreports=kreports,form=form)\ndef list_leads():\n\tform=crud.create(db.leads )\n\tleads=db(db.leads.id>0).select(orderby=db.leads.id)\n\treturn dict(leads=leads,form=form)\ndef list_linked_documents():\n\tform=crud.create(db.linked_documents )\n\tlinked_documents=db(db.linked_documents.id>0).select(orderby=db.linked_documents.id)\n\treturn dict(linked_documents=linked_documents,form=form)\n\n\n    \n@auth.requires_login()\ndef list_companies():\n    form=crud.create(db.company)\n    companies=db(db.company.id>0).select(orderby=db.company.name)\n    return dict(companies=companies,form=form)\n\n@auth.requires_login()\ndef view_company():\n    company_id=request.args(0)\n    company=db.company[company_id] or redirect(error_page)\n    session.recent_companies = add(session.recent_companies,company)\n    return dict(company=company)\n\n@auth.requires_login()\ndef edit_company():\n    company_id=request.args(0)\n    company=db.company[company_id]  or redirect(error_page)\n    session.recent_companies = add(session.recent_companies,company)\n    form=crud.update(db.company,company,next=url(\'list_companies\'))\n    return dict(form=form)\n\n@auth.requires_login()\ndef list_persons():\n    company_id=request.args(0)\n    company=db.company[company_id]\n    if company:\n        session.recent_companies = add(session.recent_companies,company)\n        db.person.company.default=company_id\n        db.person.company.writable=False\n        db.person.company.readable=False\n        form=crud.create(db.person)\n        persons=db(db.person.company==company.id)\\\n            .select(orderby=db.person.name)\n    else:\n        form=crud.create(db.person)\n        persons=db(db.person.id>0).select(orderby=db.person.name)\n    return dict(company=company,persons=persons,form=form)\n\n@auth.requires_login()\ndef view_person():\n    person_id=request.args(0)\n    person=db.person[person_id] or redirect(error_page)\n    session.recent_persons = add(session.recent_persons,person)\n    return dict(person=person)\n\n@auth.requires_login()\ndef list_docs():\n    person_id=request.args(0)\n    person=db.person[person_id] or redirect(error_page)\n    session.recent_persons = add(session.recent_persons,person)\n    db.document.person.default=person.id\n    db.document.person.writable=False\n    db.document.person.readable=False\n    form=crud.create(db.document)\n    docs=db(db.document.person==person.id).select(orderby=db.document.name)\n    return dict(person=person,docs=docs,form=form)\n\n@auth.requires_login()\ndef list_logs():\n    person_id=request.args(0)\n    person=db.person[person_id] or redirect(error_page)\n    session.recent_persons = add(session.recent_persons,person)\n    db.log.person.default=person.id\n    db.log.person.writable=False\n    db.log.person.readable=False\n    form=crud.create(db.log)\n    logs=db(db.log.person==person.id).select(orderby=~db.log.created_on)\n    return dict(person=person,logs=logs,form=form)\n\n@auth.requires_login()\ndef edit_person():\n    person_id=request.args(0)\n    person=db.person[person_id] or redirect(error_page)\n    session.recent_persons = add(session.recent_persons,person)\n    db.person.company.writable=False\n    db.person.company.readable=False\n    form=crud.update(db.person,person,next=url(\'view_person\',person_id))\n    return dict(form=form)\n\n\n@auth.requires_login()\ndef edit_task():\n    task_id=request.args(0)\n    task=db.task[task_id] or redirect(error_page)\n    person=db.person[task.person]\n    db.task.person.writable=db.task.person.readable=False\n##    session.recent_tasks = add(session.recent_tasks,task)\n    form=crud.update(db.task,task,next=\'view_task/[id]\')\n    return dict(form=form, person=person)\n\n@auth.requires_login()\ndef view_task():\n    task_id=request.args(0)\n    task=db.task[task_id] or redirect(error_page)\n    person=db.person[task.person]\n##    session.recent_tasks = add(session.recent_tasks,person)\n\n    db.task.person.writable=db.task.person.readable=False\n    form=crud.read(db.task,task)\n\n    return dict(form=form, person=person, task=task)\n\n@auth.requires_login()\ndef list_tasks():\n    person_id=request.args(0)\n    person=db.person[person_id]\n    if person_id:\n       session.recent_tasks = add(session.recent_tasks,task)\n       tasks=db(db.task.person==person_id)\\\n               (db.task.created_by==auth.user.id)\\\n               (db.task.start_time>=request.now).select()\n    else:\n       tasks=db(db.task.created_by==auth.user.id)\\\n               (db.task.start_time<=request.now).select()\n    db.task.person.default=person_id\n    db.task.person.writable=db.task.person.readable=False\n    form=crud.create(db.task,next=\'view_task/[id]\')\n    return dict(tasks=tasks,person=person,form=form)\n\n@auth.requires_login()\ndef calendar():\n    person_id=request.args(0)\n    person=db.person[person_id]\n    if person_id:\n       tasks=db(db.task.person==person_id)\\\n               (db.task.created_by==auth.user.id)\\\n               (db.task.start_time>=request.now).select()\n    else:\n       tasks=db(db.task.created_by==auth.user.id)\\\n               (db.task.start_time>=request.now).select()\n    return dict(tasks=tasks,person=person)\n\n@auth.requires(auth.user and auth.user.email==\'reprior123@gmail.com\')\ndef reset():\n    for table in db.tables:\n        if table==\'auth_user\':\n            db(db[table].email!=\'reprior123@gmail.com\').delete()\n        else:\n            db(db[table].id>0).delete()\n    session.flash=\'done!\'\n    redirect(\'index\')\n\ndef error():\n    return dict(message="something is wrong")\n\ndef user():\n    """\n    exposes:\n    http://..../[app]/default/user/login\n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    """\n    return dict(form=auth())\n\n\ndef download():\n    """\n    allows downloading of uploaded files\n    http://..../[app]/default/download/[filename]\n    """\n    return response.download(request,db)\n\n\ndef call():\n    """\n    exposes services. for example:\n    http://..../[app]/default/call/jsonrpc\n    decorate with @services.jsonrpc the functions to expose\n    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv\n    """\n    session.forget()\n    return service()\n###########################\ndef hello5():\n    return HTML(BODY(H1(T(\'Hello World\'),_style="color: red;"))).xml() # .xml to serialize\ndef hello6():\n    response.flash=T("Hello World in a flash!")\n    return dict(message=T("Hello World"))\ndef hello4():\n    response.view=\'simple_examples/hello3.html\'\n    return dict(message=T("Hello World"))\ndef hello3():\n    return dict()\n##    return dict(message=T("Hello World"))\ndef statusex():\n    return dict(toobar=response.toolbar())\n\ndef redirectme():\n    redirect(URL(\'hello3\'))\n                   \ndef raisehttp():\n    raise HTTP(400,"internal error")\n             \ndef ajaxwiki():\n    form=FORM(TEXTAREA(_id=\'text\',_name=\'text\'),\n              INPUT(_type=\'button\',_value=\'markmin click to save\',\n              _onclick="ajax(\'ajaxwiki_onclick\',[\'text\'],\'html\')"))\n    return dict(form=form,html=DIV(_id=\'html\'))\n\ndef ajaxwiki_onclick():\n    return MARKMIN(request.vars.text).xml()           \n\nresponse._vars=response._caller(list_accounts_cases)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.AttributeError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.AttributeError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.AttributeError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.AttributeError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.AttributeError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.AttributeError object>'
+p23
+sS'__reduce__'
+p24
+S'<built-in method __reduce__ of exceptions.AttributeError object>'
+p25
+sS'__str__'
+p26
+S"<method-wrapper '__str__' of exceptions.AttributeError object>"
+p27
+sS'__format__'
+p28
+S'<built-in method __format__ of exceptions.AttributeError object>'
+p29
+sS'__getattribute__'
+p30
+S"<method-wrapper '__getattribute__' of exceptions.AttributeError object>"
+p31
+sS'__class__'
+p32
+S"<type 'exceptions.AttributeError'>"
+p33
+sS'__unicode__'
+p34
+S'<built-in method __unicode__ of exceptions.AttributeError object>'
+p35
+sS'__delattr__'
+p36
+S"<method-wrapper '__delattr__' of exceptions.AttributeError object>"
+p37
+sS'__subclasshook__'
+p38
+S'<built-in method __subclasshook__ of type object>'
+p39
+sS'__repr__'
+p40
+S"<method-wrapper '__repr__' of exceptions.AttributeError object>"
+p41
+sS'args'
+p42
+S'("\'DAL\' object has no attribute \'accounts_cases\'",)'
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.AttributeError object>'
+p47
+sS'__doc__'
+p48
+S"'Attribute not found.'"
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.AttributeError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S"'DAL' object has no attribute 'accounts_cases'"
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S's\xbag\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>AddfinV3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_addfinv3</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-5e898987-30a9-4264-af9a-4c03c9a6c05b<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_crmraw</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-c63ee9db-bf95-4c5c-9ba4-fb84ac052322<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_crmrawfullfields</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-d7a5baf1-f883-495c-9cff-631275da4bef<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-46a2293c-625b-4272-8e4f-7baf6928c1c8<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8,de-DE;q=0.6,de;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_crmraw=127.0.0.1-c63ee9db-bf95-4c5c-9ba4-fb84ac052322; session_id_crmrawfullfields=127.0.0.1-d7a5baf1-f883-495c-9cff-631275da4bef; session_id_welcome=127.0.0.1-46a2293c-625b-4272-8e4f-7baf6928c1c8; session_id_admin=127.0.0.1-5e898987-30a9-4264-af9a-4c03c9a6c05b; session_id_addfinv3=127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/AddfinV3/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/AddfinV3/default/list_accounts_cases</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>62146</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>RPBASE1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\WEB2PY\\\\EXE_RP\\\\web2py\\\\applications\\\\admin\\\\&#x27;, &#x27;C:\\\\WEB2PY\\\\EXE_RP\\\\web2py\\\\applications\\\\welcome\\\\&#x27;, &#x27;C:\\\\WEB2PY\\\\EXE_RP\\\\web2py\\\\applications\\\\AddfinV3\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\WEB2PY\\EXE_RP\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x31dd7b0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;RPBASE1&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\WEB2PY\\\\EXE_RP\\\\web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\WEB2PY\\EXE_RP\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8,de-DE;q=0.6,de;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_crmraw=127.0.0.1-c63ee9db-bf95-4c5c-9ba4-fb84ac052322; session_id_crmrawfullfields=127.0.0.1-d7a5baf1-f883-495c-9cff-631275da4bef; session_id_welcome=127.0.0.1-46a2293c-625b-4272-8e4f-7baf6928c1c8; session_id_admin=127.0.0.1-5e898987-30a9-4264-af9a-4c03c9a6c05b; session_id_addfinv3=127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/AddfinV3/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.1.56</div></td></tr><tr><td><div>fe80::48d0:efaa:de27:62ec%10</div></td></tr><tr><td><div>RPBASE1</div></td></tr><tr><td><div>RPBASE1.office.actant.com</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/AddfinV3/default/list_accounts_cases</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>62146</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/AddfinV3/default/list_accounts_cases</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>RPBASE1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>C:\\WEB2PY\\EXE_RP\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.13.4-stable+timestamp.2015.12.26.04.59.39</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x0045D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x03D1BC38&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x08FBF230&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x0045D0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x03D1BC38&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x08FBF230&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>C:\\WEB2PY\\EXE_RP\\web2py\\applications\\AddfinV3\\</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>list_accounts_cases</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\WEB2PY\\\\EXE_RP\\\\web2py\\\\applications\\\\admin\\\\&#x27;, &#x27;C:\\\\WEB2PY\\\\EXE_RP\\\\web2py\\\\applications\\\\welcome\\\\&#x27;, &#x27;C:\\\\WEB2PY\\\\EXE_RP\\\\web2py\\\\applications\\\\AddfinV3\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\WEB2PY\\EXE_RP\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x31dd7b0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;RPBASE1&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\WEB2PY\\\\EXE_RP\\\\web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\WEB2PY\\EXE_RP\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.1.56</div></td></tr><tr><td><div>fe80::48d0:efaa:de27:62ec%10</div></td></tr><tr><td><div>RPBASE1</div></td></tr><tr><td><div>RPBASE1.office.actant.com</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.13.4-stable+timestamp.2015.12.26.04.59.39</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_scheduler</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 5, 16, 20, 5, 5, 982000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/AddfinV3/default/list_accounts_cases</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 5, 16, 18, 5, 5, 982000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x09217550&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'C:\\WEB2PY\\EXE_RP\\web2py\\gluon\\restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 03FAD020, file "C:\\WEB2...ations\\AddfinV3\\controllers/default.py", line 11>'
+p69
+ssS'lnum'
+p70
+I227
+sS'lines'
+p71
+(dp72
+I224
+S'            ccode = code'
+p73
+sI225
+S'        else:'
+p74
+sI226
+S'            ccode = compile2(code, layer)'
+p75
+sI227
+S'        exec ccode in environment'
+p76
+sI228
+S'    except HTTP:'
+p77
+sI229
+S'        raise'
+p78
+sI230
+S'    except RestrictedError:'
+p79
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p80
+sI222
+S'    try:'
+p81
+sI223
+S'        if isinstance(code, types.CodeType):'
+p82
+ssS'call'
+p83
+S"(code='# coding: utf8\\n\\n################################...onse._vars=response._caller(list_accounts_cases)\\n', environment={'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, ...}, layer=r'C:\\WEB2PY\\EXE_RP\\web2py\\applications\\AddfinV3\\controllers/default.py')"
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'C:\\WEB2PY\\EXE_RP\\web2py\\applications\\AddfinV3\\controllers\\default.py'
+p88
+sg64
+(dp89
+sg70
+I440
+sg71
+(dp90
+I429
+S'    raise HTTP(400,"internal error")'
+p91
+sI430
+S''
+sI431
+S'def ajaxwiki():'
+p92
+sI432
+S"    form=FORM(TEXTAREA(_id='text',_name='text'),"
+p93
+sI433
+S"              INPUT(_type='button',_value='markmin click to save',"
+p94
+sI434
+S'              _onclick="ajax(\'ajaxwiki_onclick\',[\'text\'],\'html\')"))'
+p95
+sI435
+S"    return dict(form=form,html=DIV(_id='html'))"
+p96
+sI436
+S''
+sI437
+S'def ajaxwiki_onclick():'
+p97
+sI438
+S'    return MARKMIN(request.vars.text).xml()'
+p98
+ssg83
+S'()'
+p99
+sg85
+S'<module>'
+p100
+sa(dp101
+g62
+S'C:\\WEB2PY\\EXE_RP\\web2py\\gluon\\globals.py'
+p102
+sg64
+(dp103
+S'self'
+p104
+S'undefined'
+p105
+sS'f'
+S'<function list_accounts_cases>'
+p106
+ssg70
+I412
+sg71
+(dp107
+I416
+S"        self.generic_patterns = ['*']"
+p108
+sI407
+S"        self.flash = ''            # used by the default view layout"
+p109
+sI408
+S'        self.meta = Storage()      # used by web2py_ajax.html'
+p110
+sI409
+S'        self.menu = []             # used by the default view layout'
+p111
+sI410
+S'        self.files = []            # used by web2py_ajax.html'
+p112
+sI411
+S'        self._vars = None'
+p113
+sI412
+S'        self._caller = lambda f: f()'
+p114
+sI413
+S'        self._view_environment = None'
+p115
+sI414
+S'        self._custom_commit = None'
+p116
+sI415
+S'        self._custom_rollback = None'
+p117
+ssg83
+S'(f=<function list_accounts_cases>)'
+p118
+sg85
+S'<lambda>'
+p119
+sa(dp120
+g62
+S'C:\\WEB2PY\\EXE_RP\\web2py\\applications\\AddfinV3\\controllers\\default.py'
+p121
+sg64
+(dp122
+S'global list_accounts_cases'
+p123
+S'<function list_accounts_cases>'
+p124
+ssg70
+I85
+sg71
+(dp125
+I80
+S'def list_accounts_bugs():'
+p126
+sI81
+S'\tform=crud.create(db.accounts_bugs )'
+p127
+sI82
+S'\taccounts_bugs=db(db.accounts_bugs.id>0).select(orderby=db.accounts_bugs.id)'
+p128
+sI83
+S'\treturn dict(accounts_bugs=accounts_bugs,form=form)'
+p129
+sI84
+S'def list_accounts_cases():'
+p130
+sI85
+S'\tform=crud.create(db.accounts_cases )'
+p131
+sI86
+S'\taccounts_cases=db(db.accounts_cases.id>0).select(orderby=db.accounts_cases.id)'
+p132
+sI87
+S'\treturn dict(accounts_cases=accounts_cases,form=form)'
+p133
+sI88
+S'def list_accounts_contacts():'
+p134
+sI89
+S'\tform=crud.create(db.accounts_contacts )'
+p135
+ssg83
+S'()'
+p136
+sg85
+S'list_accounts_cases'
+p137
+sa(dp138
+g62
+S'C:\\WEB2PY\\EXE_RP\\web2py\\gluon\\packages\\dal\\pydal\\base.py'
+p139
+sg64
+(dp140
+S'global BasicStorage'
+p141
+S"<class 'pydal.helpers.classes.BasicStorage'>"
+p142
+sS'self'
+p143
+S'<DAL uri="sqlite://storage.sqlite">'
+p144
+sS'BasicStorage.__getattribute__'
+p145
+S"<slot wrapper '__getattribute__' of 'object' objects>"
+p146
+sS'key'
+p147
+S"'accounts_cases'"
+p148
+ssg70
+I921
+sg71
+(dp149
+I916
+S'    def __getattr__(self, key):'
+p150
+sI917
+S"        if object.__getattribute__(self, '_lazy_tables') and \\"
+p151
+sI918
+S"                key in object.__getattribute__(self, '_LAZY_TABLES'):"
+p152
+sI919
+S'            tablename, fields, args = self._LAZY_TABLES.pop(key)'
+p153
+sI920
+S'            return self.lazy_define_table(tablename, *fields, **args)'
+p154
+sI921
+S'        return BasicStorage.__getattribute__(self, key)'
+p155
+sI922
+S''
+sI923
+S'    def __setattr__(self, key, value):'
+p156
+sI924
+S"        if key[:1] != '_' and key in self:"
+p157
+sI925
+S'            raise SyntaxError('
+p158
+ssg83
+S'(self=<DAL uri="sqlite://storage.sqlite">, key=\'accounts_cases\')'
+p159
+sg85
+S'__getattr__'
+p160
+sasS'pyver'
+p161
+S'Python 2.7.9: C:\\WEB2PY\\EXE_RP\\web2py\\web2py.exe (prefix: C:\\Python27)'
+p162
+sS'session'
+p163
+g57
+(S's0\x0b\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">auth</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">expiration</td><td style="vertical-align:top;">:</td><td><div>2592000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">hmac_key</td><td style="vertical-align:top;">:</td><td><div>bacd85e9-dab3-451a-9f53-b1bbee46288b</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_visit</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 5, 16, 19, 50, 48, 412000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remember_me</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">email</td><td style="vertical-align:top;">:</td><td><div>p@p.pp</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">first_name</td><td style="vertical-align:top;">:</td><td><div>p</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">id</td><td style="vertical-align:top;">:</td><td><div>2L</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_name</td><td style="vertical-align:top;">:</td><td><div>p</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_id</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">reset_password_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user_groups</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">2</td><td style="vertical-align:top;">:</td><td><div>user_2</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">recent_accounts</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">recent_companies</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">recent_persons</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">recent_tasks</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr></table></div>'
+tRp164
+sS'etype'
+p165
+S"<type 'exceptions.AttributeError'>"
+p166
+sS'date'
+p167
+S'Mon May 16 20:05:06 2016'
+p168
+sS'response'
+p169
+g57
+(S's\xab@\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x084B5BC0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_addfinv3</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div>: </div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>table3cols</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Companies</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_companies</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Contacts</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_persons</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Tasks</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_tasks</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Accounts</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_accounts</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>accounts_bugs</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_accounts_bugs</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>accounts_cases</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_accounts_cases</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>accounts_contacts</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_accounts_contacts</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>accounts_cstm</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_accounts_cstm</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>accounts_opportunities</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_accounts_opportunities</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>acl_actions</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_acl_actions</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>acl_roles</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_acl_roles</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>address_book</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_address_book</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>bugs</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_bugs</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>calls</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_calls</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>cases</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_cases</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>client_roles</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_client_roles</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>clientroles_accounts_c</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_clientroles_accounts_c</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>contacts</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_contacts</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>contacts_audit</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_contacts_audit</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>contacts_nxcaddfinportfolio_1_c</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_contacts_nxcaddfinportfolio_1_c</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>currencies</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_currencies</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>custom_fields</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_custom_fields</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>database_currencies</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_database_currencies</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>database_currencies_history</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_database_currencies_history</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>database_fundinfo</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_database_fundinfo</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>database_products</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_database_products</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>document_revisions</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_document_revisions</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>documents</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_documents</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>documents_accounts</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_documents_accounts</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>email_addresses</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_email_addresses</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>fields_meta_data</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_fields_meta_data</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>folders</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_folders</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>folders_rel</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_folders_rel</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>folders_subscriptions</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_folders_subscriptions</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>gii</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_gii</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>job_queue</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_job_queue</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>kbe_kube</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_kbe_kube</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>kbe_vqf</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_kbe_vqf</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>kreports</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_kreports</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>leads</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_leads</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>linked_documents</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/list_linked_documents</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu_auth</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>User: p</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Logout</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/user/logout</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Edit Profile</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/user/profile</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Change Password</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/default/user/change_password</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu_edit</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Edit</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/design/AddfinV3</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Controller</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV3/controllers/default.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>View</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV3/views/default/list_accounts_cases.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Layout</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV3/views/layout.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Stylesheet</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV3/static/base.css</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>DB Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV3/models/db.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Menu Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV3/models/menu.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Database</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV3/appadmin/index</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/list_accounts_cases/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>2592000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_addfinv3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;C:\\\\WEB2PY\\\\EXE_RP\\\\web2py\\\\applications\\\\AddfinV3\\\\sessions\\\\1fc\\\\126\\\\127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97&#x27;, mode &#x27;rb+&#x27; at 0x03FB39C0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>C:\\WEB2PY\\EXE_RP\\web2py\\applications\\AddfinV3\\sessions\\127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>c3ce743e1ea454297c84932bfa801f67</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_addfinv3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>AddfinV3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div>customize me!</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>AddfinV3</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/list_accounts_cases.html</div></td></tr></table></div>'
+tRp170
+sS'locals'
+p171
+(dp172
+S'self'
+p173
+S'<DAL uri="sqlite://storage.sqlite">'
+p174
+sS'key'
+p175
+S"'accounts_cases'"
+p176
+sssS'traceback'
+p177
+S'Traceback (most recent call last):\n  File "C:\\WEB2PY\\EXE_RP\\web2py\\gluon\\restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "C:\\WEB2PY\\EXE_RP\\web2py\\applications\\AddfinV3\\controllers/default.py", line 440, in <module>\n  File "C:\\WEB2PY\\EXE_RP\\web2py\\gluon\\globals.py", line 412, in <lambda>\n    self._caller = lambda f: f()\n  File "C:\\WEB2PY\\EXE_RP\\web2py\\applications\\AddfinV3\\controllers/default.py", line 85, in list_accounts_cases\n    form=crud.create(db.accounts_cases )\n  File "C:\\WEB2PY\\EXE_RP\\web2py\\gluon\\packages\\dal\\pydal\\base.py", line 921, in __getattr__\n    return BasicStorage.__getattribute__(self, key)\nAttributeError: \'DAL\' object has no attribute \'accounts_cases\'\n'
+p178
+s.
