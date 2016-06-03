@@ -42,11 +42,21 @@ def list_currencies():
 	form=crud.create(db.currencies )
 	currencies=db(db.currencies.id>0).select(orderby=db.currencies.id)
 	return dict(currencies=currencies,form=form)
+##def list_crm_contacts():
+##	form=crud.create(db.list_crm_contacts )
+##	custom_fields=db(db.list_crm_contacts.id>0).select(orderby=db.list_crm_contacts.id)
+##	return dict(list_crm_contacts=list_crm_contacts,form=form)
 def list_crm_contacts():
-	form=crud.create(db.list_crm_contacts )
-	custom_fields=db(db.list_crm_contacts.id>0).select(orderby=db.list_crm_contacts.id)
-	return dict(list_crm_contacts=list_crm_contacts,form=form)
-############################
+	return dict()
+    ############################
+def edit_crm_contacts():
+    task_id=request.args(0)
+    task=db.task[task_id] or redirect(error_page)
+    person=db.person[task.person]
+    db.task.person.writable=db.task.person.readable=False
+##    session.recent_tasks = add(session.recent_tasks,task)
+    form=crud.update(db.task,task,next='view_crm_contacts/[id]')
+    return dict(form=form, person=person)
 
 @auth.requires_login()
 def edit_task():

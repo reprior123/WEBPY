@@ -73,9 +73,7 @@ $(document).ready(function() {
 <table class="smarttable">
 
 
-
 <thead>
-
 
 
     <tr>
@@ -83,7 +81,6 @@ $(document).ready(function() {
 
 
       <th>Name</th><th>Actions</th>
-
 
 
     </tr>    
@@ -100,18 +97,11 @@ $(document).ready(function() {
 
 {{for crm_contactsi in crm_contacts:}}
 
-
-
     <tr>
-
-
 
        <td>{{=link_crm_contacts(crm_contactsi)}}</td>   
 
-
-
        <td>{{=button('crm_contacts','list_crm_contacts',crm_contactsi.id)}}
-
 
 
        {{=button('edit','edit_crm_contacts',crm_contactsi.id)}}</td>

@@ -1,0 +1,362 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.SyntaxError'> table already defined: crm_contacts"
+p3
+sS'layer'
+p4
+S'C:\\WEBPYC\\WEBPY\\web2py\\applications\\AddfinV6\\models\\rp_newest.py'
+p5
+sS'code'
+p6
+S"TASK_TYPES = ('Phone', 'Fax', 'Mail', 'Meet')\n\nif auth.is_logged_in():\n   me=auth.user.id\nelse:\n   me=None\ndb.define_table('crm_contacts',\n         Field('id', 'string', length=150,default=None, required=False),\n         Field('name', 'string', length=150,default=None, required=False),\n         Field('org_type', 'string', length=100,default=None, required=False),\n         Field('industry', 'string', length=50,default=None, required=False),\n         Field('annual_revenue', 'string', length=100,default=None, required=False),\n         Field('website', 'string', length=255,default=None, required=False),\n         Field('ownership', 'string', length=100,default=None, required=False),\n         Field('employees', 'string', length=10,default=None, required=False),\n         Field('ticker_symbol', 'string', length=10,default=None, required=False),                \n         Field('sic_code', 'string', length=10,default=None, required=False))\n\ndb.define_table('organizations',\n         Field('id', 'string', length=150,default=None, required=False),\n         Field('name', 'string', length=150,default=None, required=False),\n         Field('org_type', 'string', length=100,default=None, required=False),\n         Field('industry', 'string', length=50,default=None, required=False),\n         Field('annual_revenue', 'string', length=100,default=None, required=False),\n         Field('website', 'string', length=255,default=None, required=False),\n         Field('ownership', 'string', length=100,default=None, required=False),\n         Field('employees', 'string', length=10,default=None, required=False),\n         Field('ticker_symbol', 'string', length=10,default=None, required=False),                \n         Field('sic_code', 'string', length=10,default=None, required=False))\n                \ndb.define_table('crm_phones',  # these are attached to cons&Orgs\n         Field('phone_type', 'string', length=100,default=None, required=False), ## pulldown list office,home,mobile,mobile2,other,other2\n         Field('conorg_type', 'string', length=100,default=None, required=False), ## pulldown list contacts,organizations\n         Field('phone_number', 'string', length=100,default=None, required=False), ## prefix info?\n         Field('contacts_id', 'string', length=36,default=None, required=False), # can user conorg_id instead?\n         Field('organization_id', 'string', length=36,default=None, required=False))\n                \ndb.define_table('crm_addresses',         # these are attached to cons&Orgs\n         Field('address_type', 'string', length=100,default=None, required=False), ## pulldown list primary,alt,billing,shipping,mailing,home,office,other,other2\n         Field('conorg_type', 'string', length=100,default=None, required=False), ## pulldown list contacts,organizations,korr_thirdparty[CRs?]\n         Field('contacts_id', 'string', length=36,default=None, required=False), # can user conorg_id instead?\n         Field('organization_id', 'string', length=36,default=None, required=False),\n         Field('address_street', 'string', length=150,default=None, required=False),\n         Field('address_city', 'string', length=100,default=None, required=False),\n         Field('address_state', 'string', length=100,default=None, required=False),\n         Field('address_postalcode', 'string', length=20,default=None, required=False),\n         Field('address_country', 'string', length=255,default=None, required=False),\n         Field('accounts_accounts_1accounts_ida', 'string', length=36,default=None, required=False),\n         Field('contact_id', 'string', length=36,default=None, required=False),\n         Field('account_id', 'string', length=36,default=None, required=False),\n\n         Field('id_c', 'string', length=36,default=None, required=False),\n         Field('language_c', 'string', length=100,default= 'english', required=False),\n         Field('skype_c', 'string', length=255,default=None, required=False),\n         Field('facebook_c', 'string', length=255,default=None, required=False),\n         Field('linkein_c', 'string', length=255,default=None, required=False),\n         Field('company_type_c', 'string', length=100,default= 'limited_corporation', required=False),\n         Field('relationship_c', 'string', length=100,default= 'partner', required=False),\n\n         Field('bean', 'string', length=50,default=None, required=False),\n         Field('bean_id', 'string', length=36,default=None, required=False))\n                #####################\n      \n         # standard system\n####         Field('date_entered', 'datetime',default=None, required=False),\n####         Field('date_modified', 'datetime',default=None, required=False),\n####         Field('modified_user_id', 'string', length=36,default=None, required=False),\n####         Field('created_by', 'string', length=36,default=None, required=False),\n####         Field('assigned_user_id', 'string', length=36,default=None, required=False),\n####         Field('parent_id', 'string', length=36,default=None, required=False),\n####         Field('campaign_id', 'string', length=36,default=None, required=False),\n####         Field('filename', 'string', length=255,default=None, required=False),\n####         Field('deleted', 'integer',default= '0', required=False),\n####         Field('data_type', 'string', length=100,default=None, required=False),\n####         Field('before_value_string', 'string', length=255,default=None, required=False),\n####         Field('after_value_string', 'string', length=255,default=None, required=False), ### only for audit tables....                \n####         Field('before_value_text', 'date',default=None, required=False),\n####         Field('after_value_text', 'date',default=None, required=False))\n               \n### crm still needs calls,tasks,\n\ndb.define_table('client_roles',\n\tField('clientrole', 'string', length=100,default= 'ContractingParty', required=False),\n\tField('client_role_signatory_r', 'string', length=100,default= 'IndividualSignature', required=False))\n\ndb.define_table('crm_contacts',\n         Field('clientroles_accountsclientroles_ida', 'string', length=36,default=None, required=False),\n         Field('clientroles_accountsaccounts_idb', 'string', length=36,default=None, required=False),\n\n         Field('clientroles_contactsclientroles_ida', 'string', length=36,default=None, required=False),\n         Field('clientroles_contactscontacts_idb', 'string', length=36,default=None, required=False),\n         Field('category', 'string', length=32,default=None, required=False),\n         Field('name', 'string', length=32,default=None, required=False),\n         Field('salutation', 'string', length=255,default=None, required=False),\n                \n         Field('first_name', 'string', length=100,default=None, required=False),\n         Field('last_name', 'string', length=100,default=None, required=False),\n         Field('title', 'string', length=100,default=None, required=False),\n                \n         Field('department', 'string', length=255,default=None, required=False),\n         Field('do_not_call', 'integer',default= '0', required=False),\n                \n         Field('assistant', 'string', length=75,default=None, required=False),\n         Field('assistant_phone', 'string', length=100,default=None, required=False),\n         Field('lead_source', 'string', length=255,default=None, required=False),\n         Field('reports_to_id', 'string', length=36,default=None, required=False),\n                \n         Field('birthdate', 'datetime',default=None, required=False),\n         Field('campaign_id', 'string', length=36,default=None, required=False),\n         Field('occupation_c', 'string', length=255,default=None, required=False),\n         Field('nickname', 'string', length=255,default=None, required=False),\n         Field('skype', 'string', length=255,default=None, required=False),\n         Field('facebook', 'string', length=255,default=None, required=False),\n         Field('linkedin', 'string', length=255,default=None, required=False),\n         Field('source', 'string', length=255,default=None, required=False),\n\n         Field('wealth_size', 'string', length=255,default=None, required=False),\n         Field('investment_size', 'string', length=255,default=None, required=False),\n                \n         Field('protect', 'string', length=255,default=None, required=False),\n         Field('mantain', 'string', length=255,default=None, required=False),\n         Field('improve', 'string', length=255,default=None, required=False),\n         Field('partner', 'string', length=255,default=None, required=False),\n                \n         Field('middle_name', 'string', length=255,default=None, required=False),\n                \n         Field('memberships', 'date',default=None, required=False),                \n         Field('type', 'string', length=255,default=None, required=False),\n                \n         Field('contact_language', 'string', length=255,default=None, required=False),\n                \n         Field('home_currency', 'string', length=255,default=None, required=False), ##might need for fee billing?\n                \n         Field('investment_currency', 'string', length=255,default=None, required=False),\n                \n         Field('married_status', 'string', length=255,default=None, required=False),\n         Field('children', 'string', length=255,default=None, required=False),\n         Field('nationality1', 'string', length=255,default=None, required=False),\n         Field('nationality2', 'string', length=255,default=None, required=False),\n         Field('nationality3', 'string', length=255,default=None, required=False),\n         Field('domicile', 'string', length=255,default=None, required=False),\n         Field('resident', 'string', length=255,default=None, required=False),\n\n         Field('photo_field_c', 'string', length=255,default=None, required=False),\n         Field('occupation', 'string', length=255,default=None, required=False),\n         Field('interests', 'date',default=None, required=False),\n                \n         Field('assistant_id', 'string', length=36,default=None, required=False), ## could this lead to a contact id?\n         Field('social_links', 'date',default=None, required=False))\n\ndb.define_table('portfolios',\n\tField('contacts__1contacts_ida', 'string', length=36,default=None, required=False),\n\tField('contacts_nx_idb', 'string', length=36,default=None, required=False))\n                \ndb.define_table('currencies',\n\tField('name', 'string', length=36,default=None, required=False),\n\tField('symbol', 'string', length=36,default=None, required=False),\n\tField('iso4217', 'string', length=3,default=None, required=False),\n\tField('conversion_rate', 'double',default= '0', required=False),\n\tField('status', 'string', length=100,default=None, required=False),\n\tField('currencies',default=None, required=False),\n\tField('currency_code', 'string', length=255,default=None, required=False),\n\tField('isin', 'string', length=255,default=None, required=False),\n\tField('rolotec_id', 'string', length=255,default=None, required=False))\n                \ndb.define_table('custom_fields',\n\tField('bean_id', 'string', length=36,default=None, required=False),\n\tField('set_num', 'integer',default= '0', required=False))\n\ndb.define_table('database_fundinfo',\n\tField('rolotec_id', 'string', length=255,default=None, required=False),\n\tField('document_node', 'string', length=255,default=None, required=False))\n                \ndb.define_table('fdata_products',\n\tField('name', 'string', length=255,default=None, required=False),\n\tField('rolotec_id', 'string', length=255,default=None, required=False),\n\tField('isin', 'string', length=32,default=None, required=False),\n\tField('performance_chart_last_12_months', 'string', length=64,default=None, required=False),\n\tField('average_daily_volume_chart_last_12_months', 'string', length=64,default=None, required=False))\n### check these vs rolotec and vwd mapping tables                \ndb.define_table('documents',\n\tField('description', 'date',default=None, required=False),\n\tField('assigned_user_id', 'string', length=36,default=None, required=False),\n\tField('rolotec_id', 'string', length=255,default=None, required=False),\n\n\tField('parent_id', 'string', length=36,default=None, required=False),\n\n\tField('data_type', 'string', length=100,default=None, required=False),\t\n\tField('change_log', 'string', length=255,default=None, required=False),\n\tField('document_id', 'string', length=36,default=None, required=False),\n\tField('doc_id', 'string', length=100,default=None, required=False),\n\tField('doc_type', 'string', length=100,default= 'Sugar', required=False),\n\tField('doc_url', 'string', length=255,default=None, required=False),\n   \n\tField('filename', 'string', length=255,default=None, required=False),\n\tField('file_ext', 'string', length=100,default=None, required=False),\n\tField('file_mime_type', 'string', length=100,default=None, required=False),\n\tField('revision', 'string', length=100,default=None, required=False),\n\tField('deleted', 'integer',default= '0', required=False),\n\tField('active_date', 'date',default=None, required=False),\n\tField('exp_date', 'date',default=None, required=False),\n\tField('category_id', 'string', length=100,default=None, required=False),\n\tField('subcategory_id', 'string', length=100,default=None, required=False),\n\tField('status_id', 'string', length=100,default=None, required=False),\n\tField('document_revision_id', 'string', length=36,default=None, required=False),\n                \n\tField('related_doc_id', 'string', length=36,default=None, required=False),\n\tField('related_doc_rev_id', 'string', length=36,default=None, required=False),\n\tField('is_template', 'integer',default= '0', required=False),\n\tField('template_type', 'string', length=100,default=None, required=False))\n               \ndb.define_table('crm_CustRelation',\n\tField('source', 'string', length=36,default=None, required=False),\n\tField('enclosure', 'string', length=1,default= ' ', required=False),\n\tField('delimiter', 'string', length=1,default= '', required=False),\n\tField('module', 'string', length=36,default=None, required=False),\n\tField('content', 'date',default=None, required=False),\n\tField('default_values', 'date',default=None, required=False),\n\tField('has_header', 'integer',default= '1', required=False),\n\n\tField('is_published', 'string', length=3,default= 'no', required=False),\n\tField('status', 'string', length=20,default=None, required=False),\n\n\tField('ie_timestamp', 'integer',default=None, required=False),\n\tField('alias', 'string', length=255,default=None, required=False),\n\tField('vqf', 'integer',default= '1', required=False),\n\tField('bvv', 'integer',default= '0', required=False),\n\tField('employee_id_c', 'string', length=36,default=None, required=False),\n\tField('client_currency', 'string', length=10,default=None, required=False),\n\tField('contract_document', 'string', length=255,default=None, required=False))\t\n\ndb.define_table('kreports',\n\tField('report_module', 'string', length=25,default=None, required=False),\n\tField('report_status', 'string', length=1,default=None, required=False),\n\tField('union_modules', 'date',default=None, required=False),\n\tField('reportoptions', 'date',default=None, required=False),\n\tField('listtype', 'string', length=10,default=None, required=False),\n\tField('listtypeproperties', 'date',default=None, required=False),\n\tField('selectionlimit', 'string', length=25,default=None, required=False),\n\tField('presentation_params', 'date',default=None, required=False),\n\tField('visualization_params', 'date',default=None, required=False),\n\tField('integration_params', 'date',default=None, required=False),\n\tField('wheregroups', 'date',default=None, required=False),\n\tField('whereconditions', 'date',default=None, required=False),\n\tField('listfields', 'date',default=None, required=False),\n\tField('unionlistfields', 'date',default=None, required=False),\n\tField('advancedoptions', 'date',default=None, required=False))\n\ndb.define_table('leads', ## use same as contacts except less fields\n\tField('converted', 'integer',default= '0', required=False),\n\tField('refered_by', 'string', length=100,default=None, required=False),\n\tField('lead_source', 'string', length=100,default=None, required=False),\n\tField('lead_source_description', 'date',default=None, required=False),\n\tField('status', 'string', length=100,default=None, required=False),\n\tField('status_description', 'date',default=None, required=False),\n\n\tField('opportunity_id', 'string', length=36,default=None, required=False),\n\tField('campaign_id', 'string', length=36,default=None, required=False),\n\n\tField('birthdate', 'date',default=None, required=False),\n\tField('portal_name', 'string', length=255,default=None, required=False),\n\tField('portal_app', 'string', length=255,default=None, required=False),\n\tField('website', 'string', length=255,default=None, required=False),\n\tField('middle_name', 'string', length=255,default=None, required=False))\n\ndb.define_table('fundinfo_docs',\n\tField('name', 'string', length=36,default=None, required=False))\n                \ndb.define_table('fdata_vdf',\n\tField('name', 'string', length=36,default=None, required=False))\n                \ndb.define_table('fdata_rolotec',\n\tField('name', 'string', length=36,default=None, required=False))\n                \ndb.define_table('portf_mandate_bands',\n\tField('name', 'string', length=36,default=None, required=False))\n                \ndb.define_table('portf_rulesets',\n         Field('rule_type', 'string', length=255,default=None, required=False), ## ExcludedName,ExcludedSector,Percentage\n         Field('rule_target', 'string', length=255,default=None, required=False), ## Names,Sectors,Perc_concentration,Perc_Absolute\n         Field('monitor_freq', 'string', length=255,default=None, required=False), ## real,simulated,other\n         Field('name', 'string', length=36,default=None, required=False))\n                                \ndb.define_table('crm_tasks',\n\tField('name', 'string', length=36,default=None, required=False))\n                \ndb.define_table('crm_meetings',\n\tField('name', 'string', length=36,default=None, required=False))\n                \ndb.define_table('fdata_transactions',\n         Field('name', 'string', length=36,default=None, required=False))\n                \ndb.define_table('portf_portfolio',\n         Field('portfolio_type', 'string', length=255,default=None, required=False), ## real,simulated,other\n         Field('name', 'string', length=36,default=None, required=False))\n\ndb.define_table('portf_allocationModel',\n         Field('website', 'string', length=255,default=None, required=False),\n         Field('name', 'string', length=36,default=None, required=False))\n\ndb.define_table('comp_pii',\n\tField('name', 'string', length=36,default=None, required=False))\ndb.define_table('rules_n_bands',\n\tField('name', 'string', length=36,default=None, required=False))\ndb.define_table('portf_stamm_acct',\n\tField('name', 'string', length=36,default=None, required=False))\ndb.define_table('portf_sub_acct',\n\tField('name', 'string', length=36,default=None, required=False))\ndb.define_table('portf_depot_banks',\n\tField('name', 'string', length=36,default=None, required=False))\ndb.define_table('portf_benchmarks',\n\tField('name', 'string', length=36,default=None, required=False))\n\n"
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__getslice__'
+p12
+S"<method-wrapper '__getslice__' of exceptions.SyntaxError object>"
+p13
+sS'text'
+p14
+S'None'
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of exceptions.SyntaxError object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of exceptions.SyntaxError object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of exceptions.SyntaxError object>'
+p23
+sS'__init__'
+p24
+S"<method-wrapper '__init__' of exceptions.SyntaxError object>"
+p25
+sS'__setattr__'
+p26
+S"<method-wrapper '__setattr__' of exceptions.SyntaxError object>"
+p27
+sS'__reduce_ex__'
+p28
+S'<built-in method __reduce_ex__ of exceptions.SyntaxError object>'
+p29
+sS'__new__'
+p30
+S'<built-in method __new__ of type object>'
+p31
+sS'__format__'
+p32
+S'<built-in method __format__ of exceptions.SyntaxError object>'
+p33
+sS'__class__'
+p34
+S"<type 'exceptions.SyntaxError'>"
+p35
+sS'filename'
+p36
+S'None'
+p37
+sS'lineno'
+p38
+S'None'
+p39
+sS'msg'
+p40
+S"'table already defined: crm_contacts'"
+p41
+sS'__doc__'
+p42
+S"'Invalid syntax.'"
+p43
+sS'__getitem__'
+p44
+S"<method-wrapper '__getitem__' of exceptions.SyntaxError object>"
+p45
+sS'__setstate__'
+p46
+S'<built-in method __setstate__ of exceptions.SyntaxError object>'
+p47
+sS'__getattribute__'
+p48
+S"<method-wrapper '__getattribute__' of exceptions.SyntaxError object>"
+p49
+sS'print_file_and_line'
+p50
+S'None'
+p51
+sS'args'
+p52
+S"('table already defined: crm_contacts',)"
+p53
+sS'__subclasshook__'
+p54
+S'<built-in method __subclasshook__ of type object>'
+p55
+sS'offset'
+p56
+S'None'
+p57
+sS'__unicode__'
+p58
+S'<built-in method __unicode__ of exceptions.SyntaxError object>'
+p59
+sS'__delattr__'
+p60
+S"<method-wrapper '__delattr__' of exceptions.SyntaxError object>"
+p61
+sS'__repr__'
+p62
+S"<method-wrapper '__repr__' of exceptions.SyntaxError object>"
+p63
+sS'__hash__'
+p64
+S"<method-wrapper '__hash__' of exceptions.SyntaxError object>"
+p65
+ssS'evalue'
+p66
+S'table already defined: crm_contacts'
+p67
+sS'request'
+p68
+cgluon.html
+XML_unpickle
+p69
+(S'szs\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>AddfinV6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_addfinv3</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_addfinv5simple</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-4b6016f3-ff73-42b4-a161-5db42caeca09<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_addfinv6</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-1c6c35e2-8d1f-4e25-a8a0-48ebc4287d86<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-d0fcc8ca-7a2d-4d1a-a916-b1079c9377d7<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_crmraw</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-c63ee9db-bf95-4c5c-9ba4-fb84ac052322<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_crmrawfullfields</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-d7a5baf1-f883-495c-9cff-631275da4bef<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-c05e77a5-a1e0-4a49-bb77-51f5ea31822b<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8,de-DE;q=0.6,de;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CACHE_CONTROL</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_crmraw=127.0.0.1-c63ee9db-bf95-4c5c-9ba4-fb84ac052322; session_id_crmrawfullfields=127.0.0.1-d7a5baf1-f883-495c-9cff-631275da4bef; session_id_addfinv3=127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97; session_id_addfinv5simple=127.0.0.1-4b6016f3-ff73-42b4-a161-5db42caeca09; session_id_welcome=127.0.0.1-c05e77a5-a1e0-4a49-bb77-51f5ea31822b; session_id_addfinv6=127.0.0.1-1c6c35e2-8d1f-4e25-a8a0-48ebc4287d86; session_id_admin=127.0.0.1-d0fcc8ca-7a2d-4d1a-a916-b1079c9377d7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/AddfinV6/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_UPGRADE_INSECURE_REQUESTS</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/AddfinV6/default/list_crm_contacts</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>54984</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>RPBASE1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\WEBPYC\\\\WEBPY\\\\web2py\\\\applications\\\\AddfinV6\\\\&#x27;, &#x27;C:\\\\WEBPYC\\\\WEBPY\\\\web2py\\\\applications\\\\welcome\\\\&#x27;, &#x27;C:\\\\WEBPYC\\\\WEBPY\\\\web2py\\\\applications\\\\admin\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\WEBPYC\\WEBPY\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x324f7b0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;RPBASE1&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\WEBPYC\\\\WEBPY\\\\web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\WEBPYC\\WEBPY\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip, deflate, sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>en-US,en;q=0.8,de-DE;q=0.6,de;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cache_control</td><td style="vertical-align:top;">:</td><td><div>max-age=0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_crmraw=127.0.0.1-c63ee9db-bf95-4c5c-9ba4-fb84ac052322; session_id_crmrawfullfields=127.0.0.1-d7a5baf1-f883-495c-9cff-631275da4bef; session_id_addfinv3=127.0.0.1-fcdbc3a9-e9fc-4298-8f1e-f82c70e71d97; session_id_addfinv5simple=127.0.0.1-4b6016f3-ff73-42b4-a161-5db42caeca09; session_id_welcome=127.0.0.1-c05e77a5-a1e0-4a49-bb77-51f5ea31822b; session_id_addfinv6=127.0.0.1-1c6c35e2-8d1f-4e25-a8a0-48ebc4287d86; session_id_admin=127.0.0.1-d0fcc8ca-7a2d-4d1a-a916-b1079c9377d7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/AddfinV6/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_upgrade_insecure_requests</td><td style="vertical-align:top;">:</td><td><div>1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.1.56</div></td></tr><tr><td><div>fe80::48d0:efaa:de27:62ec%10</div></td></tr><tr><td><div>RPBASE1</div></td></tr><tr><td><div>RPBASE1.office.actant.com</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/AddfinV6/default/list_crm_contacts</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>54984</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/AddfinV6/default/list_crm_contacts</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>RPBASE1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>C:\\WEBPYC\\WEBPY\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.13.4-stable+timestamp.2015.12.26.04.59.39</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x01DDD0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x0313BED8&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x03D59370&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x01DDD0D0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x0313BED8&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x03D59370&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>C:\\WEBPYC\\WEBPY\\web2py\\applications\\AddfinV6\\</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>list_crm_contacts</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;C:\\\\WEBPYC\\\\WEBPY\\\\web2py\\\\applications\\\\AddfinV6\\\\&#x27;, &#x27;C:\\\\WEBPYC\\\\WEBPY\\\\web2py\\\\applications\\\\welcome\\\\&#x27;, &#x27;C:\\\\WEBPYC\\\\WEBPY\\\\web2py\\\\applications\\\\admin\\\\&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\WEBPYC\\WEBPY\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x324f7b0: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;scheduler_groups&#x27;: None, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;RPBASE1&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;print_errors&#x27;: False, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;C:\\\\WEBPYC\\\\WEBPY\\\\web2py&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;gae&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>C:\\WEBPYC\\WEBPY\\web2py</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.1.56</div></td></tr><tr><td><div>fe80::48d0:efaa:de27:62ec%10</div></td></tr><tr><td><div>RPBASE1</div></td></tr><tr><td><div>RPBASE1.office.actant.com</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.13.4-stable+timestamp.2015.12.26.04.59.39</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_scheduler</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_shell</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 6, 2, 17, 33, 29, 267000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/AddfinV6/default/list_crm_contacts</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2016, 6, 2, 15, 33, 29, 267000)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x03E7A250&gt;</div></td></tr></table></div>'
+tRp70
+sS'frames'
+p71
+(lp72
+(dp73
+S'file'
+p74
+S'C:\\WEBPYC\\WEBPY\\web2py\\gluon\\restricted.py'
+p75
+sS'dump'
+p76
+(dp77
+S'environment'
+p78
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'ASSIGNJS': <function ASSIGNJS>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, ...}"
+p79
+sS'ccode'
+p80
+S'<code object <module> at 03D57F08, file "C:\\WEBP...plications\\AddfinV6\\models\\rp_newest.py", line 1>'
+p81
+ssS'lnum'
+p82
+I227
+sS'lines'
+p83
+(dp84
+I224
+S'            ccode = code'
+p85
+sI225
+S'        else:'
+p86
+sI226
+S'            ccode = compile2(code, layer)'
+p87
+sI227
+S'        exec ccode in environment'
+p88
+sI228
+S'    except HTTP:'
+p89
+sI229
+S'        raise'
+p90
+sI230
+S'    except RestrictedError:'
+p91
+sI231
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p92
+sI222
+S'    try:'
+p93
+sI223
+S'        if isinstance(code, types.CodeType):'
+p94
+ssS'call'
+p95
+S'(code="TASK_TYPES = (\'Phone\', \'Fax\', \'Mail\', \'Meet\')\\n\\ni...ring\', length=36,default=None, required=False))\\n\\n", environment={\'A\': <class \'gluon.html.A\'>, \'ANY_OF\': <class \'gluon.validators.ANY_OF\'>, \'ASSIGNJS\': <function ASSIGNJS>, \'Auth\': <class \'gluon.tools.Auth\'>, \'B\': <class \'gluon.html.B\'>, \'BEAUTIFY\': <class \'gluon.html.BEAUTIFY\'>, \'BODY\': <class \'gluon.html.BODY\'>, \'BR\': <class \'gluon.html.BR\'>, \'BUTTON\': <class \'gluon.html.BUTTON\'>, \'CAT\': <class \'gluon.html.CAT\'>, ...}, layer=r\'C:\\WEBPYC\\WEBPY\\web2py\\applications\\AddfinV6\\models\\rp_newest.py\')'
+p96
+sS'func'
+p97
+S'restricted'
+p98
+sa(dp99
+g74
+S'C:\\WEBPYC\\WEBPY\\web2py\\applications\\AddfinV6\\models\\rp_newest.py'
+p100
+sg76
+(dp101
+S'default'
+p102
+S'undefined'
+p103
+sS'Field'
+p104
+S"<class 'pydal.objects.Field'>"
+p105
+sS'builtinNone'
+p106
+S'None'
+p107
+sS'required'
+p108
+g103
+sS'builtinFalse'
+p109
+S'False'
+p110
+ssg82
+I149
+sg83
+(dp111
+I144
+S"         Field('photo_field_c', 'string', length=255,default=None, required=False),"
+p112
+sI145
+S"         Field('occupation', 'string', length=255,default=None, required=False),"
+p113
+sI146
+S"         Field('interests', 'date',default=None, required=False),"
+p114
+sI147
+S''
+sI148
+S"         Field('assistant_id', 'string', length=36,default=None, required=False), ## could this lead to a contact id?"
+p115
+sI149
+S"         Field('social_links', 'date',default=None, required=False))"
+p116
+sI150
+S''
+sI151
+S"db.define_table('portfolios',"
+p117
+sI152
+S"\tField('contacts__1contacts_ida', 'string', length=36,default=None, required=False),"
+p118
+sI153
+S"\tField('contacts_nx_idb', 'string', length=36,default=None, required=False))"
+p119
+ssg95
+S'()'
+p120
+sg97
+S'<module>'
+p121
+sa(dp122
+g74
+S'C:\\WEBPYC\\WEBPY\\web2py\\gluon\\packages\\dal\\pydal\\base.py'
+p123
+sg76
+(dp124
+S'tablename'
+p125
+S"'crm_contacts'"
+p126
+sS'builtinSyntaxError'
+p127
+S"<type 'exceptions.SyntaxError'>"
+p128
+ssg82
+I819
+sg83
+(dp129
+I814
+S'                raise SyntaxError("missing table name")'
+p130
+sI815
+S'        elif hasattr(self,tablename) or tablename in self.tables:'
+p131
+sI816
+S"            if args.get('redefine',False):"
+p132
+sI817
+S'                delattr(self, tablename)'
+p133
+sI818
+S'            else:'
+p134
+sI819
+S"                raise SyntaxError('table already defined: %s' % tablename)"
+p135
+sI820
+S"        elif tablename.startswith('_') or hasattr(self,tablename) or \\"
+p136
+sI821
+S'                REGEX_PYTHON_KEYWORDS.match(tablename):'
+p137
+sI822
+S"            raise SyntaxError('invalid table name: %s' % tablename)"
+p138
+sI823
+S'        elif self.check_reserved:'
+p139
+ssg95
+S'(self=<DAL uri="sqlite://storage.sqlite">, tablename=\'crm_contacts\', *fields=(<pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, ...), **args={})'
+p140
+sg97
+S'define_table'
+p141
+sasS'pyver'
+p142
+S'Python 2.7.9: C:\\WEBPYC\\WEBPY\\web2py\\web2py.exe (prefix: C:\\Python27)'
+p143
+sS'session'
+p144
+g69
+(S'ss\x02\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">recent_accounts</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">recent_companies</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">recent_persons</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">recent_tasks</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr></table></div>'
+tRp145
+sS'etype'
+p146
+S"<type 'exceptions.SyntaxError'>"
+p147
+sS'date'
+p148
+S'Thu Jun 02 17:33:31 2016'
+p149
+sS'response'
+p150
+g69
+(S'sZ#\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x03E7AE40&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_addfinv6</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-1c6c35e2-8d1f-4e25-a8a0-48ebc4287d86<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div>/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">form_label_separator</td><td style="vertical-align:top;">:</td><td><div>: </div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">formstyle</td><td style="vertical-align:top;">:</td><td><div>table3cols</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>*</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Index</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV6/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu_auth</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Login</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV6/default/user/login</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Register</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV6/default/user/register</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Lost Password</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV6/default/user/retrieve_password</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu_edit</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Edit</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/design/AddfinV6</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>Controller</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV6/controllers/default.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>View</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV6/views/default/list_crm_contacts.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Layout</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV6/views/layout.html</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Stylesheet</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV6/static/base.css</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>DB Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV6/models/db.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Menu Model</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/edit/AddfinV6/models/menu.py</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Database</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/AddfinV6/appadmin/index</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/list_crm_contacts/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_addfinv6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;C:\\\\WEBPYC\\\\WEBPY\\\\web2py\\\\applications\\\\AddfinV6\\\\sessions\\\\08c\\\\0f1\\\\127.0.0.1-1c6c35e2-8d1f-4e25-a8a0-48ebc4287d86&#x27;, mode &#x27;rb+&#x27; at 0x089D15A0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>C:\\WEBPYC\\WEBPY\\web2py\\applications\\AddfinV6\\sessions\\127.0.0.1-1c6c35e2-8d1f-4e25-a8a0-48ebc4287d86</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>50f57c11dacff298a06a20d85e4e2959</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-1c6c35e2-8d1f-4e25-a8a0-48ebc4287d86</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_addfinv6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>AddfinV6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div>customize me!</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>AddfinV6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/list_crm_contacts.html</div></td></tr></table></div>'
+tRp151
+sS'locals'
+p152
+(dp153
+S'fields'
+p154
+S'(<pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, <pydal.objects.Field object>, ...)'
+p155
+sS'self'
+p156
+S'<DAL uri="sqlite://storage.sqlite">'
+p157
+sg52
+g21
+sS'tablename'
+p158
+S"'crm_contacts'"
+p159
+sssS'traceback'
+p160
+S'Traceback (most recent call last):\n  File "C:\\WEBPYC\\WEBPY\\web2py\\gluon\\restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "C:\\WEBPYC\\WEBPY\\web2py\\applications\\AddfinV6\\models\\rp_newest.py", line 149, in <module>\n    Field(\'social_links\', \'date\',default=None, required=False))\n  File "C:\\WEBPYC\\WEBPY\\web2py\\gluon\\packages\\dal\\pydal\\base.py", line 819, in define_table\n    raise SyntaxError(\'table already defined: %s\' % tablename)\nSyntaxError: table already defined: crm_contacts\n'
+p161
+s.

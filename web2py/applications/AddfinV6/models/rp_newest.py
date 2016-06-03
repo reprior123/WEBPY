@@ -4,7 +4,18 @@ if auth.is_logged_in():
    me=auth.user.id
 else:
    me=None
-
+##db.define_table('crm_contacts',
+##         Field('id', 'string', length=150,default=None, required=False),
+##         Field('name', 'string', length=150,default=None, required=False),
+##         Field('org_type', 'string', length=100,default=None, required=False),
+##         Field('industry', 'string', length=50,default=None, required=False),
+##         Field('annual_revenue', 'string', length=100,default=None, required=False),
+##         Field('website', 'string', length=255,default=None, required=False),
+##         Field('ownership', 'string', length=100,default=None, required=False),
+##         Field('employees', 'string', length=10,default=None, required=False),
+##         Field('ticker_symbol', 'string', length=10,default=None, required=False),                
+##         Field('sic_code', 'string', length=10,default=None, required=False))
+##
 db.define_table('organizations',
          Field('id', 'string', length=150,default=None, required=False),
          Field('name', 'string', length=150,default=None, required=False),
