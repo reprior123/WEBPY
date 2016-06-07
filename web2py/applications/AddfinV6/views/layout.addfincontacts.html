@@ -1,0 +1,4951 @@
+<!DOCTYPE html>
+
+
+<!--[if IEMobile 7]>
+<html class="no-js iem7 oldie">
+<![endif]-->
+
+<!--[if (IE 7)&!(IEMobile)]>
+<html class="no-js ie7 oldie" lang="lang='en_us'">
+<![endif]-->
+
+<!--[if (IE 8)&!(IEMobile)]>
+<html class="no-js ie8 oldie" lang="lang='en_us'">
+<![endif]-->
+
+<!--[if (IE 9)&!(IEMobile)]>
+<html class="no-js ie9" lang="lang='en_us'">
+<![endif]-->
+
+<!--[if (gt IE 9)|(gt IEMobile 7)]>
+<!-->
+<html class="no-js" lang="lang='en_us'">
+<!--<![endif]-->
+
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+	<title>
+AddFin</title>
+
+	<meta name="description" content="">
+
+	<meta name="author" content="">
+
+
+	<!-- http://davidbcalhoun.com/2010/viewport-metatag -->
+
+	<meta name="HandheldFriendly" content="True">
+
+	<meta name="MobileOptimized" content="320">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	
+	
+	
+	
+	<link rel="stylesheet" type="text/css" href="cache/themes/AddfinV3/css/yui.css?v=dIDb5q_rd7tYoNHykHZ6EQ" />
+<link rel="stylesheet" type="text/css" href="include/javascript/jquery/themes/base/jquery.ui.all.css" />
+<link rel="stylesheet" type="text/css" href="cache/themes/AddfinV3/css/deprecated.css?v=dIDb5q_rd7tYoNHykHZ6EQ" />
+<link rel="stylesheet" type="text/css" href="cache/themes/AddfinV3/css/style.css?v=dIDb5q_rd7tYoNHykHZ6EQ" />
+	<link rel="stylesheet" href="themes/AddfinV3/css/styles.css?v=dIDb5q_rd7tYoNHykHZ6EQ">	
+	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>	
+	
+
+	<script>
+jscal_today = 1000*1465103290; if(typeof app_strings == "undefined") app_strings = new Array();</script>
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1_jquery.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1_yui.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+<script type="text/javascript" src="cache/include/javascript/sugar_grp1.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+<script type="text/javascript" src="include/javascript/calendar.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+<script>
+
+SUGAR.config.stockAjaxBannedModules = ["Calendar","Emails","Campaigns","Documents","DocumentRevisions","Project","ProjectTask","EmailMarketing","CampaignLog","CampaignTrackers","Releases","Groups","EmailMan","Administration","ModuleBuilder","Schedulers","SchedulersJobs","DynamicFields","EditCustomFields","EmailTemplates","Users","Currencies","Trackers","Connectors","Import_1","Import_2","Versions","vCals","CustomFields","Roles","Audit","InboundEmail","SavedSearch","UserPreferences","MergeRecords","EmailAddresses","Relationships","Employees","Import","OAuthKeys","Calls","Meetings","Home","Leads","Notes","nxc_Documents","Accounts","nxc_RSS","nxc_News","Bugs","Cases","ProspectLists","Prospects","Opportunities","Tasks","SecurityGroups","KReports","KBE_KUBE","KBE_VQF","KReports","KReports"];
+SUGAR.config.disableAjaxUI = true;
+SUGAR.config.addAjaxBannedModules = ["Calls","Meetings","Home","Leads","Notes","nxc_Documents","Accounts","nxc_RSS","nxc_News","Bugs","Cases","ProspectLists","Prospects","Opportunities","Tasks","SecurityGroups","KReports","KBE_KUBE","KBE_VQF","KReports","KReports"];</script>
+
+<script type="text/javascript">
+SUGAR.themes.image_server="";</script>
+<script type="text/javascript">
+var name_format = "s f l";</script>
+<script type="text/javascript">
+
+	var time_reg_format = '([0-9]{1,2}):([0-9]{1,2})';
+	var date_reg_format = '([0-9]{1,2})/([0-9]{1,2})/([0-9]{4})';
+	var date_reg_positions = { 'm': 1,'d': 2,'Y': 3 };
+	var time_separator = ':';
+	var cal_date_format = '%m/%d/%Y';
+	var time_offset = 0;
+	var num_grp_sep = ',';
+	var dec_sep = '.';
+</script>
+<script type="text/javascript" src="cache/jsLanguage/en_us.js?v=NX55RMZiBaU8HhIJXTKiOQ">
+</script>
+<script type="text/javascript" src="cache/jsLanguage/Accounts/en_us.js?v=NX55RMZiBaU8HhIJXTKiOQ">
+</script>
+<script type='text/javascript'>
+
+var sugar_cache_dir = 'cache/';
+var module_sugar_grp1 = 'Accounts';
+var action_sugar_grp1 = 'index';
+</script>
+
+<script type="text/javascript" src="cache/themes/AddfinV3/js/style.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+    	
+	<!-- For all browsers -->
+
+	
+	
+	<link rel="stylesheet" href="themes/AddfinV3/css/styles.css?v=dIDb5q_rd7tYoNHykHZ6EQ">
+
+	<!-- Webfonts -->
+
+	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+	<link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+
+
+	<!-- JavaScript at bottom except for Modernizr -->
+
+	<script src="themes/AddfinV3/js/libs/modernizr.custom.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+
+	<!-- For Modern Browsers -->
+
+	<link rel="shortcut icon" href="themes/AddfinV3/images/favicons/favicon.png">
+
+	<!-- For everything else -->
+
+	<link rel="shortcut icon" href="themes/AddfinV3/images/favicons/favicon.ico">
+
+	<!-- For retina screens -->
+
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="themes/AddfinV3/images/favicons/apple-touch-icon-retina.png">
+
+	<!-- For iPad 1-->
+
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="themes/AddfinV3/images/favicons/apple-touch-icon-ipad.png">
+
+	<!-- For iPhone 3G, iPod Touch and Android -->
+
+	<link rel="apple-touch-icon-precomposed" href="themes/AddfinV3/images/favicons/apple-touch-icon.png">
+
+
+	<!-- iOS web-app metas -->
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+	<!-- Startup image for web apps -->
+
+	<link rel="apple-touch-startup-image" href="themes/AddfinV3/images/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+
+	<link rel="apple-touch-startup-image" href="themes/AddfinV3/images/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+
+	<link rel="apple-touch-startup-image" href="themes/AddfinV3/images/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+
+	<!-- Microsoft clear type rendering -->
+
+	<meta http-equiv="cleartype" content="on">
+
+
+	<!-- IE9 Pinned Sites: http://msdn.microsoft.com/en-us/library/gg131029.aspx -->
+
+	<meta name="application-name" content="Developr Admin Skin">
+
+	<meta name="msapplication-tooltip" content="Cross-platform admin template.">
+
+	<meta name="msapplication-starturl" content="http://www.display-inline.fr/demo/developr">
+
+	<!-- These custom tasks are examples, you need to edit them to show actual pages -->
+
+	<meta name="msapplication-task" content="name=Agenda;action-uri=http://www.display-inline.fr/demo/developr/agenda.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
+
+	<meta name="msapplication-task" content="name=My profile;action-uri=http://www.display-inline.fr/demo/developr/profile.html;icon-uri=http://www.display-inline.fr/demo/developr/img/favicons/favicon.ico">
+
+	
+	
+
+<script type="text/javascript">
+
+//<![CDATA[
+SUGAR.themes.theme_name      = 'AddfinV3';
+SUGAR.themes.theme_ie6compat = false;
+SUGAR.themes.hide_image      = 'themes/default/images/hide.gif?v=dIDb5q_rd7tYoNHykHZ6EQ';
+SUGAR.themes.show_image      = 'themes/default/images/show.gif?v=dIDb5q_rd7tYoNHykHZ6EQ';
+SUGAR.themes.loading_image      = 'themes/default/images/img_loading.gif?v=dIDb5q_rd7tYoNHykHZ6EQ';
+SUGAR.themes.allThemes       = eval();
+if ( YAHOO.env.ua )
+		UA = YAHOO.env.ua;
+//]]>
+
+</script>
+
+
+	<script type="text/javascript" src='cache/include/javascript/sugar_field_grp.js?v=dIDb5q_rd7tYoNHykHZ6EQ'>
+</script>
+
+
+	<script src="/custom/nxc/alfresco_api/jquery.malsup.form.js">
+</script>
+
+	<script src="/custom/include/Alfresco/api.js">
+</script>
+
+</head>
+<body onMouseOut="closeMenus();" class="clearfix with-menu with-shortcuts menu-hidden">
+
+	<header role="banner" id="title-bar">
+
+		<div class="logo">
+
+			<div class="quick-access">
+
+				
+<div class="quick-access-wrapper">
+
+	<ul>
+
+		<li class="client-note">
+
+			<a href="/index.php?module=Notes&action=EditView&return_module=Home&return_action=index" class="link">
+Create Note</a>
+
+		</li>
+
+        <li class="write-email">
+
+            <a href="/index.php?module=Emails&action=index#compose_email" class="link">
+Write Mail</a>
+
+        </li>
+
+		<li class="create-portfolio">
+
+			<a href="/index.php?module=Portfolio&action=EditView&return_module=Home&return_action=index" class="link">
+Create Portfolio</a>
+
+		</li>
+
+		<li class="create-task">
+
+			<a href="/index.php?module=Tasks&action=EditView&return_module=Home&return_action=index" class="link">
+Create Task</a>
+
+		</li>
+
+		<li class="set-meeting">
+
+			<a href="/index.php?module=Meetings&action=EditView&return_module=Home&return_action=index" class="link">
+Create Meeting</a>
+
+		</li>
+
+
+		<li class="create-relationship">
+
+			<a href="/index.php?module=KBE_KUBE&action=EditView&return_module=Home&return_action=index" class="link">
+Create Relationship</a>
+
+		</li>
+
+		<li class="see-complience">
+
+			<a href="/index.php?module=KBE_VQF&action=EditView&return_module=Home&return_action=index" class="link">
+Create Compliance Case</a>
+
+		</li>
+
+	</ul>
+
+</div>
+			</div>
+
+			<a href="#" class="logo-img">
+</a>
+
+		</div>
+
+
+		<div class="quick-search-wrapper">
+
+			<div class="quick-search">
+
+				<input type="text" name="search" value="" />
+
+			</div>
+
+			<div class="autocompleted-list">
+</div>
+
+		</div>
+
+	</header>
+
+	<noscript class="message black-gradient simpler">
+Your browser does not support JavaScript! Some features won't work as expected...</noscript>
+
+
+	<!-- Prompt IE 6 users to install Chrome Frame -->
+
+	<!--[if lt IE 7]>
+<p class="message red-gradient simpler">
+Your browser is <em>
+ancient!</em>
+ <a href="http://browsehappy.com/">
+Upgrade to a different browser</a>
+ or <a href="http://www.google.com/chromeframe/?redirect=true">
+install Google Chrome Frame</a>
+ to experience this site.</p>
+<![endif]-->
+
+
+			<nav class="main">
+
+	<ul class="level1">
+
+		
+						<li class="icon dashboard">
+
+				<a class="link primary" href="index.php?module=Home&action=index">
+<span>
+Dashboard</span>
+</a>
+
+					
+			</li>
+
+		
+						<li class="icon customers current">
+
+				<a class="link primary" href="index.php?module=Accounts&action=index">
+<span>
+Relationship Management</span>
+</a>
+
+														<div class="submenu-wrapper">
+
+						<ul class="level2">
+
+															<li class="submenu-title">
+
+									<span>
+Relationship Management</span>
+
+									<a href="javascript:void(0)" class="collapse-link">
+</a>
+
+								</li>
+
+																						<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=Leads&action=index"  >
+Leads</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=Leads&action=EditView&return_module=Leads&return_action=DetailView">
+Create Lead</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Leads&action=ImportVCard">
+Create Lead From VCard</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Leads&action=index&return_module=Leads&return_action=DetailView">
+View Leads</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Import&action=Step1&import_module=Leads&return_module=Leads&return_action=index">
+Import Leads</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=Opportunities&action=index"  >
+Opportunities</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=Opportunities&action=EditView&return_module=Opportunities&return_action=DetailView">
+Create Opportunity</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Opportunities&action=index&return_module=Opportunities&return_action=DetailView">
+View Opportunities</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Import&action=Step1&import_module=Opportunities&return_module=Opportunities&return_action=index">
+Import Opportunities</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=Contacts&action=index"  >
+Contacts</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=Contacts&action=EditView&return_module=Contacts&return_action=index">
+Create Contact</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Contacts&action=ImportVCard">
+Create Contact From VCard</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Contacts&action=index&return_module=Contacts&return_action=DetailView">
+View Contacts</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Import&action=Step1&import_module=Contacts&return_module=Contacts&return_action=index">
+Import Contacts</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item current">
+
+																			<a class="link" href="index.php?module=Accounts&action=index"  >
+Organisations</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=Accounts&action=EditView&return_module=Accounts&return_action=index">
+Create Organisation</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Accounts&action=index&return_module=Accounts&return_action=DetailView">
+View Organisations</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Import&action=Step1&import_module=Accounts&return_module=Accounts&return_action=index">
+Import Organisations</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=KBE_KUBE&action=index"  >
+Client Relationships</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=KBE_KUBE&action=EditView&return_module=KBE_KUBE&return_action=DetailView">
+Create Client Relationship</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=KBE_KUBE&action=index">
+View Client Relationship</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=Notes&action=index"  >
+Notes</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=Notes&action=EditView&return_module=Notes&return_action=DetailView">
+Create Note or Attachment</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Notes&action=index&return_module=Notes&return_action=DetailView">
+View Notes</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Import&action=Step1&import_module=Notes&return_module=Notes&return_action=index">
+Import Notes</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=Tasks&action=index"  >
+Tasks</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView">
+Create Task</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Tasks&action=index&return_module=Tasks&return_action=DetailView">
+View Tasks</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Import&action=Step1&import_module=Tasks&return_module=Tasks&return_action=index">
+Import Tasks</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=Calls&action=index"  >
+Calls</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=Calls&action=EditView&return_module=Calls&return_action=DetailView">
+Log Call</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Calls&action=index&return_module=Calls&return_action=DetailView">
+View Calls</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Import&action=Step1&import_module=Calls&return_module=Calls&return_action=index">
+Import Calls</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=Meetings&action=index"  >
+Meetings</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=Meetings&action=EditView&return_module=Meetings&return_action=DetailView">
+Schedule Meeting</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Meetings&action=index&return_module=Meetings&return_action=DetailView">
+View Meetings</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=Import&action=Step1&import_module=Meetings&return_module=Meetings&return_action=index">
+Import Meetings</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=Calendar&action=index"  >
+Agenda</a>
+
+																										</li>
+
+								
+						</ul>
+
+					</div>
+
+					
+			</li>
+
+		
+						<li class="icon documents">
+
+				<a class="link primary" href="index.php?module=nxc_Documents&action=index">
+<span>
+Document Center</span>
+</a>
+
+					
+			</li>
+
+		
+						<li class="icon database">
+
+				<a class="link primary" href="index.php?module=DatabaseIndexes&action=show">
+<span>
+Financial Information</span>
+</a>
+
+														<div class="submenu-wrapper">
+
+						<ul class="level2">
+
+															<li class="submenu-title">
+
+									<span>
+Financial Information</span>
+
+									<a href="javascript:void(0)" class="collapse-link">
+</a>
+
+								</li>
+
+																						<li class="">
+
+																			<a class="link" href="index.php?module=DatabaseIndexes&action=show"  >
+Indexes</a>
+
+																										</li>
+
+															<li class="">
+
+																			<a class="link" href="index.php?module=DatabaseProducts&action=show"  >
+Products</a>
+
+																										</li>
+
+															<li class="accordion-item">
+
+																			<a class="link" href="index.php?module=DatabaseCurrencies&action=index"  >
+Currencies</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=DatabaseCurrencies&action=adminIndex">
+Manage Currencies</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="">
+
+																			<a class="link" href="index.php?module=Database_Fundinfo&action=index"  >
+Fundinfo</a>
+
+																										</li>
+
+								
+						</ul>
+
+					</div>
+
+					
+			</li>
+
+		
+						<li class="icon investment-section">
+
+				<a class="link primary" href="index.php?module=Portfolio&action=index">
+<span>
+Portfolio Management</span>
+</a>
+
+														<div class="submenu-wrapper">
+
+						<ul class="level2">
+
+															<li class="submenu-title">
+
+									<span>
+Portfolio Management</span>
+
+									<a href="javascript:void(0)" class="collapse-link">
+</a>
+
+								</li>
+
+																						<li class="">
+
+																			<a class="link" href="index.php?module=Portfolio&action=index"  >
+Overview</a>
+
+																										</li>
+
+															<li class="">
+
+																			<a class="link" href="index.php?module=Portfolio&action=SearchClient"  >
+by Client</a>
+
+																										</li>
+
+															<li class="">
+
+																			<a class="link" href="index.php?module=Portfolio&action=SearchPortfolio"  >
+by Portfolio</a>
+
+																										</li>
+
+															<li class="">
+
+																			<a class="link" href="index.php?module=Portfolio_Allocation&action=index"  >
+Portfolio Allocation</a>
+
+																										</li>
+
+															<li class="quick-links-header">
+
+																			<span class="" >
+Quick Links</span>
+
+																										</li>
+
+															<li class="quick-link">
+
+																			<a class="icon icon-more" href="index.php?module=Portfolio_Allocation&action=EditView"  >
+Create a new allocation</a>
+
+																										</li>
+
+								
+						</ul>
+
+					</div>
+
+					
+			</li>
+
+		
+						<li class="icon report">
+
+				<a class="link primary" href="index.php?module=ComplianceReports&action=Overview">
+<span>
+Compliance</span>
+</a>
+
+														<div class="submenu-wrapper">
+
+						<ul class="level2">
+
+															<li class="submenu-title">
+
+									<span>
+Compliance</span>
+
+									<a href="javascript:void(0)" class="collapse-link">
+</a>
+
+								</li>
+
+																						<li class="">
+
+																			<a class="link" href="index.php?module=ComplianceReports&action=Overview"  >
+Overview</a>
+
+																										</li>
+
+															<li class="accordion-item">
+
+																			<a class="" href="index.php?module=KBE_VQF&action=index"  >
+Regulatory</a>
+
+																																						<ul class="level3">
+
+																							<li class="">
+
+													<a href="index.php?module=KBE_VQF&action=index">
+View all cases</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=KBE_VQF&action=EditView&return_module=KBE_VQF&return_action=DetailView">
+Create Case</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+															<li class="accordion-item">
+
+																			<a class="" href="index.php?module=ComplianceReports&action=Overview"  >
+Investment</a>
+
+																																						<ul class="level3">
+
+																							<li class="accordion-item">
+
+													<a href="index.php?module=ComplianceReports&action=Overview">
+View all cases</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=GII&action=index">
+GII</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=GII&action=EditView&return_module=GII&return_action=DetailView">
+Create GII</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=PII&action=index">
+PII</a>
+
+												</li>
+
+																							<li class="">
+
+													<a href="index.php?module=PII&action=EditView&return_module=PII&return_action=DetailView">
+Create PII</a>
+
+												</li>
+
+																					</ul>
+
+																	</li>
+
+								
+						</ul>
+
+					</div>
+
+					
+			</li>
+
+		
+						<li class="icon addfin-circle">
+
+				<a class="link primary" href="index.php?module=nxcAddfinCircle&action=index">
+<span>
+ADDFIN Circle</span>
+</a>
+
+														<div class="submenu-wrapper">
+
+						<ul class="level2">
+
+															<li class="submenu-title">
+
+									<span>
+Compliance</span>
+
+									<a href="javascript:void(0)" class="collapse-link">
+</a>
+
+								</li>
+
+																						<li class="">
+
+																			<a class="link" href="javascript:void(0)"  >
+Companies</a>
+
+																										</li>
+
+															<li class="">
+
+																			<a class="link" href="javascript:void(0)"  >
+Library</a>
+
+																										</li>
+
+								
+						</ul>
+
+					</div>
+
+					
+			</li>
+
+			</ul>
+
+</nav>
+	
+	<section role="main" class="main row personal-open">
+
+		<div id="content" class="small-12 column">
+
+			
+			<iframe id='ajaxUI-history-iframe' src='index.php?entryPoint=getImage&amp;imageName=blank.png'  title='empty' style='display:none'>
+</iframe>
+
+			<input id='ajaxUI-history-field' type='hidden'>
+
+			<script type='text/javascript'>
+
+			if (SUGAR.ajaxUI && !SUGAR.ajaxUI.hist_loaded)
+			{
+					YAHOO.util.History.register('ajaxUILoc', "", SUGAR.ajaxUI.go);
+										// quick find
+					YAHOO.util.History.initialize("ajaxUI-history-field", "ajaxUI-history-iframe");
+					
+			}
+			</script>
+
+			
+			<div class='moduleTitle'>
+
+<h2>
+ Organisations &raquo; Search&nbsp;Organisations </h2>
+
+<span class='fl-right'>
+            <a id="create_link" href="index.php?module=Accounts&action=EditView&return_module=Accounts&return_action=DetailView" class="icon icon-create-contact" title="Create">
+</a>
+</span>
+<div class='clear'>
+</div>
+</div>
+
+
+<div class="clear">
+</div>
+
+<div class='listViewBody'>
+
+<script type="text/javascript" src="include/javascript/popup_parent_helper.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+<script>
+</script>
+
+
+<script>
+
+function submitOnEnter(e)
+{
+    var characterCode = (e && e.which) ? e.which : event.keyCode;
+
+    if (characterCode == 13) {
+        document.getElementById('search_form').submit();
+        return false;
+    } else {
+        return true;
+    }
+}
+</script>
+
+
+<form name='search_form' id='search_form' class='search_form' method='post' action='index.php?module=Accounts&action=index' onkeydown='submitOnEnter(event);'>
+
+<input type='hidden' name='searchFormTab' value='basic_search'/>
+
+<input type='hidden' name='module' value='Accounts'/>
+
+<input type='hidden' name='action' value='index'/>
+ 
+<input type='hidden' name='query' value='true'/>
+
+<div id='Accountsbasic_searchSearchForm' style='' class="edit view search basic">
+
+    <script>
+
+
+	$(function() {
+	var $dialog = $('<div>
+</div>
+')
+		.html(SUGAR.language.get('app_strings', 'LBL_SEARCH_HELP_TEXT'))
+		.dialog({
+			autoOpen: false,
+			title: SUGAR.language.get('app_strings', 'LBL_HELP'),
+			width: 700
+		});
+		
+		$('#filterHelp').click(function() {
+		$dialog.dialog('open');
+		// prevent the default action, e.g., following a link
+	});
+	
+	});
+
+</script>
+
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+
+<tr>
+
+      
+      
+	
+	
+		
+	<td  class="search-box">
+
+			<label for='name_basic'>
+ Name</label>
+
+				
+  
+<input type='text' name='name_basic' 
+    id='name_basic' size='30' 
+    maxlength='150' 
+    value='' title=''      accesskey='9'  >
+
+   	   	</td>
+
+    
+      
+	
+	
+		
+	<td  class="search-box">
+
+		
+		<label for='current_user_only_basic' >
+My Items</label>
+
+    			
+<input type="hidden" name="current_user_only_basic" value="0">
+ 
+<input type="checkbox" id="current_user_only_basic" 
+name="current_user_only_basic" 
+value="1" title='' tabindex=""  >
+
+   	   	</td>
+
+    	<td class="sumbitButtons">
+
+            <input tabindex="2" title="Search" onclick="SUGAR.savedViews.setChooser();" class="button" type="submit" name="button" value="Search" id="search_form_submit"/>
+&nbsp;
+	    <button title='Clear' onclick='SUGAR.searchForm.clear_form(this.form); return false;' class='button clear-search'  name='clear' id='search_form_clear'>
+<span>
+Clear</span>
+</button>
+
+        	    &nbsp;&nbsp;<a id="advanced_search_link" onclick="SUGAR.searchForm.searchFormSelect('Accounts|advanced_search','Accounts|basic_search')" href="javascript:void(0);" accesskey="8" >
+Advanced Search</a>
+
+	        </td>
+
+	<td class="helpIcon" width="*">
+</td>
+
+	</tr>
+
+</table>
+<script language="javascript">
+if(typeof sqs_objects == 'undefined'){var sqs_objects = new Array;}sqs_objects['search_form_modified_by_name_basic']={"form":"search_form","method":"get_user_array","field_list":["user_name","id"],"populate_list":["modified_by_name_basic","modified_user_id_basic"],"required_list":["modified_user_id"],"conditions":[{"name":"user_name","op":"like_custom","end":"%","value":""}],"limit":"30","no_match_text":"No Match"};sqs_objects['search_form_created_by_name_basic']={"form":"search_form","method":"get_user_array","field_list":["user_name","id"],"populate_list":["created_by_name_basic","created_by_basic"],"required_list":["created_by"],"conditions":[{"name":"user_name","op":"like_custom","end":"%","value":""}],"limit":"30","no_match_text":"No Match"};sqs_objects['search_form_assigned_user_name_basic']={"form":"search_form","method":"get_user_array","field_list":["user_name","id"],"populate_list":["assigned_user_name_basic","assigned_user_id_basic"],"required_list":["assigned_user_id"],"conditions":[{"name":"user_name","op":"like_custom","end":"%","value":""}],"limit":"30","no_match_text":"No Match"};sqs_objects['search_form_parent_name_basic']={"form":"search_form","method":"query","modules":["Accounts"],"group":"or","field_list":["name","id"],"populate_list":["search_form_parent_name_basic","parent_id_basic"],"conditions":[{"name":"name","op":"like_custom","end":"%","value":""}],"required_list":["parent_id"],"order":"name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_campaign_name_basic']={"form":"search_form","method":"query","modules":["Campaigns"],"group":"or","field_list":["name","id"],"populate_list":["campaign_id_basic","campaign_id_basic"],"conditions":[{"name":"name","op":"like_custom","end":"%","value":""}],"required_list":["campaign_id"],"order":"name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_clientroles_accounts_name_basic']={"form":"search_form","method":"query","modules":["ClientRoles"],"group":"or","field_list":["name","id"],"populate_list":["clientroles_accounts_name_basic","clientroles_accountsclientroles_ida_basic"],"required_list":["parent_id"],"conditions":[{"name":"name","op":"like_custom","end":"%","value":""}],"order":"name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_beneficial_owner_c_basic']={"form":"search_form","method":"get_contact_array","modules":["Contacts"],"field_list":["salutation","first_name","last_name","id"],"populate_list":["beneficial_owner_c_basic","contact_id1_c_basic","contact_id1_c_basic","contact_id1_c_basic"],"required_list":["contact_id1_c"],"group":"or","conditions":[{"name":"first_name","op":"like_custom","end":"%","value":""},{"name":"last_name","op":"like_custom","end":"%","value":""}],"order":"last_name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_contact_ownership_c_basic']={"form":"search_form","method":"get_contact_array","modules":["Contacts"],"field_list":["salutation","first_name","last_name","id"],"populate_list":["contact_ownership_c_basic","contact_id2_c_basic","contact_id2_c_basic","contact_id2_c_basic"],"required_list":["contact_id2_c"],"group":"or","conditions":[{"name":"first_name","op":"like_custom","end":"%","value":""},{"name":"last_name","op":"like_custom","end":"%","value":""}],"order":"last_name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_custody_c_basic']={"form":"search_form","method":"get_contact_array","modules":["Contacts"],"field_list":["salutation","first_name","last_name","id"],"populate_list":["custody_c_basic","contact_id7_c_basic","contact_id7_c_basic","contact_id7_c_basic"],"required_list":["contact_id7_c"],"group":"or","conditions":[{"name":"first_name","op":"like_custom","end":"%","value":""},{"name":"last_name","op":"like_custom","end":"%","value":""}],"order":"last_name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_investment_advisory_c_basic']={"form":"search_form","method":"get_contact_array","modules":["Contacts"],"field_list":["salutation","first_name","last_name","id"],"populate_list":["investment_advisory_c_basic","contact_id5_c_basic","contact_id5_c_basic","contact_id5_c_basic"],"required_list":["contact_id5_c"],"group":"or","conditions":[{"name":"first_name","op":"like_custom","end":"%","value":""},{"name":"last_name","op":"like_custom","end":"%","value":""}],"order":"last_name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_investment_consultant_c_basic']={"form":"search_form","method":"get_contact_array","modules":["Contacts"],"field_list":["salutation","first_name","last_name","id"],"populate_list":["investment_consultant_c_basic","contact_id6_c_basic","contact_id6_c_basic","contact_id6_c_basic"],"required_list":["contact_id6_c"],"group":"or","conditions":[{"name":"first_name","op":"like_custom","end":"%","value":""},{"name":"last_name","op":"like_custom","end":"%","value":""}],"order":"last_name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_linked_organization_c_basic']={"form":"search_form","method":"query","modules":["Accounts"],"group":"or","field_list":["name","id"],"populate_list":["search_form_linked_organization_c_basic","account_id_c_basic"],"conditions":[{"name":"name","op":"like_custom","end":"%","value":""}],"required_list":["account_id_c"],"order":"name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_primary_contact_c_basic']={"form":"search_form","method":"get_contact_array","modules":["Contacts"],"field_list":["salutation","first_name","last_name","id"],"populate_list":["primary_contact_c_basic","contact_id_c_basic","contact_id_c_basic","contact_id_c_basic"],"required_list":["contact_id_c"],"group":"or","conditions":[{"name":"first_name","op":"like_custom","end":"%","value":""},{"name":"last_name","op":"like_custom","end":"%","value":""}],"order":"last_name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_regulations_c_basic']={"form":"search_form","method":"get_contact_array","modules":["Contacts"],"field_list":["salutation","first_name","last_name","id"],"populate_list":["regulations_c_basic","contact_id3_c_basic","contact_id3_c_basic","contact_id3_c_basic"],"required_list":["contact_id3_c"],"group":"or","conditions":[{"name":"first_name","op":"like_custom","end":"%","value":""},{"name":"last_name","op":"like_custom","end":"%","value":""}],"order":"last_name","limit":"30","no_match_text":"No Match"};sqs_objects['search_form_supervisor_c_basic']={"form":"search_form","method":"get_contact_array","modules":["Contacts"],"field_list":["salutation","first_name","last_name","id"],"populate_list":["supervisor_c_basic","contact_id4_c_basic","contact_id4_c_basic","contact_id4_c_basic"],"required_list":["contact_id4_c"],"group":"or","conditions":[{"name":"first_name","op":"like_custom","end":"%","value":""},{"name":"last_name","op":"like_custom","end":"%","value":""}],"order":"last_name","limit":"30","no_match_text":"No Match"};</script>
+</div>
+
+<div id='Accountsadvanced_searchSearchForm' style='display:none' class="edit view search advanced">
+</div>
+
+<div id='Accountssaved_viewsSearchForm' style='display: none;'>
+</div>
+
+</form>
+
+
+<script>
+
+function toggleInlineSearch()
+{
+    if (document.getElementById('inlineSavedSearch').style.display == 'none'){
+        document.getElementById('showSSDIV').value = 'yes'		
+        document.getElementById('inlineSavedSearch').style.display = '';
+
+        document.getElementById('up_down_img').src='themes/default/images/basic_search.gif?v=dIDb5q_rd7tYoNHykHZ6EQ';
+        document.getElementById('up_down_img').setAttribute('alt',"Hide Options");
+
+    }else{
+
+        document.getElementById('up_down_img').src='themes/default/images/advanced_search.gif?v=dIDb5q_rd7tYoNHykHZ6EQ';
+        document.getElementById('up_down_img').setAttribute('alt',"Show Options");
+			
+        document.getElementById('showSSDIV').value = 'no';		
+        document.getElementById('inlineSavedSearch').style.display = 'none';		
+    }
+}
+</script>
+
+<form action="index.php" method="post" name="displayMassUpdate" id="displayMassUpdate">
+
+<input type="hidden" name="mu" value="false" />
+
+<input type='hidden' name='module' value='Accounts'>
+<input type='hidden' name='action' value='index'>
+<input type='hidden' name='searchFormTab' value='basic_search'>
+<input type='hidden' name='query' value='true'>
+<input type='hidden' name='name_basic' value=''>
+<input type='hidden' name='current_user_only_basic' value='0'>
+<input type='hidden' name='button' value='Search'>
+</form>
+
+<form action='index.php' method='post' name='MassUpdate'  id='MassUpdate' onsubmit="return check_form('MassUpdate');">
+
+<input type='hidden' name='return_action' value='index' />
+
+<input type='hidden' name='return_module' value='Accounts' />
+
+<input type='hidden' name='massupdate' value='true' />
+
+<input type='hidden' name='delete' value='false' />
+
+<input type='hidden' name='merge' value='false' />
+
+<input type='hidden' name='current_query_by_page' value='YTo4OntzOjY6Im1vZHVsZSI7czo4OiJBY2NvdW50cyI7czo2OiJhY3Rpb24iO3M6NToiaW5kZXgiO3M6MTM6InNlYXJjaEZvcm1UYWIiO3M6MTI6ImJhc2ljX3NlYXJjaCI7czo1OiJxdWVyeSI7czo0OiJ0cnVlIjtzOjEwOiJuYW1lX2Jhc2ljIjtzOjA6IiI7czoyMzoiY3VycmVudF91c2VyX29ubHlfYmFzaWMiO3M6MToiMCI7czo2OiJidXR0b24iO3M6NjoiU2VhcmNoIjtzOjE0OiJmb3JRdWlja0NyZWF0ZSI7YjoxO30=' />
+
+<input type='hidden' name='module' value='Accounts' />
+
+<input type='hidden' name='action' value='MassUpdate' />
+
+<input type='hidden' name='lvso' value='' />
+
+<input type='hidden' name='Accounts2_ACCOUNT_ORDER_BY' value='' />
+
+<script type='text/javascript' src='include/javascript/popup_helper.js?v=dIDb5q_rd7tYoNHykHZ6EQ'>
+</script>
+
+
+
+<script>
+
+
+	$(document).ready(function(){
+	    $("ul.clickMenu").each(function(index, node){
+	  		$(node).sugarActionMenu();
+	  	});
+
+        $('.selectActionsDisabled').children().each(function(index) {
+            $(this).attr('onclick','').unbind('click');
+        });
+        
+        var selectedTopValue = $("#selectCountTop").attr("value");
+        if(typeof(selectedTopValue) != "undefined" && selectedTopValue != "0"){
+        	sugarListView.prototype.toggleSelected();
+        }
+	});
+	
+</script>
+
+
+<script>
+YAHOO.util.Event.addListener(window, "load", sListView.check_boxes);</script>
+
+<textarea style='display: none' name='uid'>
+</textarea>
+
+<input type='hidden' name='select_entire_list' value='0'>
+
+<input type='hidden' name='Accounts2_ACCOUNT_offset' value='0'>
+
+<input type='hidden' name='show_plus' value=''>
+
+
+
+	<table cellpadding='0' cellspacing='0' width='100%' border='0' class='list view'>
+
+                    	
+<tr class='pagination'  role='presentation'>
+
+	<td colspan='18'>
+
+		<table border='0' cellpadding='0' cellspacing='0' width='100%' class='paginationTable'>
+
+			<tr>
+
+				<td nowrap="nowrap" width='2%' class='paginationActionButtons paginationActionButtons_mod'>
+
+					
+						<ul id="selectLinkTop" class="clickMenu selectmenu fancymenu" name >
+<li class="sugar_action_button" >
+<input title="Select all" type='checkbox' class='checkbox massall' name='massall' id='massall_top' value='' onclick='sListView.check_all(document.MassUpdate, "mass[]", this.checked);' />
+<a id='select_link'  href='javascript: void(0);'>
+<ul id class="subnav" >
+</a>
+<li>
+<a  name='thispage' id='button_select_this_page_top' class='menuItem' onmouseover='hiliteItem(this,"yes");' onmouseout='unhiliteItem(this);' onclick='if (document.MassUpdate.select_entire_list.value==1){document.MassUpdate.select_entire_list.value=0;sListView.check_all(document.MassUpdate, "mass[]", true, 19)}else {sListView.check_all(document.MassUpdate, "mass[]", true)};' href='#'>
+Select This Page&nbsp;&#x28;19&#x29;&#x200E;</a>
+</li>
+<li>
+<a  name='selectall' id='button_select_all_top' class='menuItem' onmouseover='hiliteItem(this,"yes");' onmouseout='unhiliteItem(this);' onclick='sListView.check_entire_list(document.MassUpdate, "mass[]",true,19);' href='#'>
+Select All&nbsp;&#x28;19&#x29;&#x200E;</a>
+</li>
+<li>
+<a name='deselect' id='button_deselect_top' class='menuItem' onmouseover='hiliteItem(this,"yes");' onmouseout='unhiliteItem(this);' onclick='sListView.clear_all(document.MassUpdate, "mass[]", false);' href='#'>
+Deselect All</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+					
+					<ul id="actionLinkTop" class="clickMenu selectActions fancymenu" name="selectActions" >
+<li class="sugar_action_button" >
+<a href='javascript:void(0)' id="delete_listview_top" onclick="return sListView.send_mass_update('selected', 'Please select at least 1 record to proceed.', 1)">
+Delete</a>
+<ul id class="subnav" >
+<li>
+<a href='javascript:void(0)' id="composeemail_listview_top"onclick="return sListView.send_form_for_emails(true, 'Emails', 'index.php?module=Emails&action=Compose&ListView=true','Please select at least 1 record to proceed.', 'Accounts', '19', 'Please select less than 10 records to proceed.')">
+Email</a>
+</li>
+<li>
+<a href='javascript:void(0)' id="massupdate_listview_top" onclick="document.getElementById('massupdate_form').style.display = ''; var yLoc = YAHOO.util.Dom.getY('massupdate_form'); scroll(0,yLoc);">
+Mass Update</a>
+</li>
+<li>
+<a href='javascript:void(0)' id='mergeduplicates_listview_top'onclick='if (sugarListView.get_checks_count()>
+ 1) {sListView.send_form(true, "MergeRecords", "index.php", "Please select at least 1 record to proceed.", "Accounts","&return_module=Accounts&return_action=index");} else {alert("Please select at least 2 records to proceed.");return false;}'>
+Merge</a>
+</li>
+<li>
+<a href='javascript:void(0)' id="targetlist_listview_top " onclick="            if(sugarListView.get_checks_count() < 1) {                alert('Please select at least 1 record to proceed.');                return false;            }			if ( document.forms['targetlist_form'] ) {				var form = document.forms['targetlist_form'];				form.reset;			} else				var form = document.createElement ( 'form' ) ;			form.setAttribute ( 'name' , 'targetlist_form' );			form.setAttribute ( 'method' , 'post' ) ;			form.setAttribute ( 'action' , 'index.php' );			document.body.appendChild ( form ) ;			if ( !form.module ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'module' );			    input.setAttribute ( 'value' , 'Accounts' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'action' );			    input.setAttribute ( 'value' , 'TargetListUpdate' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.uids ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'uids' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.prospect_list ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'prospect_list' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.return_module ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'return_module' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.return_action ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'return_action' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.select_entire_list ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'select_entire_list' );			    input.setAttribute ( 'value', document.MassUpdate.select_entire_list.value);			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.current_query_by_page ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'current_query_by_page' );			    input.setAttribute ( 'value', 'YTo4OntzOjY6Im1vZHVsZSI7czo4OiJBY2NvdW50cyI7czo2OiJhY3Rpb24iO3M6NToiaW5kZXgiO3M6MTM6InNlYXJjaEZvcm1UYWIiO3M6MTI6ImJhc2ljX3NlYXJjaCI7czo1OiJxdWVyeSI7czo0OiJ0cnVlIjtzOjEwOiJuYW1lX2Jhc2ljIjtzOjA6IiI7czoyMzoiY3VycmVudF91c2VyX29ubHlfYmFzaWMiO3M6MToiMCI7czo2OiJidXR0b24iO3M6NjoiU2VhcmNoIjtzOjE0OiJmb3JRdWlja0NyZWF0ZSI7YjoxO30=' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			open_popup('ProspectLists','600','400','',true,false,{ 'call_back_function':'set_return_and_save_targetlist','form_name':'targetlist_form','field_to_name_array':{'id':'prospect_list'} } );">
+Add To Target List</a>
+</li>
+<li>
+<a href='javascript:void(0)' id="export_listview_top " onclick="return sListView.send_form(true, 'Accounts', 'index.php?entryPoint=export','Please select at least 1 record to proceed.')">
+Export</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+					<div class='selectActionsDisabled' id='select_actions_disabled_top'>
+<a href='javascript:void(0)'  onclick="return sListView.send_mass_update('selected', 'Please select at least 1 record to proceed.', 1)">
+Delete</a>
+<span class='ab'>
+</span>
+</div>
+					&nbsp;<span style='display: none;' id='selectedRecordsTop'>
+Selected: <input  style='border: 0px; background: transparent; font-size: inherit; color: inherit' type='text' id='selectCountTop' readonly name='selectCount[]' value='0' />
+</span>
+		
+				</td>
+
+				<td  nowrap='nowrap' width='1%' align="right" class='pagination-buttons'>
+
+											<button type="button" class="button icon-last disabled" >
+</button>
+
+					
+											<button type="button" class="button icon-forward disabled" title='Next'>
+
+						</button>
+
+					
+					<span class='pageNumbers'>
+1 - 19 of 19</span>
+
+
+											<button type="button" class="button icon-backward disabled" title='Previous'>
+
+						</button>
+
+					
+											<button type="button" class="button icon-first disabled" title='Start'>
+
+						</button>
+
+					
+
+				</td>
+
+			</tr>
+
+		</table>
+
+	</td>
+
+</tr>
+	<tr height='20' class="list-view-table-header">
+
+							<td width='1%' class="td_alt">
+
+					&nbsp;
+				</td>
+
+									<td class='td_alt' width='1%' style="padding: 0px;">
+&nbsp;</td>
+
+						
+						<th scope='col' width='21%' align='left' class="unsortable">
+
+															<span>
+Name</span>
+
+												</th>
+
+        			<th scope='col' width='13%' align='left' class="unsortable">
+
+															<span>
+City</span>
+
+												</th>
+
+        			<th scope='col' width='14%' align='left' class="unsortable">
+
+															<span>
+Billing Country</span>
+
+												</th>
+
+        			<th scope='col' width='14%' align='left' class="unsortable">
+
+															<span>
+Phone</span>
+
+												</th>
+
+        			<th scope='col' width='14%' align='left' class="unsortable">
+
+															<span>
+User</span>
+
+												</th>
+
+        			<th scope='col' width='14%' align='left' class="unsortable">
+
+															<span>
+Email Address</span>
+
+												</th>
+
+        			<th scope='col' width='7%' align='left' class="unsortable">
+
+															<span>
+Date Created</span>
+
+												</th>
+
+        			<td class='td_alt' nowrap="nowrap" width='1%'>
+&nbsp;</td>
+
+		</tr>
+
+			
+			
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='e67edf4c-e415-24cc-801a-55eb0b206acc'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-e67edf4c-e415-24cc-801a-55eb0b206acc" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=1&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=e67edf4c-e415-24cc-801a-55eb0b206acc"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=1&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=e67edf4c-e415-24cc-801a-55eb0b206acc">
+
+A.Smith Trust</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=1&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=e67edf4c-e415-24cc-801a-55eb0b206acc\u0026parent_name=A.Smith+Trust\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=A.Smith+Trust%26nbsp%3B%26lt%3B%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=e67edf4c-e415-24cc-801a-55eb0b206acc","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"e67edf4c-e415-24cc-801a-55eb0b206acc","parent_name":"A.Smith Trust","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"A.Smith Trust \u003C\u003E","return_module":"Accounts","return_action":"ListView","return_id":"e67edf4c-e415-24cc-801a-55eb0b206acc"}});' class=''>
+</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+09/05/2015 15:33</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_e67edf4c-e415-24cc-801a-55eb0b206acc' onclick="lvg_dtails('e67edf4c-e415-24cc-801a-55eb0b206acc')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='evenListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='dc1454c6-e04e-ce05-ec15-55e1b0c3cb24'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-dc1454c6-e04e-ce05-ec15-55e1b0c3cb24" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=2&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=dc1454c6-e04e-ce05-ec15-55e1b0c3cb24"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=2&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=dc1454c6-e04e-ce05-ec15-55e1b0c3cb24">
+
+ABC consultancy</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zurich</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=2&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=dc1454c6-e04e-ce05-ec15-55e1b0c3cb24\u0026parent_name=ABC+consultancy\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=ABC+consultancy%26nbsp%3B%26lt%3Binfo%40abcconsultancy.com%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=dc1454c6-e04e-ce05-ec15-55e1b0c3cb24","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"dc1454c6-e04e-ce05-ec15-55e1b0c3cb24","parent_name":"ABC consultancy","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"ABC consultancy \u003Cinfo@abcconsultancy.com\u003E","return_module":"Accounts","return_action":"ListView","return_id":"dc1454c6-e04e-ce05-ec15-55e1b0c3cb24"}});' class=''>
+info@abcconsultancy.com</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/29/2015 13:16</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_dc1454c6-e04e-ce05-ec15-55e1b0c3cb24' onclick="lvg_dtails('dc1454c6-e04e-ce05-ec15-55e1b0c3cb24')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='4100c93f-73a0-0cc4-595c-56ec60bd00b4'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-4100c93f-73a0-0cc4-595c-56ec60bd00b4" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=3&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=4100c93f-73a0-0cc4-595c-56ec60bd00b4"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=3&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=4100c93f-73a0-0cc4-595c-56ec60bd00b4">
+
+Acme</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=3&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=4eb0ff90-bc1c-ebe4-d2a6-51b6d2ca455e">
+
+Epoint User</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=4100c93f-73a0-0cc4-595c-56ec60bd00b4\u0026parent_name=Acme\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Acme%26nbsp%3B%26lt%3B%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=4100c93f-73a0-0cc4-595c-56ec60bd00b4","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"4100c93f-73a0-0cc4-595c-56ec60bd00b4","parent_name":"Acme","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Acme \u003C\u003E","return_module":"Accounts","return_action":"ListView","return_id":"4100c93f-73a0-0cc4-595c-56ec60bd00b4"}});' class=''>
+</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+03/18/2016 20:10</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_4100c93f-73a0-0cc4-595c-56ec60bd00b4' onclick="lvg_dtails('4100c93f-73a0-0cc4-595c-56ec60bd00b4')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='evenListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='1471cf56-5c2f-b4f5-98a0-56fd374630a0'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-1471cf56-5c2f-b4f5-98a0-56fd374630a0" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=4&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=1471cf56-5c2f-b4f5-98a0-56fd374630a0"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=4&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=1471cf56-5c2f-b4f5-98a0-56fd374630a0">
+
+Addfin AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=4&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=4eb0ff90-bc1c-ebe4-d2a6-51b6d2ca455e">
+
+Epoint User</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=1471cf56-5c2f-b4f5-98a0-56fd374630a0\u0026parent_name=Addfin+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Addfin+AG%26nbsp%3B%26lt%3B%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=1471cf56-5c2f-b4f5-98a0-56fd374630a0","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"1471cf56-5c2f-b4f5-98a0-56fd374630a0","parent_name":"Addfin AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Addfin AG \u003C\u003E","return_module":"Accounts","return_action":"ListView","return_id":"1471cf56-5c2f-b4f5-98a0-56fd374630a0"}});' class=''>
+</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+03/31/2016 14:43</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_1471cf56-5c2f-b4f5-98a0-56fd374630a0' onclick="lvg_dtails('1471cf56-5c2f-b4f5-98a0-56fd374630a0')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='85ed388b-7368-901b-fab9-55e4bd06e943'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-85ed388b-7368-901b-fab9-55e4bd06e943" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=5&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=85ed388b-7368-901b-fab9-55e4bd06e943"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=5&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=85ed388b-7368-901b-fab9-55e4bd06e943">
+
+Bank Vontobel AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zug</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=5&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=85ed388b-7368-901b-fab9-55e4bd06e943\u0026parent_name=Bank+Vontobel+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Bank+Vontobel+AG%26nbsp%3B%26lt%3Binfo%40vontobel.ch%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=85ed388b-7368-901b-fab9-55e4bd06e943","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"85ed388b-7368-901b-fab9-55e4bd06e943","parent_name":"Bank Vontobel AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Bank Vontobel AG \u003Cinfo@vontobel.ch\u003E","return_module":"Accounts","return_action":"ListView","return_id":"85ed388b-7368-901b-fab9-55e4bd06e943"}});' class=''>
+info@vontobel.ch</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 20:46</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_85ed388b-7368-901b-fab9-55e4bd06e943' onclick="lvg_dtails('85ed388b-7368-901b-fab9-55e4bd06e943')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='evenListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='2d5e0257-90f2-0d50-6810-56e298926fcc'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-2d5e0257-90f2-0d50-6810-56e298926fcc" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=6&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=2d5e0257-90f2-0d50-6810-56e298926fcc"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=6&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=2d5e0257-90f2-0d50-6810-56e298926fcc">
+
+Budweiser</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=6&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=4eb0ff90-bc1c-ebe4-d2a6-51b6d2ca455e">
+
+Epoint User</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=2d5e0257-90f2-0d50-6810-56e298926fcc\u0026parent_name=Budweiser\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Budweiser%26nbsp%3B%26lt%3B%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=2d5e0257-90f2-0d50-6810-56e298926fcc","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"2d5e0257-90f2-0d50-6810-56e298926fcc","parent_name":"Budweiser","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Budweiser \u003C\u003E","return_module":"Accounts","return_action":"ListView","return_id":"2d5e0257-90f2-0d50-6810-56e298926fcc"}});' class=''>
+</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+03/11/2016 10:07</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_2d5e0257-90f2-0d50-6810-56e298926fcc' onclick="lvg_dtails('2d5e0257-90f2-0d50-6810-56e298926fcc')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='381c0d6c-a9aa-df04-1563-55e4bd738be0'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-381c0d6c-a9aa-df04-1563-55e4bd738be0" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=7&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=381c0d6c-a9aa-df04-1563-55e4bd738be0"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=7&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=381c0d6c-a9aa-df04-1563-55e4bd738be0">
+
+Credit Suisse (Schweiz) AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zurich</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=7&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=381c0d6c-a9aa-df04-1563-55e4bd738be0\u0026parent_name=Credit+Suisse+%28Schweiz%29+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Credit+Suisse+%28Schweiz%29+AG%26nbsp%3B%26lt%3Binfo%40creditsuisse.ch%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=381c0d6c-a9aa-df04-1563-55e4bd738be0","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"381c0d6c-a9aa-df04-1563-55e4bd738be0","parent_name":"Credit Suisse (Schweiz) AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Credit Suisse (Schweiz) AG \u003Cinfo@creditsuisse.ch\u003E","return_module":"Accounts","return_action":"ListView","return_id":"381c0d6c-a9aa-df04-1563-55e4bd738be0"}});' class=''>
+info@creditsuisse.ch</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 20:47</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_381c0d6c-a9aa-df04-1563-55e4bd738be0' onclick="lvg_dtails('381c0d6c-a9aa-df04-1563-55e4bd738be0')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='evenListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='482f3fe4-ce1f-20bb-f40a-55e4bd407028'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-482f3fe4-ce1f-20bb-f40a-55e4bd407028" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=8&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=482f3fe4-ce1f-20bb-f40a-55e4bd407028"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=8&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=482f3fe4-ce1f-20bb-f40a-55e4bd407028">
+
+Credit Suisse AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zurich</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=8&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=482f3fe4-ce1f-20bb-f40a-55e4bd407028\u0026parent_name=Credit+Suisse+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Credit+Suisse+AG%26nbsp%3B%26lt%3Binternational%40creditsuisse.com%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=482f3fe4-ce1f-20bb-f40a-55e4bd407028","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"482f3fe4-ce1f-20bb-f40a-55e4bd407028","parent_name":"Credit Suisse AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Credit Suisse AG \u003Cinternational@creditsuisse.com\u003E","return_module":"Accounts","return_action":"ListView","return_id":"482f3fe4-ce1f-20bb-f40a-55e4bd407028"}});' class=''>
+international@creditsuisse.com</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 20:47</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_482f3fe4-ce1f-20bb-f40a-55e4bd407028' onclick="lvg_dtails('482f3fe4-ce1f-20bb-f40a-55e4bd407028')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='3f6d24b7-b9c0-fd61-164d-56ebde46e588'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-3f6d24b7-b9c0-fd61-164d-56ebde46e588" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=9&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=3f6d24b7-b9c0-fd61-164d-56ebde46e588"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=9&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=3f6d24b7-b9c0-fd61-164d-56ebde46e588">
+
+epoint</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Timisoara</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Romania</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
++40 745 560 320</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=9&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=4eb0ff90-bc1c-ebe4-d2a6-51b6d2ca455e">
+
+Epoint User</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=3f6d24b7-b9c0-fd61-164d-56ebde46e588\u0026parent_name=epoint\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=epoint%26nbsp%3B%26lt%3Boffice%40epoint.ro%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=3f6d24b7-b9c0-fd61-164d-56ebde46e588","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"3f6d24b7-b9c0-fd61-164d-56ebde46e588","parent_name":"epoint","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"epoint \u003Coffice@epoint.ro\u003E","return_module":"Accounts","return_action":"ListView","return_id":"3f6d24b7-b9c0-fd61-164d-56ebde46e588"}});' class=''>
+office@epoint.ro</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+03/18/2016 10:56</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_3f6d24b7-b9c0-fd61-164d-56ebde46e588' onclick="lvg_dtails('3f6d24b7-b9c0-fd61-164d-56ebde46e588')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='evenListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='c091e4c6-1285-9cda-c440-55e4bc5dcf24'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-c091e4c6-1285-9cda-c440-55e4bc5dcf24" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=10&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=c091e4c6-1285-9cda-c440-55e4bc5dcf24"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=10&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=c091e4c6-1285-9cda-c440-55e4bc5dcf24">
+
+LGT  Schweiz AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zurich</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=10&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=c091e4c6-1285-9cda-c440-55e4bc5dcf24\u0026parent_name=LGT++Schweiz+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=LGT++Schweiz+AG%26nbsp%3B%26lt%3Binfo%40lgt.com%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=c091e4c6-1285-9cda-c440-55e4bc5dcf24","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"c091e4c6-1285-9cda-c440-55e4bc5dcf24","parent_name":"LGT  Schweiz AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"LGT  Schweiz AG \u003Cinfo@lgt.com\u003E","return_module":"Accounts","return_action":"ListView","return_id":"c091e4c6-1285-9cda-c440-55e4bc5dcf24"}});' class=''>
+info@lgt.com</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 20:44</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_c091e4c6-1285-9cda-c440-55e4bc5dcf24' onclick="lvg_dtails('c091e4c6-1285-9cda-c440-55e4bc5dcf24')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='95f30561-5934-2e10-e90a-55e4bfc0c8e2'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-95f30561-5934-2e10-e90a-55e4bfc0c8e2" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=11&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=95f30561-5934-2e10-e90a-55e4bfc0c8e2"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=11&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=95f30561-5934-2e10-e90a-55e4bfc0c8e2">
+
+SecurityHubSwitzerland AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Solothurn</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=11&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=95f30561-5934-2e10-e90a-55e4bfc0c8e2\u0026parent_name=SecurityHubSwitzerland+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=SecurityHubSwitzerland+AG%26nbsp%3B%26lt%3Binfo%40securityHubSwitzerland.ch%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=95f30561-5934-2e10-e90a-55e4bfc0c8e2","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"95f30561-5934-2e10-e90a-55e4bfc0c8e2","parent_name":"SecurityHubSwitzerland AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"SecurityHubSwitzerland AG \u003Cinfo@securityHubSwitzerland.ch\u003E","return_module":"Accounts","return_action":"ListView","return_id":"95f30561-5934-2e10-e90a-55e4bfc0c8e2"}});' class=''>
+info@securityHubSwitzerland.ch</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 20:57</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_95f30561-5934-2e10-e90a-55e4bfc0c8e2' onclick="lvg_dtails('95f30561-5934-2e10-e90a-55e4bfc0c8e2')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='evenListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='14b157a9-c52e-2d30-0ee6-55e4bf80488c'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-14b157a9-c52e-2d30-0ee6-55e4bf80488c" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=12&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=14b157a9-c52e-2d30-0ee6-55e4bf80488c"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=12&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=14b157a9-c52e-2d30-0ee6-55e4bf80488c">
+
+Substantia Invest AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Baar</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=12&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=14b157a9-c52e-2d30-0ee6-55e4bf80488c\u0026parent_name=Substantia+Invest+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Substantia+Invest+AG%26nbsp%3B%26lt%3Binfo%40substantia.ch%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=14b157a9-c52e-2d30-0ee6-55e4bf80488c","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"14b157a9-c52e-2d30-0ee6-55e4bf80488c","parent_name":"Substantia Invest AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Substantia Invest AG \u003Cinfo@substantia.ch\u003E","return_module":"Accounts","return_action":"ListView","return_id":"14b157a9-c52e-2d30-0ee6-55e4bf80488c"}});' class=''>
+info@substantia.ch</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 20:55</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_14b157a9-c52e-2d30-0ee6-55e4bf80488c' onclick="lvg_dtails('14b157a9-c52e-2d30-0ee6-55e4bf80488c')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='5ac06b68-8352-f83a-0222-573db534d452'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-5ac06b68-8352-f83a-0222-573db534d452" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=13&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=5ac06b68-8352-f83a-0222-573db534d452"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=13&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=5ac06b68-8352-f83a-0222-573db534d452">
+
+testorg</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=13&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=8881f900-38b5-85aa-9f62-56e68d80ca4b">
+
+Jan Diethelm</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=5ac06b68-8352-f83a-0222-573db534d452\u0026parent_name=testorg\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=testorg%26nbsp%3B%26lt%3B%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=5ac06b68-8352-f83a-0222-573db534d452","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"5ac06b68-8352-f83a-0222-573db534d452","parent_name":"testorg","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"testorg \u003C\u003E","return_module":"Accounts","return_action":"ListView","return_id":"5ac06b68-8352-f83a-0222-573db534d452"}});' class=''>
+</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+05/19/2016 12:46</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_5ac06b68-8352-f83a-0222-573db534d452' onclick="lvg_dtails('5ac06b68-8352-f83a-0222-573db534d452')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='evenListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='9b204b93-9639-a219-3266-55e4bf851ed4'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-9b204b93-9639-a219-3266-55e4bf851ed4" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=14&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=9b204b93-9639-a219-3266-55e4bf851ed4"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=14&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=9b204b93-9639-a219-3266-55e4bf851ed4">
+
+The World&#039;s Finest Clubs AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zollikon</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=14&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=9b204b93-9639-a219-3266-55e4bf851ed4\u0026parent_name=The+World%26%23039%3Bs+Finest+Clubs+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=The+World%26%23039%3Bs+Finest+Clubs+AG%26nbsp%3B%26lt%3Binfo%40theworldfinestclubs.com%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=9b204b93-9639-a219-3266-55e4bf851ed4","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"9b204b93-9639-a219-3266-55e4bf851ed4","parent_name":"The World\u0027s Finest Clubs AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"The World\u0027s Finest Clubs AG \u003Cinfo@theworldfinestclubs.com\u003E","return_module":"Accounts","return_action":"ListView","return_id":"9b204b93-9639-a219-3266-55e4bf851ed4"}});' class=''>
+info@theworldfinestclubs.com</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 20:56</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_9b204b93-9639-a219-3266-55e4bf851ed4' onclick="lvg_dtails('9b204b93-9639-a219-3266-55e4bf851ed4')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='dc7cb25c-f3de-e047-f18a-55e4bfb7a82c'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-dc7cb25c-f3de-e047-f18a-55e4bfb7a82c" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=15&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=dc7cb25c-f3de-e047-f18a-55e4bfb7a82c"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=15&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=dc7cb25c-f3de-e047-f18a-55e4bfb7a82c">
+
+Trubschachen Energie AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zug</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Swizerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=15&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=dc7cb25c-f3de-e047-f18a-55e4bfb7a82c\u0026parent_name=Trubschachen+Energie+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Trubschachen+Energie+AG%26nbsp%3B%26lt%3Binfo%40trubi.ch%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=dc7cb25c-f3de-e047-f18a-55e4bfb7a82c","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"dc7cb25c-f3de-e047-f18a-55e4bfb7a82c","parent_name":"Trubschachen Energie AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Trubschachen Energie AG \u003Cinfo@trubi.ch\u003E","return_module":"Accounts","return_action":"ListView","return_id":"dc7cb25c-f3de-e047-f18a-55e4bfb7a82c"}});' class=''>
+info@trubi.ch</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 20:55</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_dc7cb25c-f3de-e047-f18a-55e4bfb7a82c' onclick="lvg_dtails('dc7cb25c-f3de-e047-f18a-55e4bfb7a82c')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='evenListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='31fee98c-d9b1-7c7e-ed6f-55e497a192fb'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-31fee98c-d9b1-7c7e-ed6f-55e497a192fb" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=16&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=31fee98c-d9b1-7c7e-ed6f-55e497a192fb"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=16&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=31fee98c-d9b1-7c7e-ed6f-55e497a192fb">
+
+UBS AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zurich</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=16&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=31fee98c-d9b1-7c7e-ed6f-55e497a192fb\u0026parent_name=UBS+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=UBS+AG%26nbsp%3B%26lt%3Bprivatebanking%40ubs.com%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=31fee98c-d9b1-7c7e-ed6f-55e497a192fb","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"31fee98c-d9b1-7c7e-ed6f-55e497a192fb","parent_name":"UBS AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"UBS AG \u003Cprivatebanking@ubs.com\u003E","return_module":"Accounts","return_action":"ListView","return_id":"31fee98c-d9b1-7c7e-ed6f-55e497a192fb"}});' class=''>
+privatebanking@ubs.com</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 18:04</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_31fee98c-d9b1-7c7e-ed6f-55e497a192fb' onclick="lvg_dtails('31fee98c-d9b1-7c7e-ed6f-55e497a192fb')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='c89a1d61-1e28-5b79-d2b7-55e4bdfbc730'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-c89a1d61-1e28-5b79-d2b7-55e4bdfbc730" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=17&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=c89a1d61-1e28-5b79-d2b7-55e4bdfbc730"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=17&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=c89a1d61-1e28-5b79-d2b7-55e4bdfbc730">
+
+UBS Switzerland AG</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zurich</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=17&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=c89a1d61-1e28-5b79-d2b7-55e4bdfbc730\u0026parent_name=UBS+Switzerland+AG\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=UBS+Switzerland+AG%26nbsp%3B%26lt%3Bschweiz%40ubs.ch%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=c89a1d61-1e28-5b79-d2b7-55e4bdfbc730","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"c89a1d61-1e28-5b79-d2b7-55e4bdfbc730","parent_name":"UBS Switzerland AG","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"UBS Switzerland AG \u003Cschweiz@ubs.ch\u003E","return_module":"Accounts","return_action":"ListView","return_id":"c89a1d61-1e28-5b79-d2b7-55e4bdfbc730"}});' class=''>
+schweiz@ubs.ch</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/31/2015 20:49</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_c89a1d61-1e28-5b79-d2b7-55e4bdfbc730' onclick="lvg_dtails('c89a1d61-1e28-5b79-d2b7-55e4bdfbc730')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='evenListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='dad5f288-89a4-60ef-5467-56e7d4b69fae'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-dad5f288-89a4-60ef-5467-56e7d4b69fae" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=18&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=dad5f288-89a4-60ef-5467-56e7d4b69fae"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=18&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=dad5f288-89a4-60ef-5467-56e7d4b69fae">
+
+Unterholzer</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Zug</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Schweiz</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+044 1234567</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=18&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=8881f900-38b5-85aa-9f62-56e68d80ca4b">
+
+Jan Diethelm</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=dad5f288-89a4-60ef-5467-56e7d4b69fae\u0026parent_name=Unterholzer\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Unterholzer%26nbsp%3B%26lt%3B%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=dad5f288-89a4-60ef-5467-56e7d4b69fae","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"dad5f288-89a4-60ef-5467-56e7d4b69fae","parent_name":"Unterholzer","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Unterholzer \u003C\u003E","return_module":"Accounts","return_action":"ListView","return_id":"dad5f288-89a4-60ef-5467-56e7d4b69fae"}});' class=''>
+</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+03/15/2016 09:22</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_dad5f288-89a4-60ef-5467-56e7d4b69fae' onclick="lvg_dtails('dad5f288-89a4-60ef-5467-56e7d4b69fae')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+				    
+	        	
+													<tr height='20' class='oddListRowS1 list-view-table-content'>
+
+								<td width='1%' class='nowrap'>
+
+				 					<input title="Select this row" onclick='sListView.check_item(this, document.MassUpdate)' type='checkbox' class='checkbox' name='mass[]' value='3030c916-9298-39f6-fd60-55e1baf345c0'>
+
+				 				</td>
+
+									            	            				<td width='2%' nowrap>
+
+	                	                <a title='Edit' id="edit-3030c916-9298-39f6-fd60-55e1baf345c0" class="icon-button icon-pencil"
+	href="index.php?module=Accounts&offset=19&stamp=1465103290039791600&return_module=Accounts&action=EditView&record=3030c916-9298-39f6-fd60-55e1baf345c0"
+	                >
+</a>
+
+	                	            </td>
+
+	
+								
+								    <td  scope='row'  align='left' valign="top" class="">
+<b>
+<a href="index.php?module=Accounts&offset=19&stamp=1465103290039791600&return_module=Accounts&action=DetailView&record=3030c916-9298-39f6-fd60-55e1baf345c0">
+
+Wood Architets T</a>
+</b>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Baar</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+Switzerland</td>
+
+	                					
+								    <td  align='left' valign="top" class=" phone">
+
+&nbsp;</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href="index.php?module=Employees&offset=19&stamp=1465103290039791600&return_module=Employees&action=DetailView&record=7717bf4c-16f9-ea20-3954-55ddb284b377">
+
+marketing</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+<a href='javascript:void(0);' onclick='SUGAR.quickCompose.init({"fullComposeUrl":"contact_id=\u0026parent_type=Accounts\u0026parent_id=3030c916-9298-39f6-fd60-55e1baf345c0\u0026parent_name=Wood+Architets+T\u0026to_addrs_ids=\u0026to_addrs_names=\u0026to_addrs_emails=\u0026to_email_addrs=Wood+Architets+T%26nbsp%3B%26lt%3Binfo%40woodarchitects.com%26gt%3B\u0026return_module=Accounts\u0026return_action=ListView\u0026return_id=3030c916-9298-39f6-fd60-55e1baf345c0","composePackage":{"contact_id":"","parent_type":"Accounts","parent_id":"3030c916-9298-39f6-fd60-55e1baf345c0","parent_name":"Wood Architets T","to_addrs_ids":"","to_addrs_names":"","to_addrs_emails":"","to_email_addrs":"Wood Architets T \u003Cinfo@woodarchitects.com\u003E","return_module":"Accounts","return_action":"ListView","return_id":"3030c916-9298-39f6-fd60-55e1baf345c0"}});' class=''>
+info@woodarchitects.com</a>
+</td>
+
+	                					
+								    <td  align='left' valign="top" class="">
+
+08/29/2015 13:59</td>
+
+	                					
+								<td align='right'>
+<span id='adspan_3030c916-9298-39f6-fd60-55e1baf345c0' onclick="lvg_dtails('3030c916-9298-39f6-fd60-55e1baf345c0')"  style='position: relative;' class="icon icon-settings">
+<!--not_in_theme!-->
+</span>
+</td>
+
+		    	</tr>
+
+		                        
+<tr class='pagination'  role='presentation'>
+
+	<td colspan='18'>
+
+		<table border='0' cellpadding='0' cellspacing='0' width='100%' class='paginationTable'>
+
+			<tr>
+
+				<td nowrap="nowrap" width='2%' class='paginationActionButtons paginationActionButtons_mod'>
+
+					
+						<ul id="selectLinkBottom" class="clickMenu selectmenu fancymenu" name >
+<li class="sugar_action_button" >
+<input title="Select all" type='checkbox' class='checkbox massall' name='massall' id='massall_bottom' value='' onclick='sListView.check_all(document.MassUpdate, "mass[]", this.checked);' />
+<a id='select_link'  href='javascript: void(0);'>
+<ul id class="subnav" >
+</a>
+<li>
+<a  name='thispage' id='button_select_this_page_bottom' class='menuItem' onmouseover='hiliteItem(this,"yes");' onmouseout='unhiliteItem(this);' onclick='if (document.MassUpdate.select_entire_list.value==1){document.MassUpdate.select_entire_list.value=0;sListView.check_all(document.MassUpdate, "mass[]", true, 19)}else {sListView.check_all(document.MassUpdate, "mass[]", true)};' href='#'>
+Select This Page&nbsp;&#x28;19&#x29;&#x200E;</a>
+</li>
+<li>
+<a  name='selectall' id='button_select_all_bottom' class='menuItem' onmouseover='hiliteItem(this,"yes");' onmouseout='unhiliteItem(this);' onclick='sListView.check_entire_list(document.MassUpdate, "mass[]",true,19);' href='#'>
+Select All&nbsp;&#x28;19&#x29;&#x200E;</a>
+</li>
+<li>
+<a name='deselect' id='button_deselect_bottom' class='menuItem' onmouseover='hiliteItem(this,"yes");' onmouseout='unhiliteItem(this);' onclick='sListView.clear_all(document.MassUpdate, "mass[]", false);' href='#'>
+Deselect All</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+					
+					<ul id="actionLinkBottom" class="clickMenu selectActions fancymenu" name="selectActions" >
+<li class="sugar_action_button" >
+<a href='javascript:void(0)' id="delete_listview_bottom" onclick="return sListView.send_mass_update('selected', 'Please select at least 1 record to proceed.', 1)">
+Delete</a>
+<ul id class="subnav" >
+<li>
+<a href='javascript:void(0)' id="composeemail_listview_bottom"onclick="return sListView.send_form_for_emails(true, 'Emails', 'index.php?module=Emails&action=Compose&ListView=true','Please select at least 1 record to proceed.', 'Accounts', '19', 'Please select less than 10 records to proceed.')">
+Email</a>
+</li>
+<li>
+<a href='javascript:void(0)' id="massupdate_listview_bottom" onclick="document.getElementById('massupdate_form').style.display = ''; var yLoc = YAHOO.util.Dom.getY('massupdate_form'); scroll(0,yLoc);">
+Mass Update</a>
+</li>
+<li>
+<a href='javascript:void(0)' id='mergeduplicates_listview_bottom'onclick='if (sugarListView.get_checks_count()>
+ 1) {sListView.send_form(true, "MergeRecords", "index.php", "Please select at least 1 record to proceed.", "Accounts","&return_module=Accounts&return_action=index");} else {alert("Please select at least 2 records to proceed.");return false;}'>
+Merge</a>
+</li>
+<li>
+<a href='javascript:void(0)' id="targetlist_listview_bottom " onclick="            if(sugarListView.get_checks_count() < 1) {                alert('Please select at least 1 record to proceed.');                return false;            }			if ( document.forms['targetlist_form'] ) {				var form = document.forms['targetlist_form'];				form.reset;			} else				var form = document.createElement ( 'form' ) ;			form.setAttribute ( 'name' , 'targetlist_form' );			form.setAttribute ( 'method' , 'post' ) ;			form.setAttribute ( 'action' , 'index.php' );			document.body.appendChild ( form ) ;			if ( !form.module ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'module' );			    input.setAttribute ( 'value' , 'Accounts' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'action' );			    input.setAttribute ( 'value' , 'TargetListUpdate' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.uids ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'uids' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.prospect_list ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'prospect_list' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.return_module ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'return_module' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.return_action ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'return_action' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.select_entire_list ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'select_entire_list' );			    input.setAttribute ( 'value', document.MassUpdate.select_entire_list.value);			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			if ( !form.current_query_by_page ) {			    var input = document.createElement('input');			    input.setAttribute ( 'name' , 'current_query_by_page' );			    input.setAttribute ( 'value', 'YTo4OntzOjY6Im1vZHVsZSI7czo4OiJBY2NvdW50cyI7czo2OiJhY3Rpb24iO3M6NToiaW5kZXgiO3M6MTM6InNlYXJjaEZvcm1UYWIiO3M6MTI6ImJhc2ljX3NlYXJjaCI7czo1OiJxdWVyeSI7czo0OiJ0cnVlIjtzOjEwOiJuYW1lX2Jhc2ljIjtzOjA6IiI7czoyMzoiY3VycmVudF91c2VyX29ubHlfYmFzaWMiO3M6MToiMCI7czo2OiJidXR0b24iO3M6NjoiU2VhcmNoIjtzOjE0OiJmb3JRdWlja0NyZWF0ZSI7YjoxO30=' );			    input.setAttribute ( 'type' , 'hidden' );			    form.appendChild ( input ) ;			}			open_popup('ProspectLists','600','400','',true,false,{ 'call_back_function':'set_return_and_save_targetlist','form_name':'targetlist_form','field_to_name_array':{'id':'prospect_list'} } );">
+Add To Target List</a>
+</li>
+<li>
+<a href='javascript:void(0)' id="export_listview_bottom " onclick="return sListView.send_form(true, 'Accounts', 'index.php?entryPoint=export','Please select at least 1 record to proceed.')">
+Export</a>
+</li>
+</ul>
+</li>
+</ul>
+
+
+					<div class='selectActionsDisabled' id='select_actions_disabled_bottom'>
+<a href='javascript:void(0)'  onclick="return sListView.send_mass_update('selected', 'Please select at least 1 record to proceed.', 1)">
+Delete</a>
+<span class='ab'>
+</span>
+</div>
+					&nbsp;<span style='display: none;' id='selectedRecordsTop'>
+Selected: <input  style='border: 0px; background: transparent; font-size: inherit; color: inherit' type='text' id='selectCountTop' readonly name='selectCount[]' value='0' />
+</span>
+		
+				</td>
+
+				<td  nowrap='nowrap' width='1%' align="right" class='pagination-buttons'>
+
+											<button type="button" class="button icon-last disabled" >
+</button>
+
+					
+											<button type="button" class="button icon-forward disabled" title='Next'>
+
+						</button>
+
+					
+					<span class='pageNumbers'>
+1 - 19 of 19</span>
+
+
+											<button type="button" class="button icon-backward disabled" title='Previous'>
+
+						</button>
+
+					
+											<button type="button" class="button icon-first disabled" title='Start'>
+
+						</button>
+
+					
+
+				</td>
+
+			</tr>
+
+		</table>
+
+	</td>
+
+</tr>
+	</table>
+
+<script type="text/javascript">
+
+
+
+function lvg_nav(m,id,act,offset,t){
+    if(t.href.search(/#/) < 0){return;}
+    else{
+        if(act=='pte'){
+            act='ProjectTemplatesEditView';
+        }
+        else if(act=='d'){
+            act='DetailView';
+        }else if( act =='ReportsWizard'){
+            act = 'ReportsWizard';
+        }else{
+            act='EditView';
+        }
+    
+        url = 'index.php?module='+m+'&offset=' + offset + '&stamp=1465103290039791600&return_module='+m+'&action='+act+'&record='+id;
+        t.href=url;
+    
+    }
+}
+
+    function lvg_dtails(id){
+        return SUGAR.util.getAdditionalDetails( 'Accounts',id, 'adspan_'+id);}
+</script>
+
+<div id='massupdate_form' style='display:none;'>
+<table width='100%' cellpadding='0' cellspacing='0' border='0' class='formHeader h3Row'>
+<tr>
+<td nowrap>
+<h3>
+<span>
+Mass Update</h3>
+</td>
+</tr>
+</table>
+<div id='mass_update_div'>
+<table cellpadding='0' cellspacing='1' border='0' width='100%' class='edit view' id='mass_update_table'>
+<tr>
+		<td width="15%" scope="row">
+Assigned User:</td>
+
+		<td >
+<input class="sqsEnabled" autocomplete="off" id="mass_assigned_user_name" name='assigned_user_name' type="text" value="">
+<input id='mass_assigned_user_id' name='assigned_user_id' type="hidden" value="" />
+
+		<span class="id-ff multiple">
+<button id="mass_assigned_user_name_btn" title="Select" type="button" class="button" value='Select' name=btn1
+				onclick='open_popup("Users", 600, 400, "", true, false, {"call_back_function":"set_return","form_name":"MassUpdate","field_to_name_array":{"id":"assigned_user_id","user_name":"assigned_user_name"}});' />
+<img src="themes/default/images/id-ff-select.png?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</button>
+</span>
+
+		</td>
+<script type="text/javascript" language="javascript">
+if(typeof sqs_objects == 'undefined'){var sqs_objects = new Array;}sqs_objects['MassUpdate_assigned_user_name'] = {"form":"MassUpdate","method":"get_user_array","field_list":["user_name","id"],"populate_list":["mass_assigned_user_name","mass_assigned_user_id"],"conditions":[{"name":"user_name","op":"like_custom","end":"%","value":""}],"limit":"30","no_match_text":"No Match"}; registerSingleSmartInputListener(document.getElementById('mass_assigned_user_name'));
+				addToValidateBinaryDependency('MassUpdate', 'assigned_user_name', 'alpha', false, 'No match for field: Assigned to:','assigned_user_id');
+				</script>
+<td scope="row" width="15%">
+Type:</td>
+<td>
+<select id="mass_account_type" name="account_type">
+
+<OPTION selected value=''>
+-none-</OPTION>
+
+<OPTION value='__SugarMassUpdateClearField__'>
+</OPTION>
+
+<OPTION value='prospect'>
+Prospect</OPTION>
+
+<OPTION value='client'>
+Client</OPTION>
+
+<OPTION value='consulting'>
+Consulting</OPTION>
+
+<OPTION value='lawfirm'>
+Lawfirm</OPTION>
+
+<OPTION value='taxfirm'>
+Taxfirm</OPTION>
+
+<OPTION value='foundation'>
+Foundation</OPTION>
+
+<OPTION value='trust'>
+Trust</OPTION>
+
+<OPTION value='pension-fund'>
+Pension Fund</OPTION>
+
+<OPTION value='funds-management'>
+Funds Management</OPTION>
+
+<OPTION value='asset-management'>
+Asset Management</OPTION>
+
+<OPTION value='bank'>
+Bank</OPTION>
+
+<OPTION value='other'>
+Other</OPTION>
+</select>
+</td>
+</tr>
+<tr>
+<td scope="row" width="15%">
+Industry:</td>
+<td>
+<select id="mass_industry" name="industry">
+
+<OPTION selected value=''>
+-none-</OPTION>
+
+<OPTION value='__SugarMassUpdateClearField__'>
+</OPTION>
+
+<OPTION value='Apparel'>
+Apparel</OPTION>
+
+<OPTION value='Banking'>
+Banking</OPTION>
+
+<OPTION value='Biotechnology'>
+Biotechnology</OPTION>
+
+<OPTION value='Chemicals'>
+Chemicals</OPTION>
+
+<OPTION value='Communications'>
+Communications</OPTION>
+
+<OPTION value='Construction'>
+Construction</OPTION>
+
+<OPTION value='Consulting'>
+Consulting</OPTION>
+
+<OPTION value='Education'>
+Education</OPTION>
+
+<OPTION value='Electronics'>
+Electronics</OPTION>
+
+<OPTION value='Energy'>
+Energy</OPTION>
+
+<OPTION value='Engineering'>
+Engineering</OPTION>
+
+<OPTION value='Entertainment'>
+Entertainment</OPTION>
+
+<OPTION value='Environmental'>
+Environmental</OPTION>
+
+<OPTION value='Finance'>
+Finance</OPTION>
+
+<OPTION value='FinancialServices'>
+Financial services</OPTION>
+
+<OPTION value='Government'>
+Government</OPTION>
+
+<OPTION value='Healthcare'>
+Healthcare</OPTION>
+
+<OPTION value='Hospitality'>
+Hospitality</OPTION>
+
+<OPTION value='Insurance'>
+Insurance</OPTION>
+
+<OPTION value='Machinery'>
+Machinery</OPTION>
+
+<OPTION value='Manufacturing'>
+Manufacturing</OPTION>
+
+<OPTION value='Media'>
+Media</OPTION>
+
+<OPTION value='Not For Profit'>
+Not For Profit</OPTION>
+
+<OPTION value='Recreation'>
+Recreation</OPTION>
+
+<OPTION value='Retail'>
+Retail</OPTION>
+
+<OPTION value='Shipping'>
+Shipping</OPTION>
+
+<OPTION value='Technology'>
+Technology</OPTION>
+
+<OPTION value='Telecommunications'>
+Telecommunications</OPTION>
+
+<OPTION value='Transportation'>
+Transportation</OPTION>
+
+<OPTION value='Utilities'>
+Utilities</OPTION>
+
+<OPTION value='Other'>
+Other</OPTION>
+</select>
+</td>
+<td scope="row" width="15%">
+Billing Country:</td>
+<td>
+<select id="mass_billing_address_country" name="billing_address_country">
+
+<OPTION selected value=''>
+-none-</OPTION>
+
+<OPTION value='__SugarMassUpdateClearField__'>
+</OPTION>
+
+<OPTION value='ABU DHABI'>
+ABU DHABI</OPTION>
+
+<OPTION value='ADEN'>
+ADEN</OPTION>
+
+<OPTION value='AFGHANISTAN'>
+AFGHANISTAN</OPTION>
+
+<OPTION value='ALBANIA'>
+ALBANIA</OPTION>
+
+<OPTION value='ALGERIA'>
+ALGERIA</OPTION>
+
+<OPTION value='AMERICAN SAMOA'>
+AMERICAN SAMOA</OPTION>
+
+<OPTION value='ANDORRA'>
+ANDORRA</OPTION>
+
+<OPTION value='ANGOLA'>
+ANGOLA</OPTION>
+
+<OPTION value='ANTARCTICA'>
+ANTARCTICA</OPTION>
+
+<OPTION value='ANTIGUA'>
+ANTIGUA</OPTION>
+
+<OPTION value='ARGENTINA'>
+ARGENTINA</OPTION>
+
+<OPTION value='ARMENIA'>
+ARMENIA</OPTION>
+
+<OPTION value='ARUBA'>
+ARUBA</OPTION>
+
+<OPTION value='AUSTRALIA'>
+AUSTRALIA</OPTION>
+
+<OPTION value='AUSTRIA'>
+AUSTRIA</OPTION>
+
+<OPTION value='AZERBAIJAN'>
+AZERBAIJAN</OPTION>
+
+<OPTION value='BAHAMAS'>
+BAHAMAS</OPTION>
+
+<OPTION value='BAHRAIN'>
+BAHRAIN</OPTION>
+
+<OPTION value='BANGLADESH'>
+BANGLADESH</OPTION>
+
+<OPTION value='BARBADOS'>
+BARBADOS</OPTION>
+
+<OPTION value='BELARUS'>
+BELARUS</OPTION>
+
+<OPTION value='BELGIUM'>
+BELGIUM</OPTION>
+
+<OPTION value='BELIZE'>
+BELIZE</OPTION>
+
+<OPTION value='BENIN'>
+BENIN</OPTION>
+
+<OPTION value='BERMUDA'>
+BERMUDA</OPTION>
+
+<OPTION value='BHUTAN'>
+BHUTAN</OPTION>
+
+<OPTION value='BOLIVIA'>
+BOLIVIA</OPTION>
+
+<OPTION value='BOSNIA'>
+BOSNIA</OPTION>
+
+<OPTION value='BOTSWANA'>
+BOTSWANA</OPTION>
+
+<OPTION value='BOUVET ISLAND'>
+BOUVET ISLAND</OPTION>
+
+<OPTION value='BRAZIL'>
+BRAZIL</OPTION>
+
+<OPTION value='BRITISH ANTARCTICA TERRITORY'>
+BRITISH ANTARCTICA TERRITORY</OPTION>
+
+<OPTION value='BRITISH INDIAN OCEAN TERRITORY'>
+BRITISH INDIAN OCEAN TERRITORY</OPTION>
+
+<OPTION value='BRITISH VIRGIN ISLANDS'>
+BRITISH VIRGIN ISLANDS</OPTION>
+
+<OPTION value='BRITISH WEST INDIES'>
+BRITISH WEST INDIES</OPTION>
+
+<OPTION value='BRUNEI'>
+BRUNEI</OPTION>
+
+<OPTION value='BULGARIA'>
+BULGARIA</OPTION>
+
+<OPTION value='BURKINA FASO'>
+BURKINA FASO</OPTION>
+
+<OPTION value='BURUNDI'>
+BURUNDI</OPTION>
+
+<OPTION value='CAMBODIA'>
+CAMBODIA</OPTION>
+
+<OPTION value='CAMEROON'>
+CAMEROON</OPTION>
+
+<OPTION value='CANADA'>
+CANADA</OPTION>
+
+<OPTION value='CANAL ZONE'>
+CANAL ZONE</OPTION>
+
+<OPTION value='CANARY ISLAND'>
+CANARY ISLAND</OPTION>
+
+<OPTION value='CAPE VERDI ISLANDS'>
+CAPE VERDI ISLANDS</OPTION>
+
+<OPTION value='CAYMAN ISLANDS'>
+CAYMAN ISLANDS</OPTION>
+
+<OPTION value='CEVLON'>
+CEVLON</OPTION>
+
+<OPTION value='CHAD'>
+CHAD</OPTION>
+
+<OPTION value='CHANNEL ISLAND UK'>
+CHANNEL ISLAND UK</OPTION>
+
+<OPTION value='CHILE'>
+CHILE</OPTION>
+
+<OPTION value='CHINA'>
+CHINA</OPTION>
+
+<OPTION value='CHRISTMAS ISLAND'>
+CHRISTMAS ISLAND</OPTION>
+
+<OPTION value='COCOS (KEELING) ISLAND'>
+COCOS (KEELING) ISLAND</OPTION>
+
+<OPTION value='COLOMBIA'>
+COLOMBIA</OPTION>
+
+<OPTION value='COMORO ISLANDS'>
+COMORO ISLANDS</OPTION>
+
+<OPTION value='CONGO'>
+CONGO</OPTION>
+
+<OPTION value='CONGO KINSHASA'>
+CONGO KINSHASA</OPTION>
+
+<OPTION value='COOK ISLANDS'>
+COOK ISLANDS</OPTION>
+
+<OPTION value='COSTA RICA'>
+COSTA RICA</OPTION>
+
+<OPTION value='CROATIA'>
+CROATIA</OPTION>
+
+<OPTION value='CUBA'>
+CUBA</OPTION>
+
+<OPTION value='CURACAO'>
+CURACAO</OPTION>
+
+<OPTION value='CYPRUS'>
+CYPRUS</OPTION>
+
+<OPTION value='CZECH REPUBLIC'>
+CZECH REPUBLIC</OPTION>
+
+<OPTION value='DAHOMEY'>
+DAHOMEY</OPTION>
+
+<OPTION value='DENMARK'>
+DENMARK</OPTION>
+
+<OPTION value='DJIBOUTI'>
+DJIBOUTI</OPTION>
+
+<OPTION value='DOMINICA'>
+DOMINICA</OPTION>
+
+<OPTION value='DOMINICAN REPUBLIC'>
+DOMINICAN REPUBLIC</OPTION>
+
+<OPTION value='DUBAI'>
+DUBAI</OPTION>
+
+<OPTION value='ECUADOR'>
+ECUADOR</OPTION>
+
+<OPTION value='EGYPT'>
+EGYPT</OPTION>
+
+<OPTION value='EL SALVADOR'>
+EL SALVADOR</OPTION>
+
+<OPTION value='EQUATORIAL GUINEA'>
+EQUATORIAL GUINEA</OPTION>
+
+<OPTION value='ESTONIA'>
+ESTONIA</OPTION>
+
+<OPTION value='ETHIOPIA'>
+ETHIOPIA</OPTION>
+
+<OPTION value='FAEROE ISLANDS'>
+FAEROE ISLANDS</OPTION>
+
+<OPTION value='FALKLAND ISLANDS'>
+FALKLAND ISLANDS</OPTION>
+
+<OPTION value='FIJI'>
+FIJI</OPTION>
+
+<OPTION value='FINLAND'>
+FINLAND</OPTION>
+
+<OPTION value='FRANCE'>
+FRANCE</OPTION>
+
+<OPTION value='FRENCH GUIANA'>
+FRENCH GUIANA</OPTION>
+
+<OPTION value='FRENCH POLYNESIA'>
+FRENCH POLYNESIA</OPTION>
+
+<OPTION value='GABON'>
+GABON</OPTION>
+
+<OPTION value='GAMBIA'>
+GAMBIA</OPTION>
+
+<OPTION value='GEORGIA'>
+GEORGIA</OPTION>
+
+<OPTION value='GERMANY'>
+GERMANY</OPTION>
+
+<OPTION value='GHANA'>
+GHANA</OPTION>
+
+<OPTION value='GIBRALTAR'>
+GIBRALTAR</OPTION>
+
+<OPTION value='GREECE'>
+GREECE</OPTION>
+
+<OPTION value='GREENLAND'>
+GREENLAND</OPTION>
+
+<OPTION value='GUADELOUPE'>
+GUADELOUPE</OPTION>
+
+<OPTION value='GUAM'>
+GUAM</OPTION>
+
+<OPTION value='GUATEMALA'>
+GUATEMALA</OPTION>
+
+<OPTION value='GUINEA'>
+GUINEA</OPTION>
+
+<OPTION value='GUYANA'>
+GUYANA</OPTION>
+
+<OPTION value='HAITI'>
+HAITI</OPTION>
+
+<OPTION value='HONDURAS'>
+HONDURAS</OPTION>
+
+<OPTION value='HONG KONG'>
+HONG KONG</OPTION>
+
+<OPTION value='HUNGARY'>
+HUNGARY</OPTION>
+
+<OPTION value='ICELAND'>
+ICELAND</OPTION>
+
+<OPTION value='IFNI'>
+IFNI</OPTION>
+
+<OPTION value='INDIA'>
+INDIA</OPTION>
+
+<OPTION value='INDONESIA'>
+INDONESIA</OPTION>
+
+<OPTION value='IRAN'>
+IRAN</OPTION>
+
+<OPTION value='IRAQ'>
+IRAQ</OPTION>
+
+<OPTION value='IRELAND'>
+IRELAND</OPTION>
+
+<OPTION value='ISRAEL'>
+ISRAEL</OPTION>
+
+<OPTION value='ITALY'>
+ITALY</OPTION>
+
+<OPTION value='IVORY COAST'>
+IVORY COAST</OPTION>
+
+<OPTION value='JAMAICA'>
+JAMAICA</OPTION>
+
+<OPTION value='JAPAN'>
+JAPAN</OPTION>
+
+<OPTION value='JORDAN'>
+JORDAN</OPTION>
+
+<OPTION value='KAZAKHSTAN'>
+KAZAKHSTAN</OPTION>
+
+<OPTION value='KENYA'>
+KENYA</OPTION>
+
+<OPTION value='KOREA'>
+KOREA</OPTION>
+
+<OPTION value='KOREA, SOUTH'>
+KOREA, SOUTH</OPTION>
+
+<OPTION value='KUWAIT'>
+KUWAIT</OPTION>
+
+<OPTION value='KYRGYZSTAN'>
+KYRGYZSTAN</OPTION>
+
+<OPTION value='LAOS'>
+LAOS</OPTION>
+
+<OPTION value='LATVIA'>
+LATVIA</OPTION>
+
+<OPTION value='LEBANON'>
+LEBANON</OPTION>
+
+<OPTION value='LEEWARD ISLANDS'>
+LEEWARD ISLANDS</OPTION>
+
+<OPTION value='LESOTHO'>
+LESOTHO</OPTION>
+
+<OPTION value='LIBYA'>
+LIBYA</OPTION>
+
+<OPTION value='LIECHTENSTEIN'>
+LIECHTENSTEIN</OPTION>
+
+<OPTION value='LITHUANIA'>
+LITHUANIA</OPTION>
+
+<OPTION value='LUXEMBOURG'>
+LUXEMBOURG</OPTION>
+
+<OPTION value='MACAO'>
+MACAO</OPTION>
+
+<OPTION value='MACEDONIA'>
+MACEDONIA</OPTION>
+
+<OPTION value='MADAGASCAR'>
+MADAGASCAR</OPTION>
+
+<OPTION value='MALAWI'>
+MALAWI</OPTION>
+
+<OPTION value='MALAYSIA'>
+MALAYSIA</OPTION>
+
+<OPTION value='MALDIVES'>
+MALDIVES</OPTION>
+
+<OPTION value='MALI'>
+MALI</OPTION>
+
+<OPTION value='MALTA'>
+MALTA</OPTION>
+
+<OPTION value='MARTINIQUE'>
+MARTINIQUE</OPTION>
+
+<OPTION value='MAURITANIA'>
+MAURITANIA</OPTION>
+
+<OPTION value='MAURITIUS'>
+MAURITIUS</OPTION>
+
+<OPTION value='MELANESIA'>
+MELANESIA</OPTION>
+
+<OPTION value='MEXICO'>
+MEXICO</OPTION>
+
+<OPTION value='MOLDOVIA'>
+MOLDOVIA</OPTION>
+
+<OPTION value='MONACO'>
+MONACO</OPTION>
+
+<OPTION value='MONGOLIA'>
+MONGOLIA</OPTION>
+
+<OPTION value='MOROCCO'>
+MOROCCO</OPTION>
+
+<OPTION value='MOZAMBIQUE'>
+MOZAMBIQUE</OPTION>
+
+<OPTION value='MYANAMAR'>
+MYANAMAR</OPTION>
+
+<OPTION value='NAMIBIA'>
+NAMIBIA</OPTION>
+
+<OPTION value='NEPAL'>
+NEPAL</OPTION>
+
+<OPTION value='NETHERLANDS'>
+NETHERLANDS</OPTION>
+
+<OPTION value='NETHERLANDS ANTILLES'>
+NETHERLANDS ANTILLES</OPTION>
+
+<OPTION value='NETHERLANDS ANTILLES NEUTRAL ZONE'>
+NETHERLANDS ANTILLES NEUTRAL ZONE</OPTION>
+
+<OPTION value='NEW CALADONIA'>
+NEW CALADONIA</OPTION>
+
+<OPTION value='NEW HEBRIDES'>
+NEW HEBRIDES</OPTION>
+
+<OPTION value='NEW ZEALAND'>
+NEW ZEALAND</OPTION>
+
+<OPTION value='NICARAGUA'>
+NICARAGUA</OPTION>
+
+<OPTION value='NIGER'>
+NIGER</OPTION>
+
+<OPTION value='NIGERIA'>
+NIGERIA</OPTION>
+
+<OPTION value='NORFOLK ISLAND'>
+NORFOLK ISLAND</OPTION>
+
+<OPTION value='NORWAY'>
+NORWAY</OPTION>
+
+<OPTION value='OMAN'>
+OMAN</OPTION>
+
+<OPTION value='OTHER'>
+OTHER</OPTION>
+
+<OPTION value='PACIFIC ISLAND'>
+PACIFIC ISLAND</OPTION>
+
+<OPTION value='PAKISTAN'>
+PAKISTAN</OPTION>
+
+<OPTION value='PANAMA'>
+PANAMA</OPTION>
+
+<OPTION value='PAPUA NEW GUINEA'>
+PAPUA NEW GUINEA</OPTION>
+
+<OPTION value='PARAGUAY'>
+PARAGUAY</OPTION>
+
+<OPTION value='PERU'>
+PERU</OPTION>
+
+<OPTION value='PHILIPPINES'>
+PHILIPPINES</OPTION>
+
+<OPTION value='POLAND'>
+POLAND</OPTION>
+
+<OPTION value='PORTUGAL'>
+PORTUGAL</OPTION>
+
+<OPTION value='PORTUGUESE TIMOR'>
+PORTUGUESE TIMOR</OPTION>
+
+<OPTION value='PUERTO RICO'>
+PUERTO RICO</OPTION>
+
+<OPTION value='QATAR'>
+QATAR</OPTION>
+
+<OPTION value='REPUBLIC OF BELARUS'>
+REPUBLIC OF BELARUS</OPTION>
+
+<OPTION value='REPUBLIC OF SOUTH AFRICA'>
+REPUBLIC OF SOUTH AFRICA</OPTION>
+
+<OPTION value='REUNION'>
+REUNION</OPTION>
+
+<OPTION value='ROMANIA'>
+ROMANIA</OPTION>
+
+<OPTION value='RUSSIA'>
+RUSSIA</OPTION>
+
+<OPTION value='RWANDA'>
+RWANDA</OPTION>
+
+<OPTION value='RYUKYU ISLANDS'>
+RYUKYU ISLANDS</OPTION>
+
+<OPTION value='SABAH'>
+SABAH</OPTION>
+
+<OPTION value='SAN MARINO'>
+SAN MARINO</OPTION>
+
+<OPTION value='SAUDI ARABIA'>
+SAUDI ARABIA</OPTION>
+
+<OPTION value='SENEGAL'>
+SENEGAL</OPTION>
+
+<OPTION value='SERBIA'>
+SERBIA</OPTION>
+
+<OPTION value='SEYCHELLES'>
+SEYCHELLES</OPTION>
+
+<OPTION value='SIERRA LEONE'>
+SIERRA LEONE</OPTION>
+
+<OPTION value='SINGAPORE'>
+SINGAPORE</OPTION>
+
+<OPTION value='SLOVAKIA'>
+SLOVAKIA</OPTION>
+
+<OPTION value='SLOVENIA'>
+SLOVENIA</OPTION>
+
+<OPTION value='SOMALILIAND'>
+SOMALILIAND</OPTION>
+
+<OPTION value='SOUTH AFRICA'>
+SOUTH AFRICA</OPTION>
+
+<OPTION value='SOUTH YEMEN'>
+SOUTH YEMEN</OPTION>
+
+<OPTION value='SPAIN'>
+SPAIN</OPTION>
+
+<OPTION value='SPANISH SAHARA'>
+SPANISH SAHARA</OPTION>
+
+<OPTION value='SRI LANKA'>
+SRI LANKA</OPTION>
+
+<OPTION value='ST. KITTS AND NEVIS'>
+ST. KITTS AND NEVIS</OPTION>
+
+<OPTION value='ST. LUCIA'>
+ST. LUCIA</OPTION>
+
+<OPTION value='SUDAN'>
+SUDAN</OPTION>
+
+<OPTION value='SURINAM'>
+SURINAM</OPTION>
+
+<OPTION value='SW AFRICA'>
+SW AFRICA</OPTION>
+
+<OPTION value='SWAZILAND'>
+SWAZILAND</OPTION>
+
+<OPTION value='SWEDEN'>
+SWEDEN</OPTION>
+
+<OPTION value='SWITZERLAND'>
+SWITZERLAND</OPTION>
+
+<OPTION value='SYRIA'>
+SYRIA</OPTION>
+
+<OPTION value='TAIWAN'>
+TAIWAN</OPTION>
+
+<OPTION value='TAJIKISTAN'>
+TAJIKISTAN</OPTION>
+
+<OPTION value='TANZANIA'>
+TANZANIA</OPTION>
+
+<OPTION value='THAILAND'>
+THAILAND</OPTION>
+
+<OPTION value='TONGA'>
+TONGA</OPTION>
+
+<OPTION value='TRINIDAD'>
+TRINIDAD</OPTION>
+
+<OPTION value='TUNISIA'>
+TUNISIA</OPTION>
+
+<OPTION value='TURKEY'>
+TURKEY</OPTION>
+
+<OPTION value='UGANDA'>
+UGANDA</OPTION>
+
+<OPTION value='UKRAINE'>
+UKRAINE</OPTION>
+
+<OPTION value='UNITED ARAB EMIRATES'>
+UNITED ARAB EMIRATES</OPTION>
+
+<OPTION value='UNITED KINGDOM'>
+UNITED KINGDOM</OPTION>
+
+<OPTION value='UPPER VOLTA'>
+UPPER VOLTA</OPTION>
+
+<OPTION value='URUGUAY'>
+URUGUAY</OPTION>
+
+<OPTION value='US PACIFIC ISLAND'>
+US PACIFIC ISLAND</OPTION>
+
+<OPTION value='US VIRGIN ISLANDS'>
+US VIRGIN ISLANDS</OPTION>
+
+<OPTION value='USA'>
+USA</OPTION>
+
+<OPTION value='UZBEKISTAN'>
+UZBEKISTAN</OPTION>
+
+<OPTION value='VANUATU'>
+VANUATU</OPTION>
+
+<OPTION value='VATICAN CITY'>
+VATICAN CITY</OPTION>
+
+<OPTION value='VENEZUELA'>
+VENEZUELA</OPTION>
+
+<OPTION value='VIETNAM'>
+VIETNAM</OPTION>
+
+<OPTION value='WAKE ISLAND'>
+WAKE ISLAND</OPTION>
+
+<OPTION value='WEST INDIES'>
+WEST INDIES</OPTION>
+
+<OPTION value='WESTERN SAHARA'>
+WESTERN SAHARA</OPTION>
+
+<OPTION value='YEMEN'>
+YEMEN</OPTION>
+
+<OPTION value='ZAIRE'>
+ZAIRE</OPTION>
+
+<OPTION value='ZAMBIA'>
+ZAMBIA</OPTION>
+
+<OPTION value='ZIMBABWE'>
+ZIMBABWE</OPTION>
+</select>
+</td>
+</tr>
+<tr>
+<td scope="row" width="15%">
+Other Country:</td>
+<td>
+<select id="mass_shipping_address_country" name="shipping_address_country">
+
+<OPTION selected value=''>
+-none-</OPTION>
+
+<OPTION value='__SugarMassUpdateClearField__'>
+</OPTION>
+
+<OPTION value='ABU DHABI'>
+ABU DHABI</OPTION>
+
+<OPTION value='ADEN'>
+ADEN</OPTION>
+
+<OPTION value='AFGHANISTAN'>
+AFGHANISTAN</OPTION>
+
+<OPTION value='ALBANIA'>
+ALBANIA</OPTION>
+
+<OPTION value='ALGERIA'>
+ALGERIA</OPTION>
+
+<OPTION value='AMERICAN SAMOA'>
+AMERICAN SAMOA</OPTION>
+
+<OPTION value='ANDORRA'>
+ANDORRA</OPTION>
+
+<OPTION value='ANGOLA'>
+ANGOLA</OPTION>
+
+<OPTION value='ANTARCTICA'>
+ANTARCTICA</OPTION>
+
+<OPTION value='ANTIGUA'>
+ANTIGUA</OPTION>
+
+<OPTION value='ARGENTINA'>
+ARGENTINA</OPTION>
+
+<OPTION value='ARMENIA'>
+ARMENIA</OPTION>
+
+<OPTION value='ARUBA'>
+ARUBA</OPTION>
+
+<OPTION value='AUSTRALIA'>
+AUSTRALIA</OPTION>
+
+<OPTION value='AUSTRIA'>
+AUSTRIA</OPTION>
+
+<OPTION value='AZERBAIJAN'>
+AZERBAIJAN</OPTION>
+
+<OPTION value='BAHAMAS'>
+BAHAMAS</OPTION>
+
+<OPTION value='BAHRAIN'>
+BAHRAIN</OPTION>
+
+<OPTION value='BANGLADESH'>
+BANGLADESH</OPTION>
+
+<OPTION value='BARBADOS'>
+BARBADOS</OPTION>
+
+<OPTION value='BELARUS'>
+BELARUS</OPTION>
+
+<OPTION value='BELGIUM'>
+BELGIUM</OPTION>
+
+<OPTION value='BELIZE'>
+BELIZE</OPTION>
+
+<OPTION value='BENIN'>
+BENIN</OPTION>
+
+<OPTION value='BERMUDA'>
+BERMUDA</OPTION>
+
+<OPTION value='BHUTAN'>
+BHUTAN</OPTION>
+
+<OPTION value='BOLIVIA'>
+BOLIVIA</OPTION>
+
+<OPTION value='BOSNIA'>
+BOSNIA</OPTION>
+
+<OPTION value='BOTSWANA'>
+BOTSWANA</OPTION>
+
+<OPTION value='BOUVET ISLAND'>
+BOUVET ISLAND</OPTION>
+
+<OPTION value='BRAZIL'>
+BRAZIL</OPTION>
+
+<OPTION value='BRITISH ANTARCTICA TERRITORY'>
+BRITISH ANTARCTICA TERRITORY</OPTION>
+
+<OPTION value='BRITISH INDIAN OCEAN TERRITORY'>
+BRITISH INDIAN OCEAN TERRITORY</OPTION>
+
+<OPTION value='BRITISH VIRGIN ISLANDS'>
+BRITISH VIRGIN ISLANDS</OPTION>
+
+<OPTION value='BRITISH WEST INDIES'>
+BRITISH WEST INDIES</OPTION>
+
+<OPTION value='BRUNEI'>
+BRUNEI</OPTION>
+
+<OPTION value='BULGARIA'>
+BULGARIA</OPTION>
+
+<OPTION value='BURKINA FASO'>
+BURKINA FASO</OPTION>
+
+<OPTION value='BURUNDI'>
+BURUNDI</OPTION>
+
+<OPTION value='CAMBODIA'>
+CAMBODIA</OPTION>
+
+<OPTION value='CAMEROON'>
+CAMEROON</OPTION>
+
+<OPTION value='CANADA'>
+CANADA</OPTION>
+
+<OPTION value='CANAL ZONE'>
+CANAL ZONE</OPTION>
+
+<OPTION value='CANARY ISLAND'>
+CANARY ISLAND</OPTION>
+
+<OPTION value='CAPE VERDI ISLANDS'>
+CAPE VERDI ISLANDS</OPTION>
+
+<OPTION value='CAYMAN ISLANDS'>
+CAYMAN ISLANDS</OPTION>
+
+<OPTION value='CEVLON'>
+CEVLON</OPTION>
+
+<OPTION value='CHAD'>
+CHAD</OPTION>
+
+<OPTION value='CHANNEL ISLAND UK'>
+CHANNEL ISLAND UK</OPTION>
+
+<OPTION value='CHILE'>
+CHILE</OPTION>
+
+<OPTION value='CHINA'>
+CHINA</OPTION>
+
+<OPTION value='CHRISTMAS ISLAND'>
+CHRISTMAS ISLAND</OPTION>
+
+<OPTION value='COCOS (KEELING) ISLAND'>
+COCOS (KEELING) ISLAND</OPTION>
+
+<OPTION value='COLOMBIA'>
+COLOMBIA</OPTION>
+
+<OPTION value='COMORO ISLANDS'>
+COMORO ISLANDS</OPTION>
+
+<OPTION value='CONGO'>
+CONGO</OPTION>
+
+<OPTION value='CONGO KINSHASA'>
+CONGO KINSHASA</OPTION>
+
+<OPTION value='COOK ISLANDS'>
+COOK ISLANDS</OPTION>
+
+<OPTION value='COSTA RICA'>
+COSTA RICA</OPTION>
+
+<OPTION value='CROATIA'>
+CROATIA</OPTION>
+
+<OPTION value='CUBA'>
+CUBA</OPTION>
+
+<OPTION value='CURACAO'>
+CURACAO</OPTION>
+
+<OPTION value='CYPRUS'>
+CYPRUS</OPTION>
+
+<OPTION value='CZECH REPUBLIC'>
+CZECH REPUBLIC</OPTION>
+
+<OPTION value='DAHOMEY'>
+DAHOMEY</OPTION>
+
+<OPTION value='DENMARK'>
+DENMARK</OPTION>
+
+<OPTION value='DJIBOUTI'>
+DJIBOUTI</OPTION>
+
+<OPTION value='DOMINICA'>
+DOMINICA</OPTION>
+
+<OPTION value='DOMINICAN REPUBLIC'>
+DOMINICAN REPUBLIC</OPTION>
+
+<OPTION value='DUBAI'>
+DUBAI</OPTION>
+
+<OPTION value='ECUADOR'>
+ECUADOR</OPTION>
+
+<OPTION value='EGYPT'>
+EGYPT</OPTION>
+
+<OPTION value='EL SALVADOR'>
+EL SALVADOR</OPTION>
+
+<OPTION value='EQUATORIAL GUINEA'>
+EQUATORIAL GUINEA</OPTION>
+
+<OPTION value='ESTONIA'>
+ESTONIA</OPTION>
+
+<OPTION value='ETHIOPIA'>
+ETHIOPIA</OPTION>
+
+<OPTION value='FAEROE ISLANDS'>
+FAEROE ISLANDS</OPTION>
+
+<OPTION value='FALKLAND ISLANDS'>
+FALKLAND ISLANDS</OPTION>
+
+<OPTION value='FIJI'>
+FIJI</OPTION>
+
+<OPTION value='FINLAND'>
+FINLAND</OPTION>
+
+<OPTION value='FRANCE'>
+FRANCE</OPTION>
+
+<OPTION value='FRENCH GUIANA'>
+FRENCH GUIANA</OPTION>
+
+<OPTION value='FRENCH POLYNESIA'>
+FRENCH POLYNESIA</OPTION>
+
+<OPTION value='GABON'>
+GABON</OPTION>
+
+<OPTION value='GAMBIA'>
+GAMBIA</OPTION>
+
+<OPTION value='GEORGIA'>
+GEORGIA</OPTION>
+
+<OPTION value='GERMANY'>
+GERMANY</OPTION>
+
+<OPTION value='GHANA'>
+GHANA</OPTION>
+
+<OPTION value='GIBRALTAR'>
+GIBRALTAR</OPTION>
+
+<OPTION value='GREECE'>
+GREECE</OPTION>
+
+<OPTION value='GREENLAND'>
+GREENLAND</OPTION>
+
+<OPTION value='GUADELOUPE'>
+GUADELOUPE</OPTION>
+
+<OPTION value='GUAM'>
+GUAM</OPTION>
+
+<OPTION value='GUATEMALA'>
+GUATEMALA</OPTION>
+
+<OPTION value='GUINEA'>
+GUINEA</OPTION>
+
+<OPTION value='GUYANA'>
+GUYANA</OPTION>
+
+<OPTION value='HAITI'>
+HAITI</OPTION>
+
+<OPTION value='HONDURAS'>
+HONDURAS</OPTION>
+
+<OPTION value='HONG KONG'>
+HONG KONG</OPTION>
+
+<OPTION value='HUNGARY'>
+HUNGARY</OPTION>
+
+<OPTION value='ICELAND'>
+ICELAND</OPTION>
+
+<OPTION value='IFNI'>
+IFNI</OPTION>
+
+<OPTION value='INDIA'>
+INDIA</OPTION>
+
+<OPTION value='INDONESIA'>
+INDONESIA</OPTION>
+
+<OPTION value='IRAN'>
+IRAN</OPTION>
+
+<OPTION value='IRAQ'>
+IRAQ</OPTION>
+
+<OPTION value='IRELAND'>
+IRELAND</OPTION>
+
+<OPTION value='ISRAEL'>
+ISRAEL</OPTION>
+
+<OPTION value='ITALY'>
+ITALY</OPTION>
+
+<OPTION value='IVORY COAST'>
+IVORY COAST</OPTION>
+
+<OPTION value='JAMAICA'>
+JAMAICA</OPTION>
+
+<OPTION value='JAPAN'>
+JAPAN</OPTION>
+
+<OPTION value='JORDAN'>
+JORDAN</OPTION>
+
+<OPTION value='KAZAKHSTAN'>
+KAZAKHSTAN</OPTION>
+
+<OPTION value='KENYA'>
+KENYA</OPTION>
+
+<OPTION value='KOREA'>
+KOREA</OPTION>
+
+<OPTION value='KOREA, SOUTH'>
+KOREA, SOUTH</OPTION>
+
+<OPTION value='KUWAIT'>
+KUWAIT</OPTION>
+
+<OPTION value='KYRGYZSTAN'>
+KYRGYZSTAN</OPTION>
+
+<OPTION value='LAOS'>
+LAOS</OPTION>
+
+<OPTION value='LATVIA'>
+LATVIA</OPTION>
+
+<OPTION value='LEBANON'>
+LEBANON</OPTION>
+
+<OPTION value='LEEWARD ISLANDS'>
+LEEWARD ISLANDS</OPTION>
+
+<OPTION value='LESOTHO'>
+LESOTHO</OPTION>
+
+<OPTION value='LIBYA'>
+LIBYA</OPTION>
+
+<OPTION value='LIECHTENSTEIN'>
+LIECHTENSTEIN</OPTION>
+
+<OPTION value='LITHUANIA'>
+LITHUANIA</OPTION>
+
+<OPTION value='LUXEMBOURG'>
+LUXEMBOURG</OPTION>
+
+<OPTION value='MACAO'>
+MACAO</OPTION>
+
+<OPTION value='MACEDONIA'>
+MACEDONIA</OPTION>
+
+<OPTION value='MADAGASCAR'>
+MADAGASCAR</OPTION>
+
+<OPTION value='MALAWI'>
+MALAWI</OPTION>
+
+<OPTION value='MALAYSIA'>
+MALAYSIA</OPTION>
+
+<OPTION value='MALDIVES'>
+MALDIVES</OPTION>
+
+<OPTION value='MALI'>
+MALI</OPTION>
+
+<OPTION value='MALTA'>
+MALTA</OPTION>
+
+<OPTION value='MARTINIQUE'>
+MARTINIQUE</OPTION>
+
+<OPTION value='MAURITANIA'>
+MAURITANIA</OPTION>
+
+<OPTION value='MAURITIUS'>
+MAURITIUS</OPTION>
+
+<OPTION value='MELANESIA'>
+MELANESIA</OPTION>
+
+<OPTION value='MEXICO'>
+MEXICO</OPTION>
+
+<OPTION value='MOLDOVIA'>
+MOLDOVIA</OPTION>
+
+<OPTION value='MONACO'>
+MONACO</OPTION>
+
+<OPTION value='MONGOLIA'>
+MONGOLIA</OPTION>
+
+<OPTION value='MOROCCO'>
+MOROCCO</OPTION>
+
+<OPTION value='MOZAMBIQUE'>
+MOZAMBIQUE</OPTION>
+
+<OPTION value='MYANAMAR'>
+MYANAMAR</OPTION>
+
+<OPTION value='NAMIBIA'>
+NAMIBIA</OPTION>
+
+<OPTION value='NEPAL'>
+NEPAL</OPTION>
+
+<OPTION value='NETHERLANDS'>
+NETHERLANDS</OPTION>
+
+<OPTION value='NETHERLANDS ANTILLES'>
+NETHERLANDS ANTILLES</OPTION>
+
+<OPTION value='NETHERLANDS ANTILLES NEUTRAL ZONE'>
+NETHERLANDS ANTILLES NEUTRAL ZONE</OPTION>
+
+<OPTION value='NEW CALADONIA'>
+NEW CALADONIA</OPTION>
+
+<OPTION value='NEW HEBRIDES'>
+NEW HEBRIDES</OPTION>
+
+<OPTION value='NEW ZEALAND'>
+NEW ZEALAND</OPTION>
+
+<OPTION value='NICARAGUA'>
+NICARAGUA</OPTION>
+
+<OPTION value='NIGER'>
+NIGER</OPTION>
+
+<OPTION value='NIGERIA'>
+NIGERIA</OPTION>
+
+<OPTION value='NORFOLK ISLAND'>
+NORFOLK ISLAND</OPTION>
+
+<OPTION value='NORWAY'>
+NORWAY</OPTION>
+
+<OPTION value='OMAN'>
+OMAN</OPTION>
+
+<OPTION value='OTHER'>
+OTHER</OPTION>
+
+<OPTION value='PACIFIC ISLAND'>
+PACIFIC ISLAND</OPTION>
+
+<OPTION value='PAKISTAN'>
+PAKISTAN</OPTION>
+
+<OPTION value='PANAMA'>
+PANAMA</OPTION>
+
+<OPTION value='PAPUA NEW GUINEA'>
+PAPUA NEW GUINEA</OPTION>
+
+<OPTION value='PARAGUAY'>
+PARAGUAY</OPTION>
+
+<OPTION value='PERU'>
+PERU</OPTION>
+
+<OPTION value='PHILIPPINES'>
+PHILIPPINES</OPTION>
+
+<OPTION value='POLAND'>
+POLAND</OPTION>
+
+<OPTION value='PORTUGAL'>
+PORTUGAL</OPTION>
+
+<OPTION value='PORTUGUESE TIMOR'>
+PORTUGUESE TIMOR</OPTION>
+
+<OPTION value='PUERTO RICO'>
+PUERTO RICO</OPTION>
+
+<OPTION value='QATAR'>
+QATAR</OPTION>
+
+<OPTION value='REPUBLIC OF BELARUS'>
+REPUBLIC OF BELARUS</OPTION>
+
+<OPTION value='REPUBLIC OF SOUTH AFRICA'>
+REPUBLIC OF SOUTH AFRICA</OPTION>
+
+<OPTION value='REUNION'>
+REUNION</OPTION>
+
+<OPTION value='ROMANIA'>
+ROMANIA</OPTION>
+
+<OPTION value='RUSSIA'>
+RUSSIA</OPTION>
+
+<OPTION value='RWANDA'>
+RWANDA</OPTION>
+
+<OPTION value='RYUKYU ISLANDS'>
+RYUKYU ISLANDS</OPTION>
+
+<OPTION value='SABAH'>
+SABAH</OPTION>
+
+<OPTION value='SAN MARINO'>
+SAN MARINO</OPTION>
+
+<OPTION value='SAUDI ARABIA'>
+SAUDI ARABIA</OPTION>
+
+<OPTION value='SENEGAL'>
+SENEGAL</OPTION>
+
+<OPTION value='SERBIA'>
+SERBIA</OPTION>
+
+<OPTION value='SEYCHELLES'>
+SEYCHELLES</OPTION>
+
+<OPTION value='SIERRA LEONE'>
+SIERRA LEONE</OPTION>
+
+<OPTION value='SINGAPORE'>
+SINGAPORE</OPTION>
+
+<OPTION value='SLOVAKIA'>
+SLOVAKIA</OPTION>
+
+<OPTION value='SLOVENIA'>
+SLOVENIA</OPTION>
+
+<OPTION value='SOMALILIAND'>
+SOMALILIAND</OPTION>
+
+<OPTION value='SOUTH AFRICA'>
+SOUTH AFRICA</OPTION>
+
+<OPTION value='SOUTH YEMEN'>
+SOUTH YEMEN</OPTION>
+
+<OPTION value='SPAIN'>
+SPAIN</OPTION>
+
+<OPTION value='SPANISH SAHARA'>
+SPANISH SAHARA</OPTION>
+
+<OPTION value='SRI LANKA'>
+SRI LANKA</OPTION>
+
+<OPTION value='ST. KITTS AND NEVIS'>
+ST. KITTS AND NEVIS</OPTION>
+
+<OPTION value='ST. LUCIA'>
+ST. LUCIA</OPTION>
+
+<OPTION value='SUDAN'>
+SUDAN</OPTION>
+
+<OPTION value='SURINAM'>
+SURINAM</OPTION>
+
+<OPTION value='SW AFRICA'>
+SW AFRICA</OPTION>
+
+<OPTION value='SWAZILAND'>
+SWAZILAND</OPTION>
+
+<OPTION value='SWEDEN'>
+SWEDEN</OPTION>
+
+<OPTION value='SWITZERLAND'>
+SWITZERLAND</OPTION>
+
+<OPTION value='SYRIA'>
+SYRIA</OPTION>
+
+<OPTION value='TAIWAN'>
+TAIWAN</OPTION>
+
+<OPTION value='TAJIKISTAN'>
+TAJIKISTAN</OPTION>
+
+<OPTION value='TANZANIA'>
+TANZANIA</OPTION>
+
+<OPTION value='THAILAND'>
+THAILAND</OPTION>
+
+<OPTION value='TONGA'>
+TONGA</OPTION>
+
+<OPTION value='TRINIDAD'>
+TRINIDAD</OPTION>
+
+<OPTION value='TUNISIA'>
+TUNISIA</OPTION>
+
+<OPTION value='TURKEY'>
+TURKEY</OPTION>
+
+<OPTION value='UGANDA'>
+UGANDA</OPTION>
+
+<OPTION value='UKRAINE'>
+UKRAINE</OPTION>
+
+<OPTION value='UNITED ARAB EMIRATES'>
+UNITED ARAB EMIRATES</OPTION>
+
+<OPTION value='UNITED KINGDOM'>
+UNITED KINGDOM</OPTION>
+
+<OPTION value='UPPER VOLTA'>
+UPPER VOLTA</OPTION>
+
+<OPTION value='URUGUAY'>
+URUGUAY</OPTION>
+
+<OPTION value='US PACIFIC ISLAND'>
+US PACIFIC ISLAND</OPTION>
+
+<OPTION value='US VIRGIN ISLANDS'>
+US VIRGIN ISLANDS</OPTION>
+
+<OPTION value='USA'>
+USA</OPTION>
+
+<OPTION value='UZBEKISTAN'>
+UZBEKISTAN</OPTION>
+
+<OPTION value='VANUATU'>
+VANUATU</OPTION>
+
+<OPTION value='VATICAN CITY'>
+VATICAN CITY</OPTION>
+
+<OPTION value='VENEZUELA'>
+VENEZUELA</OPTION>
+
+<OPTION value='VIETNAM'>
+VIETNAM</OPTION>
+
+<OPTION value='WAKE ISLAND'>
+WAKE ISLAND</OPTION>
+
+<OPTION value='WEST INDIES'>
+WEST INDIES</OPTION>
+
+<OPTION value='WESTERN SAHARA'>
+WESTERN SAHARA</OPTION>
+
+<OPTION value='YEMEN'>
+YEMEN</OPTION>
+
+<OPTION value='ZAIRE'>
+ZAIRE</OPTION>
+
+<OPTION value='ZAMBIA'>
+ZAMBIA</OPTION>
+
+<OPTION value='ZIMBABWE'>
+ZIMBABWE</OPTION>
+</select>
+</td>
+<tr>
+<td width='15%'  scope='row' class='dataLabel'>
+Opt out Primary Email</td>
+<td width='35%' class='dataField'>
+<select name='optout_primary'>
+<option value=''>
+-none-</option>
+<option value='false'>
+No</option>
+<option value='true'>
+Yes</option>
+</select>
+</td>
+</tr>
+</table>
+<table cellpadding='0' cellspacing='0' border='0' width='100%'>
+<tr>
+<td class='buttons'>
+<input onclick='return sListView.send_mass_update("selected", "Please select at least 1 record to proceed.")' type='submit' id='update_button' name='Update' value='Update' class='button'>
+&nbsp;<input onclick='javascript:toggleMassUpdateForm();' type='button' id='cancel_button' name='Cancel' value='Cancel' class='button'>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<script>
+
+function toggleMassUpdateForm(){
+    document.getElementById('massupdate_form').style.display = 'none';
+}
+</script>
+</form>
+<script>
+secondsSinceLoad = 0; alertList = [];		if (!alertsTimeoutId) {
+		    checkAlerts();
+		}
+</script>
+		</div>
+
+		</div>
+
+	</section>
+
+	<!-- End main content -->
+
+
+	<!-- Scripts -->
+
+	<script src="themes/AddfinV3/js/libs/big.min.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	<script src="themes/AddfinV3/js/jquery.cookie.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	<script src="/themes/AddfinV3/js/libs/colorbox/jquery.colorbox.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	<script src="/themes/AddfinV3/js/libs/chosen/chosen.jquery.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	<script src="/themes/AddfinV3/js/libs/chosen/docsupport/prism.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	<script src="themes/AddfinV3/js/setup.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	<script src="/themes/AddfinV3/js/lateral-menu.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	<script src="/themes/AddfinV3/js/search.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	<script src="/themes/AddfinV3/js/ajaxdashlets.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	<script src="/themes/AddfinV3/js/core.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	
+	<!-- Tinycon -->
+
+	<script src="themes/AddfinV3/js/libs/tinycon.min.js?v=dIDb5q_rd7tYoNHykHZ6EQ">
+</script>
+
+	
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js">
+</script>
+
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js">
+</script>
+
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js">
+</script>
+
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/themes/none.js">
+</script>
+
+	<script type="text/javascript" src="https://www.amcharts.com/lib/3/amstock.js">
+</script>
+
+	
+	<script>
+
+	
+		// Call template init (optional, but faster if called manually)
+		$.template.init();
+
+		// Favicon count
+		//Tinycon.setBubble(2);
+		//chosen init
+		$("select[multiple='true']").chosen();
+	
+	</script>
+
+
+	<script>
+
+
+if(SUGAR.util.isTouchScreen()) {
+        setTimeout(resizeHeader,10000);
+}
+
+//qe_init function sets listeners to click event on elements of 'quickEdit' class
+ if(typeof(DCMenu) !='undefined'){
+    DCMenu.qe_refresh = false;
+    DCMenu.qe_handle;
+ }
+function qe_init(){
+
+    //do not process if YUI is undefined
+    if(typeof(YUI)=='undefined' || typeof(DCMenu) == 'undefined'){
+        return;
+    }
+
+
+    //remove all existing listeners.  This will prevent adding multiple listeners per element and firing multiple events per click
+    if(typeof(DCMenu.qe_handle) !='undefined'){
+        DCMenu.qe_handle.detach();
+    }
+
+    //set listeners on click event, and define function to call
+    YUI().use('node', function(Y) {
+        var qe = Y.all('.quickEdit');
+        var refreshDashletID;
+        var refreshListID;
+
+        //store event listener handle for future use, and define function to call on click event
+        DCMenu.qe_handle = qe.on('click', function(e) {
+            //function will flash message, and retrieve data from element to pass on to DC.miniEditView function
+            ajaxStatus.flashStatus(SUGAR.language.get('app_strings', 'LBL_LOADING'),800);
+            e.preventDefault();
+            if(typeof(e.currentTarget.getAttribute('data-dashlet-id'))!='undefined'){
+                refreshDashletID = e.currentTarget.getAttribute('data-dashlet-id');
+            }
+            if(typeof(e.currentTarget.getAttribute('data-list'))!='undefined'){
+                refreshListID = e.currentTarget.getAttribute('data-list');
+            }
+            DCMenu.miniEditView(e.currentTarget.getAttribute('data-module'), e.currentTarget.getAttribute('data-record'),refreshListID,refreshDashletID);
+        });
+
+    });
+}
+
+    qe_init();
+
+
+	SUGAR_callsInProgress++;
+	SUGAR._ajax_hist_loaded = true;
+    if(SUGAR.ajaxUI)
+    	YAHOO.util.Event.onContentReady('ajaxUI-history-field', SUGAR.ajaxUI.firstLoad);
+</script>
+
+<a href="#" id="open-menu">
+<span>
+</span>
+</a>
+
+<nav class="personal locked-animation open">
+
+	<div id="menu-content">
+
+		
+<header>
+
+	<span>
+Administrator</span>
+
+	<a href="javascript:void(0)" class="collapse-link">
+</a>
+
+</header>
+
+
+
+<div id="profile">
+
+	<div class="profile-image">
+
+		<img src="https://s.gravatar.com/avatar/f3b62d26e64dad114f40ee2fad274f03?s=75&d=404" width="75" height="75" alt="Epoint User " class="user-icon">
+
+	</div>
+
+	<span class="greeting">
+Welcome</span>
+
+	<span class="name">
+<span class="fn">
+Epoint</span>
+<span class="ln">
+User</span>
+</span>
+
+	<span class="profile-logout">
+[ <a id="logout_link" href='index.php?module=Users&action=Logout' class='utilsLink'>
+Log out</a>
+ ]</span>
+
+</div>
+
+
+<script type="text/javascript">
+
+	$('#profile img').bind('error',function(e){
+		$('#profile img').attr('src','/themes/AddfinV2/img/user.png');
+	});
+</script>
+
+		<ul id="access" class="children-tooltip">
+
+			<li>
+<a href="index.php?module=Emails&action=index" title="Messages">
+<span class="icon icon-inbox">
+</span>
+<span class="count" id="children-tooltip__unreaded_mail">
+1</span>
+</a>
+</li>
+
+			<li>
+<a href="index.php?module=Calendar&action=index" title="Calendar">
+<span class="icon icon-calendar">
+</span>
+</a>
+</li>
+
+			<li>
+<a href="index.php?module=Users&action=DetailView&record=4eb0ff90-bc1c-ebe4-d2a6-51b6d2ca455e" title="Profile">
+<span class="icon icon-user">
+</span>
+</a>
+</li>
+
+						<li>
+<a href="index.php?module=Administration&action=index" title="Admin">
+<span class="icon icon-gear">
+</span>
+</a>
+</li>
+
+					</ul>
+
+
+		<section class="navigable">
+
+			<ul class="big-menu">
+
+				<li class="with-right-arrow">
+
+					<a href="index.php?module=Tasks&action=index">
+Tasks</a>
+
+				</li>
+
+				<li class="with-right-arrow">
+
+					<a href="index.php?module=Calls&action=index">
+Calls</a>
+
+				</li>
+
+				<li class="with-right-arrow">
+
+					<a href="index.php?module=Leads&action=index">
+Leads</a>
+
+				</li>
+
+				<li class="with-right-arrow">
+
+					<a href="index.php?module=Opportunities&action=index">
+Opportunities</a>
+
+				</li>
+
+				<li class="with-right-arrow">
+
+					<a href="index.php?module=Notes&action=index">
+Notes</a>
+
+				</li>
+
+			</ul>
+
+		</section>
+
+
+		<ul class="notifications">
+
+			
+								</ul>
+
+		    <div class="language-select">
+
+      <select class="select" style="width: 100%" name='login_language' onchange="switchMainLanguage(this.value)">
+
+<OPTION selected value='en_us'>
+English (US)</OPTION>
+
+<OPTION value='de_de'>
+Deutsch</OPTION>
+</select>
+
+    </div>
+
+
+    
+    <script type='text/javascript'>
+
+        function switchMainLanguage(lang){
+               var loc=window.location+"";
+               loc=loc.replace(/\&login_language=[^&]*/i,"");
+               loc=loc.replace(/\?login_language=[^&]*/i,"");
+               if(loc.indexOf("?") >
+= 0) {
+                   loc+="&login_language="+lang;
+               }
+               else {
+                   loc+="?login_language="+lang;
+               }
+               window.location=loc;
+        }
+    </script>
+
+    
+		<footer id="menu-footer">
+
+			<p class="button-height">
+
+				<input type="checkbox" name="auto-refresh" id="auto-refresh" checked="checked" class="switch right">
+
+				<label for="auto-refresh">
+Auto-refresh</label>
+
+			</p>
+
+		</footer>
+
+	</div>
+
+</nav>
+
+
+<script type="text/javascript">
+
+(function($){
+	var menu = $('nav.personal');
+
+	function updatePersonalMenu(){
+		if($.cookie('personal-menu') === 'expanded'){
+			$('section.main').addClass('personal-open');
+			menu.addClass('open');
+		}else{
+			$('section.main').removeClass('personal-open');
+			menu.removeClass('open');
+		}
+	}
+	updatePersonalMenu();
+	$('#open-menu').on('touchend click', function(event){
+		event.preventDefault();
+		$.cookie('personal-menu', 'expanded');
+		updatePersonalMenu();
+		if(SUGAR.hasOwnProperty('email2') && SUGAR.email2.hasOwnProperty('e2Layout')){
+			SUGAR.email2.e2Layout.resizeHorizontaly();
+		}
+	});
+	$('nav.personal .collapse-link').on('touchend click', function(){
+		$.removeCookie('personal-menu');
+		menu.removeClass('locked-animation');
+		updatePersonalMenu();
+		if(SUGAR.hasOwnProperty('email2') && SUGAR.email2.hasOwnProperty('e2Layout')){
+			SUGAR.email2.e2Layout.resizeHorizontaly();
+		}
+	});
+})(jQuery);
+</script>
+
+
+
+<script src="/themes/AddfinV3/js/controls.js">
+</script>
+
+
+</body>
+
+</html>

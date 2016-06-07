@@ -1,54 +1,93 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
 
+Name       : Oxidation
+Description: A two-column, fixed-width design for small websites and blogs.
+Version    : 1.0
+Released   : 20071229
+layout for main views dir
+
+-->
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
   <title>ðŸ“ˆAddfinwealth</title>
   <link rel="shortcut icon" href="company_logo.ico" type="image/x-icon" />
-  {{response.files.append(URL(request.application,'static','themes/AddfinV3/styles.css'))}}
-
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/style.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/jquery.ui.all.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/styles.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/deprecated.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/yui.css'))}}
-		
-<!--		find: ‘jquer*’: No such file or directory
-./include/javascript/jquery/markitup/sets/default/style.css
-./include/javascript/jquery/markitup/skins/simple/style.css
-./include/javascript/jquery/markitup/templates/preview.css -->
-
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.accordion.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.all.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.autocomplete.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.base.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.button.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.core.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.datepicker.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.dialog.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.progressbar.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.resizable.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.selectable.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.slider.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.tabs.css'))}}
-{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.theme.css'))}}
+  {{response.files.append(URL(request.application,'static','Oxidation/style.css'))}}
 {{include 'web2py_ajax.html'}}
-	<!-- Webfonts -->
-    <link rel="stylesheet" type='text/css' href="{{=URL('static','https://fonts.googleapis.com/css?family=Lato:300,400,700'))}}	"
-    <link rel="stylesheet"  type='text/css' href="{{=URL('static','https://fonts.googleapis.com/css?family=Oswald:400,700,300'))}}"
-	
  </head>
- 
+ <body>
+  <div id="header">
+   <div id="logo">
+    <h1>
+     Addfin.
+    </h1>
+    <h2>
+     powered by <a href="http://addfinwealth.com">Addfin</a>
+    </h2>
+   </div>
+   <div id="search">
+    <form id="searchform" method="get" action="">
+     <fieldset>
+       [
+       {{if not auth.user:}}
+       <a href="{{=URL('user/login')}}">login</a>
+       {{else:}}
+       {{=auth.user.first_name}} |
+       <a href="{{=URL('user/logout')}}">logout</a> |
+       <a href="{{=URL('user/change_password')}}">password</a> |
+       <a href="{{=URL('user/profile')}}">profile</a>
+       {{pass}} ]
+      <input id="searchquery" type="text" size="25" name="s" value="" />
+      <input id="searchsubmit" type="submit" value="Search" />
+     </fieldset>
+    </form>
+   </div>
+  </div>
+  <!-- end #header -->
+  
+<!-- <div id="menu"> -->
+   <!-- {{=MENU(response.menu)}} -->
+  <!-- </div> -->
+  
+  <!-- end #menu -->
+  <div id="page">
+   <div id="content">
+     <div id="main">
+        <div class="flash">{{=response.flash or ''}}</div> 
+       {{include}}
+     </div>
+   </div>
+   <!-- end content -->
+   <!-- {{left_sidebar_enabled=True,right_sidebar_enabled=False,('message' in globals())}} -->
 
 
+     <div class="ez-box" id="left_sidebar">
+            {{block leftbar}}
+                {{=MENU(response.menu,_class='sf-menu')}}
+            {{end}}    
+            </div>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-
-
-
-
-
-
+   <div style="clear: both;">
+    &nbsp;
+   </div>
+  </div>
+  <!-- end page -->
+  <div id="footer">
+   <p class="legal">
+    &copy;2016 All Rights Reserved.
+   </p>
+   <p class="credit">
+    Design by
+    <a href="http://www.addfinwealth.com/">
+     Addfin
+    </a>
+   </p>
+  </div>
+ </body>
+</html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" class="linen js-login" >
     <head>
@@ -97,7 +136,7 @@
 
 
   <div class="box fl-panel" id="login">
-			<form id="fm1" class="fm-v clearfix" action="/cas/login?service=https%3A%2F%2Fdev03.addfinwealth.com%2Findex.php%3Fmodule%3DAccounts%26action%3Dindex" method="post">
+			<form id="fm1" class="fm-v clearfix" action="/cas/login?service=https%3A%2F%2Fmarketing.addfinwealth.com%2Findex.php%3Fmodule%3DDatabaseProducts%26action%3Dshow" method="post">
 			
 				<!-- Displaying error messages -->
 				
@@ -128,7 +167,7 @@
 				</ul>
                     
                     <div class="row btn-row">
-						<input type="hidden" name="lt" value="LT-3251-cGocNHlgHCx7mErA0xr4MVecMrxpu9" />
+						<input type="hidden" name="lt" value="LT-2630-uSePFcA6dLdeitz1F601yp93mAooHx" />
 						<input type="hidden" name="execution" value="e1s1" />
 						<input type="hidden" name="_eventId" value="submit" />
 
@@ -150,6 +189,3 @@
         
     </body>
 </html>
-
-
-

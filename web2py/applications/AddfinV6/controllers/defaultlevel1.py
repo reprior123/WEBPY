@@ -20,9 +20,9 @@ def layoutaddfinthemehome():
     return dict()
 
 response.menu=[
-  ['organizations',False,url('list_organizations')],
-  ['crm_contacts',False,url('list_crm_contacts')],
-  ['currencies',False,url('list_currencies')],
+  ['suborg1',False,url('list_organizations')],
+  ['subcon1',False,url('list_crm_contacts')],
+  ['subcur2',False,url('list_currencies')],
 ]
 
 def add(mylist,item):
@@ -33,6 +33,7 @@ def add(mylist,item):
 
 def index():
     return dict()
+
 def list_organizations():
 	form=crud.create(db.organizations )
 	organizations=db(db.organizations.id>0).select(orderby=db.organizations.id)

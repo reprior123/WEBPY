@@ -1,37 +1,3 @@
-/*********************************************************************************
- * SugarCRM Community Edition is a customer relationship management program developed by
- * SugarCRM, Inc. Copyright (C) 2004-2013 SugarCRM Inc.
- * 
- * This program is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Affero General Public License version 3 as published by the
- * Free Software Foundation with the addition of the following permission added
- * to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
- * IN WHICH THE COPYRIGHT IS OWNED BY SUGARCRM, SUGARCRM DISCLAIMS THE WARRANTY
- * OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
- * 
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
- * details.
- * 
- * You should have received a copy of the GNU Affero General Public License along with
- * this program; if not, see http://www.gnu.org/licenses or write to the Free
- * Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
- * 02110-1301 USA.
- * 
- * You can contact SugarCRM, Inc. headquarters at 10050 North Wolfe Road,
- * SW2-130, Cupertino, CA 95014, USA. or at email address contact@sugarcrm.com.
- * 
- * The interactive user interfaces in modified source and object code versions
- * of this program must display Appropriate Legal Notices, as required under
- * Section 5 of the GNU Affero General Public License version 3.
- * 
- * In accordance with Section 7(b) of the GNU Affero General Public License version 3,
- * these Appropriate Legal Notices must retain the display of the "Powered by
- * SugarCRM" logo. If the display of the logo is not reasonably feasible for
- * technical reasons, the Appropriate Legal Notices must display the words
- * "Powered by SugarCRM".
- ********************************************************************************/
 
 /**
  * Contains styling for the yui widget elements
@@ -42,7 +8,6 @@
     font-family: arial;
     font-size: 100%;
 }
-
  .yui-ac-content {
     position: absolute;
     border: 1px solid #808080;
@@ -993,7 +958,7 @@ th.yui-dt-hidden, td.yui-dt-hidden {
 }
 
  th.yui-dt-sortable .yui-dt-liner {
-    background: url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=arrow.gif') no-repeat right;
+    background: url('../../../../index.php?entryPoint=getImage&imageName=arrow.gif') no-repeat right;
  }
 
  th.yui-dt-sortable .yui-dt-label {
@@ -1001,11 +966,11 @@ th.yui-dt-hidden, td.yui-dt-hidden {
 }
 
  th.yui-dt-asc .yui-dt-liner {
-    background: url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=arrow_up.gif') no-repeat right;
+    background: url('../../../../index.php?entryPoint=getImage&imageName=arrow_up.gif') no-repeat right;
 }
 
  th.yui-dt-desc .yui-dt-liner {
-    background: url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=arrow_down.gif') no-repeat right;
+    background: url('../../../../index.php?entryPoint=getImage&imageName=arrow_down.gif') no-repeat right;
 }
 
 tbody .yui-dt-editable {
@@ -1112,13 +1077,11 @@ tbody .yui-dt-editable {
     background-color: #446CD7;
 }
 
- tr.yui-dt-selected td, tr.yui-dt-selected td.yui-dt-asc, tr.yui-dt-selected td.yui-dt-desc
-    {
+ tr.yui-dt-selected td, tr.yui-dt-selected td.yui-dt-asc, tr.yui-dt-selected td.yui-dt-desc{
     background-color: #C4DDF4;
 }
 
- tr.yui-dt-even td.yui-dt-selected, tr.yui-dt-odd td.yui-dt-selected
-    {
+ tr.yui-dt-even td.yui-dt-selected, tr.yui-dt-odd td.yui-dt-selected{
     background-color: #446CD7;
     color: #FFF;
 }
@@ -2685,7 +2648,7 @@ body.yui-layout {
 
  .yui-layout .yui-layout-unit-left div.yui-layout-hd .collapse
 {
-    background: transparent url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png') no-repeat 0 -110px;
+    background: transparent url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png') no-repeat 0 -110px;
     right: 10px;
 }
 .yui-layout .yui-layout-unit-left div.yui-layout-hd .collapse:hover {
@@ -2695,7 +2658,7 @@ body.yui-layout {
 }
 
  .yui-layout .yui-layout-clip-left .collapse {
-    background: transparent url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png') no-repeat 0 -90px;
+    background: transparent url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png') no-repeat 0 -90px;
 }
  .yui-layout .yui-layout-clip-left .collapse:hover, .yui-layout .yui-layout-clip-right .collapse {
     border: 1px solid #666; 
@@ -2704,7 +2667,7 @@ body.yui-layout {
  }
 
  .yui-layout .yui-layout-unit-right div.yui-layout-hd .collapse {
-    background: transparent url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png') no-repeat 0 -90px;
+    background: transparent url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png') no-repeat 0 -90px;
     left: 5px;
 }
 .yui-layout .yui-layout-unit-right div.yui-layout-hd .collapse:hover {
@@ -2714,38 +2677,38 @@ body.yui-layout {
 }
 
  .yui-layout .yui-layout-clip-right .collapse {
-    background: transparent url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png') no-repeat -0 -110px;
+    background: transparent url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png') no-repeat -0 -110px;
 }
 
  .yui-layout .yui-layout-unit-top div.yui-layout-hd .collapse
     {
-    background: transparent url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png') no-repeat -20px -220px;
+    background: transparent url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png') no-repeat -20px -220px;
     border: 1px solid #808080;
 }
 
  .yui-layout .yui-layout-clip-top .collapse {
-    background: transparent url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png')no-repeat -20px -240px;
+    background: transparent url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png')no-repeat -20px -240px;
     border: 1px solid #808080;
 }
 
  .yui-layout .yui-layout-unit-bottom div.yui-layout-hd .collapse
     {
-    background: transparent url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png') no-repeat 0 -90px;
+    background: transparent url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png') no-repeat 0 -90px;
     right: 5px;
 }
 
  .yui-layout .yui-layout-clip-bottom .collapse {
-    background: transparent url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png') no-repeat -20px -180px;
+    background: transparent url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png') no-repeat -20px -180px;
     border: 1px solid #808080;
 }
 
  .yui-layout .yui-layout-unit div.yui-layout-hd .close {
-    background: transparent url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png') no-repeat -20px -100px;
+    background: transparent url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png') no-repeat -20px -100px;
     border: 1px solid #808080;
 }
 
  .yui-layout .yui-layout-hd {
-    background: #DDD url('../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png') repeat-x scroll 0 0;
+    background: #DDD url('../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png') repeat-x scroll 0 0;
     border-color:#808080;
 	border-style:solid;
 	border-width:0 1px 0px;
@@ -2834,7 +2797,7 @@ body.yui-layout {
     width: 6px;
     top: 45%;
     left: 1px;
-    background: transparent url(../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=layout_sprite.png) no-repeat 0 -5px;
+    background: transparent url(../../../../index.php?entryPoint=getImage&imageName=layout_sprite.png) no-repeat 0 -5px;
 }
 
  .yui-layout-unit .yui-resize-handle-t .yui-layout-resize-knob, .yui-layout-unit .yui-resize-handle-b .yui-layout-resize-knob
@@ -2843,7 +2806,7 @@ body.yui-layout {
     height: 6px;
     width: 16px;
     left: 45%;
-    background: transparent url(../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=layout_sprite.png) no-repeat -20px 0;
+    background: transparent url(../../../../index.php?entryPoint=getImage&imageName=layout_sprite.png) no-repeat -20px 0;
 }
 
  .yui-log {
@@ -3213,7 +3176,7 @@ a.yuimenuitemlabel:hover {
 }
 
 .yuimenuitem-hassubmenu > a{
-    background-image: url(../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=sugar-yui-sprites-grey.png);
+    background-image: url(../../../../index.php?entryPoint=getImage&imageName=sugar-yui-sprites-grey.png);
     background-position: right -126px;
     background-repeat: no-repeat;
 }
@@ -3710,7 +3673,7 @@ a.yuimenuitemlabel:hover {
 
  .yui-resize .yui-resize-handle-inner-r, .yui-resize .yui-resize-handle-inner-l
     {
-    background: transparent url( ../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=layout_sprite.png) no-repeat 0 -5px;
+    background: transparent url( ../../../../index.php?entryPoint=getImage&imageName=layout_sprite.png) no-repeat 0 -5px;
     height: 16px;
     width: 5px;
     position: absolute;
@@ -3719,7 +3682,7 @@ a.yuimenuitemlabel:hover {
 
  .yui-resize .yui-resize-handle-inner-t, .yui-resize .yui-resize-handle-inner-b
     {
-    background: transparent url(../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=layout_sprite.png) no-repeat -20px 0;
+    background: transparent url(../../../../index.php?entryPoint=getImage&imageName=layout_sprite.png) no-repeat -20px 0;
     height: 5px;
     width: 16px;
     position: absolute;
@@ -3727,25 +3690,25 @@ a.yuimenuitemlabel:hover {
 }
 
  .yui-resize .yui-resize-handle-br {
-    background-image: url( ../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=layout_sprite.png );
+    background-image: url( ../../../../index.php?entryPoint=getImage&imageName=layout_sprite.png );
     background-repeat: no-repeat;
     background-position: -22px -62px;
 }
 
  .yui-resize .yui-resize-handle-tr {
-    background-image: url( ../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=layout_sprite.png );
+    background-image: url( ../../../../index.php?entryPoint=getImage&imageName=layout_sprite.png );
     background-repeat: no-repeat;
     background-position: -22px -42px;
 }
 
  .yui-resize .yui-resize-handle-tl {
-    background-image: url( ../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=layout_sprite.png );
+    background-image: url( ../../../../index.php?entryPoint=getImage&imageName=layout_sprite.png );
     background-repeat: no-repeat;
     background-position: -22px -82px;
 }
 
  .yui-resize .yui-resize-handle-bl {
-    background-image: url( ../../../../index.php?entryPoint=getImage&themeName=AddfinV3&imageName=layout_sprite.png );
+    background-image: url( ../../../../index.php?entryPoint=getImage&imageName=layout_sprite.png );
     background-repeat: no-repeat;
     background-position: -22px -23px;
 }

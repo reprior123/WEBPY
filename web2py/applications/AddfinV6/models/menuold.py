@@ -5,7 +5,7 @@
 #########################################################################
 
 response.title = request.application
-response.subtitle = T('this is the subtitle response in models menu')
+response.subtitle = T('customize me!')
 
 ##########################################
 ## this is the authentication menu
@@ -40,54 +40,41 @@ if 'auth' in globals():
 ## this is the main application menu
 ## add/remove items as required
 ##########################################
-##response.menu.old = [
-##    [T('Index'), False,
-##     URL(request.application,'default','index'), []],
-##    ]
 
 response.menu = [
-     [T('anychange').capitalize(), False,'', 
-         [
-         [T('level1-1').capitalize(),False,URL(request.application,'defaultlevel1','index'),
-             [
-                 [T('level2-1').capitalize(),
-                 False,
-                 URL(request.application,
-                 'defaultlevel1',
-                 'index'),
-                 []],
-             ]],
-         [T('level1-2').capitalize(),
-             False,
-             URL(request.application,
-             'controller',
-             'function'),
-             []],
-         [T('level1-3').capitalize(),
-             False,
-             URL(request.application,
-             'controller',
-             'function'),
-             []],
-         
-     ]],
-
-
-     [T('root2').capitalize(),
-         False,
-         '',
-         [
-             [T('level1-1').capitalize(),
-                 False,
-                 URL(request.application,
-                 'controller',
-                 'function'),
-                 []],
-             [T('level1-2').capitalize(),
-                 False,
-                 URL(request.application,
-                 'controller',
-                 'function'),
-                 []],
-     ]],
+    [T('Index'), False,
+     URL(request.application,'default','index'), []],
     ]
+
+
+##########################################
+## this is here to provide shortcuts
+## during development. remove in production
+##########################################
+
+response.menu_edit=[
+  [T('Edit'), False, URL('admin', 'default', 'design/%s' % request.application),
+   [
+            [T('Controller'), False,
+             URL('admin', 'default', 'edit/%s/controllers/default.py' \
+                     % request.application)],
+            [T('View'), False,
+             URL('admin', 'default', 'edit/%s/views/%s' \
+                     % (request.application,response.view))],
+            [T('Layout'), False,
+             URL('admin', 'default', 'edit/%s/views/layout.html' \
+                     % request.application)],
+            [T('Stylesheet'), False,
+             URL('admin', 'default', 'edit/%s/static/base.css' \
+                     % request.application)],
+            [T('DB Model'), False,
+             URL('admin', 'default', 'edit/%s/models/db.py' \
+                     % request.application)],
+            [T('Menu Model'), False,
+             URL('admin', 'default', 'edit/%s/models/menu.py' \
+                     % request.application)],
+            [T('Database'), False,
+             URL(request.application, 'appadmin', 'index')],
+            ]
+   ],
+  ]
