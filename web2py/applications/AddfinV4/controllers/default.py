@@ -197,7 +197,14 @@ def list_benchmarks():
 	form=crud.create(db.benchmarks )
 	benchmarks=db(db.benchmarks.id>0).select(orderby=db.benchmarks.id)
 	return dict(benchmarks=benchmarks,form=form)
-
+def create_crm_contacts():
+    person_id=request.args(0)
+    person=db.crm_contacts[23] or redirect(error_page)
+    session.recent_persons = add(session.recent_persons,person)
+    db.crm_contacts.writable=False
+    db.crm_contacts.readable=False
+    form=crud.update(db.crm_contacts,person,next=url('view_person',person_id))
+    return dict(form=form)
 ############################
 def list_logs():
     person_id=request.args(0)
