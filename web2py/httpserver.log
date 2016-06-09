@@ -2688,3 +2688,14 @@
 127.0.0.1, 2016-06-08 14:33:55, GET, /CRMwStyle/default/css/2x.css, HTTP/1.1, 404, 0.318000
 127.0.0.1, 2016-06-08 14:33:55, GET, /CRMwStyle/default/css/print.css, HTTP/1.1, 404, 0.385000
 127.0.0.1, 2016-06-08 14:33:56, GET, /CRMwStyle/default/company_logo.ico, HTTP/1.1, 404, 0.082000
+127.0.0.1, 2016-06-09 15:21:51, GET, /, HTTP/1.1, 303, 0.007000
+127.0.0.1, 2016-06-09 15:21:52, GET, /welcome/default/index, HTTP/1.1, 200, 1.442000
+127.0.0.1, 2016-06-09 15:21:52, GET, /welcome/static/css/web2py-bootstrap3.css, HTTP/1.1, 404, 0.001000
+127.0.0.1, 2016-06-09 15:21:57, GET, /admin/default/site, HTTP/1.1, 303, 0.684000
+127.0.0.1, 2016-06-09 15:21:57, GET, /admin/default/site, HTTP/1.1, 303, 0.550000
+127.0.0.1, 2016-06-09 15:21:57, GET, /admin/default/index, HTTP/1.1, 200, 0.362000
+127.0.0.1, 2016-06-09 15:21:58, GET, /favicon.ico, HTTP/1.1, 400, 0.001000
+127.0.0.1, 2016-06-09 15:21:59, POST, /admin/default/index, HTTP/1.1, 303, 0.146000
+127.0.0.1, 2016-06-09 15:22:00, GET, /admin/default/site, HTTP/1.1, 200, 0.252000
+127.0.0.1, 2016-06-09 15:22:00, POST, /admin/default/check_version, HTTP/1.1, 200, 0.357000
+127.0.0.1, 2016-06-09 15:22:01, GET, /favicon.ico, HTTP/1.1, 400, 0.001000
