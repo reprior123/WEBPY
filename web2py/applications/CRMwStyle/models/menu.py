@@ -46,7 +46,19 @@ response.menu = [
      URL(request.application,'default','index'), []],
     ]
 
-
+app = 'CRMwStyle'
+response.menu += [
+        (T('Relationship Management'), False, URL('admin', 'default', 'site')),
+          (T('This App'), False, '#', [
+              (T('Leads'), False, URL('admin', 'default', 'design/%s' % app)),
+              LI(_class="divider"),
+              (T('Opportunities'), False,URL('admin', 'default', 'index')),
+              (T('Opportunities'), False,URL('admin', 'default', 'index')),
+              (T('Opportunities'), False,URL('admin', 'default', 'index')),
+              (T('Opportunities'), False,URL('admin', 'default', 'index')),
+              (T('Opportunities'), False,URL('admin', 'default', 'index')),
+              ]),
+        ]
 ##########################################
 ## this is here to provide shortcuts
 ## during development. remove in production

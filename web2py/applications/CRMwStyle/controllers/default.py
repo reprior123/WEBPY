@@ -28,6 +28,9 @@ def add(mylist,item):
 def index():
     return dict()
 
+def view_vqfforms():
+    return dict()
+
 @auth.requires_login()
 def list_companies():
     form=crud.create(db.company)
