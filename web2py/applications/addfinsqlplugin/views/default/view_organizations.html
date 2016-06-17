@@ -1,9 +1,0 @@
-{{extend 'layout.html'}}
-<h1><a href="{{=organizations.url or '#'}}">{{=organizations.name}}</a></h1>
-
-{{=button('edit','edit_company',organizations.id)}}
-{{=button('organizations','list_organizations',organizations.id)}}
-
-{{=crud.read(db.organizations,organizations)}}
-
-{{=tag('organizations',organizations.id)}}

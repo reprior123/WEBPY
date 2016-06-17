@@ -1,9 +1,0 @@
-{{extend 'layout.html'}}
-<h1><a href="{{=account.url or '#'}}">{{=account.name}}</a></h1>
-
-{{=button('edit','edit_account',account.id)}}
-{{=button('contacts','list_persons',account.id)}}
-
-{{=crud.read(db.account,account)}}
-
-{{=tag('account',account.id)}}
