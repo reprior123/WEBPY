@@ -1,0 +1,136 @@
+{{response.files.append(URL(r=request,c='static',f='jquery.dataTables.min.js'))}}
+
+
+
+{{response.files.append(URL(r=request,c='static',f='demo_table.css'))}}
+
+
+
+{{extend 'layout.html'}}
+
+
+
+<script>
+
+
+
+$(document).ready(function() { 
+
+
+
+   jQuery('.smarttable').dataTable(); 
+
+
+
+   {{if not form.errors:}}jQuery('#form').hide();{{pass}}
+
+
+
+});
+
+
+
+</script>
+
+
+
+<h1>List crm_compliances</h1>
+
+
+
+
+
+
+
+[<a href="#nil" onclick="jQuery('#form').slideToggle();">toggle</a>]
+
+
+
+<div id="form">
+
+
+
+<h2>New crm_compliance</h2>
+
+
+
+{{=form}}
+
+
+
+</div>
+
+
+
+
+
+
+
+<br /><br />
+
+
+
+<table class="smarttable">
+
+
+
+<thead>
+
+
+
+    <tr>
+
+
+
+      <th>Name</th><th>Actions</th>
+
+
+
+    </tr>    
+
+
+
+</thead>
+
+
+
+<tbody>
+
+
+
+{{for crm_compliancei in crm_compliance:}}
+
+
+
+    <tr>
+
+
+
+       <td>{{=link_crm_compliance(crm_compliancei)}}</td>   
+
+
+
+       <td>{{=button('crm_compliance','list_crm_compliance',crm_compliancei.id)}}
+
+
+
+       {{=button('edit','edit_crm_compliance',crm_compliancei.id)}}</td>
+
+
+
+    </tr>
+
+
+
+{{pass}}
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+

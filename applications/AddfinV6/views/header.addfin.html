@@ -1,0 +1,53 @@
+	<header role="banner" id="title-bar">
+		<div class="logo">
+			<div class="quick-access">
+				
+<div class="quick-access-wrapper">
+	<ul>
+		<li class="create-report disabled">
+			<a href="javascript:void(0)" class="link-iframe">Create a Report</a>
+		</li> 
+		<li class="create-client">
+			       <a class="link-iframe" href="{{=URL('list_crm_contacts')}}">Create a Client</a>
+		</li>
+		<li class="set-meeting">
+			<a href="/index.php?module=QuickLinks&action=QuickLinks&manage_quick_link=create_meeting" class="link-iframe">Set a Meeting</a>
+		</li>
+		<li class="client-note">
+			<a href="/index.php?module=QuickLinks&action=QuickLinks&manage_quick_link=create_note" class="link-iframe">Client Note</a>
+		</li>
+
+		<li class="set-alert">
+			<a href="/index.php?module=Tasks&action=EditView&return_module=Tasks&return_action=DetailView" class="link-iframe">Set Alert</a>
+		</li>
+		<li class="see-complience disabled">
+			<a href="javascript:void(0)" class="link-iframe">See Complience</a>
+		</li>
+		<li class="upload-doc disabled">
+			<a href="javascript:void(0)" class="link-iframe">Upload Doc</a>
+		</li>
+		<li class="statistics disabled">
+			<a href="javascript:void(0)" class="link-iframe">Statistics</a>
+		</li>
+	</ul>
+		
+<script>
+	
+	$(document).ready(function(){
+		$(".link-iframe").colorbox({iframe:true, width:"80%", height:"60%"});
+	});
+	
+	
+	</script>
+
+</div>			</div>
+			<a href="#" class="logo-img"></a>
+		</div>
+
+		<div class="quick-search-wrapper">
+			<div class="quick-search">
+				<input type="text" name="search" value="" />
+			</div>
+			<div class="autocompleted-list"></div>
+		</div>
+	</header>

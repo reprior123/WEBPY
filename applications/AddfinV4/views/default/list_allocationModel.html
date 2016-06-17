@@ -1,0 +1,149 @@
+	<link rel="stylesheet" type="text/css" href="cache/themes/AddfinV3/css/yui.css?v=dIDb5q_rd7tYoNHykHZ6EQ" />
+<link rel="stylesheet" type="text/css" href="include/javascript/jquery/themes/base/jquery.ui.all.css" />
+<link rel="stylesheet" type="text/css" href="cache/themes/AddfinV3/css/deprecated.css?v=dIDb5q_rd7tYoNHykHZ6EQ" />
+<link rel="stylesheet" type="text/css" href="cache/themes/AddfinV3/css/style.css?v=dIDb5q_rd7tYoNHykHZ6EQ" />
+	<link rel="stylesheet" href="themes/AddfinV3/css/styles.css?v=dIDb5q_rd7tYoNHykHZ6EQ">	
+	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+
+
+
+
+
+
+
+
+{{response.files.append(URL(r=request,c='static',f='jquery.dataTables.min.js'))}}
+
+{{response.files.append(URL(r=request,c='static',f='demo_table.css'))}}
+
+
+
+{{extend 'layout.html'}}
+
+
+
+<script>
+
+
+
+$(document).ready(function() { 
+
+
+
+   jQuery('.smarttable').dataTable(); 
+
+
+
+   {{if not form.errors:}}jQuery('#form').hide();{{pass}}
+
+
+
+});
+
+
+
+</script>
+
+
+
+<h1>List allocationModels</h1>
+
+
+
+
+
+
+
+[<a href="#nil" onclick="jQuery('#form').slideToggle();">toggle</a>]
+
+
+
+<div id="form">
+
+
+
+<h2>New allocationModel</h2>
+
+
+
+{{=form}}
+
+
+
+</div>
+
+
+
+
+
+
+
+<br /><br />
+
+
+
+<table class="smarttable">
+
+
+
+<thead>
+
+
+
+    <tr>
+
+
+
+      <th>Name</th><th>Actions</th>
+
+
+
+    </tr>    
+
+
+
+</thead>
+
+
+
+<tbody>
+
+
+
+{{for allocationModeli in allocationModel:}}
+
+
+
+    <tr>
+
+
+
+       <td>{{=link_allocationModel(allocationModeli)}}</td>   
+
+
+
+       <td>{{=button('allocationModel','list_allocationModel',allocationModeli.id)}}
+
+
+
+       {{=button('edit','edit_allocationModel',allocationModeli.id)}}</td>
+
+
+
+    </tr>
+
+
+
+{{pass}}
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+

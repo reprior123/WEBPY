@@ -1,0 +1,136 @@
+{{response.files.append(URL(r=request,c='static',f='jquery.dataTables.min.js'))}}
+
+
+
+{{response.files.append(URL(r=request,c='static',f='demo_table.css'))}}
+
+
+
+{{extend 'layout.html'}}
+
+
+
+<script>
+
+
+
+$(document).ready(function() { 
+
+
+
+   jQuery('.smarttable').dataTable(); 
+
+
+
+   {{if not form.errors:}}jQuery('#form').hide();{{pass}}
+
+
+
+});
+
+
+
+</script>
+
+
+
+<h1>List fdata_rolotecs</h1>
+
+
+
+
+
+
+
+[<a href="#nil" onclick="jQuery('#form').slideToggle();">toggle</a>]
+
+
+
+<div id="form">
+
+
+
+<h2>New fdata_rolotec</h2>
+
+
+
+{{=form}}
+
+
+
+</div>
+
+
+
+
+
+
+
+<br /><br />
+
+
+
+<table class="smarttable">
+
+
+
+<thead>
+
+
+
+    <tr>
+
+
+
+      <th>Name</th><th>Actions</th>
+
+
+
+    </tr>    
+
+
+
+</thead>
+
+
+
+<tbody>
+
+
+
+{{for fdata_roloteci in fdata_rolotec:}}
+
+
+
+    <tr>
+
+
+
+       <td>{{=link_fdata_rolotec(fdata_roloteci)}}</td>   
+
+
+
+       <td>{{=button('fdata_rolotec','list_fdata_rolotec',fdata_roloteci.id)}}
+
+
+
+       {{=button('edit','edit_fdata_rolotec',fdata_roloteci.id)}}</td>
+
+
+
+    </tr>
+
+
+
+{{pass}}
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+

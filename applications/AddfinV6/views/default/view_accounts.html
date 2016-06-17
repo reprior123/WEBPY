@@ -1,0 +1,10 @@
+{{extend 'layout.html'}}
+<h1>{{=accounts.id}}</h1>
+<h2>{{=accounts.id}} at {{=link_accounts(accounts.id)}}</a></h2>
+
+{{=button('edit','edit_person',person.id)}}
+
+
+{{=crud.read(db.accounts,accounts)}}
+
+{{=tag('accounts',accounts.id)}}

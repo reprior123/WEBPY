@@ -1,0 +1,136 @@
+{{response.files.append(URL(r=request,c='static',f='jquery.dataTables.min.js'))}}
+
+
+
+{{response.files.append(URL(r=request,c='static',f='demo_table.css'))}}
+
+
+
+{{extend 'layout.html'}}
+
+
+
+<script>
+
+
+
+$(document).ready(function() { 
+
+
+
+   jQuery('.smarttable').dataTable(); 
+
+
+
+   {{if not form.errors:}}jQuery('#form').hide();{{pass}}
+
+
+
+});
+
+
+
+</script>
+
+
+
+<h1>List rules_n_bandss</h1>
+
+
+
+
+
+
+
+[<a href="#nil" onclick="jQuery('#form').slideToggle();">toggle</a>]
+
+
+
+<div id="form">
+
+
+
+<h2>New rules_n_bands</h2>
+
+
+
+{{=form}}
+
+
+
+</div>
+
+
+
+
+
+
+
+<br /><br />
+
+
+
+<table class="smarttable">
+
+
+
+<thead>
+
+
+
+    <tr>
+
+
+
+      <th>Name</th><th>Actions</th>
+
+
+
+    </tr>    
+
+
+
+</thead>
+
+
+
+<tbody>
+
+
+
+{{for rules_n_bandsi in rules_n_bands:}}
+
+
+
+    <tr>
+
+
+
+       <td>{{=link_rules_n_bands(rules_n_bandsi)}}</td>   
+
+
+
+       <td>{{=button('rules_n_bands','list_rules_n_bands',rules_n_bandsi.id)}}
+
+
+
+       {{=button('edit','edit_rules_n_bands',rules_n_bandsi.id)}}</td>
+
+
+
+    </tr>
+
+
+
+{{pass}}
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
