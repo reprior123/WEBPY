@@ -1,0 +1,5 @@
+1,2016-04-28 07:25:21,127.0.0.1,,auth,Group 1 created
+2,2016-04-28 07:25:21,127.0.0.1,1,auth,User 1 Registered
+3,2016-04-28 20:10:28,127.0.0.1,,auth,Group 2 created
+4,2016-04-28 20:10:28,127.0.0.1,2,auth,User 2 Registered
+5,2016-04-29 06:10:21,127.0.0.1,2,auth,User 2 Logged-in

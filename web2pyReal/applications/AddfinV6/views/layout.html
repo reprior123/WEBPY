@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>ðŸ“ˆAddfinwealth</title>
+  <link rel="shortcut icon" href="company_logo.ico" type="image/x-icon" />
+  {{response.files.append(URL(request.application,'static','themes/AddfinV3/styles.css'))}}
+
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/style.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/jquery.ui.all.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/styles.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/deprecated.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/yui.css'))}}
+		
+<!--		find: ‘jquer*’: No such file or directory
+./include/javascript/jquery/markitup/sets/default/style.css
+./include/javascript/jquery/markitup/skins/simple/style.css
+./include/javascript/jquery/markitup/templates/preview.css -->
+
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.accordion.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.all.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.autocomplete.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.base.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.button.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.core.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.datepicker.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.dialog.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.progressbar.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.resizable.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.selectable.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.slider.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.tabs.css'))}}
+{{response.files.append(URL(request.application,'static','themes/AddfinV3/base/jquery.ui.theme.css'))}}
+{{include 'web2py_ajax.html'}}
+	<!-- Webfonts -->
+    <link rel="stylesheet" type='text/css' href="{{=URL('static','https://fonts.googleapis.com/css?family=Lato:300,400,700')}}	"
+    <link rel="stylesheet"  type='text/css' href="{{=URL('static','https://fonts.googleapis.com/css?family=Oswald:400,700,300')}}"
+	
+ </head>
+ 
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" class="linen js-login" >
+    <head>
+        <title>ADDFIN &#8211; Central Authentication Service</title>
+        
+        
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="icon" href="/cas/favicon.ico" type="image/x-icon" />
+        
+    <!-- FROM LOGIN >>>> -->
+        
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- For all browsers -->
+    <link rel="stylesheet" href="css/reset.css?v=1">
+    <link rel="stylesheet" href="css/style.css?v=1">
+    <link rel="stylesheet" href="css/colors.css?v=1">
+    <link rel="stylesheet" media="print" href="css/print.css?v=1">
+    <!-- For progressively larger displays -->
+    <link rel="stylesheet" media="only all and (min-width: 480px)" href="css/480.css?v=1">
+    <link rel="stylesheet" media="only all and (min-width: 768px)" href="css/768.css?v=1">
+    <link rel="stylesheet" media="only all and (min-width: 992px)" href="css/992.css?v=1">
+    <link rel="stylesheet" media="only all and (min-width: 1200px)" href="css/1200.css?v=1">
+    <!-- For Retina displays -->
+    <link rel="stylesheet" media="only all and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5)" href="css/2x.css?v=1">
+
+    <!-- Additional styles -->
+    <link rel="stylesheet" href="css/styles/form.css?v=1">
+
+    <!-- Login pages styles -->
+    <link rel="stylesheet" media="screen" href="css/login.css?v=1">
+    
+    
+    <!-- JavaScript at bottom except for Modernizr -->
+    <script src="js/libs/modernizr.custom.js"></script>
+    </head>
+    <body>
+
+<div id="container">
+    <hgroup id="login-title" class="large-margin-bottom">
+        <h1 class="login-title-image">Developr</h1>
+    </hgroup>
+
+
+  <div class="box fl-panel" id="login">
+			<form id="fm1" class="fm-v clearfix" action="/cas/login?service=https%3A%2F%2Fdev03.addfinwealth.com%2Findex.php%3Fmodule%3DAccounts%26action%3Dindex" method="post">
+			
+				<!-- Displaying error messages -->
+				
+				        
+				
+                    
+                <ul class="inputs black-input large">
+					<!-- The autocomplete="off" attributes is the only way to prevent webkit browsers from filling the inputs with yellow -->
+                    
+						
+
+						
+						
+						<li>
+							<span class="icon-user mid-margin-right"></span>
+							<input id="username" name="username" class="input-unstyled" tabindex="1" placeholder="Login" accesskey="u" type="text" value="" size="25" autocomplete="false"/>
+						</li>
+						
+						
+					<li>
+					
+                        <span class="icon-lock mid-margin-right"></span>
+						
+						
+						<input id="password" name="password" class="input-unstyled" tabindex="2" placeholder="Password" class="input-unstyled" accesskey="p" type="password" value="" size="25" autocomplete="off"/>
+                    
+                    </li>
+				</ul>
+                    
+                    <div class="row btn-row">
+						<input type="hidden" name="lt" value="LT-3251-cGocNHlgHCx7mErA0xr4MVecMrxpu9" />
+						<input type="hidden" name="execution" value="e1s1" />
+						<input type="hidden" name="_eventId" value="submit" />
+
+                        <input class="button glossy full-width huge" name="submit" accesskey="l" value="LOGIN" tabindex="4" type="submit" />
+                        
+            </form>
+          </div>
+          
+</div><!-- end container -->
+
+		
+		<script src="js/jquery/jquery-1.7.2.js"></script>
+		<script src="js/setup.js"></script>
+			
+        <!-- This script gives blue border around form on focus and needs setup.js, jquery-1.7.2.js and modernizr.custom.js -->
+		<script src="js/developr.input.js"></script>
+		
+        <script type="text/javascript" src="/cas/js/cas.js"></script>
+        
+    </body>
+</html>
+
+
+
