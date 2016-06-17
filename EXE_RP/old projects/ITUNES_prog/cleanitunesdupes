@@ -1,0 +1,114 @@
+:
+G3=/dev/fs/C
+FG3=/dev/fs/F
+mydocs=$G3/Documents*Settings/bob*marley/My*Documents
+mydocsF=$FG3
+basedir=/dev/fs
+
+ls $FG3
+
+#mv $FG3/MUSICG3/*/*/*/*/*/*.wma  $FG3/VERYLARGE
+#mv $FG3/MUSICG3/*/*/*/*/*/*.m4b $FG3/VERYLARGE
+
+
+infile=$mydocs/itunesviewerout.txt
+ls -l  $infile
+cat $infile | grep "wma" 
+cat $infile | grep "m4b" 
+ 
+## this will give preference to mp3 files for retaining#####
+cat $infile | grep "m4a" > part2
+cat $infile | grep "m4p" > part3
+cat part3
+echo -n " these are remaining m4p files , need fairkeys to convert them"
+read bal
+
+cat $infile | grep  -v "m4a" | grep -v "m4p"  > part1
+
+cat part1 part2  part3 |\
+tr "\t" "\|" |\
+tr "\ " "\?" |\
+tr "\-" "\?" |\
+tr "\\" "\/" |\
+tr -d "\"" |\
+tr -d "\:" |\
+tr "\]" "\?" |\
+tr "\)" "\?" |\
+tr "\[" "\?"  |\
+tr "\(" "\?"  |\
+tr "\*" "\?"  |\
+tr "\+" "\?"  |\
+tr "\#" "\?"  |\
+tr "\," "\?"  |\
+#grep -v "track" |\
+#grep -v "various" |\
+cat  > newdupes
+wc newdupes 
+
+echo " this will find dupe song:artist:album same spellings"  ### corresponds to $2 in namelist line
+echo " this will find dupe song:artist: same spellings NOT RECOMMENDED without grep in newdupes"  ### corresponds to $1 in namelist line
+
+# need to address same SAA, except a slightly different spelling
+# show possible matches and dupes for SAA, SA , AA , then different orders AAS
+#
+
+##   1. first identify albums and artists and look for spelling diffs ###
+##   2. then grep by artist
+
+
+### show suspicious artists ####
+
+### albums are field 5   ####
+cat newdupes |\
+awk -F"|" ' {print $4}' |\
+sort -u  > artists
+#more artists
+wc artists
+
+### show suspicious albums ####
+
+### albums are field 5   ####
+cat newdupes |\
+awk -F"|" ' {print $5}' |\
+#awk -F"|" ' {print $5,$3}' |\
+sort -u  > artists
+#more artists
+wc artists
+echo -n "look for suspicious spelling dupes above..."
+read bla
+###################################
+###################################
+
+cat newdupes | awk -F"|" ' {print $2}' | sort >namelist
+wc namelist
+namelist=`cat namelist | sort -u`
+rm dupesraw
+
+for name in $namelist;do
+echo $name
+grep "$name" newdupes |\
+awk ' ( NR  > 1 ) {print $0}' >>dupesraw
+done
+wc dupesraw
+cat dupesraw
+cat dupesraw |\
+awk  -F "|" '
+{print $13}
+' >filelistraw
+cat filelistraw | head
+wc dupesraw
+echo -n "continue to file removal of the above files ? "
+read bla
+
+filelist=`cat filelistraw`
+for file in $filelist;do
+ls  -l $basedir/$file
+#mv   $basedir/$file $mydocs/itunesdupedump
+#mv   $basedir/$file $mydocsF/itunesdupedump
+#mv   $basedir/$file $mydocsF/itunesdupedumpsameartist
+
+done
+
+
+exit
+

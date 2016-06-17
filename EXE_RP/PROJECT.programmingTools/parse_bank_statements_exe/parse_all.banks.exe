@@ -1,0 +1,18 @@
+:
+
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+parsearea=/dev/fs/C/TS/EXE/parse_bank_statements_exe
+
+$parsearea/parse_ubs.exe
+$parsearea/parse_ubspays_multis.exe
+$parsearea/convert.csNRP.files.exe
+$parsearea/parse_ubsccard.exe
+$parsearea/parse_swissairccard.exe
+
+cat all.*.w_categories.txt > all.banks.w_categories.txt
+
+cat all.banks.w_categories.txt | sed s/CH5100273273//g | sed s/CH6900273273//g >temp.txt
+mv temp.txt all.banks.w_categories.txt
+exit
+

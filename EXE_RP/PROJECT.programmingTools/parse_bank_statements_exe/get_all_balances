@@ -1,0 +1,32 @@
+:
+
+dir=/dev/fs/C/TS/DATA/statements/IBstatementsraw/processedfiles/IBstate.20080626.U87392.txt
+dir=/dev/fs/C/TS/DATA/statements/IBstatementsraw/processedfiles
+
+ls $dir/IBstate.*.txt > list1
+cat list1 | awk -F"." '{print $3}' | sort -u > listaccts
+cat list1 | awk -F"." '{print $2}' | sort  -u > listdates
+accts=`cat listaccts`
+for acct in $accts;do
+file=`grep $acct list1 | tail -1`
+date=`ls $file | awk -F"." '{print $2}' | sort  -u | head -1`
+name=`cat $file | egrep "Name" | grep -v Change | head -1 | tr " " "_" | tr "\t" "_"`
+#total=`cat $file | dos2unix | tr -d "," | grep "Total" | grep -v Change | head -1 | awk '{print $0,"end"}'`
+cat $file | dos2unix | tr -d "," | grep "Total" | grep -v Change | head -1 | awk '{print $0,"end"}' |\
+awk '
+{
+acct="'$acct'"
+date="'$date'"
+name="'$name'"
+printf" %9s %9s %40s %9d %9d %9d %9d %4.2f\n",acct,date,name,$2,$3,$4,$5,$6}'
+
+done
+exit
+
+
+grep $dir/Liq *.txt
+
+
+
+exit
+

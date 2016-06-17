@@ -1,0 +1,1 @@
+cd C:\Users\bob\GDRIVE\EXE_RP\AALIVE_TRADING

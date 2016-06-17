@@ -1,0 +1,6 @@
+StochK,15mins,valtest,pos,1,zeropoint,maxpoint,percrange,
+StochK,15mins,valtest,pos,1,50,100,.20,
+ROC,15mins,valtest,pos,1,0,0.5,.20,
+SROC
+StochK,15mins,Pricetest,pos,1,reverseORnormal,maxdiff,mindiff,
+StochK,15mins,stringtest,pos,1,string,maxpoint,percrange,

@@ -1,0 +1,135 @@
+:
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+parsearea=/dev/fs/C/TS/EXE/parse_bank_statements_exe
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+stmts=$DATA/statements
+stmtsarea=$stmts/UBS_*
+
+rundate=`date "+%Y%m%d%H%M"`
+chmod 777 $stmtsarea
+
+#########################################
+rm debug
+
+create_filelist() ###subroutine
+{
+rm filelist
+ls -ltr $stmtsarea/RUNMEubs*.txt |  awk -F"/" '{print $NF}' | tr " " "?" >filelist
+cat filelist
+}
+#########################################
+create_filelist
+#########################################
+proccess_files()  ##subroutine
+{
+filelista=`cat filelist`
+rm temp1_withfull blab
+#################
+for filea in $filelista;do
+file=$stmts/*/$filea
+ls $file
+acctnum=`echo $filea | awk -F"." '{print $2"UBS"$3}' | tr "[a-z]" "[A-Z]"`
+echo $acctnum
+
+cat $file |\
+dos2unix |\
+tr -d "\t" |\
+tr " " "_" |\
+tr "[a-z]" "[A-Z]" |\
+cat > run1a.txt
+cat run1a.txt |\
+tr "\n" "\|" |\
+sed s/2006\;/2006\|~/g |\
+sed s/2007\;/2007\|~/g |\
+sed s/2008\;/2008\|~/g |\
+sed s/2009\;/2009\|~/g |\
+sed s/2010\;/2010\|~/g |\
+sed s/E\-BANKING\_CHF\_DOMESTIC/~MULTIONELINE/g |\
+sed s/\_\_\_\_CHF\_/\|CHF\|/g |\
+tr ";" "|" |\
+tr "~" "\n" |\
+tr -s "_" |\
+tr -d "\"" |\
+sed s/CARD_73870840-0_1012//g |\
+cat > run1.txt
+
+cat run1.txt |\
+awk -F"|" ' BEGIN {date="01.01.2008"}
+{
+print date"|"$0
+date=$(NF-1)
+}
+' |\
+grep -v MULTIONELINE |\
+grep -v "E-BANKING_ORDER" |\
+sort -t "|" +1 > run2.txt
+
+cat run2.txt |\
+grep -v "|CHF|" |\
+awk -F"|" ' {print $2}'  |\
+sort -u > typelist
+cat typelist
+
+cat run2.txt |\
+grep  "|CHF|" |\
+grep -v "WITHHOLDING" |\
+grep -v "STANDING_ORDER" |\
+cat > temp1
+
+cat run2.txt |\
+grep  "|CHF|" |\
+grep  "WITHHOLDING" |\
+grep  "STANDING_ORDER" > stillneedtoinclude_ubs
+
+
+#/>>:>>
+
+cat temp1 |\
+sed s/\|CHF\|/\~AMOUNLINECHF\|/g |\
+tr "~" "\n" |\
+grep AMOUNLINECH |\
+awk -F"|" '{print "|newamount|"$2"|"}
+' > temp2
+paste temp1 temp2 > run3.txt
+
+echo "done with run3"
+cat run3.txt |\
+awk -F"|" '
+{printf"%s|%s|%s|%3.2f|\n",$1,$2,$3$4$5$6,$(NF-1)}
+' > run4.txt
+ls -l run4.txt
+tail run4.txt
+
+echo "done with run4"
+
+
+cat run4.txt |\
+tr -d "\'" |\
+tr -d "\t" |\
+tr " " "_" |\
+tr -s "_" |\
+awk -F "|" ' 
+{incflag="expensecat";area="che";category=autocategory="EMPTY";fullline=$3
+date=$1;payee=$3;curr="CHF";amt=$4;balance="bal";flag="printme";type="multi"
+year=substr(date,7,4);month=substr(date,4,2)}
+( amt > 0 ) {incflag="incomecat"}
+{
+printf"%s %-32s %3s %9.2f %9.2f %s %s %s %s %s %s %s %s %s \n"\
+,date,payee,curr,amt,balance,"'$acctnum'",type,incflag,year,month,area,category,autocategory,fullline}
+' >> temp1_withfull
+tail temp1_withfull
+done
+}
+#################################################
+proccess_files
+cp temp1_withfull ready_for_categorizing
+#################################################
+mainfile="ubs"
+fileout=all.$mainfile.w_categories.txt
+$parsearea/add_categorys.exe > $fileout
+##################################################
+exit

@@ -1,0 +1,24 @@
+language: python
+python: 2.7
+env:
+    - TOXENV=py27
+    - TOXENV=precise
+    - TOXENV=trunk
+    - TOXENV=pypy
+
+matrix:
+    allow_failures:
+        - env: TOXENV=pypy
+
+install:
+    - ./.travis-workarounds.sh
+    - pip install -M tox
+
+script: tox
+
+notifications:
+    irc:
+        channels:
+            - "irc.freenode.org#scrapy"
+        use_notice: true
+        skip_join: true

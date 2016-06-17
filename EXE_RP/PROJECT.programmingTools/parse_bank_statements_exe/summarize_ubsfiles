@@ -1,0 +1,116 @@
+:
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+rundate=`date "+%Y%m%d%H%M"`
+#########################################
+### create ubs sum file first ......
+#################################################
+egrep "MIGROS|COOP|SPAR|METZGER|LE_SHOP|LESHOP" all_ubs_trans.txt >food.txt
+
+#################################################
+##################
+##################
+yearlist="2007 2006"
+yearlist="2007 2008"
+curlist="USD EUR CHF"
+for year in $yearlist;do
+for curr in $curlist;do
+echo  $year $curr
+cat all_ubs_trans | grep $year | grep " $curr " > temp1
+######################################
+######################################
+create_summary()
+{
+rm payeesum
+for payee in $payees;do
+grep $payee temp1  |\
+awk ' {sum+=$4;type=$7} END {printf"%-35s %9d %30s %s %s\n","'$payee'",sum,type,"'$year'","'$curr'"}' >>payeesum
+grep -v $payee temp1 >temp4
+mv temp4 temp1
+done
+sort  payeesum >payeessort
+sort -n  +1 payeesum >payeessort
+cat payeessort
+echo "#########"
+}
+###################################
+###################################
+
+echo "##### by main items ###"
+payees="INTERACTIVE PRIOR SABINE NANCY WITHDRAW PETROL HYPOTHEK"
+create_summary
+##############
+echo "##### by category ###"
+payees=`cat UBS_categorys | sort -u | head`
+create_summary
+echo "##### by payee ###"  #### careful, this only shows payees that are left after categorys!!!!#####
+payees=`cat temp1 | awk  '{print $2}' | tr -d " " | sort -u` ## by payee
+create_summary
+############## file is now empty here. reset if neces. #######
+cat all_ubs_trans | grep $year | grep " $curr " > temp1
+echo "##### by income/expense ###"
+payees="incomecat expensecat"
+create_summary
+
+done ##curlist
+done ##yearlist
+exit
+#############
+#############
+#############
+#############
+### full payee list here  #######
+payees=`cat temp1 | awk  '{print $2}' | tr -d " " | sort -u` ## by payee
+cat all_ubs_trans | grep $year | grep " $curr " > temp1    ### reset line ####
+create_summary
+#############
+
+
+##### add here for by type #####
+grep $year all_ubs_trans > temp1
+payees=`cat temp1 | awk  '{print $7}' | tr -d " " | sort -u` ##by type
+create_summary
+done
+exit
+
+##################################
+done # curlist
+done # yearlist
+
+exit
+
+
+MIGROS
+WASSERWERKE
+COOP
+STAUB
+BERENDT
+HOTEL
+SANITAS
+SWISSCOM
+INTERCOIFFURE_WOLF
+SCAN_
+AUSGLEICHSKASSE_ZUG
+METZGEREI
+TANKSTELLE
+FRANZ_CARL_WEBER
+SCHUWO_AG
+SHELL
+RESTAURANT
+DR._MED
+SBB
+MIGROL
+VERSICHERUNG
+SPORT
+BLUMEN
+POLIZEI
+BOUTIQUE
+FINANZVERWALTUNG
+PRIOR
+GARRISON
+ROSSELAND
+DAMATO

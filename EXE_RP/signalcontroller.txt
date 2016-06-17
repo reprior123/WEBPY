@@ -1,0 +1,6 @@
+TimeLimitRecentSigs,300
+SignalsToShow,10,
+DurationToShow,5min,
+CycleTime,20
+Setting,NOTRANSMIT-setting
+testmode,online,

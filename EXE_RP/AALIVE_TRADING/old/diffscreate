@@ -1,0 +1,54 @@
+67c67
+< today ='20150720'
+---
+> ##today ='20150718'
+201c201
+<     print 'ccreate sigs searching for sigs in last ',recentlimit
+---
+>     print 'cycle heartbeat...searching for sigs in last ',recentlimit
+265c265
+< ##        print len(recentsigs)
+---
+>         print len(recentsigs)
+278a279
+>             print ResLine,SupLine,PivLine,bid,action
+281d281
+<             
+287,290c287,288
+<                 indlist = ['pivot']#, 'R', 'S']
+< ##                indlist = ['MACROSS', 'MCDiv', 'price', 'kupper', 'kmid', 'klower', 'pivot', 'R', 'S']
+<                 durstatelist =['1hour', '15mins' ]
+< ##                durstatelist =['1hour', '15mins', '3mins']
+---
+>                 indlist = ['MACROSS', 'MCDiv', 'price', 'kupper', 'kmid', 'klower', 'pivot', 'R']
+>                 durstatelist =['1hour', '15mins', '3mins']
+311,333c309,313
+<                 diffRes = abs(float(bid) - float(ResLine))
+<                 diffSup = abs(float(bid) - float(SupLine))
+<                 diffPiv = abs(float(bid) - float(PivLine))
+<                 if diffRes < 99999:
+<                     activeline = 'ResLine'
+<                     linediff = diffRes
+<                 if diffSup < diffRes:
+<                     activeline = 'SupLine'
+<                     linediff = diffSup
+<                 if diffPiv < diffSup:
+<                     activeline = 'PivLine'
+<                     linediff = diffPiv
+<                 if linediff < 0 :
+<                     linestatus = 'below'
+<                 else:
+<                     linestatus = 'above'
+<                 print activeline, linediff, linestatus
+<                 print ResLine,SupLine,PivLine,bid,action
+<                 print sym, tside, sigtype, dur, pricedrift, sigtime, now
+< ##                print symNEWSdict[sym]
+< ##                print timedrift,sym, tside,dur, priceinsignal,barToPrev,sigtime,pricedrift,now
+<                 print stateinfo
+< ##                print sigtype
+---
+>                 print sig
+>                 print symNEWSdict[sym]
+>                 print timedrift,sym, tside,dur, priceinsignal,barToPrev,sigtime,pricedrift,now
+> ##                print stateinfo
+>                 print sigtype

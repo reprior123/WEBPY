@@ -1,0 +1,1 @@
+cd C:\WEB2PY\EXE_RP\web2py\applications

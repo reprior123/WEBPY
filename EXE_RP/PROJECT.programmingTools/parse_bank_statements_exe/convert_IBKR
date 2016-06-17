@@ -1,0 +1,36 @@
+
+#allnewpnls.semac.txt
+#namelist="IBKR PCU RUT PD"
+#for stockname in $namelist;do
+acct=$1
+file="allnewpnls.$acct.txt"
+############
+cat $file | grep IBKR >ibkrs
+cat $file | grep -v IBKR >noibkrs
+cat ibkrs | sed s/STK/IBK/g | sed s/OPT/IBK/g >ibkrsib
+cat noibkrs ibkrsib  > $file
+########
+cat $file | grep PCU >ibkrs
+cat $file | grep -v PCU >noibkrs
+cat ibkrs | sed s/STK/PCU/g | sed s/OPT/PCU/g >ibkrsib
+cat noibkrs ibkrsib  > $file
+########
+cat $file | grep RUT >ibkrs
+cat $file | grep -v RUT >noibkrs
+cat ibkrs | sed s/STK/RUT/g | sed s/OPT/RUT/g >ibkrsib
+cat noibkrs ibkrsib  > $file
+########
+cat $file | grep PD >ibkrs
+cat $file | grep -v PD >noibkrs
+cat ibkrs | sed s/STK/PD/g | sed s/OPT/PD/g >ibkrsib
+cat noibkrs ibkrsib  > $file
+########
+cat $file | grep VBI >ibkrs
+cat $file | grep -v VBI >noibkrs
+cat ibkrs | sed s/FUT/VBI/g | sed s/FOP/VBI/g >ibkrsib
+cat noibkrs ibkrsib  > $file
+########
+
+exit
+
+

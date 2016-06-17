@@ -1,0 +1,6 @@
+RVI,15mins,stringtest,neg,2,80,10100,BUY,mcd15min,##
+RVI,15mins,stringtest,slopeup,4,80,10100,BUY,mcd15min
+mcd,15mins,stringtest,slopeup,4,0,20,BUY,mcd15min
+mcd,15mins,valtest,pos,1,-1.5,1.50,BUY,mcd15min
+StochK,15mins,stringtest,slopeup,4,0,20,BUY,mcd15min
+StochK,15mins,valtest,pos,1,0,50,BUY,mcd15min

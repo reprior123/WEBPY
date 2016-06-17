@@ -1,0 +1,228 @@
+:
+G3=/dev/fs/C
+FG3=/dev/fs/F
+mydocs=$G3/Documents*Settings/bob*marley/My*Documents
+mydocsF=$FG3
+basedir=/dev/fs
+photosC=$G3/PHOTOSG3
+photosF=$FG3/PHOTOSF3
+mergearea=$FG3/ALLPICSNEW
+dupearea=$FG3/ALLPICSDUPES
+#ls -ltr $G3
+
+#################################
+# create dir list #
+create_lengths()
+{
+cat photodbaseF.txt |\
+awk  -F"|" '
+{print $2"_"$1}' | tr -s " " "_" |\
+sort -u > allfilenames
+
+#cat alldirs |\
+cat allfilenames |\
+head |\
+awk '{print length($1),$1}' |\
+sort -n | tail
+}
+###################################
+create_database()
+{
+infile=$G3/exifdbaseout.txt
+# first run the shell exiftool.exe -f -t -fast -r $TARGETDIR/*  > exif_dbaseout.txt
+wc $infile
+
+cat $infile |\
+### possible use Sampl, File Source Digital Camera, and  Document ID  ##
+egrep "ExifTool|Create|Name|Directory|Size|Modification|Camera|Original|Image|ID|Source" >relevantllines
+
+echo " done with first grep "
+
+cat relevantllines |\
+dos2unix |\
+awk -F "\t" ' 
+BEGIN {OFS="|";name=dir=size=mod=camera=create=owner=isize=source="NOCODE"}
+/File Name/ {name=$2}
+/Directory/ {dir=$2}
+/File Size/  {size=$1$2}  
+/File Modification Date/ {mod=$1$2}
+/Camera Model Name/     {camera=$1$2}  
+/Time Original/   {original=$1$2}   
+/Create Date/   {create=$1$2}   
+/Owner Name/    {owner=$1$2}  
+/Image Size/    {isize=$1$2}
+/Thumbnail Image/    {thumb=$1$2}
+/File Source/    {source=$1$2}
+/ExifTool Version Number/ {
+fileid="FID_"size"_"create"_"owner"_"original"_"camera"_"source"_"isize"_"mod"_"thumb"_end"
+print name,dir,size,mod,camera,create,owner,isize,fileid,source,"end"
+original=name=dir=size=mod=camera=create=owner=isize=isource="NOCODE"
+}' |\
+sed 's/F\:\\/F\\/g' |\
+sed 's/C\:\\/C\\/g' |\
+sed 's/\\/SLASHPUNCT/g' |\
+sed 's/\//SLASHPUNCT/g' |\
+sed 's/\|/PIPEPUNCT/g' |\
+tr [:punct:] "\?" |\
+tr "\ " "\?" |\
+tr "\t" "\?" |\
+sed 's/PIPEPUNCT/\|/g' |\
+cat  > dbasenewall.txt
+tail dbasenewall.txt
+echo "done with dbase,,,"
+}
+######################################################################
+compare_dirs()
+{
+### locate differences in filenames and sizes in two directorys  #####
+### run exif on both directorys
+### list filename after stripping dir along with filesize
+### compare and diff the 2 resulting files
+dirone=$FG3/PHOTOS_TO_MERGE/photoszug
+dirtwo=$FG3/PHOTOS_TO_MERGE/photoszug2
+diff newones newtwos
+}
+###############################################################
+create_newname_n_uniq()
+{
+###############################
+}
+##############################################
+check_for_exact_dupes()
+{
+yearlist="1998 1999 2000 2001 2002 2003 2004"
+yearlist="2005 2006 2007"
+yearlist="1998 1999 2000 2001 2002 2003 2004 2005 2006 2007"
+yearlist="2006"
+yearlist="1998 1999 2000 2001 2002 2003 2004 2005 2006 2007"
+for year in $yearlist;do
+infile=$year.photos.noorigins
+infile=noorigins
+infile=$year.photos
+infile=$year.photos.nocodes
+mkdir $mergearea/$year
+mkdir $dupearea/$year
+###############################
+typelist="jpg JPG"
+typelist="AVI avi MPG mpg tif jpg JPG NEF"
+cat $infile |\
+awk  -F"|" ' {print $1}' | tr  "\?" "_" |  awk  -F"_" ' {print $NF}' | sort -u 
+wc $infile
+for type in $typelist;do
+echo $type
+cat $infile |  grep -i "$type"  > blatype
+wc blatype
+cat blatype | awk  -F"|" ' {print $9}' | sort -u  > uniq_fids
+wc uniq_fids
+fidlist=`cat uniq_fids`
+for fid in $fidlist;do
+
+grep "$fid" blatype  |\
+cat > dupegroup
+
+cat dupegroup |\
+awk  -F"|" ' {print $2"_"$1}' |\
+tr -s "\?" "_" |\
+sed 's/SLASHPUNCT/\_/g' |\
+tr '[a-z]' '[A-Z]' |\
+sed 's/_MOV0//g' |\
+tr "_" "\n" | sort -ru |\
+cat > words
+newname=`cat words |\
+egrep -vxi "PHOTO|ALBUM|C|F|JPG|ALLPICS|AAAFOLDER|PHOTOS|PICTURES|PICS|FDIR|CDIR|MOVIES|PHOTOSG3|PHOTOSF3|AND" |\
+tr "\n" "_" |\
+tr -s "_"`
+cat dupegroup |\
+head -1 >original
+
+oldname=`cat original |\
+awk  -F"|" ' {print $2"\/"$1}' | sed 's/SLASHPUNCT/\//g' `
+newnameext=`cat original |\
+awk  -F"|" ' {print $1}' | tr  "\?" "_" | tr '[a-z]' '[A-Z]' | awk  -F"_" ' {print $NF}'`
+#echo "newname = $newname.$newnameext
+#original = $basedir/$oldname "
+cp $basedir/$oldname $mergearea/$year/$newname.$newnameext
+
+dupevalue=`cat dupegroup | awk ' ( NR > 2 ) {print "4"}' `
+case $dupevalue in
+4)
+echo "####"
+cat dupegroup | awk  -F"|" ' {print $2"\/"$1}' | sed 's/SLASHPUNCT/\//g'
+;;
+*)blaval="donothing";;
+esac
+
+dupegroup=`cat dupegroup | awk  -F"|" ' {print $2"\/"$1}' | sed 's/SLASHPUNCT/\//g' `
+for dupefile in $dupegroup;do
+#echo "duplicat = $basedir/$dupefile "
+mv  $basedir/$dupefile $dupearea/$year
+done  ###dupefiles
+
+done #linelist
+done ##typelist
+done ##years
+}
+##############################################
+create_wordlist()
+{
+cat dbasewithFids | awk  '{print $3}' |
+tr "_" "\n" | sort -u >wordsall
+}
+#########################
+#########################
+create_years()
+{
+yearlist="1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008"
+
+grep -v NOCODE dbasenewall.txt > filestart
+grep    NOCODE dbasenewall.txt > filestart.nocodes
+
+cp filestart fullfile
+cp filestart.nocodes fullfile.nocodes
+wc filestart*
+
+for year in $yearlist;do
+search=`echo $year | awk '{print "Original""'$year'"}'`
+modsearch=`echo $year | awk '{print "Time""'$year'"}'`
+echo $search
+grep $modsearch  noorigins > $year.noorigins
+grep $search fullfile > $year.photos
+grep $search fullfile.nocodes > $year.photos.nocodes
+
+grep -v $search filestart > tempphotos
+grep -v $search filestart.nocodes > tempphotos.nocodes
+mv tempphotos filestart
+mv tempphotos.nocodes filestart.nocodes
+wc $year.photos*
+done
+wc filestart*
+}
+
+#####################
+#####################
+#####################
+#####################
+echo "
+1 create_lengths 
+2 create_database 
+3 compare_dirs
+4 check_for_exact_dupes 
+5 create_newname
+6 create_wordlist 
+7 create_years
+"
+read mode
+#######################
+case $mode in
+1)create_lengths;;
+2)create_database;;
+3)compare_dirs;;
+4)check_for_exact_dupes;;
+5)create_newname;;
+6)create_wordlist;;
+7)create_years;;
+*)echo "need args ...exiting ...";exit;;
+
+esac
+exit
+

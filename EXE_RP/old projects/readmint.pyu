@@ -1,0 +1,34 @@
+import subprocess as S
+import csv
+import sys
+
+###F = open('out.txt','w')
+##### use this to write to file, below to write to cmd prompt
+##F = sys.stdout
+###output =S.Popen('cat *.py',shell=True,stdout=F)
+##output =S.Popen('grep srange *.py',shell=True,stdout=F)
+##F.close()
+
+fname = 'C:/Users/bob/Downloads/transactions.mint.csv'
+
+
+print fname
+
+f = open(fname, 'r')
+
+csvbla = csv.reader(f)
+mthyr = yr = 'bl'
+for line in csvbla:
+    date = line[0]
+    desc = line[1]
+    orig = line[2]
+    amount = line[3]
+    if '/' in date:
+        yr = date.split('/')[2]
+        mth = date.split('/')[0]
+        mthyr = mth +yr
+    line.append(mthyr)
+    print line
+    
+##['Date', 'Description', 'Original Description', 'Amount', 'Transaction Type', 'Category', 'Account Name', 'Labels', 'Notes']
+##['4/13/2013', 'iTunes', 'CHECKCARD 04/13 APL*APPLE ITUNES STORE 866-712-7753 CA', '10.95', 'debit', 'Music', 'MyAccess Checking', '', '']

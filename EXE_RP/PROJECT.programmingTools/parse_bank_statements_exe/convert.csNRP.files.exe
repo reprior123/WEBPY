@@ -1,0 +1,63 @@
+:
+mainfile="cs_nrp"
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+parsearea=$EXE/parse_bank_statements_exe
+importarea=$dir/Jts
+stmts=$DATA/statements
+chmod 777 $DATA/statements/*/*
+rundate=`date "+%Y%m%d%H%M"`
+
+stmtsarea=$stmts/CS_NRP
+#########################################
+ls -ltr $stmtsarea/*.csv
+#####################################
+##### process CS NRP ######################
+cat $stmtsarea/RUNME*.csv > filesin
+#################################################
+proccess_files()  #### subroutine
+{
+cat filesin |\
+dos2unix | tr "\t" ";" | tr " " "_" |\
+tr -s "_" | tr "[a-z]" "[A-Z]"  | tr -d "\"" > run1.txt
+
+#######
+#### first recognize field 2 amounts and others at $NF ####
+cat run1.txt |\
+awk -F"," '
+{tranamount=$2}
+( tranamount > 0 ) {print $0",parsefield2"}
+( tranamount < 0 ) {print $0",parsefieldNFminus1"}
+' > run2.txt
+
+cat run2.txt |\
+awk -F"," ' {
+date=$1
+year=substr(date,7,4);month=substr(date,1,2)
+payee=$3$4$5$6$7
+curr="CHF"
+category=$3
+acctnum=type="csacct"
+origcurr=$6;origamt=$5;varlen=length(payee);start=varlen-2;area=substr(payee,start,3)
+balance="bla";incflag="expensecat";autocat="EMPTY";fullline=$0
+creditamt=0}
+/parsefield2/ {amt=($2*(-1))}
+/parsefieldNFminus1/ {amt=$(NF-1);incflag="incomecat"}
+{
+printf"%s %-32s %3s %9.2f %9.2f %s %s %s %s %s %s %s %s %s \n"\
+,date,payee,curr,amt,balance,acctnum,type,incflag,year,month,area,category,autocat,fullline}
+'  > run3.txt
+
+cp run3.txt ready_for_categorizing
+
+} #### end subroutine
+###################################################
+proccess_files
+###################################################
+$parsearea/add_categorys.exe > all.$mainfile.w_categories.txt
+##################################################
+exit
+exit

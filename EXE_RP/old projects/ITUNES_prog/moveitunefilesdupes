@@ -1,0 +1,97 @@
+:
+G3=/dev/fs/C
+FG3=/dev/fs/F
+mydocs=$G3/Documents*Settings/bob*marley/My*Documents
+MUSICG3NEW=$G3/MUSICG3NEW
+basedir="/dev/fs"
+DUPEAREA=$G3/MUSICG3NEW/dupedumpnew
+echo "test" >$DUPEAREA/testfiledupearea
+ls $DUPEAREA
+
+infile=$mydocs/musicviewer.txt
+
+cat $infile |\
+tr -d  "\|" |\
+tr "\t" "\|" |\
+tr "\ " "\?" |\
+tr "\-" "\?" |\
+tr "\\" "\/" |\
+tr "\'" "\?" |\
+tr "\!" "\?" |\
+tr "\&" "\?" |\
+tr "\%" "\?" |\
+tr "\$" "\?" |\
+tr "\]" "\?" |\
+tr "\)" "\?" |\
+tr "\[" "\?"  |\
+tr "\(" "\?"  |\
+tr "\<" "\?"  |\
+tr "\>" "\?"  |\
+tr "\*" "\?"  |\
+tr "\+" "\?"  |\
+tr "\#" "\?"  |\
+tr "\," "\?"  |\
+tr -d "\"" |\
+sed 's/C\:\//C\//g' |\
+tr "\:" "\?"  |\
+tr -d '\015\032' |\
+awk -F "|" '
+{print $0,$2"_"$3"|samesongNartist"}' |\
+cat  > musicdbase
+#{print $0,$2"_"$3"_"$5"|samesongartistalbum"}' |\
+wc musicdbase
+cat musicdbase | grep ".mp3" >part1.mp3
+cat musicdbase | grep ".m4a" >part2.m4a
+cat musicdbase | grep ".m4p" >part3.m4p
+cat musicdbase | grep ".m4b" >part4.m4b
+cat musicdbase | egrep -v "m4b|m4a|mp3|m4p"
+
+cat part1.mp3 part2.m4a part3.m4p part4.m4b >musicdbase
+wc part1.mp3 part2.m4a part3.m4p part4.m4b 
+wc musicdbase
+
+SOUNDTRACKS=$G3/MUSICG3NEW/BESTOFS/SOUNDTRACKS_etal_
+#THEDEAD_PHISH_etal
+#BESTOFS
+newdir="$G3/MUSICG3NEW/BYARTISTSLETTER"
+
+### show suspicious artists ####
+cat musicdbase | awk -F "|" ' {print $2}'  > songs.txt
+
+cat musicdbase | awk -F "|" ' {print $2}' | sort -u  > songs.txt
+cat musicdbase | awk -F "|" ' {print $3}' | sort -u  > artists.txt
+cat musicdbase | awk -F "|" ' {print $5}' | sort -u  > albums.txt
+cat musicdbase | awk -F "|" ' {print $29}' | sort -u > songsartistalbums.txt
+cat musicdbase | awk -F "|" ' {print "|"$28"|"$29"|"}'  > songsartistalbums_w_filenames.txt
+
+#cat musicdbase | awk -F "|" ' {print $3,$8}'   > artistswithsize.txt
+
+wc artists* albums* songs*
+echo " continue ?"
+read bla
+###################################
+ulist=`cat songsartistalbums.txt`
+rm filelistdupes
+for song in $ulist;do
+echo $song
+grep  $song songsartistalbums_w_filenames.txt |\
+awk  -F "|" ' ( NR > 1 ) {print $2}' >>filelistdupes
+done
+
+ head filelistdupes
+tail filelistdupes
+wc filelistdupes
+
+exit
+
+
+filelist=`cat filelistdupes | sort -u`
+for filename in $filelist;do
+ls $basedir/$filename
+#mv -i $basedir/$filename $DUPEAREA
+
+done
+exit
+
+##################################
+###################################

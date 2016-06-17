@@ -1,0 +1,172 @@
+:
+
+### notes for preparing input file which has been created by cashcomm
+### insert an "end" string on end of each line
+### insert acct number in first cell
+#####################################
+
+#cat  exportsorted.csv |\
+cat  cashcomnovtofeb.txt |\
+tr "\t" ";" |\
+cat > temp
+
+cat temp |\
+grep -v "MULTI E" |\
+awk -F";" '
+( NF < 3 ) {memstring=memstring"|"$1}
+( NF < 3 ) &&  ( flag1 == "reset" )  {firstname=$1;flag1="next"}
+( NF > 3 ) && ( $10 != "CHF" )  {prevline=$0}
+/;CHF;/ && ( NF > 3 ) {printf"%s;%s;%s\n",prevline,memstring,$0;memstring="m";prevline=$0;flag1="reset"}
+' |\
+grep ";CHF;" |\
+tr -d " " |\
+tr -d "\"" |\
+tr -s ";" |\
+grep -v "E-BANKINGORDER;ROBERTEAMESPRIOR;" |\
+cat >temp3.txt
+
+acctlist=`cat temp3.txt | awk -F";" ' {print $1}' | sort -u`
+echo $acctlist
+for acct in $acctlist;do
+
+echo "!Type:Bank
+D5/29'2006
+T0.00
+CX
+POpening Balance
+L[blah Checking]
+^" >final.$acct.qif
+
+cat temp3.txt |\
+tr -d "\"" |\
+tr -d "," |\
+grep 200 |\
+grep $acct |\
+awk -F";" ' {
+date=$3
+memo=$4"|"$6
+payee=substr($4,1,30)
+amt=$8
+cat="cat"
+checknum="ccom"
+printf"D%s\nT%2.2f\nP%s\nM%s\nL%s\nN%s\n^\n",date,amt,payee,memo,cat,checknum}
+' |\
+tr "|" " " >> final.$acct.qif
+
+done
+
+exit
+
+D,M,T,P,L,N
+Date
+memo
+amt
+payee
+cat
+number check
+
+
+exit
+!Type:Bank
+D5/29'2006
+T0.00
+CX
+POpening Balance
+L[blah Checking]
+^
+D5/29'2006
+T-7,530.00
+NUBS Pay
+PBeat Keiser
+^
+D5/29'2006
+T-500.00
+NUBS Pay
+PLowe u. Bar Hotels
+LLeisure:Entertaining
+^
+D5/29'2006
+T-134.30
+NUBS Pay
+PSwisscom Mobile AG
+^
+D5/29'2006
+T-3,041.10
+NUBS Pay
+PUtiger Maler AG
+^
+D5/31'2006
+T-788.00
+NUBS Pay
+PAertztekasse Zentralschweiz
+^
+D5/31'2006
+T-550.10
+NUBS Pay
+PAertztekasse Zentralschweiz
+^
+D5/31'2006
+T-1,320.00
+NUBS Pay
+PAquelina Bozzi
+^
+D5/31'2006
+T-565.00
+NUBS Pay
+PBeata Huber
+^
+D5/31'2006
+T-114.05
+NUBS Pay
+PBruderus Heiztechnik AG
+^
+D5/31'2006
+T-271.90
+NUBS Pay
+PDr.med. Britt-Frauke Feddern
+^
+D5/31'2006
+MKaterina Prior
+T-20.00
+NUBS Pay
+PElternforum Oberwil
+^
+D5/31'2006
+T-157.35
+NUBS Pay
+PExagon AG
+^
+D5/31'2006
+T-1,070.00
+NUBS Pay
+PFitness-Park Zug
+LLeisure
+^
+D5/31'2006
+T-1,411.85
+NUBS Pay
+PFoery
+^
+D5/31'2006
+Mrech 37601 /5226
+T-2,698.50
+NUBS Pay
+PFrau Lic.IUR Andrea Hodel
+^
+D5/31'2006
+T-4,089.00
+NUBS Pay
+PInnendek.amFischmarkt H.Irzik
+^
+D5/31'2006
+T-5,541.40
+NUBS Pay
+PISS Gartenbau AG
+
+
+tail
+
+
+exit
+
+

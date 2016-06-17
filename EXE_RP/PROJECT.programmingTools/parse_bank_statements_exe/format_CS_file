@@ -1,0 +1,42 @@
+:
+cat  export.txt |\
+tr "\t" ";" |\
+tr  "\n" ";"  |\
+#tr -d [[:cntrl:]] |\
+tr -d " " |\
+tr -d "\"" |\
+#tr -s ";" |\
+tr -d "," |\
+sed s/endlline/endline/g |\
+sed s/endline/endline\\n/g |\
+grep lineitem |\
+cat > part1
+cat part1 |\
+awk -F";" '
+BEGIN {OFS=";" }
+( $5 > 0 ) || ( $6 > 0 ) {print $2,$3,$4,$5,$6}' |\
+cat > blah
+
+echo "!Type:Bank
+D29.03.2003
+T0.00
+CX
+POpening Balance
+L[blah Checking]
+^" >final.qif
+
+cat blah |\
+awk -F";" ' BEGIN {amt=9999}
+( $4 > 0 ) {amt=$4*(-1)}
+( $5 > 0 ) {amt=$5*(1)}
+{
+date=$1
+memo=$2
+payee=substr($3,1,30)
+cat="cat"
+checknum=NR
+printf"D%s\nT%2.2f\nP%sneed\nM%s\nL%s\nN%d\n^\n",date,amt,payee,memo,cat,checknum}
+' >> final.qif
+
+exit
+D,M,T,P,L,N

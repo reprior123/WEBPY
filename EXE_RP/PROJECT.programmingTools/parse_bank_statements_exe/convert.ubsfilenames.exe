@@ -1,0 +1,72 @@
+:
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+stmts=$DATA/statements
+stmtsarea=$stmts/UBS_*
+
+rundate=`date "+%Y%m%d%H%M"`
+chmod 777 $stmtsarea
+chmod 777 $stmtsarea/*
+chmod 777 $stmtsarea/*/*
+
+#########################################
+rm debug
+
+create_filelist() ###subroutine
+{
+rm filelist
+ls -ltr $stmtsarea/ubs*.txt |  awk -F"/" '{print $NF}' | tr " " "?" >filelist
+#ls -ltr $stmtsarea/ubs*.txt |  awk -F"/" '{print $NF}' | tr -s " " "." >filelist
+cat filelist
+}
+#########################################
+create_filelist
+
+#########################################
+proccess_files()  ##subroutine
+{
+filelista=`cat filelist`
+#################
+for filea in $filelista;do
+file=$stmts/*/$filea
+ls $file
+currency=`cat $file |\
+dos2unix |\
+tr "\"" "X" |\
+cat > tempfile
+
+grep 2008 tempfile | head -1 | awk ' -F";" {print $1}'
+grep 2008 tempfile | head -1 
+grep 2008 tempfile | tail -1 | awk ' -F";" {print $4}'
+grep 2008 tempfile | tail -1 
+echo "above are lines"
+sleep 5
+cat tempfile |\
+awk '
+/XXCHFXX/ {cur="CHF"}
+/XXUSDXX/ {cur="USD"}
+/XXEURXX/ {cur="EUR"}
+END {print cur}'`
+
+echo $currency
+
+acctnum=`echo $filea | awk -F"." '{print $2"UBS"$3}' | tr "[a-z]" "[A-Z]"`
+newnamestem=`echo $filea | tr -s "?" "." | tr "[a-z]" "[A-Z]"`
+echo $newnamestem
+acctnum=`echo $newnamestem | awk -F"." '{print $2}' `
+runtime="runtime"
+newfilename="UBS.$acctnum.$currency.$runtime.ready.txt"
+echo $newfilename
+#cp $file $stmts/$newfilename
+done
+}
+#################################################
+proccess_files
+#################################################
+fileout=all.$mainfile.trans.txt
+##################################################
+exit

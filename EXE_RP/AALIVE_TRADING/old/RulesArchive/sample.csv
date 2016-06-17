@@ -1,0 +1,9 @@
+mcross,1min,stringtest,pos,2,9,9,BUY,1minmcrossbuy
+mcd,5mins,stringtest,negcrxx,7,9,9,SELL,mcd5neg
+mcd,5mins,stringtest,poscrxx,7,9,9,BUY,mcd5pos
+StochK,5mins,valtest,poscrxx,1,0,21,BUY,stochkLT20
+StochK,5mins,valtest,poscrxx,1,80,101,SELL,stochkGT80
+StochK,5mins,valtest,poscrxx,1,0,20,BUY,stochklT205min
+Stoch_CROSS,5mins,stringtest,pos,1,80,101,BUY,stochcrosspos5min
+StochK,5mins,valtest,poscrxx,1,80,101,SELL,stochkGT805min
+Stoch_CROSS,5mins,stringtest,neg,1,80,101,SELL,stochcrossneg5min

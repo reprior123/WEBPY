@@ -1,0 +1,153 @@
+:
+G3=/dev/fs/C
+FG3=/dev/fs/F
+mydocs=$G3/Documents*Settings/bob*marley/My*Documents
+mydocsF=$FG3
+musicg3=$FG3/MUSICG3
+newdir="$mydocsF/MERGEDMUSIC/NEEDFORMATS"
+
+basedir="/dev/fs"
+
+#mv $musicg3/*.* $newdir
+#mv $musicg3/*/*.* $newdir
+#mv $musicg3/*/*/*.* $newdir
+#mv $musicg3/*/*/*/*.* $newdir
+#mv $musicg3/*/*/*/*/*.* $newdir
+#mv $musicg3/*/*/*/*/*/*.* $newdir
+#mv $musicg3/*/*/*/*/*/*/*.* $newdir
+#mv $musicg3/*/*/*/*/*/*/*/*.* $newdir
+
+#ZXCVBNM\|<
+
+infile=$mydocs/musicviewer.txt
+
+cat $infile |\
+tr -d  "\|" |\
+tr "\t" "\|" |\
+tr "\ " "\?" |\
+tr "\-" "\?" |\
+tr "\\" "\/" |\
+tr "\'" "\?" |\
+tr "\!" "\?" |\
+tr "\&" "\?" |\
+tr "\%" "\?" |\
+tr "\$" "\?" |\
+tr "\]" "\?" |\
+tr "\)" "\?" |\
+tr "\[" "\?"  |\
+tr "\(" "\?"  |\
+tr "\<" "\?"  |\
+tr "\>" "\?"  |\
+tr "\*" "\?"  |\
+tr "\+" "\?"  |\
+tr "\#" "\?"  |\
+tr "\," "\?"  |\
+tr -d "\"" |\
+#sed 's/F\:\//F\//g' |\
+sed 's/C\:\//C\//g' |\
+tr "\:" "\?"  |\
+#grep -v "track" | grep -v "various" |\
+#grep -vi "best?of" |\
+#grep -vi soundtrack  |\
+##egrep -vi "phish|medeski|wilco|roseland"  |\
+#grep -vi "jerry?garcia" |\
+#grep -vi "grateful?dead" |\
+#grep -vi "supper?club" |
+#grep mp3 |\
+cat  > musicdbase
+wc musicdbase
+
+newdir="$mydocsF/MERGEDMUSIC/SOUNDTRACKS_etal"
+newdir="$mydocsF/MERGEDMUSIC/THEDEAD_PHISH_etal"
+newdir="$mydocsF/MERGEDMUSIC/BESTOFS"
+newdir="$G3/MUSICG3NEW/BYARTISTSLETTER"
+
+### show suspicious artists ####
+cat musicdbase | awk -F "|" ' {print $2}' | sort -u  > songs.txt
+cat musicdbase | awk -F "|" ' {print $3}' | sort -u  > artists.txt
+cat musicdbase | awk -F "|" ' {print $3,$8}'   > artistswithsize.txt
+cat musicdbase | awk -F "|" ' {print $5}' | sort -u  > albums.txt
+cat musicdbase | awk -F "|" ' {print $28}' | sort -u  >filelist.txt
+
+#cat artists.txt albums.txt
+cat  albums.txt
+wc artists.txt albums.txt songs.txt
+echo " continue ?"
+read bla
+###################################
+##################################
+####  Create directorys for files in list   ##########
+
+albumcodelist=`cat artists.txt | cut -c1-1 | tr "\/" "_" | tr "\?" "_" | tr "\." "_" | sort -u` ##this one by artist
+for albumcode in $albumcodelist;do
+echo "make directroy  $albumcode "
+mkdir $newdir/$albumcode
+done
+
+#@###########################
+dupelinelist=`cat musicdbase`
+
+for dupeline in $dupelinelist;do
+
+oldfilename=`echo $dupeline | awk  -F "|" ' {print $28}'`
+extensionname=`echo $oldfilename       | awk -F"." '{print $NF}' | cut -c1-3`
+echo $dupeline |  tr "\/" "_" | tr "\?" "_" | tr "\." "_" >dupelinefile
+
+randomcode=`date "+%H%M%S"`
+
+songname=`cat   dupelinefile  | awk  -F "|" ' {print $2}' | cut -c1-24 `
+artist=`cat     dupelinefile  | awk  -F "|" ' {print $3}' | cut -c1-16 `
+albumcode=`cat  dupelinefile  | awk  -F "|" ' {print $5}' | cut -c1-1  `
+album=`cat      dupelinefile  | awk  -F "|" ' {print $5}' | cut -c1-16 `
+
+newfilename=`echo $artist $songname $album $randomcode | tr "\ " "_" | tr "\?" "_" | tr -s "_" `
+newfile=`echo "$newfilename.$extensionname"`
+
+ls -ltr $basedir/$oldfilename 
+echo "$albumcode/$newfile"
+#mv -i $basedir/$oldfilename $newdir/$artist/$newfile
+mv -i $basedir/$oldfilename $newdir/$albumcode/$newfile
+done
+
+
+exit
+exit
+exit
+exit
+exit
+#/#/#/#/#/#/#/#/#
+#  sort by size and name
+artistlist=`cat artists.txt`
+artistlist="oneffff"
+rm artistbysize
+for artist in $artistlist;do
+echo $artist
+cat artistswithsize.txt |\
+grep $artist |\
+awk -F "|" ' {size+=$2;artist=$1} END {printf" %18s %16d \n",artist,size}' >>artistbysize
+done
+cat artistbysize | sort -n +1 | head
+
+
+cat dupesraw |\
+awk  -F "|" '
+{print $13}
+' >filelistraw
+cat filelistraw 
+wc dupesraw
+echo -n "continue to file removal of the above files ? "
+read bla
+
+filelist=`cat filelistraw`
+for file in $filelist;do
+ls  -l $basedir/$file
+#mv   $basedir/$file $mydocs/itunesdupedump
+#mv   $basedir/$file $mydocsF/itunesdupedump
+mv   $basedir/$file $mydocsF/MERGEDMUSIC/GRATEFULDEADETAL
+
+
+done
+
+
+exit
+

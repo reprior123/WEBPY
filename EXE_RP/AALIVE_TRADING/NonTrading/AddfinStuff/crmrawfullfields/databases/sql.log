@@ -1,0 +1,129 @@
+timestamp: 2016-04-28T07:24:33.429000
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2016-04-28T07:24:33.586000
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-04-28T07:24:33.675000
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2016-04-28T07:24:33.820000
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2016-04-28T07:24:33.926000
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2016-04-28T07:24:34.049000
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2016-04-28T07:24:34.161000
+CREATE TABLE company(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    url CHAR(512),
+    address CHAR(512),
+    phone CHAR(512),
+    fax CHAR(512),
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2016-04-28T07:24:34.278000
+CREATE TABLE person(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    company INTEGER REFERENCES company (id) ON DELETE CASCADE  ,
+    role CHAR(512),
+    address CHAR(512),
+    phone CHAR(512),
+    fax CHAR(512),
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2016-04-28T07:24:34.386000
+CREATE TABLE task(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(512),
+    task_type CHAR(512),
+    person INTEGER REFERENCES person (id) ON DELETE CASCADE  ,
+    description TEXT,
+    start_time TIMESTAMP,
+    stop_time TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2016-04-28T07:24:34.485000
+CREATE TABLE log(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person INTEGER REFERENCES person (id) ON DELETE CASCADE  ,
+    body TEXT,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2016-04-28T07:24:34.636000
+CREATE TABLE document(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    person INTEGER REFERENCES person (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    file CHAR(512),
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2016-04-28T07:24:34.745000
+CREATE TABLE plugin_tagging_tag(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    counter INTEGER,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP
+);
+success!
+timestamp: 2016-04-28T07:24:34.851000
+CREATE TABLE plugin_tagging_tag_link(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tag INTEGER REFERENCES plugin_tagging_tag (id) ON DELETE CASCADE  ,
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!

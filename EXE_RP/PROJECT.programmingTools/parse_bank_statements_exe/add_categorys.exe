@@ -1,0 +1,46 @@
+:
+
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+parsearea=$EXE/parse_bank_statements_exe
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+#########################################
+infile=$parsearea/ready_for_categorizing
+#########################################
+cp $infile  inputfile
+rm temp1 
+linelist=`cat $parsearea/UBS_categorys.txt | dos2unix | tr "\t" "|" | tr " " "|" | tr -s "|" | tr -d "\"" `
+
+for line  in $linelist;do
+searchterm=`echo "$line" | awk -F"|" '{print $3}'`
+newpayee=`echo "$line" | awk -F"|" '{print $2}'`
+newcategory=`echo "$line" | awk -F"|" '{print $1}'`
+#echo $line
+#echo $searchterm $newpayee $newcategory
+
+grep    "$searchterm" inputfile > foundlines
+#cat foundlines
+grep -v "$searchterm" inputfile > still_open_lines
+mv still_open_lines inputfile
+
+cat foundlines |\
+awk '
+{
+category="'$newcategory'"
+newpayee="'$newpayee'"
+oldpayee=$2
+memo=$9
+printf"%s %-32s %3s %9.2f %9.2f %s %s %s %s %s %s %s %s %s %s\n"\
+,$1,newpayee,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,category,memo,oldpayee}' >> temp1
+
+done
+
+echo "date newpayee curr amt balance acctnum type incflag year month area category autocat memo oldpayee fullfield full2 full3" >temp2
+cat temp1 | sort -u >> temp2
+cat temp2 
+rm foundlines still_open_lines temp1 temp2 debug
+##################################################
+exit
+exit

@@ -1,0 +1,119 @@
+:
+acctname="rprior3"
+acctname=$1
+
+G3=/dev/fs/C
+TS=$G3/TS
+DATA=$TS/DATA
+EXE=$TS/EXE
+TMP=$TS/TMP
+desktop=$G3/Documents*Settings/bob*marley/Desktop
+
+case  $acctname in
+semac)
+mydocs=$G3/Documents*Settings/bob*marley/My*Documents
+statements=$DATA/statements/$acctname
+portfile=$mydocs/portfolio.txt
+;;
+wayne)
+mydocs=$G3/Documents*Settings/Wayne*Bryant/My*Documents
+statements=$DATA/statements/$acctname
+portfile=$mydocs/portfolio.txt
+;;
+rprior3)
+mydocs=$G3/Documents*Settings/bob*marley/My*Documents
+statements=$DATA/statements/$acctname
+portfile=$desktop/portfolio.txt
+;;
+*)mydocs=$G3/Documents*Settings/bob*marley/My*Documents
+statements=$DATA/statements
+portfile=$mydocs/portfolio.txt
+;;
+esac
+##################
+date=`date "+%Y%m%d"`
+ls -l $portfile
+##########################
+cat $portfile |\
+tr "," " " |\
+grep -v "YG" |\
+grep "USD" |\
+cat > junka
+rm portstock portoptions portfutures_options port_ssfs port_futures
+################################
+cat junka  | awk ' ($3 == "USD") {print $0} ' > portstock
+cat junka  | awk ' ($7 == "USD") || ($8 == "USD") {print $0} ' > portoptions
+cat junka  | awk ' ($6 == "USD") {print $0} ' > portfutures_options
+cat junka  | awk ' ($4 == "USD") {print $0} ' > portfutures
+cat junka  | awk ' ($3 == "(ONE") {print $0} ' > port_ssfs
+################################
+cat portfutures_options |\
+awk ' BEGIN {printf "RPDATE %s \n POSITIONS \n blah Options \n blah USD \n","'$date'"}
+( $6 == "USD" ) {chain=$1$2$3$4;stock=$1;expire=$2;strike=$3;putcall=$4;qty=$5;price=$7;value=$8}
+{print chain,"USDport",stock,expire,strike,putcall,qty,price,"100",value}
+END {print "Total"}' > blaport
+#####################################################################
+cat portoptions |\
+awk ' BEGIN {printf "RPDATE %s \n POSITIONS \n blah Options \n blah USD \n","'$date'"}
+( $7 == "USD" ) {chain=$5;stock=$1;expire=$2;strike=$3;putcall=$4;qty=$6;price=$8;value=$9}
+( $8 == "USD" ) {chain=$5$6;stock=$1;expire=$2;strike=$3;putcall=$4;qty=$7;price=$9;value=$10}
+{print chain,"USDport",stock,expire,strike,putcall,qty,price,"100",value}
+END {print "Total"}' >> blaport
+#####################################################################
+cat portstock |\
+awk ' BEGIN {printf "RPDATE %s \n POSITIONS \n blah Stocks \n blah USD \n","'$date'"}
+( $3 == "USD" ) {chain=$1;stock=$1;expire=strike="stk";putcall="stockline";qty=$2;price=$4;value=$5}
+{print chain,"USDport",stock,expire,strike,putcall,qty,price,"100",value}
+END {print "Total"}' >> blaport
+
+cat port_ssfs |\
+awk ' BEGIN {printf "RPDATE %s \n POSITIONS \n blah Single Stock Futures  \n blah USD \n","'$date'"}
+( $6 == "USD" ) {chain=$1$2$3$4;stock=$1;expire=$2;strike=$3;putcall=$4;qty=$5;price=$7;value=$8}
+{print chain,"USDport",stock,expire,strike,qty,price,"100",value}
+END {print "Total"}' >> blaport
+
+cat portfutures |\
+awk ' BEGIN {printf "RPDATE %s \n POSITIONS \n blah Futures \n blah USD \n","'$date'"}
+	( $4 == "USD" ) {chain=$1$2$3$4;stock=$1;expire=$2;strike=$3;putcall=$4;qty=$5;price=$7;value=$8}
+{print chain,"USDport",stock,expire,strike,putcall,qty,price,"100",value}
+END {print "Total"}' >> blaport
+
+cat blaport
+rm portstock portoptions portfutures_options port_ssfs port_futures blaport portfutures junka
+
+exit
+
+#####    TRADES SECTION  ###########
+#####    TRADES SECTION  ###########
+#####    TRADES SECTION  ###########
+#####    TRADES SECTION  ###########
+
+
+#cat $EXE/trades.txt > $EXE/nonetrd.txt
+echo "  "           > $EXE/nonetrd.txt
+
+### add todays opts trades   ##
+cat $EXE/nonetrd.txt |\
+grep -v "USD" |\
+grep -v "BAG" |\
+grep -v "STK" |\
+awk -F ";" ' BEGIN {printf "RPDATE %s \n TRANSACTIONS  \n blah Options \n","'$date'"}
+/SLD/ {mult=-1}
+/BOT/ {mult=1}
+{quant=$8*mult}
+{print $1,$3,$4,"P","bl bl bl bl",quant,$9,"f",$8*0.75}
+END {print "Total"}' >> blaport
+
+### add todays stock trades   ##
+cat $EXE/nonetrd.txt |\
+grep "STK" |\
+awk -F ";" ' BEGIN {printf "RPDATE  %s \n TRANSACTIONS  \n blah Stocks \n","'$date'"}
+/SLD/ {mult=-1}
+/BOT/ {mult=1}
+{quant=$8*mult}
+{print $1,$3,$4,"stk b b",quant,$9,"f",$8*0.01}
+END {print "Total"}' >> blaport
+
+
+exit
+

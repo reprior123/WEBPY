@@ -1,0 +1,13 @@
+bla std sig from file
+Anyways, I use this ip string particularly in a script I used to email myself the ip of a host
+
+Basically, all you have to do is host a php page containing only the following:
+
+<?php 
+ //Gets the IP address
+ $ip = getenv("REMOTE_ADDR") ; 
+ Echo $ip;
+ ?>
+name is something like myip.php and place it in your root web page folder so to access your ip, you can visit it through a URL like this:
+
+www.myhost.com/myip.php

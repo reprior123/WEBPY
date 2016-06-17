@@ -1,0 +1,3 @@
+Stoch_CROSS,5mins,valtest,pos,1,-2000,0,BUY,Stoch_CROSS5minspos-2000x0BUY
+StochK,5mins,stringtest,slopeup,4,-2000,0,BUY,StochK5minsslopeup-2000x0BUY
+StochK,5mins,valtest,slopeup,1,0,20,BUY,StochK5minsslopeup0x20BUY

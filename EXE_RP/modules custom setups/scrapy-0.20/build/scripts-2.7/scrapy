@@ -1,0 +1,4 @@
+#!C:\Anaconda\python.exe
+
+from scrapy.cmdline import execute
+execute()

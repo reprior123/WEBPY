@@ -1,0 +1,20 @@
+
+#################################################
+convert.ubs.files.exe
+convert.ubsvisa.files.exe
+convert.swissvisa.files.exe
+convert.boa.files.exe
+convert.csNRP.files.exe
+convert.citiRP.files.exe
+##############################################
+
+asslist="ubs ubsvisa cs boa citiRP swissvisa"
+rm all_bank_trans.txt
+for name in $asslist;do
+cat all.$name.trans.txt >> all_bank_trans.txt
+done
+exit
+#################################################
+
+exit
+

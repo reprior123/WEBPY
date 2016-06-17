@@ -1,0 +1,8 @@
+mcross,5mins,stringtest,neg,2,9,9,SELL,mcross5neg
+mcross,15mins,stringtest,neg,2,9,9,SELL,mcd5neg
+StochD,5mins,valtest,neg,1,10,99.9,SELL,mcross5neg
+mcross,5mins,stringtest,neg,2,9,9,SELL,mcross5neg
+mcross,15mins,stringtest,neg,2,9,9,SELL,mcd5neg
+StochD,5mins,valtest,neg,1,10,99.9,SELL,mcross5neg
+klower,3mins,priceCompareGT,neg,1,9,9,BUY,klower3minbuy
+mcross,15mins,stringtest,pos,2,9,9,BUY,mcross15pos

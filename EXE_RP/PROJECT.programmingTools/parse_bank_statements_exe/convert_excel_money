@@ -1,0 +1,36 @@
+:
+# convert cashcomm export in excel to money...try their qif export first
+
+
+cat bla.qif |\
+tr -d"\n" 
+exit
+
+awk '
+
+/^/ {printf"\n"}
+{printf"%s;",$0}
+'
+
+exit
+
+/D/ {date=$1;print $1}'
+
+exit
+
+echo "!Type:Bank
+^  " >header
+date=
+amt=
+Pacct=
+Aacct=
+A2line=
+A3line=
+Lcomment=
+Numbercheck=
+
+awk '{
+printf"D%s\nT%7.2f\nP
+exit
+
+Ddate Tamt Ppayee Apayeeaddr Apayeeaddr2 Apayeeaddr3 Lcomment NcheckNum ^

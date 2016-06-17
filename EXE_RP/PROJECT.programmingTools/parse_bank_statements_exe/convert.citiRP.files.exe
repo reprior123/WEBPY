@@ -1,0 +1,74 @@
+:
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+stmts=$DATA/statements
+rundate=`date "+%Y%m%d%H%M"`
+
+stmtsarea=$stmts/Citibank_RP  #### input
+mainfile="citiRP"  ###input
+
+fileout=all.$mainfile.trans.txt
+
+chmod 777 $stmtsarea/*
+#########################################
+cat $stmtsarea/*CHK_832*.CSV  > filesin
+cat $stmtsarea/*VISA_474*.CSV  >> filesin
+cat $stmtsarea/*SAV_044*.CSV  >> filesin
+
+cat filesin | grep -i "CLEARED," >filesin_style1
+cat filesin | grep -iv "CLEARED," >filesin_style2
+#################################################
+proccess_files()  #### subroutine
+{
+cat filesin |\
+dos2unix |\
+tr "\t" " " | tr " " "_" |\
+tr -s "_" | tr "[a-z]" "[A-Z]" |\
+sed s/\,\"/\;/g |\
+sed s/\"\,/\;/g |\
+sed s/\'\,/\;/g |\
+sed s/CLEARED\,/CLEARED\;/g |\
+sed s/2008\,/2008\;/g |\
+sed s/2007\,/2007\;/g |\
+tr -d "\"" |\
+tr -d "\," |\
+tr -d "\'" |\
+cat  > staterun1
+
+#######
+head -30 staterun1
+#"CLEARED","03-11-2008","00250","INTEREST","","1.76","","'12824832'","187"
+#"CLEARED","02-26-2008","00009","FEE-WIRE_TRNFR_FEB_26_10:31","","-18.75","","'12824832'","187"
+
+cat staterun1 |\
+awk -F";" '
+BEGIN {print "date payee curr amt balance acctnum type incflag year month area category autocat fullline"}
+{
+creditamt=0
+date=$2;payee=$4"_"$5;curr="CHF";category=$3;
+creditamt=$6;amt=$6;acctnum=$8;type="'$mainfile'"
+#### below are constants  #####
+varlen=length(payee);start=varlen-2;area=substr(payee,start,3);area=$6
+balance="bla";incflag="expensecat";autocat="EMPTY";fullline=$0
+#### one more option ######
+year=substr(date,7,4);month=substr(date,4,2)
+#year=substr(yearlg,1,4);month=substr(date,6,2)  ###optional
+}
+( amt > 0 ) {incflag="incomecat"}
+{
+printf"%s %-32s %3s %9.2f %9.2f %s %s %s %s %s %s %s %s %s \n"\
+,date,payee,curr,amt,balance,acctnum,type,incflag,year,month,area,category,autocat,fullline}
+'  > staterun2
+} #### end subroutine
+###################################################
+proccess_files
+###################################################
+echo $fileout > fileout_name
+cat fileout_name
+add_categorys.exe
+##################################################
+exit

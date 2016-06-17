@@ -1,0 +1,19 @@
+StochK,5mins,valtest,poscrxx,1,0,21,BUY,stochkLT20
+
+    for l in currentstates:
+
+##            print stime
+            if rtype == 'stringtest':
+                if rind == sind and rdur == sdur and sval == rstring:
+                    flag = raction
+            elif rtype == 'priceCompareGT':
+                if float(sval) <  float(curprice):
+                    flag = raction
+            elif rtype == 'priceCompareLT':
+                if float(sval)  >  float(curprice):
+                    flag = raction
+            else :
+                if rind == sind and float(sval) > rmin and float(sval) < rmax:
+                    flag = raction
+    return flag,rulename,stime
+StochK,5mins,valtest,poscrxx,1,0,21,BUY,stochkLT20

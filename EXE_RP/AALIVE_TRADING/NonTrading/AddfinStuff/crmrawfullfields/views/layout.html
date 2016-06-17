@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Oxidation
+Description: A two-column, fixed-width design for small websites and blogs.
+Version    : 1.0
+Released   : 20071229
+layout for main views dir
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>📈Addfinwealth</title>
+  <link rel="shortcut icon" href="company_logo.ico" type="image/x-icon" />
+  {{response.files.append(URL(request.application,'static','Oxidation/style.css'))}}
+{{include 'web2py_ajax.html'}}
+ </head>
+ <body>
+  <div id="header">
+   <div id="logo">
+    <h1>
+     addfin.
+    </h1>
+    <h2>
+     powered by <a href="http://addfinwealth.com">addfina</a>
+    </h2>
+   </div>
+   <div id="search">
+    <form id="searchform" method="get" action="">
+     <fieldset>
+       [
+       {{if not auth.user:}}
+       <a href="{{=URL('user/login')}}">login</a>
+       {{else:}}
+       {{=auth.user.first_name}} |
+       <a href="{{=URL('user/logout')}}">logout</a> |
+       <a href="{{=URL('user/change_password')}}">password</a> |
+       <a href="{{=URL('user/profile')}}">profile</a>
+       {{pass}} ]
+      <input id="searchquery" type="text" size="25" name="s" value="" />
+      <input id="searchsubmit" type="submit" value="Search" />
+     </fieldset>
+    </form>
+   </div>
+  </div>
+  <!-- end #header -->
+  
+  <div id="ul.web2py-menu-vertical">
+  <!-- ul.web2py-menu-vertical -->
+   {{=MENU(response.menu)}}
+  </div>
+  
+  <!-- end #menu -->
+  <div id="page">
+   <div id="content">
+     <div id="main">
+        <div class="flash">{{=response.flash or ''}}</div> 
+       {{include}}
+     </div>
+   </div>
+   <!-- end content -->
+   <!-- {{left_sidebar_enabled=True,right_sidebar_enabled=False,('message' in globals())}} -->
+
+   <div id="sidebar">
+   <!-- left_sidebar_enabled = True -->
+    <ul>
+     <li>
+       {{if auth.user:}}
+      <h3>Recent Companies</h3>
+      <ul>
+	{{for id,name in session.recent_companies:}}
+       <li>
+        <a href="{{=URL('list_persons',args=id)}}">
+          {{=name}}
+        </a>
+       </li>
+       {{pass}}
+      </ul>
+     </li>
+	 
+     <li>
+      <h3>Recent Contacts </h3>
+      <ul>
+	{{for id,name in session.recent_persons:}}
+       <li>
+        <a href="{{=URL('view_person',args=id)}}">
+          {{=name}}
+        </a>
+       </li>
+       {{pass}}
+	     
+      </ul>
+     </li>
+	 
+    <li>
+      <h3>Recent Tasks </h3>
+      <ul>
+
+	{{for id,name in session.recent_tasks:}}
+       <li>
+        <a href="{{=URL('view_task',args=id)}}">
+          {{=name}}
+        </a>
+       </li>
+       {{pass}}
+	     
+      </ul>
+     </li>
+	 
+	 <ul>
+	 <li>
+       <h3>Recent other things</h3>
+       {{='other things'}}
+     </li>
+     {{pass}}
+    </ul>
+	</li>
+	{{pass}}
+	      </ul>
+     </li>
+   </div>
+   <!-- end #sidebar -->
+   <div style="clear: both;">
+    &nbsp;
+   </div>
+  </div>
+  <!-- end page -->
+  <div id="footer">
+   <p class="legal">
+    &copy;2016 All Rights Reserved.
+   </p>
+   <p class="credit">
+    Design by
+    <a href="http://www.addfinwealth.com/">
+     Addfin
+    </a>
+   </p>
+  </div>
+ </body>
+</html>

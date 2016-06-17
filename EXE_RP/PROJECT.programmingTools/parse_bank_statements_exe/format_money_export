@@ -1,0 +1,86 @@
+:
+#Num;Date;Payee;Account;Category; Amount ;year;newmemo;inorout
+
+###  formats an excel file back into a file to be imported to money
+file=catmems.csv
+#cat $file | grep "UBS_Checking"
+
+
+acctlist=`cat $file | awk -F ";" '{print $4}' | sort -u`
+
+echo $acctlist
+for acct in $acctlist;do
+echo "!Type:Bank
+D29.01.1997
+T0.00
+CX
+POpening Balance
+L[$acct Checking]
+^"  >$acct.qif
+
+grep $acct $file |\
+awk -F ";" ' 
+{
+checknum=$1
+date=$2
+payee=$3
+acct=$4
+cat=$5
+amt=$6
+year=$7
+memo=$10
+inout=$9
+printf"D%s\nM%s\nT%2.2f\nP%s\nL%s\n^\n",date,memo,amt,payee,cat}
+' >> $acct.qif
+
+done
+exit
+
+
+#tr "\t" ";" |\
+tr  "\n" ";"  |\
+#tr -d " " |\
+tr -d "\"" |\
+tr -d "," |\
+sed s/endlline/endline/g |\
+sed s/endline/endline\\n/g |\
+grep lineitem |\
+grep $acct |\
+cat > part1
+cat part1 |\
+awk -F";" '
+BEGIN {OFS=";" }
+ {print $2,$3,$4,$5,$6}' |\
+cat > blah
+
+echo "!Type:Bank
+D29.03.2003
+T0.00
+CX
+POpening Balance
+L[ubsvisaNR Checking]
+^" >$acct.qif
+
+cat blah |\
+awk -F";" ' BEGIN {amt=9999}
+{amt=$3*(-1)}
+{
+date=$1
+memo=$5
+payee=substr($2,1,30)
+cat=$5
+checknum=NR
+printf"D%s\nT%2.2f\nP%s\nM%sNOCAT\nL%s\nN%d\n^\n",date,amt,payee,memo,cat,checknum}
+' >> $acct.qif
+
+done
+
+
+exit
+D,M,T,P,L,N
+;10.05.2005;accessusa;205.19;ubsrp;;2005;5;lineitem;endline
+;20.05.2005;accessusa;25.25;ubsrp;;2005;5;lineitem;endline
+;29.05.2005;casinorestaurant;337.50;ubsrp;;2005;5;lineitem;endline
+;29.05.2005;flughafen;10.00;ubsrp;;2005;5;lineitem;endline
+;06.06.2005;datasport;156.15;ubsrp;;2005;6;lineitem;endline   
+

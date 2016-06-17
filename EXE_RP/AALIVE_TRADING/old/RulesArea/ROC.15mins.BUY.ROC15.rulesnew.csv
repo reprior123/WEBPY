@@ -1,0 +1,2 @@
+ROC,15mins,value,NA,1,.80%   ### ind,dur,typetest, testtext,fnumvalue,midval,maxval,rulerange,normalflag
+ROC,15mins,string,slopeup,4,9999

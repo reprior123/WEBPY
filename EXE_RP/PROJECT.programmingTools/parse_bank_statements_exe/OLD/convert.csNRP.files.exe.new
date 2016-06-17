@@ -1,0 +1,60 @@
+
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+stmts=$DATA/statements
+chmod 777 $DATA/statements/*/*
+rundate=`date "+%Y%m%d%H%M"`
+
+stmtsarea=$stmts/CS_NRP
+#########################################
+#ls -ltr $stmtsarea/*.csv
+ls -ltr $stmtsarea/*.txt
+#####################################
+##### process CS NRP ######################
+cat $stmtsarea/*NRbookings*.txt > filesin
+#cat $stmtsarea/RUNME*.csv > filesin
+#NRbookings-pdf.txt
+fileout=all.cs.trans.txt
+#################################################
+proccess_files()  #### subroutine
+{
+cat filesin |\
+dos2unix |  tr "\t" ";" | tr " " "_" |\
+tr -s "_" | tr "[a-z]" "[A-Z]"  > staterun1
+
+head -40 staterun1
+
+exit
+
+
+#######
+cat staterun1 |\
+awk -F"," '
+{
+creditamt=0
+date=$1;payee=$2;curr="CHF";category=$4;
+creditamt=$4;amt=($3*(-1))+creditamt;acctnum="csacct";type="csacct"
+#### below are constants  #####
+origcurr=$6;origamt=$5;varlen=length(payee);start=varlen-2;area=substr(payee,start,3)
+balance="bla";incflag="expensecat";autocat="EMPTY";fullline=$0
+year=substr(date,7,4);month=substr(date,1,2)
+#year=substr(yearlg,1,4);month=substr(date,6,2)  ###optional
+}
+( amt > 0 ) {incflag="incomecat"}
+{
+printf"%s %-32s %3s %9.2f %9.2f %s %s %s %s %s %s %s %s %s \n"\
+,date,payee,curr,amt,balance,acctnum,type,incflag,year,month,area,category,autocat,fullline}
+'  > staterun2
+} #### end subroutine
+###################################################
+proccess_files
+###################################################
+echo $fileout > fileout_name
+add_categorys.exe
+##################################################
+exit
+exit

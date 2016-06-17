@@ -1,0 +1,60 @@
+:
+mainfile="ubspay"
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+parsearea=/dev/fs/C/TS/EXE/parse_bank_statements_exe
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+stmts=$DATA/statements
+stmtsarea=$stmts/UBS_*
+
+infile=$parsearea/$mainfile.infile.txt
+
+rundate=`date "+%Y%m%d%H%M"`
+chmod 777 $stmtsarea
+
+#########################################
+rm debug temp1_withfull staterun2
+
+#########################################
+proccess_files()  ##subroutine
+{
+#################
+acctnum="ubspay"
+echo $acctnum
+
+cat $infile |\
+dos2unix |\
+tr  "\t"  "|" |\
+tr " " "_" |\
+tr "[a-z]" "[A-Z]" |\
+tr -s "_" |\
+tr -d "\"" |\
+tr -d "\'" |\
+sed s/CH5100273273//g |\
+sed s/CH6900273273//g |\
+cat > run1.txt
+
+cat run1.txt |\
+awk -F "|" ' 
+{incflag="expensecat";area="che";category=autocategory="EMPTY";fullline=$9;acctnum=$4
+date=$2;payee=$8;curr=$10;amt=($6*(-1));balance="bal";flag="printme";type="ubspay"
+year=substr(date,7,4);month=substr(date,4,2)}
+( amt > 0 ) {incflag="incomecat"}
+{
+printf"%s %-32s %3s %9.2f %9.2f %s %s %s %s %s %s %s %s %s \n"\
+,date,payee,curr,amt,balance,acctnum,type,incflag,year,month,area,category,autocategory,fullline}
+' > ready_for_categorizing
+}
+#################################################
+proccess_files
+#################################################
+mainfile="ubspay"
+$parsearea/add_categorys.exe > all.$mainfile.w_categories.txt
+##################################################
+rm debug temp1_withfull staterun2
+##################################################
+
+exit

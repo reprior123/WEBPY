@@ -1,0 +1,10 @@
+1day,3 M,3 M,_,86400,daily,1 day
+1daylong,3 M,3 M,_,86400,daily,1 day
+1hour,2 D,2 D,_,3600,daily,1 hour
+15mins,2 D,2 D,_,900,intraday,15 mins
+5mins,1 D,1 D,_,300,intraday,5 mins
+1min,1 D,1 D,_,60,intraday,1 min
+5secs,3600 S,3600 S,_,5,intraday,5 secs
+3mins,1 D,1 D,_,180,intraday,3 mins
+78mins,3 D,3 D,_,4680,special,78 mins
+1Week,1 M,1 M,_,604800,special,1W,######Legal ones are: 1 secs, 5 secs, 10 secs, 15 secs, 30 secs, 1 min, 2 mins, 3 mins, 5 mins, 10 mins, 15 mins, 20 mins, 30 mins, 1 hour, 2 hours, 3 hours, 4 hours, 8 hours, 1 day, 1W, 1M

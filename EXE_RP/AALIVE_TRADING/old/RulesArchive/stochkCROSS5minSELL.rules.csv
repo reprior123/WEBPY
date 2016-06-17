@@ -1,0 +1,2 @@
+StochK,5mins,valtest,poscrxx,1,80,101,SELL,stochkGT805min
+Stoch_CROSS,5mins,stringtest,neg,1,80,101,SELL,stochcrossneg5min

@@ -1,0 +1,321 @@
+btestraw.py:def showlines():
+create_roundies.py:def create_roundie(centerprice,increment,loopnum,sym):
+CreateBarDbase.py:def create_weeklies():
+CreateBarDbase.py:def get_dload_barsWbu(start_path,dur,barfileout,sym):
+CreateBarDbase.py:def create_timelist(barfile):
+CreateBarDbase.py:def verify_bars(barfile):
+CreateBarDbase.py:def check_bars(bararray):  ### what does this do?
+CreateBarDbase.py:def chopMonthToDays(bararray,sym,dur,secs):  ### what does this do?
+CreateIndDbase.py:def create_weeklies():
+CreateIndDbase.py:def get_dload_barsWbu(start_path,dur,barfileout,sym):
+CreateIndDbase.py:def ensure_dir(d):
+Createlines.py:def rounderrp(x,tickvalue):
+Createlines.py:def make_bars_no_5sec(date,startmode,symbol_list,barlist,hamode):  ## add modes no5sec,dayonly,just5sec
+Createlines.py:def make_bars_dayonly(date,startmode,symbol_list,barlist):
+Createlines.py:def make_bars_just_5sec(date,startmode,symbol_list):
+Createlines.py:def make_states(date,symbol_list,barlist,indlist):
+Createlines.py:def create_latest_state_array(btestmode,sym,barlist,indlist):
+Createlines.py:def create_previous_state_array(btestmode,sym,barnum,backtestdur):
+Createlines.py:######def create_HAs(symbol_listin,date):
+Createlines.py:def make_both_states(symbol_listin,date):
+CreateSignalsLinesBased.py:def Mbox(title, text, style):
+CreateSignalsLinesBased.py:def read_varlist(cpfname): ##read variables from the control panel file
+CreateSignalsLinesBased.py:def check_for_CP_change(fname): ##read timestamp from the control panel file
+CreateSignalsLinesBased.py:def read_vars(varstringin,cpfname): ##read variables from the control panel file
+CreateSignalsLinesBased.py:def rounderrp(x,tickvalue):
+CreateSignalsLinesBased.py:def beep(sound):
+CreateSignalsLinesBased.py:def look_for_dupe_sig(livesigid,livesigtime,delay):
+CreateSignalsLinesBased.py:def show_spots(sym,date,limit):
+CreateSignalsLinesBased.py:def make_bars_no_5sec(date,startmode,symbol_list,barlist):
+CreateSignalsLinesBased.py:def make_bars_just_5sec(date,startmode,symbol_list):
+CreateSignalsLinesBased.py:def make_states(date,symbol_list,barlist,indlist):
+CreateSignalsLinesBased.py:def create_latest_state_array(btestmode,sym,barlist,indlist):
+CreateSignalsLinesBased.py:def create_previous_state_array(btestmode,sym,barnum):
+CreateSignalsLinesBased.py:def rule_tester(currentstates,rule,curprice):
+CreateSignalsLinesBased.py:def ruleslist():
+CreateSignalsLinesBased.py:def run_rulesets(sym,currentstates,sigtime,curprice):
+CreateSignalsLinesBased.py:def parse_signalsNEW(rulesetoutput):
+CreateSignalsLinesBased.py:def linetagger(spotline,sym):
+CreateSignalsLinesBased.py:        make_bars_no_5sec(date,startmode,symbol_list,barlist) #def make_bars_no_5sec(date,startmode,symbol_list,barlist)
+CreateSignalsLinesBased.py:        make_states(date,symbol_list,barlist,indlist)  #def make_states(date,symbol_list,barlist,indlist):
+CreateSmain.py:def rounderrp(x,tickvalue):
+CreateSmain.py:def beep(sound):
+CreateSmain.py:def show_spots(sym,date,limit,spotfile):
+CreateSmain.py:def make_bars_no_5sec(date,startmode,symbol_list,barlist,hamode):
+CreateSmain.py:def make_bars_dayonly(date,startmode,symbol_list,barlist):
+CreateSmain.py:def make_bars_just_5sec(date,startmode,symbol_list):
+CreateSmain.py:def make_states(date,symbol_list,barlist,indlist):
+CreateSmain.py:def create_latest_state_array(btestmode,sym,barlist,indlist):
+CreateSmain.py:def create_previous_state_array(btestmode,sym,barnum,backtestdur):
+CreateSmain.py:def linetagger(spotline,sym):
+CreateSmain.py:            make_bars_no_5sec(date,startmode,symbol_list,barlist_All,'normal') #def make_bars_no_5sec(date,startmode,symbol_list,barlist)
+CreateSmain.py:##        ask which statesarea lable to use by glob.glob(states area labels...choose one or default to main
+CreateSmain.py:        make_states(date,symbol_list,barlist_All,indlist_All)  #def make_states(date,symbol_list,barlist,indlist):
+CreateSmainDAYSonly.py:def rounderrp(x,tickvalue):
+CreateSmainDAYSonly.py:def beep(sound):
+CreateSmainDAYSonly.py:def show_spots(sym,date,limit,spotfile):
+CreateSmainDAYSonly.py:def make_bars_no_5sec(date,startmode,symbol_list,barlist):
+CreateSmainDAYSonly.py:def make_bars_dayonly(date,startmode,symbol_list,barlist):
+CreateSmainDAYSonly.py:def make_bars_just_5sec(date,startmode,symbol_list):
+CreateSmainDAYSonly.py:def make_states(date,symbol_list,barlist,indlist):
+CreateSmainDAYSonly.py:def create_latest_state_array(btestmode,sym,barlist,indlist):
+CreateSmainDAYSonly.py:def create_previous_state_array(btestmode,sym,barnum,backtestdur):
+CreateSmainDAYSonly.py:def linetagger(spotline,sym):
+CreateSmainDAYSonly.py:            make_bars_dayonly(date,startmode,symbol_list,barlist) #def make_bars_no_5sec(date,startmode,symbol_list,barlist)
+DeltaCounter.py:def sum_array(array,mode):
+DeltaCounter.py:def sum_2arrays_weighted(array,array2,mode):
+DeltaCounter.py:def prepare_empty_array(fnums):
+DeltaCounter.py:def checkDOMticks(sym,fnums):
+DeltaCounter.py:def checkRTnonbarticks(sym,fnums):
+DeltaCounter.py:def checkRTnonbarticksNEW(sym,fnums):
+DeltaCounter.py:def createVolHistogram(sym,fnums):
+DeltaCounterNEWest.py:def sum_array(array,mode):
+DeltaCounterNEWest.py:def sum_2arrays_weighted(array,array2,mode):
+DeltaCounterNEWest.py:def prepare_empty_array(fnums):
+DeltaCounterNEWest.py:def checkDOMticks(sym,fnums):
+DeltaCounterNEWest.py:def create_TS_array(sym,fnums):
+DeltaCounterNEWest.py:def show_by_fnum(fullarray,fnum):
+DepthMarketTicker.py:def RTDepth_reply_handler(msg):
+DepthNTickCounter.py:def show_avg(arrayin):   
+DepthNTickCounter.py:def show_2_arrays(array1,array2,sortorder):
+DepthNTickCounter.py:def show_2_arrays_bigsize(array1,array2,sortorder,perclimit):
+DepthNTickCounter.py:def sum_array(array,mode,rows):
+DepthNTickCounter.py:def sum_2arrays_weighted(array,array2,mode):
+DepthNTickCounter.py:def prepare_empty_array(fnums):
+DepthNTickCounter.py:def presort(sym,style):
+DepthNTickCounter.py:def checkDOMticks(sym,fnums,arrayinlines):
+DepthNTickCounter.py:def checkRTnonbarticksNEW(sym,fnums):
+DepthNTickCounter.py:def Mbox(title, text, style):
+DepthNTickCounter.py:def createVolHistogram(sym,fnums):
+DepthNTickCounter.py:def Mbox(title, text, style):
+DepthNTickCounterFDAX.py:def show_avg(arrayin):   
+DepthNTickCounterFDAX.py:def show_2_arrays(array1,array2,sortorder):
+DepthNTickCounterFDAX.py:def show_2_arrays_bigsize(array1,array2,sortorder,perclimit):
+DepthNTickCounterFDAX.py:def sum_array(array,mode,rows):
+DepthNTickCounterFDAX.py:def sum_2arrays_weighted(array,array2,mode):
+DepthNTickCounterFDAX.py:def prepare_empty_array(fnums):
+DepthNTickCounterFDAX.py:def presortDOM(sym,style):
+DepthNTickCounterFDAX.py:def checkDOMticks(sym,fnums,arrayinlines):
+DepthNTickCounterFDAX.py:def checkRTnonbarticksNEW(sym,fnums):
+DepthNTickCounterFDAX.py:def Mbox(title, text, style):
+DepthNTickCounterFDAX.py:def createVolHistogram(sym,fnums):
+DepthNTickCounterFDAX.py:def Mbox(title, text, style):
+DepthNTickCounterHistory.py:def show_avg(arrayin):   
+DepthNTickCounterHistory.py:def show_2_arrays(array1,array2,sortorder):
+DepthNTickCounterHistory.py:def show_2_arrays_bigsize(array1,array2,sortorder,perclimit):
+DepthNTickCounterHistory.py:def sum_array(array,mode,rows):
+DepthNTickCounterHistory.py:def sum_2arrays_weighted(array,array2,mode):
+DepthNTickCounterHistory.py:def prepare_empty_array(fnums):
+DepthNTickCounterHistory.py:def presort(sym,style,headnum):
+DepthNTickCounterHistory.py:def checkDOMticks(sym,fnums,arrayinlines):
+DepthNTickCounterHistory.py:def checkRTnonbarticksNEW(sym,fnums):
+DepthNTickCounterHistory.py:def createVolHistogram(sym,fnums):
+DepthNTickCounterHistorynew.py:def show_avg(arrayin):   
+DepthNTickCounterHistorynew.py:def show_2_arrays(array1,array2,sortorder):
+DepthNTickCounterHistorynew.py:def show_2_arrays_bigsize(array1,array2,sortorder,perclimit):
+DepthNTickCounterHistorynew.py:def sum_array(array,mode,rows):
+DepthNTickCounterHistorynew.py:def sum_2arrays_weighted(array,array2,mode):
+DepthNTickCounterHistorynew.py:def prepare_empty_array(fnums):
+DepthNTickCounterHistorynew.py:def presort(sym,style,headnum,tailnum):
+DepthNTickCounterHistorynew.py:def checkDOMticks(sym,fnums,arrayinlines):
+DepthNTickCounterHistorynew.py:def checkRTnonbarticksNEW(sym,fnums):
+DepthNTickCounterHistorynew.py:def createVolHistogram(sym,fnums):
+DOMShow.py:def show_avg(arrayin):   
+DOMShow.py:def show_2_arrays(array1,array2,sortorder):
+DOMShow.py:def show_2_arrays_bigsize(array1,array2,sortorder,perclimit):
+DOMShow.py:def sum_array(array,mode,rows):
+DOMShow.py:def sum_2arrays_weighted(array,array2,mode):
+DOMShow.py:def prepare_empty_array(fnums):
+DOMShow.py:def presort(sym,style):
+DOMShow.py:def checkDOMticks(sym,fnums,arrayinlines):
+DOMShow.py:def checkRTnonbarticksNEW(sym,fnums):
+DOMShow.py:def Mbox(title, text, style):
+DOMShow.py:def createVolHistogram(sym,fnums):
+DOMShow.py:def Mbox(title, text, style):
+ExtractLines.py:def create_dailypivots(sym):
+ExtractLines.py:def create_roundie(centerprice,increment,loopnum,sym):
+FibTracer.py:def fibtrace(top,bottom,mid):
+FibTracer.py:def fibbo_50retrace(low,high,sym,perc) :  # could also use a time range for a range of bars / add this to states per duration
+FibTracer.py:def find_hi_low(array,scanvalue,style,cvalue):
+Get Swings etal.py:def get_info(date):
+Get Swings etal.py:def scan_bars_for_tag(bars,price,sym,start,end,date):
+Get Swings etal.py:def detect_sliceDice(lineprice,start,end,ndate):
+Get Swings etal.py:def OBV(date,sym):
+Get Swings etal.py:######def StochD(Kpercarray,emaval):
+Get Swings etal.py:def show_bar8_range(start,end,sym,date):
+Get Swings etal.py:def run_8s(sym): 
+Get Swings etal.py:def getonesliceonly(bars,slicesize,slicenum):
+Get Swings etal.py:def find_swing_point_in_oneslice(slicesize,slicebars,mode):
+Get Swings etal.py:def find_swings(): # this runs through the series of slices
+hatester hard.py:def showlines(filen,buysell):
+hatester hard.py:def run_oneloop(dur,now,sym):
+IBDownloader.py:def reply_handler(msg):
+IBDownloader.py:def historical_data_handler(msg):  
+IBDownloader.py:def dload(symlist,barlist,strikelist,expirylist):
+MktDepthSummary.py:def sum_array(array,mode):
+MktDepthSummary.py:def sum_2arrays_weighted(array,array2,mode):
+MktDepthSummary.py:def prepare_empty_array(fnums):
+MktDepthSummary.py:def checkDOMticks(sym,fnums):
+MktDepthSummary.py:def checkRTnonbarticks(sym,fnums):
+MktDepthSummary.py:def checkRTnonbarticksNEW(sym,fnums):
+parseSingleTicker.py:def presort(sym,style,date):
+parseSingleTicker.py:def show_avg(arrayin):   
+parseSingleTicker.py:def show_2_arrays(array1,array2,sortorder):
+parseSingleTicker.py:def show_2_arrays_bigsize(array1,array2,sortorder,perclimit):
+parseSingleTicker.py:def sum_array(array,mode,rows):
+parseSingleTicker.py:def sum_2arrays_weighted(array,array2,mode):
+parseSingleTicker.py:def prepare_empty_array(fnums):
+parseSingleTicker.py:def checkDOMticks(sym,fnums,arrayinlines):
+parseSingleTicker.py:def checkRTnonbarticksNEW(sym,fnums):
+Profiler.py:def find_swing_points(sym,barsize,start,end):
+Profiler.py:def create_report(Sigfile,sym,barsize):
+RP_CreateavgINnds.py:def Mbox(title, text, style):
+RP_CreateavgINnds.py:def read_varlist(cpfname): ##read variables from the control panel file
+RP_CreateavgINnds.py:def check_for_CP_change(fname): ##read timestamp from the control panel file
+RP_CreateavgINnds.py:def read_vars(varstringin,cpfname): ##read variables from the control panel file
+RP_CreateavgINnds.py:def rounderrp(x,tickvalue):
+RP_CreateavgINnds.py:def beep(sound):
+RP_CreateavgINnds.py:def look_for_dupe_sig(livesigid,livesigtime,delay):
+RP_CreateavgINnds.py:def show_spots(sym,date,limit):
+RP_CreateavgINnds.py:def show_bar8_range(start,end,sym,date):
+RP_CreateavgINnds.py:def make_bars_just_5sec(startmode):
+RP_CreateavgINnds.py:def make_bars_no_5sec(startmode,durmode):
+RP_CreateavgINnds.py:def make_bars_just_5sec(startmode):
+RP_CreateavgINnds.py:def make_states(smode,date,symbollist):
+RP_CreateavgINnds.py:def run_8s(sym): 
+RP_CreateavgINnds.py:def create_latest_state_array(sym):
+RP_CreateavgINnds.py:def create_previous_state_array(sym,barnum):
+RP_CreateavgINnds.py:def rule_tester(currentstates,rule,curprice):
+RP_CreateavgINnds.py:def rule_testerold(currentstates,rule,curprice):
+RP_CreateavgINnds.py:def ruleslist():
+RP_CreateavgINnds.py:def run_rulesets(sym,currentstates,sigtime,curprice):
+RP_CreateavgINnds.py:def parse_signalsNEW(rulesetoutput):
+RP_CreateavgINnds.py:####def slice_dice_dectector(sym,date,starttime,endtime,spotline,direction):
+RP_getbar.py:def create_roundies(sym):
+RP_getbar.py:def get_info(date):
+RP_getbar.py:def scan_bars_for_tag(bars,price,sym,start,end,date):
+RP_getbar.py:def detect_sliceDice(lineprice,start,end):
+RP_getbar.py:def OBV(date,sym):
+RP_getbar.py:######def StochD(Kpercarray,emaval):
+RP_getbar.py:def find_swing_points(sym,barsize,start,end,mode,threefive):
+RP_getbar.py:def find_swing_points5(sym,barsize,start,end,mode,threefive):
+RP_getbar.py:def create_report(Sigfile,sym,barsize):
+RP_getbar.py:####def slice_dice_dectector(sym,date,starttime,endtime,spotline,direction):
+RP_getbar.py:def linetagger(spotline,sym):
+RP_getbar.py:def show_spots(sym,date,limit):
+RP_getbar.py:def show_bar8_range(start,end,sym,date):
+RP_getbar.py:def run_8s(sym): 
+RP_getbar.py:def getslices(sym,barsize,start,end,date,slicesize):
+RP_getbar.py:def find_swing_pointsnew(slicesize,slicebars,mode):
+RP_getWeeklies.py:def fibbo_50retrace(low,high,sym,perc) :  # could also use a time range for a range of bars / add this to states per duration
+RP_getWeeklies.py:def check_lines(linesfile,curprice,tolerance):
+RP_getWeeklies.py:def show_spots(sym,date,curprice):
+RP_getWeeklies.py:def detect_sliceDice(lineprice,start,end):
+RP_getWeeklies.py:def create_report(Sigfile,sym,barsize):
+RulesEngine.py:def rounderrp(x,tickvalue):
+RulesEngine.py:def rule_tester(currentstates,rule,curprice,sym):
+RulesEngine.py:def ruleslist():
+RulesEngine.py:def run_rulesets(sym,currentstates,sigtime,curprice):
+RulesEngine.py:def look_for_dupe_sig(livesigid,livesigtime,delay):
+RulesEngine.py:def parse_signalsNEW(rulesetoutput,btmode,date):
+RunDloadfibs.py:##def ShowLastBarofInd(sym,dur,ind):
+RunDloadfibs.py:##def ShowABarofInd(sym,dur,ind,barnum):
+RunDloadfibs.py:##def ShowABarofBars(sym,dur,barnum):
+RunDloadfibs.py:##def ShowABarofIndByTime(sym,dur,ind,bartime,barfnumlimit):
+RunInds.py:def run_indicators():
+RunInds.py:def show_spots(sym,date,limit,spotfile):
+RunInds.py:def showlines(sym,dur,buysell):
+RunInds.py:def run_oneloop(dur,now,sym):
+RunLines.py:def show_spots(sym,date,limit,spotfile):
+RunLines.py:def showlines(sym,dur,buysell):
+RunLines.py:def run_oneloop(dur,now,sym,date):
+RunLines.py:def createOneMerge(dur,now,sym,date):
+stdev test.py:def strip1string(multilinearrayin,fieldnum):
+stdev test.py:def strip1float(multilinearrayin,fieldnum,sym):
+stdev test.py:def mvavgToArray(arrayin,smaNum):
+stdev test.py:def StdToArray(arrayin,sliceval):
+stdev test.py:def maxminAvgToArray(arrayin):
+stdev test.py:def MaxMinAvgIndArray(sym,dur,ind,fieldnum):
+stdev test.py:def EMAmvavgToArray(arrayin,smaNum):
+stdev test.py:def lableToarray(bs,tag):
+stdev test.py:def difftwoarrays(a1,a2):
+stdev test.py:def ratiotwoarrays(a2,a1):
+stdev test.py:def makearrayJust2(time,slopebs,signbs,bs,indy2,slope2,sign2,indlabel):  ## assumes one field in postion 0
+stdev test.py:def show_slope(arrayin,mode):
+stdev test.py:def show_cross(signs,mode):  
+stdev test.py:def show_sign(a1,tag,threshold):  
+stdev test.py:def show_sign2thresholds(a1,tag,threshold1,threshold2):  
+stdev test.py:def pivotpoint(a1,a2,a3): ## hi,lo,close arrays
+stdev test.py:def RS1(a1,a2,a3,mode):  ## S1 is the same but with lows ## pivot,high,lo,close arrays
+stdev test.py:def RS2(a1,a2,a3,mode):  ## S1 is the same but with lows ## pivot,high,lo,close arrays
+stdev test.py:def MACDdiverg(bs):
+stdev test.py:def Trigger_from_states(sym,dur,label):
+stdev test.py:def Trigger_from_statesValues(sym,dur,label,valuemin,valuemax):
+stdev test.py:def ShowLastBarofInd(sym,dur,ind):
+stdev test.py:def ShowABarofInd(sym,dur,ind,barnum):
+stdev test.py:def ShowABarofBars(sym,dur,barnum):
+stdev test.py:def ShowABarofIndByTime(sym,dur,ind,bartime,barfnumlimit):
+stdev test.py:def ShowRecentPositionState(sym):
+stdev test.py:def ShowRecentAge(sym,dur,ind,rootname):
+stdev test.py:def ShowRecentIndValue(sym,dur,ind,statfnum):
+stdev test.py:def ShowRecentStateStats(sym,dur,label,rootname,statfnum):
+stdev test.py:def ShowRecentCRXLine(sym,dur,label,mode):
+stdev test.py:def ShowRecentCRXTime(sym,dur,label,mode):
+stdev test.py:def ShowRecentCRXCode(sym,dur,label,mode):
+stdev test.py:def ShowRecentClPrice(sym,dur,label,mode):
+stdev test.py:def ShowRecentStateValue(sym,dur,label,mode):
+stdev test.py:def TRarray(highs,lows,closes):
+stdev test.py:##    def mvavgToArray(arrayin,smaNum):
+stdev test.py:def TRhilowarray(highs,lows,closes):
+stdev test.py:##    def mvavgToArray(arrayin,smaNum):
+stdev test.py:def TR3array(highs,lows,closes):
+stdev test.py:##    def mvavgToArray(arrayin,smaNum):
+stdev test.py:def ATR(highs,lows,closes,maVal):
+stdev test.py:def ROC(closes,nfactor):
+stdev test.py:def RSI(closes,maVal):
+stdev test.py:def keltner_channels(highs,lows,closes,mult,uplow):
+stdev test.py:def stddev(highs,lows,closes,SMAVal):
+stdev test.py:def bbands(highs,lows,closes,SMAVal,stdvariable,uplow):
+stdev test.py:##def keltner_channel_upper(highs,lows,closes,mult):
+stdev test.py:def keltner_channel_mid(highs,lows,closes,mult):
+stdev test.py:def show_bar8(today,sym):
+stdev test.py:def diffvES(close1,close2):
+stdev test.py:def create_RSlines(sym,clprice):
+stdev test.py:def boost_pricearray(arrayprices,sym):
+stdev test.py:def create_states_files(sym,dur,date,threshold,newindlist):
+stdev test.py:def joinArraysStates(tarray,indicator,sign,slope,slopetag,Indtitle,sym,crxxflag,tagarray,highs,lows,bs,crossages):  ## assumes one field in postion 0
+stdev test.py:def fibbo_50retrace(low,high,sym,perc) :  # could also use a time range for a range of bars / add this to states per duration
+stdev test.py:def check_lines(linesfile,curprice,tolerance):
+stdev test.py:def gatherline(sym,ind):
+stdev test.py:def find_hi_low(array,scanvalue,style,cvalue):
+stdev test.py:def StochD(Kpercarray,emaval):
+stdev test.py:def StochK(highs,lows,closes,scanvalue):
+stdev test.py:def Stoch_CROSS(Karray,Darray):
+stdev test.py:def RVIline(Kpercarray,emaval):
+stdev test.py:def RVIsignal(opens,highs,lows,closes):
+stdev test.py:def RVI_CROSS(Karray,Darray):
+stdev test.py:def GetStates(arrayin,sym,Indtitle,dur,threshold,date):  #add barr age from last cross here
+TickerStart.py:def reply_handler(msg):
+TickerStart.py:def reply_handler(msg):
+ViewFiles.py:def read_varlist(): ##read variables from the control panel file
+ViewFiles.py:def read_vars(inputstring): ##read variables from the control panel file
+ViewFiles.py:def rewrite_param_file(varToChange,newvarval):
+ViewFiles.py:def check_for_CP_change(fname): ##read timestamp from the control panel file
+VolaCalculate.py:def backupTickfiles(fname1):
+VolaCalculate.py:def reply_handler(msg):
+VolaCalculate.py:def start_tickers():
+VolaCalculate.py:def build_c_dbase(slist):
+VolaCalculate.py:def get_vola(symbol_list_opts):
+VolaCalculate.py:#########################  run the downloader via def #####
+VolaCalculate.py:def parse_vola_msg(filein):
+volumehistogram.py:def show_avg(arrayin):   
+volumehistogram.py:def show_2_arrays(array1,array2,sortorder):
+volumehistogram.py:def show_2_arrays_bigsize(array1,array2,sortorder,perclimit):
+volumehistogram.py:def sum_array(array,mode,rows):
+volumehistogram.py:def sum_2arrays_weighted(array,array2,mode):
+volumehistogram.py:def prepare_empty_array(fnums):
+volumehistogram.py:def presort(sym,style):
+volumehistogram.py:def Mbox(title, text, style):
+volumehistogram.py:def createVolHistogram(sym,fnums):
+volumehistogram.py:def createVolHistogramdload(sym,fnums,ldiv,roundfactor):
+volumehistogram.py:def Mbox(title, text, style):

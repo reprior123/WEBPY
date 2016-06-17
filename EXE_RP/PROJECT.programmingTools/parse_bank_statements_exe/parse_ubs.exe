@@ -1,0 +1,111 @@
+:
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+parsearea=/dev/fs/C/TS/EXE/parse_bank_statements_exe
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+stmts=$DATA/statements
+stmtsarea=$stmts/UBS_*
+
+rundate=`date "+%Y%m%d%H%M"`
+chmod 777 $stmtsarea
+
+#########################################
+rm debug
+
+create_filelist() ###subroutine
+{
+rm filelist
+ls -ltr $stmtsarea/RUNMEubs*.txt |  awk -F"/" '{print $NF}' | tr " " "?" >filelist
+cat filelist
+}
+#########################################
+create_filelist
+#########################################
+proccess_files()  ##subroutine
+{
+filelista=`cat filelist`
+rm temp1_withfull blab
+#################
+for filea in $filelista;do
+file=$stmts/*/$filea
+ls $file
+acctnum=`echo $filea | awk -F"." '{print $2"UBS"$3}' | tr "[a-z]" "[A-Z]"`
+echo $acctnum
+
+cat $file |\
+dos2unix |\
+tr -d "\t" |\
+tr " " "_" |\
+tr -s "_" |\
+tr "[a-z]" "[A-Z]" |\
+awk -F";" ' ( NF == 2 ) {print "~"$0} ( NF != 2 ) {print $0}' |\
+tr "\n" "\|" |\
+tr ";" "\|" |\
+tr "~" "\n" |\
+tr -d "\"" |\
+sed s/E\-BANKING\_CHF\_DOMESTIC/~MULTIONELINE/g |\
+sed s/CARD_73870840-0_1012//g |\
+cat > run1.txt
+
+cat run1.txt |\
+grep STANDING_ORDER > stands
+
+cat run1.txt |\
+grep -v MULTIONELINE |\
+grep -v "E-BANKING_ORDER" |\
+sort > run2.txt
+cat stands >> run2.txt
+echo "end run2"
+
+cat run2.txt |\
+grep -v "|CHF|" 
+echo "these are nonCHFers..."
+
+cat run2.txt |\
+grep  "|CHF|" |\
+cat > run2a.txt
+
+cat run2a.txt |\
+sed s/\|CHF\|/\~AMOUNLINECHF\|/g  |\
+tr "~" "\n" |\
+grep AMOUNLINECH |\
+awk -F"|" '{print "|newamount|"$2"|"}
+' |\
+tr -s " " |\
+cat  > temp2
+paste run2a.txt temp2 > run3.txt
+
+echo "done with run3"
+cat run3.txt |\
+awk -F"|" '
+{printf"%s|%s|%s|%3.2f|\n",$1,$2,$3$4$5$6,$(NF-1)}
+' > run4.txt
+
+echo "done with run4"
+
+cat run4.txt |\
+tr -d "\'" |\
+tr -s "_" |\
+awk -F "|" ' 
+{incflag="expensecat";area="che";category=autocategory="EMPTY";fullline=$3
+date=$1;payee=$3;curr="CHF";amt=$4;balance="bal";flag="printme";type="multi"
+year=substr(date,7,4);month=substr(date,4,2)}
+( amt > 0 ) {incflag="incomecat"}
+{
+printf"%s %-32s %3s %9.2f %9.2f %s %s %s %s %s %s %s %s %s \n"\
+,date,payee,curr,amt,balance,"'$acctnum'",type,incflag,year,month,area,category,autocategory,fullline}
+' >> temp1_withfull
+done
+}
+#################################################
+proccess_files
+cp temp1_withfull ready_for_categorizing
+#################################################
+mainfile="ubs"
+fileout=all.$mainfile.w_categories.txt
+$parsearea/add_categorys.exe > $fileout
+##################################################
+exit

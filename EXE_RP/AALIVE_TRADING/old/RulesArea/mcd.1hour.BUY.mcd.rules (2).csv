@@ -1,0 +1,4 @@
+mcd,1hour,stringtest,pos,2,80,10100,BUY,kmidgt
+mcd,1hour,stringtest,pos,2,0,20,BUY,mcross3minsposcrxx0x20BUY
+mcd,1hour,stringtest,slopeup,7,0,20,BUY,mcross3minsposcrxx0x20BUY
+mcd,1hour,valtest,pos,1,-1.5,1.50,BUY,mcross3minsposcrxx0x20BUY

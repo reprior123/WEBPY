@@ -1,0 +1,2 @@
+def view_contacts()
+	return dict()

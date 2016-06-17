@@ -1,0 +1,75 @@
+:
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+parsearea=/dev/fs/C/TS/EXE/parse_bank_statements_exe
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+stmts=$DATA/statements
+stmtsarea=$stmts/SWISSAIR_CREDITCARDS
+
+rundate=`date "+%Y%m%d%H%M"`
+chmod 777 $stmtsarea
+
+ls $stmtsarea/RUNMESwiss*
+
+#########################################
+rm debug
+
+create_filelist() ###subroutine
+{
+rm filelist
+ls -ltr $stmtsarea/RUNMESwis*.txt |  awk -F"/" '{print $NF}' | tr " " "?" >filelist
+cat filelist
+}
+#########################################
+create_filelist
+#########################################
+proccess_files()  ##subroutine
+{
+filelista=`cat filelist`
+rm temp1_withfull blab
+#################
+for filea in $filelista;do
+file=$stmts/*/$filea
+ls $file
+acctnum=`echo $filea | awk -F"." '{print $2"UBS"$3}' | tr "[a-z]" "[A-Z]"`
+acctnum="swissccard"
+
+echo $acctnum
+
+cat $file |\
+dos2unix |\
+tr "\t" "|" |\
+tr " " "_" |\
+tr -s "_" |\
+tr "[a-z]" "[A-Z]" |\
+tr -d "\'" |\
+sort -u |\
+cat > run1.txt
+tail run1.txt
+
+#29.09.2005|GOTOMYPC|80.45|RPVISAGOLD||2005|9
+
+cat run1.txt |\
+awk -F "|" ' 
+{incflag="expensecat";area="che";category=$5;autocategory="EMPTY";fullline=$0
+date=$1;payee=$2;curr="CHF";amt=$3*(-1.0);balance="bal";flag="printme";type="multi"
+year=substr(date,7,4);month=substr(date,4,2)}
+( amt > 0 ) {incflag="incomecat"}
+{
+printf"%s %-32s %3s %9.2f %9.2f %s %s %s %s %s %s %s %s %s \n"\
+,date,payee,curr,amt,balance,"'$acctnum'",type,incflag,year,month,area,category,autocategory,fullline}
+' >> temp1_withfull
+done
+}
+#################################################
+proccess_files
+cp temp1_withfull ready_for_categorizing
+#################################################
+mainfile="swissairccard"
+fileout=all.$mainfile.w_categories.txt
+$parsearea/add_categorys.exe > $fileout
+##################################################
+exit

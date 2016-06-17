@@ -1,0 +1,1 @@
+start "" "C:/Users/bob/Google Drive/EXE_RP/copybingos.ahk"

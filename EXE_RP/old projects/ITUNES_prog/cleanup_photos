@@ -1,0 +1,328 @@
+:
+G3=/dev/fs/C
+FG3=/dev/fs/F
+mydocs=$G3/Documents*Settings/bob*marley/My*Documents
+mydocsF=$FG3
+basedir=/dev/fs
+
+photosC=$G3/PHOTOSG3
+photosF=$FG3/PHOTOS_TO_MERGE
+mergearea=$FG3/ALLPICS
+
+# create dir list #
+
+#cat photodbaseF.txt photodbase.txt |\
+
+infile=photodbaseF.txt
+cat $infile |\
+sed 's/F\:\\/F\//g' |\
+sed 's/C\:\\/C\//g' |\
+sed 's/\//SLASHPUNCT/g' |\
+sed 's/\|/PIPEPUNCT/g' |\
+tr -d "\t"  |\
+tr [:punct:] "\?" |\
+tr "\ " "\?" |\
+sed 's/PIPEPUNCT/\|/g' |\
+cat  > bla
+###############################
+
+linelist=`cat bla |  head`
+for line in $linelist;do
+echo "$line" > bla
+cat bla
+oldname=`cat bla | awk  -F"|" ' {print $2"\/"$1}' | sed 's/SLASHPUNCT/\//g' `
+newname=`cat bla | awk  -F"|" ' {print $2"_"$1}' | tr -s "\?" "_" | sed 's/SLASHPUNCT/\_/g'`
+echo $oldname
+ls -ltr $basedir/$oldname
+echo $newname
+ls -ltr $mergearea | tail
+done
+exit
+
+newname=
+
+cat photodbaseF.txt |\
+awk  -F"|" '
+{print $2"_"$1}' | tr -s " " "_" |\
+sort -u > allfilenames
+
+
+#cat alldirs |\
+cat allfilenames |\
+head |\
+awk '{print length($1),$1}' |\
+sort -n
+
+paste -d"|" photodbaseF.txt allfilenames
+wc alldirs allfilenames
+wc photodbaseF.txt photodbase.txt 
+
+exit
+
+{print $1"_"$2}' | tr " " "_" |\
+
+exit
+
+
+
+#cat $G3/allphotoinfo.txt |\
+#cat $G3/photosF.txt |\
+#cat $G3/blanew |\
+#egrep "Name|Directory|Size|Modification|Camera|Original" >blaFtabs
+
+cat blaFtabs |\
+dos2unix |\
+awk -F "\t" ' 
+BEGIN {OFS="|";name=dir=size=mod=camer=create=owner=isize="NA"}
+/File Name/ {name=$2}
+/Directory/ {dir=$2}
+/File Size/  {size=$2}  
+/File Modification Date/ {mod=$2}
+/Camera Model Name/     {camera=$2}  
+/Original/   {create=$2}   
+/Owner Name/    {owner=$2}  
+/Image Size/    {isize=$2}
+/File Name/  { 
+print name,dir,size,mod,camera,create,owner,isize
+name=dir=size=mod=camer=create=owner=isize="NA"
+} ' > photodbaseF.txt
+
+cat photodbaseF.txt
+
+exit
+
+
+G3=$photosC
+G3=$FG3/PHOTOS_TO_MERGE
+ls $G3/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*.jpg >>junk
+ls $G3/*/*/*/*/*/*/*/*/*/*/*/*/*/*.jpg >junk
+ls $G3/*/*/*/*/*/*/*/*/*/*/*/*/*.jpg >junk
+ls $G3/*/*/*/*/*/*/*/*/*/*/*/*.jpg >junk
+ls $G3/*/*/*/*/*/*/*/*/*/*/*.jpg >junk
+ls $G3/*/*/*/*/*/*/*/*/*/*.jpg >junk
+ls $G3/*/*/*/*/*/*/*/*/*.jpg >junk
+ls $G3/*/*/*/*/*/*/*/*.jpg >>junk
+ls $G3/*/*/*/*/*/*/*.jpg >>junk
+ls $G3/*/*/*/*/*/*.jpg >>junk
+ls $G3/*/*/*/*/*.jpg >>junk
+ls $G3/*/*/*/*.jpg >>junk
+ls $G3/*/*/*.jpg >>junk
+ls $G3/*/*.jpg >>junk
+ls $G3/*.jpg >>junk
+
+
+exit
+======== PHOTOSG3/2004 Switzerland Vacation jeff and brit/2004 Switzerland Vacation 001.jpg
+ExifTool Version Number 7.06
+File Name       2004 Switzerland Vacation 001.jpg
+Directory       PHOTOSG3/2004 Switzerland Vacation jeff and brit
+File Size       878 kB
+File Modification Date/Time     2004:09:08 07:41:52
+File Type       JPEG
+MIME Type       image/jpeg
+Exif Byte Order Little-endian (Intel)
+Make    Canon
+Camera Model Name       Canon PowerShot S230
+Orientation     Horizontal (normal)
+X Resolution    180
+Y Resolution    180
+Resolution Unit inches
+Modify Date     2004:09:05 11:28:14
+Y Cb Cr Positioning     Centered
+Exposure Time   1/250
+F Number        2.8
+Exif Version    0220
+Date/Time Original      2004:09:05 11:28:14
+Create Date     2004:09:05 11:28:14
+Components Configuration        YCbCr
+Compressed Bits Per Pixel       5
+Shutter Speed Value     1/251
+Aperture Value  2.8
+Max Aperture Value      2.8
+Flash   Auto, Did not fire
+Focal Length    5.4mm
+Macro Mode      Normal
+Self-timer      Off
+Quality Superfine
+Canon Flash Mode        Red-eye reduction (Auto)
+Continuous Drive        Single
+Focus Mode      Single
+Record Mode     JPEG
+Canon Image Size        Large
+Easy Mode       Full auto
+Digital Zoom    None
+Contrast        Normal
+ls $photosC
+exit
+
+
+ls $FG3
+ls $FG3
+
+dirone=$FG3/PHOTOS_TO_MERGE/photoszug
+dirtwo=$FG3/PHOTOS_TO_MERGE/photoszug2
+
+ls -l $dirone/*.jpg | sed s/bob\ marley/1000/g > onelisting
+cat onelisting | awk -F"/" '{print $NF}' | tr " " "?" > onefiles
+cat onelisting | awk  '{print $5}' | tr " " "?" > onesizes
+wc onefiles onesizes
+paste onesizes onefiles >newones
+#################
+
+ls -l $dirtwo/*.jpg | sed s/bob\ marley/1000/g > onelisting
+cat onelisting | awk -F"/" '{print $NF}' | tr " " "?" > onefiles
+cat onelisting | awk  '{print $5}' | tr " " "?" > onesizes
+wc onefiles onesizes
+paste onesizes onefiles >newtwos
+
+diff newones newtwos
+exit
+
+
+filelist=`cat onefiles`
+for file in $filelist;do
+grep $file onelisting
+done
+
+exit
+
+ls -l $dirone/*.jpg | sed s/bob\ marley/1000/g | awk -F"/" '{print $NF}' | tr " " "?" > onefiles
+cat onefiles
+
+exit
+
+
+
+ls -ltr  $FG3/PHOTOS_TO_MERGE/*/*/*/*/*/*.jpg  > photodir
+ls  -ltr $FG3/PHOTOS_TO_MERGE/*/*/*/*/*.jpg  >> photodir
+ls  -ltr $FG3/PHOTOS_TO_MERGE/*/*/*/*.jpg  >> photodir
+ls  -ltr $FG3/PHOTOS_TO_MERGE/*/*/*.jpg  >> photodir
+ls  -ltr $FG3/PHOTOS_TO_MERGE/*/*.jpg  >> photodir
+ls  -ltr $FG3/PHOTOS_TO_MERGE/*.jpg  >> photodir
+
+cat photodir | grep photoszug  | sed s/bob\ marley/1000/g > bothdirs
+grep photozug2 bothdirs > two
+grep -v photozug2 bothdirs > one
+diff one two
+
+
+
+exit
+
+
+infile=$mydocs/itunesviewerout.txt
+ls -l  $infile
+cat $infile | grep "wma" 
+cat $infile | grep "m4b" 
+ 
+## this will give preference to mp3 files for retaining#####
+cat $infile | grep "m4a" > part2
+cat $infile | grep "m4p" > part3
+cat part3
+echo -n " these are remaining m4p files , need fairkeys to convert them"
+read bal
+
+cat $infile | grep  -v "m4a" | grep -v "m4p"  > part1
+
+cat part1 part2  part3 |\
+tr "\t" "\|" |\
+tr "\ " "\?" |\
+tr "\-" "\?" |\
+tr "\\" "\/" |\
+tr -d "\"" |\
+tr -d "\:" |\
+tr "\]" "\?" |\
+tr "\)" "\?" |\
+tr "\[" "\?"  |\
+tr "\(" "\?"  |\
+tr "\*" "\?"  |\
+tr "\+" "\?"  |\
+tr "\#" "\?"  |\
+tr "\," "\?"  |\
+#grep -v "track" |\
+#grep -v "various" |\
+cat  > newdupes
+wc newdupes 
+
+echo " this will find dupe song:artist:album same spellings"  ### corresponds to $2 in namelist line
+echo " this will find dupe song:artist: same spellings NOT RECOMMENDED without grep in newdupes"  ### corresponds to $1 in namelist line
+
+# need to address same SAA, except a slightly different spelling
+# show possible matches and dupes for SAA, SA , AA , then different orders AAS
+#
+
+##   1. first identify albums and artists and look for spelling diffs ###
+##   2. then grep by artist
+
+
+### show suspicious artists ####
+
+### albums are field 5   ####
+cat newdupes |\
+awk -F"|" ' {print $4}' |\
+sort -u  > artists
+#more artists
+wc artists
+
+### show suspicious albums ####
+
+### albums are field 5   ####
+cat newdupes |\
+awk -F"|" ' {print $5}' |\
+#awk -F"|" ' {print $5,$3}' |\
+sort -u  > artists
+#more artists
+wc artists
+echo -n "look for suspicious spelling dupes above..."
+read bla
+###################################
+###################################
+
+cat newdupes | awk -F"|" ' {print $2}' | sort >namelist
+wc namelist
+namelist=`cat namelist | sort -u`
+rm dupesraw
+
+for name in $namelist;do
+echo $name
+grep "$name" newdupes |\
+awk ' ( NR  > 1 ) {print $0}' >>dupesraw
+done
+wc dupesraw
+cat dupesraw
+cat dupesraw |\
+awk  -F "|" '
+{print $13}
+' >filelistraw
+cat filelistraw | head
+wc dupesraw
+echo -n "continue to file removal of the above files ? "
+read bla
+
+filelist=`cat filelistraw`
+for file in $filelist;do
+ls  -l $basedir/$file
+#mv   $basedir/$file $mydocs/itunesdupedump
+#mv   $basedir/$file $mydocsF/itunesdupedump
+#mv   $basedir/$file $mydocsF/itunesdupedumpsameartist
+
+done
+
+
+exit
+
+31	/dev/fs/C/TS/EXE/ITUNES_prog/cleanup_photos
+32	vi cleanup_photos
+33	h
+34	/dev/fs/C/TS/EXE/ITUNES_prog/cleanup_photos > junk
+35	cat junk
+36	pwd
+37	wc junk
+38	pwd
+39	grep -v Attach junk | wc
+40	grep -v Attach junk > bla
+41	cat bla
+42	h
+44	cat bla
+45	wc bla
+46	h

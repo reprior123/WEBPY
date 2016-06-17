@@ -1,0 +1,3 @@
+mcd,1hour,stringtest,pos,2,99,99,BUY,mcd
+mcd,1hour,stringtest,slopeup,7,99,99,BUY,mcd
+mcd,1hour,valtest,pos,1,-1.5,1.50,BUY,mcd

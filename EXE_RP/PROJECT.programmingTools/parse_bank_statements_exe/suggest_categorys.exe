@@ -1,0 +1,23 @@
+:
+#cat all.txt |\
+cat all.ubspay.trans.txt |\
+grep "EMPTY_CATEGOR" |\
+tr " " "\t" |\
+cut -f2 |\
+sed s/MAESTRO_PAYMENT_CHF_35665314-1//g |\
+sed s/MAESTRO_PAYMENT_CHF_66102822-0//g |\
+sed s/PAYMENT//g |\
+sed s/ORDER_ELECTRONIC_BANKING//g |\
+tr -s "_" |\
+cut -c1-40 |\
+sort -u |\
+awk '{line=$1;short=substr(line,1,15);print short,line}' >preparedcats
+vi preparedcats
+
+exit
+ MAESTRO_PAYMENT_CHF
+
+then add to UBS_CATS
+
+
+

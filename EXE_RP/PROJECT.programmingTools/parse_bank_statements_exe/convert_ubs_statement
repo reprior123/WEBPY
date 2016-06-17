@@ -1,0 +1,90 @@
+:
+
+statements=
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+stmts=$DATA/statements/UBS_RP
+rundate=`date "+%Y%m%d%H%M"`
+
+ls -l $stmts/*ubs*2007*.txt
+file=$stmts/ubs*rp*2007*main*CHF*statement.txt
+
+
+cat $file |\
+dos2unix |\
+awk ' {newlinespot=substr($1,8,4)}
+( newlinespot == "2007" )  {print newlinespot}'
+
+exit
+
+
+cat $file |\
+tr -d "\"" |\
+tr -d "\'" |\
+awk -F";" ' 
+(NF==2) {date=$1;print ";"date";"}
+{print " "$0}
+(NF==5) {print "|"}
+/Account balance/ {print "|"}
+' |\
+tr -d "\012" |\
+tr -d "\015" |\
+tr "|" "\012" |\
+tr -s "\ " | tr -d "\t" |\
+cat  > temp
+
+cat temp | grep MULTI |\
+sed s/E\-BANKING/\|EBANK/g |\
+tr "|" "\012" |\
+sed s/EBANK\ ORDER/EBANK\ ORDER\;/g |\
+sed s/EBANK\ CHF\ DOMESTIC/EBANK\ ORDER\;/g |\
+awk '
+/MULTI/ {date=$1}
+( $5 == "CHF" ) {amount=$6}
+( $6 == "CHF" ) {amount=$7}
+( $7 == "CHF" ) {amount=$8}
+{print date$0";;"amount*(-1)";"}' |\
+grep "EBANK ORDER" |\
+awk -F";" ' ( NF < 8 ) {print $0}' |\
+cat  > multis
+
+cat temp |\
+grep -v MULTI |\
+sed s/E\-BANKING\ ORDER//g |\
+sed s/YOUR\ ORDER//g |\
+cat >outfile.txt
+
+cat multis >> outfile.txt
+
+cat outfile.txt |\
+awk ' 
+BEGIN {print "flag ; date ; date2 ;descrip ; chf ; amount ; date3 ; balance ; "}
+{flag="bla"}
+/AUSGLEI/ {flag="AHV"}
+/CLOSING ENTRY/ {flag="bankfee"}
+/FELIX/ {flag="FELIX"}
+/NANCY/ {flag="NANCY"}
+/INTERACTIVE/ {flag="INTERACTIVE"}
+{print flag,$0}
+' > temp
+
+mv temp outfile.txt
+
+cat outfile.txt
+
+exit
+
+:
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+TSE=$EXE
+rundate=`date "+%Y%m%d%H%M"`
+

@@ -1,0 +1,12 @@
+0,bidsize,2
+1,bidprice,1
+2,ask,3
+3,asksize,4
+4,lastprice,7
+5,lastsize,14
+6,highprice,8
+7,lowprice,9
+8,volumetot,10
+9,closeprice,11
+14,openprice,12
+45,timestamp,13

@@ -1,0 +1,83 @@
+def create_barsNew(arrayin,today,sym,dur,durinseconds,timecutoff): ## this has no time cutoff
+    bararray =[]
+    time_format = ' %Y-%m-%d %H:%M:%S'
+    barhi = float(0)
+    barlo = float(99999999)
+    tickcount = tottickcount = 0
+    timearray =[]
+    prevtime = 0
+    prevhi =  prevlo = prevbartime =  0
+    totallength = len(arrayin)
+
+    import datetime as dt
+    from datetime import datetime
+    import time
+    prev_bar_time_dt = dt.datetime.strptime(' 2015-06-01 00:01:01', time_format)
+    rpu_rp.WriteArrayToCsvfile(DataDown +today+'.'+sym+ '.' +dur+  '.recent.csv',[])
+    for line in arrayin:
+        ##ignore the first field and timefield is second field but need conversion with dt
+##        timedate = datetime.fromtimestamp(float(epochstring)).strftime(' %Y-%m-%d %H:%M:%S')
+        timedate = line[1]
+        openpr = float(line[2])
+        highpr = float(line[3])
+        lowpr = float(line[4])
+        closepr = float(line[5])
+        bartime = timedate.split()[1]
+        date = timedate.split()[0]
+        tottickcount +=1
+        if bartime ==  '1':
+            bartime = '00:01:01'          
+        bartime_dt = dt.datetime.strptime(timedate, time_format)
+        cutinstring = dt.datetime.strftime(timecutoff, time_format)
+        barsecs = int(time.mktime(time.strptime(timedate, time_format)))
+        cutoffsecs = int(time.mktime(time.strptime(cutinstring, time_format)))
+
+        if bartime_dt > timecutoff :
+            elapsed = ( bartime_dt - prev_bar_time_dt).seconds
+            testval = int(durinseconds) - elapsed
+            cutoffdiff = (barsecs - cutoffsecs)
+            tickcount +=1
+            if highpr > barhi:
+                barhi = highpr
+            if lowpr < barlo:
+                barlo = lowpr
+            if tickcount == 1:
+                baropen = openpr
+                
+            setflag= 'skip'
+            if tottickcount == 1 :
+                setflag = 'reset'
+            elif testval < 0 and cutoffdiff > int(durinseconds):
+                setflag = 'reset'
+            elif  tottickcount == totallength:
+                setflag = 'reset'
+            else:
+                setflag = 'skip'
+            if setflag == 'reset':
+                
+                tickcount =0
+                barline =[]
+                barclose = closepr
+                midhilo = (barhi+barlo)/2
+                prev_bar_time_dt = bartime_dt
+                partbar = False
+                if tottickcount == totallength:
+                    time = 'partialbar 23:59:59'
+                    partbar = False
+                barline.append(sym)
+                barline.append(timedate)
+                barline.append(baropen)
+                barline.append(barhi)
+                barline.append(barlo)              
+                barline.append(barclose)
+                barline.append('1')
+                barline.append(elapsed)
+                barline.append(midhilo)
+                if partbar == False:
+                    bararray.append(barline)
+##                    print barline
+                barhi = 0
+                barlo = 99999999
+    rpu_rp.WriteArrayToCsvfileAppend(DataDown +today+'.'+sym+ '.' +dur+  '.recent.csv',bararray)
+    return bararray
+######################################

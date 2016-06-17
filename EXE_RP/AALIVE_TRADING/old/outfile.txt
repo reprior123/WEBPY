@@ -1,0 +1,5 @@
+TimeLimitRecentSigs,5
+SignalsToShow,5
+DurationToShow,5
+CycleTime,5
+Setting,5

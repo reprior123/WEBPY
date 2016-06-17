@@ -1,0 +1,95 @@
+def create_bars_fromRTBars(RTBarsin,today,sym,dur,timecutoff):
+    barhi = float(0)
+    barlo = float(99999999)
+    tickcount = tottickcount = 0
+    bararray =[]
+    timearray =[]
+    prevtime = 0
+    prevhi =  prevlo = prevbartime =  0
+    totallength = len(RTBarsin)
+    import datetime as dt
+    from datetime import datetime
+    prev_bar_time_dt = dt.datetime.strptime('00:01:01', time_format)
+    for line in RTBarsin:
+##        print line
+        txttoremove = ['reqId',',','\'','=','time','open','high','low','close','volume','wap','count']
+        ##ignore the first field and timefield is second field but need conversion with dt
+        parsedline = str(line)
+        for item in txttoremove:
+            parsedlinenew = parsedline.replace(item,'')
+            parsedline = parsedlinenew
+        line = parsedlinenew.split()
+##        print line
+        midpoint = (float(line[3]) + float(line[1]))/2
+##        bartime = (line[0]).split('.')[0]
+        epochstring = line[2]
+##        timedate = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(epochstring))
+        timedate = datetime.fromtimestamp(float(epochstring)).strftime('%Y-%m-%d %H:%M:%S')
+        openpr = float(line[3])
+        highpr = float(line[4])
+        lowpr = float(line[5])
+        closepr = float(line[6])
+
+        bartimeraw = timedate.split()[1]
+        bardateraw = timedate.split()[0]
+                
+        bardate = today
+        tottickcount +=1
+        if bartimeraw ==  '1':
+            bartimeraw = '00:01:01'          
+        bartime_dt = dt.datetime.strptime(bartimeraw, time_format)
+        ##########
+        cutinstring = dt.datetime.strftime(timecutoff, time_format)
+        barsecs = int(time.mktime(time.strptime(bartimeraw, time_format)))
+        cutoffsecs = int(time.mktime(time.strptime(cutinstring, time_format)))
+           
+        bartimesize = 60
+        barticksize = 5
+        bartime = bartimeraw
+        if bartime_dt > timecutoff:
+            elapsed = ( bartime_dt - prev_bar_time_dt).seconds 
+            testval = int(bartimesize) - elapsed
+            cutoffdiff = (barsecs - cutoffsecs)
+
+            tickcount +=1
+            if highpr > barhi:
+                barhi = highpr
+            if lowpr < barlo:
+                barlo = lowpr
+            if tickcount == 1:
+                baropen = openpr
+
+            setflag= 'skip'
+            if tottickcount == 1 :
+                setflag = 'reset'
+            elif testval < 0 and cutoffdiff > int(durinseconds):
+                setflag = 'reset'
+            elif  tottickcount == totallength:
+                setflag = 'reset'
+            else:
+                setflag = 'skip'
+            if setflag == 'reset':
+                tickcount =0
+                barline =[]
+                barclose = closepr
+                midhilo = (barhi+barlo)/2
+                prev_bar_time_dt = bartime_dt
+                partbar = False
+                if tottickcount == totallength:
+                    time = 'partialbar 23:59:59'
+                    partbar = False
+                barline.append(sym)
+                barline.append(bartime)
+                barline.append(baropen)
+                barline.append(barhi)
+                barline.append(barlo)              
+                barline.append(barclose)
+                barline.append(barticksize)
+                barline.append(elapsed)
+                barline.append(midhilo)
+                if partbar == False:
+                    bararray.append(barline)
+                barhi = 0
+                barlo = 99999999
+                #### no need to write to recent file as this is creating recent 5sec bars, not recent[dur]
+    return bararray

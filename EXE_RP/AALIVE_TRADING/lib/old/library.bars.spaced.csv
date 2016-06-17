@@ -1,0 +1,7 @@
+1 day,6 M,6 M,_,86400,daily
+1 hour,8 D,8 D,_,3600,daily
+15 mins,2 D,2 D,_,900,intraday
+5 mins,1 D,1 D,_,300,intraday
+1 min,1 D,1 D,_,60,intraday
+5 secs,3600 S,3600 S,_,5,intraday
+3 mins,1 D,1 D,_,180,intraday

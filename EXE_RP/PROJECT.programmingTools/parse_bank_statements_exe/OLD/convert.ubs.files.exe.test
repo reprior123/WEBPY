@@ -1,0 +1,151 @@
+:
+dir=/dev/fs/C
+EXE=$dir/TS/EXE
+parsearea=/dev/fs/C/TS/EXE/parse_bank_statements_exe
+DATA=$dir/TS/DATA
+SCM=$EXE/SCM
+SEMAC=$dir/TS/TMP/semac
+importarea=$dir/Jts
+stmts=$DATA/statements
+stmtsarea=$stmts/UBS_*
+
+rundate=`date "+%Y%m%d%H%M"`
+chmod 777 $stmtsarea
+
+#########################################
+rm debug
+
+create_filelist() ###subroutine
+{
+rm filelist
+ls -ltr $stmtsarea/RUNME*ubs*.txt |  awk -F"/" '{print $NF}' | tr " " "?" >filelist
+cat filelist
+}
+#########################################
+create_filelist
+sleep 1
+#########################################
+proccess_files()  ##subroutine
+{
+filelista=`cat filelist`
+rm temp1_withfull blab
+#################
+for filea in $filelista;do
+file=$stmts/*/$filea
+ls $file
+acctnum=`echo $filea | awk -F"." '{print $2"UBS"$3}' | tr "[a-z]" "[A-Z]"`
+echo $acctnum
+head -100 $file
+
+cat $file |\
+dos2unix |\
+tr -d "\t" |\
+tr " " "_" |\
+tr "[a-z]" "[A-Z]" |\
+tr "\n" "\|" |\
+sed s/2008\;/2008\|~/g |\
+sed s/2009\;/2009\|~/g |\
+sed s/E\-BANKING\_CHF\_DOMESTIC/~MULTIONELINE/g |\
+sed s/\_\_\_\_CHF\_/\|CHF\|/g |\
+tr ";" "|" |\
+tr "~" "\n" |\
+tr -s "_" |\
+tr -d "\"" |\
+cat > run1.txt
+
+cat run1.txt |\
+awk -F"|" ' BEGIN {date="01.01.2008"}
+{
+print date"|"$0
+date=$(NF-1)
+}
+' |\
+grep -v MULTIONELINE |\
+grep -v "E-BANKING_ORDER" |\
+sort -t "|" +1 > run2.txt
+
+cat run2.txt |\
+awk -F"|" ' {print $2}'  |\
+sort -u > typelist
+cat typelist
+
+#/#>>:>
+
+
+
+cat run2.txt |\
+sed s/\|CHF\|/\~CHF\|/g |\
+tr "~" "\n" |\
+awk -F"|" ' BEGIN {amount=0.01}
+{
+print amount"|"$0
+amount=$2
+}
+' |\
+cat > run3.txt
+
+
+cat run3.txt |\
+cut -c1-200 |\
+sed s/\ \ \ \ \ CHF/\|CHF\|/g |\
+sed s/\ \ \ \ \ USD/\|USD\|/g |\
+sed s/\ \ \ \ \ EUR/\|EUR\|/g |\
+tr -d "\"" |\
+tr -d "\'" |\
+tr -d "\015" |\
+tr -d "\t" |\
+tr -s " " |\
+tr " " "_" |\
+tr -s "_" |\
+sed s/\|\_/\|/g |\
+awk -F"|" ' 
+BEGIN {flagtype="blah";OFS="|"}
+( NF == 3 ) {flagtype=$2;date1=$1;counter=0}
+{counter+=1}
+( counter == 2 ) {payee=$1}
+( flagtype == "ORDER" ) && ( counter == 3 ) {payee=$1}
+{print counter,date1,flagtype,payee,$0}' |\
+cat > blab
+
+cat blab >> debug
+
+#cat $file >> debug
+
+balfile=`echo $file | awk -F"/" '{print $NF}' | tr " " "_"`
+cat $file |\
+egrep "USD|CHF|EUR" |\
+tr -d "\"" |\
+awk -F";" '
+( NF > 4 ) {printf"%20s %50s %12s %9d\n","'$acctnum'","'$balfile'",$(NF-1),$NF}' |  tail -1
+
+cat blab |\
+grep "MULTI_E-BANKING_ORDER|E-BANKING_CHF_DOMESTIC|E-BANKING_CHF_DOMESTIC|CHF|" 
+cat blab |\
+grep -v "MULTI_E-BANKING_ORDER|E-BANKING_CHF_DOMESTIC|E-BANKING_CHF_DOMESTIC|CHF|" |\
+awk -F "|" ' 
+{incflag="expensecat";area="che";category=autocategory="EMPTY";fullline=$5$6$7$8$9$10}
+ /MULTI/ && ( $6 == "CHF" ) {
+date=$2;payee=$5;curr=$6;amt=$7*(-1.0);balance="bal";flag="printme";type="multi"}
+( NF == 10 ) && ( $3 != "MULTI_E-BANKING_ORDER" ) {
+date=$2;payee=$4;curr=$6;amt=$7;balance="bal";flag="printme";type=$3}
+{year=substr(date,7,4);month=substr(date,4,2)}
+( amt > 0 ) {incflag="incomecat"}
+{balance="0"}
+ ( type == "SHARE" ) {category="INVESTSHARE"}
+( flag == "printme" ) {
+printf"%s %-32s %3s %9.2f %9.2f %s %s %s %s %s %s %s %s %s \n"\
+,date,payee,curr,amt,balance,"'$acctnum'",type,incflag,year,month,area,category,autocategory,fullline}
+{flag="noprint";type="bla"}
+' >> temp1_withfull
+done
+}
+#################################################
+proccess_files
+cp temp1_withfull staterun2
+#################################################
+mainfile="ubs"
+fileout=all.$mainfile.trans.txt
+echo $fileout > fileout_name
+$parsearea add_categorys.exe
+##################################################
+exit

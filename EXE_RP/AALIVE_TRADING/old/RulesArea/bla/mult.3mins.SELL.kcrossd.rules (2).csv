@@ -1,0 +1,3 @@
+Stoch_CROSS,3mins,valtest,pos,1,1.0,10100,SELL,Stoch_CROSS3minspos0x10100SELL
+StochK,3mins,stringtest,slopedn,4,0,10100,SELL,StochK3minsslopedn0x10100SELL
+StochK,3mins,valtest,slopedn,1,80,10100,SELL,StochK3minsslopedn80x10100SELL

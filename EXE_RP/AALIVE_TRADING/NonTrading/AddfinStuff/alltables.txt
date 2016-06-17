@@ -1,0 +1,2582 @@
+Python 2.7.6 (default, Nov 10 2013, 19:24:18) [MSC v.1500 32 bit (Intel)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> ================================ RESTART ================================
+>>> 
+sqldump _reader.py
+importing envdicts from exe..
+20160505  is using this date
+20160505  is using this date
+could not read C:/users/bob/downloads/part1 for TxtToLines in rpus
+>>> ================================ RESTART ================================
+>>> 
+sqldump _reader.py
+importing envdicts from exe..
+20160505  is using this date
+20160505  is using this date
+>>>>>>>   `accounts`; 1
+accounts
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+account_type
+industry
+annual_revenue
+phone_fax
+billing_address_street
+billing_address_city
+billing_address_state
+billing_address_postalcode
+billing_address_country
+rating
+phone_office
+phone_alternate
+website
+ownership
+employees
+ticker_symbol
+shipping_address_street
+shipping_address_city
+shipping_address_state
+shipping_address_postalcode
+shipping_address_country
+parent_id
+sic_code
+campaign_id
+filename
+pepcheckstatus
+nxcfile_photo
+cid_doc_number
+document_id1_c
+cid_date_of_isue
+cid_issuer_location
+created_doc_date
+expiry_date
+document_id_c
+authorization_doc
+id
+idx_accnt_id_del
+idx_accnt_name_del
+idx_accnt_assigned_del
+idx_accnt_parent_id
+accounts
+>>>>>>>   `accounts_accounts_1_c`; 29
+accounts_accounts_1_c
+id
+date_modified
+deleted
+accounts_accounts_1accounts_ida
+accounts_accounts_1accounts_idb
+id
+accounts_accounts_1_alt
+accounts_accounts_1_c
+>>>>>>>   `accounts_audit`; 13
+accounts_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_accounts_parent_id
+accounts_audit
+>>>>>>>   `accounts_bugs`; 87
+accounts_bugs
+id
+account_id
+bug_id
+date_modified
+deleted
+id
+idx_acc_bug_acc
+idx_acc_bug_bug
+idx_account_bug
+accounts_bugs
+>>>>>>>   `accounts_cases`; 87
+accounts_cases
+id
+account_id
+case_id
+date_modified
+deleted
+id
+idx_acc_case_acc
+idx_acc_acc_case
+accounts_cases
+>>>>>>>   `accounts_contacts`; 87
+accounts_contacts
+id
+contact_id
+account_id
+date_modified
+deleted
+id
+idx_account_contact
+idx_contid_del_accid
+accounts_contacts
+>>>>>>>   `accounts_cstm`; 16
+accounts_cstm
+id_c
+language_c
+skype_c
+facebook_c
+linkein_c
+company_type_c
+relationship_c
+account_id_c
+contact_id_c
+source_c
+domicile_c
+contact_id1_c
+contact_id2_c
+contact_id3_c
+contact_id4_c
+contact_id5_c
+contact_id6_c
+contact_id7_c
+conact_type_to_asset_manager_c
+taxt_status_c
+client_profile_c
+suitability_c
+knowledge_c
+experience_c
+appropriateness_c
+risk_capability_c
+risk_capacity_c
+investment_objective_c
+investment_horizont_c
+diversification_c
+name2_c
+memberships_c
+photo_field_c
+id_c
+accounts_cstm
+>>>>>>>   `accounts_opportunities`; 31
+accounts_opportunities
+id
+opportunity_id
+account_id
+date_modified
+deleted
+id
+idx_account_opportunity
+idx_oppid_del_accid
+accounts_opportunities
+>>>>>>>   `acl_actions`; 7
+acl_actions
+id
+date_entered
+date_modified
+modified_user_id
+created_by
+name
+category
+acltype
+aclaccess
+deleted
+id
+idx_aclaction_id_del
+idx_category_name
+acl_actions
+>>>>>>>   `acl_roles`; 400
+acl_roles
+id
+date_entered
+date_modified
+modified_user_id
+created_by
+name
+description
+deleted
+id
+idx_aclrole_id_del
+acl_roles
+>>>>>>>   `acl_roles_actions`; 8
+acl_roles_actions
+id
+role_id
+action_id
+access_override
+date_modified
+deleted
+id
+idx_acl_role_id
+idx_acl_action_id
+idx_aclrole_action
+acl_roles_actions
+>>>>>>>   `acl_roles_users`; 2256
+acl_roles_users
+id
+role_id
+user_id
+date_modified
+deleted
+id
+idx_aclrole_id
+idx_acluser_id
+idx_aclrole_user
+acl_roles_users
+>>>>>>>   `address_book`; 2256
+address_book
+assigned_user_id
+bean
+bean_id
+ab_user_bean_idx
+address_book
+>>>>>>>   `bugs`; 2256
+bugs
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+bug_number
+type
+status
+priority
+resolution
+work_log
+found_in_release
+fixed_in_release
+source
+product_category
+id
+bugsnumk
+bug_number
+idx_bug_name
+idx_bugs_assigned_user
+bugs
+>>>>>>>   `bugs_audit`; 2256
+bugs_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_bugs_parent_id
+bugs_audit
+>>>>>>>   `calls`; 2256
+calls
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+duration_hours
+duration_minutes
+date_start
+date_end
+parent_type
+status
+direction
+parent_id
+reminder_time
+email_reminder_time
+email_reminder_sent
+outlook_id
+repeat_type
+repeat_interval
+repeat_dow
+repeat_until
+repeat_count
+repeat_parent_id
+recurring_source
+id
+idx_call_name
+idx_status
+idx_calls_date_start
+idx_calls_par_del
+idx_calls_assigned_del
+calls
+>>>>>>>   `calls_contacts`; 26
+calls_contacts
+id
+call_id
+contact_id
+required
+accept_status
+date_modified
+deleted
+id
+idx_con_call_call
+idx_con_call_con
+idx_call_contact
+calls_contacts
+>>>>>>>   `calls_leads`; 4
+calls_leads
+id
+call_id
+lead_id
+required
+accept_status
+date_modified
+deleted
+id
+idx_lead_call_call
+idx_lead_call_lead
+idx_call_lead
+calls_leads
+>>>>>>>   `calls_users`; 1
+calls_users
+id
+call_id
+user_id
+required
+accept_status
+date_modified
+deleted
+id
+idx_usr_call_call
+idx_usr_call_usr
+idx_call_users
+calls_users
+>>>>>>>   `campaign_log`; 28
+campaign_log
+id
+campaign_id
+target_tracker_key
+target_id
+target_type
+activity_type
+activity_date
+related_id
+related_type
+archived
+hits
+list_id
+deleted
+date_modified
+more_information
+marketing_id
+id
+idx_camp_tracker
+idx_camp_campaign_id
+idx_camp_more_info
+idx_target_id
+idx_target_id_deleted
+campaign_log
+>>>>>>>   `campaign_trkrs`; 28
+campaign_trkrs
+id
+tracker_name
+tracker_url
+tracker_key
+campaign_id
+date_entered
+date_modified
+modified_user_id
+created_by
+is_optout
+deleted
+id
+campaign_tracker_key_idx
+campaign_trkrs
+>>>>>>>   `campaigns`; 28
+campaigns
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+deleted
+assigned_user_id
+tracker_key
+tracker_count
+refer_url
+tracker_text
+start_date
+end_date
+status
+impressions
+currency_id
+budget
+expected_cost
+actual_cost
+expected_revenue
+campaign_type
+objective
+content
+frequency
+id
+camp_auto_tracker_key
+idx_campaign_name
+campaigns
+>>>>>>>   `campaigns_audit`; 28
+campaigns_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_campaigns_parent_id
+campaigns_audit
+>>>>>>>   `cases`; 28
+cases
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+case_number
+type
+status
+priority
+resolution
+work_log
+account_id
+id
+casesnumk
+case_number
+idx_case_name
+idx_account_id
+idx_cases_stat_del
+cases
+>>>>>>>   `cases_audit`; 28
+cases_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_cases_parent_id
+cases_audit
+>>>>>>>   `cases_bugs`; 28
+cases_bugs
+id
+case_id
+bug_id
+date_modified
+deleted
+id
+idx_cas_bug_cas
+idx_cas_bug_bug
+idx_case_bug
+cases_bugs
+>>>>>>>   `client_roles`; 28
+client_roles
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+clientrole
+client_role_signatory_r
+created_doc_date
+expiry_date
+parent_id
+parent_type
+id
+client_roles
+>>>>>>>   `clientroles_accounts_c`; 28
+clientroles_accounts_c
+id
+date_modified
+deleted
+clientroles_accountsclientroles_ida
+clientroles_accountsaccounts_idb
+id
+clientroles_accounts_ida1
+clientroles_accounts_alt
+clientroles_accounts_c
+>>>>>>>   `clientroles_contacts_c`; 28
+clientroles_contacts_c
+id
+date_modified
+deleted
+clientroles_contactsclientroles_ida
+clientroles_contactscontacts_idb
+id
+clientroles_contacts_ida1
+clientroles_contacts_alt
+clientroles_contacts_c
+>>>>>>>   `config`; 28
+config
+category
+name
+value
+idx_config_cat
+config
+>>>>>>>   `contacts`; 54
+contacts
+id
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+salutation
+first_name
+last_name
+title
+department
+do_not_call
+phone_home
+phone_mobile
+phone_work
+phone_other
+phone_fax
+primary_address_street
+primary_address_city
+primary_address_state
+primary_address_postalcode
+primary_address_country
+alt_address_street
+alt_address_city
+alt_address_state
+alt_address_postalcode
+alt_address_country
+assistant
+assistant_phone
+lead_source
+reports_to_id
+birthdate
+campaign_id
+occupation_c
+nickname
+phone_private
+skype
+facebook
+linkedin
+source
+wealth_size
+investment_size
+protect
+mantain
+improve
+partner
+middle_name
+special_note
+memberships
+type_role
+contact_language
+address_type
+home_currency
+investment_currency
+married_status
+children
+nationality1
+nationality2
+nationality3
+domicile
+resident
+contract_type
+taxt_status
+client_profile
+suitability
+knowledge
+experience
+appropriateness
+risk_capability
+risk_capacity
+investment_objective
+investment_horizont
+diversification
+photo_field_c
+occupation
+interests
+assistant_id
+primary_address_type
+alt_address_type
+alt2_address_street
+alt2_address_city
+alt2_address_state
+alt2_address_postalcode
+alt2_address_country
+alt2_address_type
+alt3_address_street
+alt3_address_city
+alt3_address_state
+alt3_address_postalcode
+alt3_address_country
+alt3_address_type
+social_links
+nxcfile_pepdoc
+pepcheckstatus
+nxcfile_photo
+cid_doc_number
+document_id1_c
+cid_date_of_isue
+cid_issuer_location
+contact_id_c
+pep_check_status
+pep_document
+document_id_c
+authorization_doc
+created_doc_date
+expiry_date
+id
+idx_cont_last_first
+idx_contacts_del_last
+idx_cont_del_reports
+idx_reports_to_id
+idx_del_id_user
+idx_cont_assigned
+contacts
+>>>>>>>   `contacts_audit`; 21
+contacts_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_contacts_parent_id
+contacts_audit
+>>>>>>>   `contacts_bugs`; 5
+contacts_bugs
+id
+contact_id
+bug_id
+contact_role
+date_modified
+deleted
+id
+idx_con_bug_con
+idx_con_bug_bug
+idx_contact_bug
+contacts_bugs
+>>>>>>>   `contacts_cases`; 5
+contacts_cases
+id
+contact_id
+case_id
+contact_role
+date_modified
+deleted
+id
+idx_con_case_con
+idx_con_case_case
+idx_contacts_cases
+contacts_cases
+>>>>>>>   `contacts_nxcaddfinportfolio_1_c`; 5
+contacts_nxcaddfinportfolio_1_c
+id
+date_modified
+deleted
+contacts_nxcaddfinportfolio_1contacts_ida
+contacts_nxcaddfinportfolio_1nxcaddfinportfolio_idb
+id
+contacts_nxcaddfinportfolio_1_ida1
+contacts_nxcaddfinportfolio_1_alt
+contacts_nxcaddfinportfolio_1_c
+>>>>>>>   `contacts_users`; 5
+contacts_users
+id
+contact_id
+user_id
+date_modified
+deleted
+id
+idx_con_users_con
+idx_con_users_user
+idx_contacts_users
+contacts_users
+>>>>>>>   `currencies`; 1
+currencies
+id
+name
+symbol
+iso4217
+conversion_rate
+status
+deleted
+date_entered
+date_modified
+created_by
+id
+idx_currency_name
+currencies
+>>>>>>>   `custom_fields`; 2
+custom_fields
+bean_id
+set_num
+field0
+field1
+field2
+field3
+field4
+field5
+field6
+field7
+field8
+field9
+deleted
+idx_beanid_set_num
+custom_fields
+>>>>>>>   `database_currencies`; 2
+database_currencies
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+currency_code
+isin
+rolotec_id
+id
+database_currencies
+>>>>>>>   `database_currencies_history`; 2
+database_currencies_history
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+rolotec_id
+history_date
+close_price
+id
+database_currencies_history
+>>>>>>>   `database_fundinfo`; 2
+database_fundinfo
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+isin
+document_type
+document_country
+document_language
+document_url
+document_idd
+document_record_date
+document_modified_date
+document_constraint
+document_file
+document_node
+id
+database_fundinfo
+>>>>>>>   `database_products`; 2
+database_products
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+rolotec_id
+isin
+full_name
+short_name
+symbol
+currency
+market
+volume_average
+volume_average_last_month
+price_52w_low
+price_52w_low_date
+price_52w_high
+price_52w_high_date
+valor
+most_liquid_market
+open
+open_date
+performance_1w
+performance_1w_percent
+traded_currency
+closing_price
+closing_price_date
+mostliquid_market
+bid_price
+bid_price_date
+ask_price
+ask_price_date
+opening_price
+opening_price_date
+type
+exchange_name
+addfin_name
+addfin_id
+cusip
+sedol
+wkn
+ticker
+trader_symbol
+yahoo_symbol
+exchange_id
+exchange_domicile
+exchange_shortcut
+exchange_url
+exchange_code
+issuer_name
+addfin_instrument_type
+addfin_reference_index
+asset_class
+geography
+sector
+style
+alternative
+investment_style
+instrument_type
+distribution_method
+domicile
+fund_assets
+inception_date
+maturity_date
+launch_date
+nav_calculation_frequency
+dividends
+ter
+ter_date
+bid_ask_spread
+addfin_fit_id
+minimum_subscription_amount
+minimum_subsequent_subscription
+subscription_notice
+redemption_amount
+market_capitalization
+coupon
+liquidity
+average_daily_volume_current_month
+average_daily_volume_last_month
+date_price
+price_high_current_year
+price_low_current_year
+nav_current
+nav_previous_day
+performance_1day
+performance_last_month
+performance_ytd
+yield_to_maturity
+accrued_interest
+dividend_yield
+zero_coupon_yield
+volatility_30_days
+volatility_90_days
+volatility_180_days
+volatility_250_days
+tracking_error
+var
+cvar
+beta_factor_1year
+jensen_alpha_1_year
+sharpe_ratio_1_year
+sortino_ratio
+prospect
+kiid
+factsheet
+reports
+research
+prip
+sales_prospectus
+seminanual_report
+fund_portrait
+instrument_rating
+restriction
+asset_allocation_by_holding
+asset_allocation_by_region
+asset_allocation_by_types
+nav_prev_day
+bid_ask_spread_current
+duration
+average_daily_volume_month_to_date
+morningstar_3y
+morningstar
+sp_rating
+moody_rating
+fitch_rating
+management_fee
+performance_fee
+high_watermark
+beta_factor_1_year
+bid_ask_spread_1_day
+telekurs_id
+fee_level
+min_fee
+max_fee
+frequency
+free_of_charge
+chart
+product_related_headlines
+bloomberg
+impaqt_categ
+aum
+exchange_logo
+issuer_logo
+issuer_url
+issuer_contact_mail
+highest_number_of_ticks_name_exchange
+issuer_contact_address
+issuer_contact_phone
+issuer_description
+vehicle
+legal_structure
+replication_style
+original_currency
+currency_hedging
+subscription_type
+market_capitalization_updated
+date_of_market_capitalization
+replication_method
+instrument_type_group
+investment_type
+given_reference_index
+investment_policy
+instrument_classification
+special_funds_classification
+asset_allocation_by_sector
+asset_allocation_by_style
+asset_allocation_by_asset_class
+asset_allocation_by_maturities
+asset_allocation_by_rating
+number_of_holdings
+mifid
+svsp_risk_rating
+svsp_var
+kiid_risk_rating
+kiid_date
+pib_rating
+distribution_country_1
+tax_registration
+monthly_average_price
+bid_ask_spread_this_month
+bid_ask_spread_last_month
+nav_max
+nav_ytd
+other_charts
+latest_market_data_id
+reuters
+rating_company
+rating_level
+kiid_ongoing_charges_figures
+subscription_fee
+redemption_fee
+best_volume_per_currency_name_exchange
+best_spread_per_currency_name_exchange
+best_spread_over_all_name_exchange
+best_volume_over_all_name_exchange
+category
+is_custom_index
+issuer_given_name
+telekurs_kname
+datasource
+hedged_currency
+aum_size
+issuer_given_index
+issuing_size
+performance_chart_last_12_months
+average_daily_volume_chart_last_12_months
+id
+database_products
+>>>>>>>   `database_products_audit`; 89
+database_products_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_database_products_parent_id
+database_products_audit
+>>>>>>>   `database_products_history`; 89
+database_products_history
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+rolotec_id
+history_date
+close_price
+high_price
+low_price
+open_price
+id
+database_products_history
+>>>>>>>   `database_products_history_audit`; 70
+database_products_history_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_database_products_history_parent_id
+database_products_history_audit
+>>>>>>>   `document_revisions`; 70
+document_revisions
+id
+change_log
+document_id
+doc_id
+doc_type
+doc_url
+date_entered
+created_by
+filename
+file_ext
+file_mime_type
+revision
+deleted
+date_modified
+id
+documentrevision_mimetype
+document_revisions
+>>>>>>>   `documents`; 4
+documents
+id
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+document_name
+doc_id
+doc_type
+doc_url
+active_date
+exp_date
+category_id
+subcategory_id
+status_id
+document_revision_id
+related_doc_id
+related_doc_rev_id
+is_template
+template_type
+id
+idx_doc_cat
+documents
+>>>>>>>   `documents_accounts`; 4
+documents_accounts
+id
+date_modified
+deleted
+document_id
+account_id
+id
+documents_accounts_account_id
+documents_accounts_document_id
+documents_accounts
+>>>>>>>   `documents_bugs`; 3
+documents_bugs
+id
+date_modified
+deleted
+document_id
+bug_id
+id
+documents_bugs_bug_id
+documents_bugs_document_id
+documents_bugs
+>>>>>>>   `documents_cases`; 3
+documents_cases
+id
+date_modified
+deleted
+document_id
+case_id
+id
+documents_cases_case_id
+documents_cases_document_id
+documents_cases
+>>>>>>>   `documents_contacts`; 3
+documents_contacts
+id
+date_modified
+deleted
+document_id
+contact_id
+id
+documents_contacts_contact_id
+documents_contacts_document_id
+documents_contacts
+>>>>>>>   `documents_opportunities`; 3
+documents_opportunities
+id
+date_modified
+deleted
+document_id
+opportunity_id
+id
+idx_docu_opps_oppo_id
+idx_docu_oppo_docu_id
+documents_opportunities
+>>>>>>>   `eapm`; 1
+eapm
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+password
+url
+application
+api_data
+consumer_key
+consumer_secret
+oauth_token
+oauth_secret
+validated
+id
+idx_app_active
+eapm
+>>>>>>>   `email_addr_bean_rel`; 1
+email_addr_bean_rel
+id
+email_address_id
+bean_id
+bean_module
+primary_address
+reply_to_address
+date_created
+date_modified
+deleted
+id
+idx_email_address_id
+idx_bean_id
+email_addr_bean_rel
+>>>>>>>   `email_addresses`; 67
+email_addresses
+id
+email_address
+email_address_caps
+invalid_email
+opt_out
+date_created
+date_modified
+deleted
+id
+idx_ea_caps_opt_out_invalid
+idx_ea_opt_out_invalid
+email_addresses
+>>>>>>>   `email_cache`; 65
+email_cache
+ie_id
+mbox
+subject
+fromaddr
+toaddr
+senddate
+message_id
+mailsize
+imap_uid
+msgno
+recent
+flagged
+answered
+deleted
+seen
+draft
+idx_ie_id
+idx_mail_date
+idx_mail_from
+idx_mail_subj
+idx_mail_to
+email_cache
+>>>>>>>   `email_marketing`; 554
+email_marketing
+id
+deleted
+date_entered
+date_modified
+modified_user_id
+created_by
+name
+from_name
+from_addr
+reply_to_name
+reply_to_addr
+inbound_email_id
+date_start
+template_id
+status
+campaign_id
+all_prospect_lists
+id
+idx_emmkt_name
+idx_emmkit_del
+email_marketing
+>>>>>>>   `email_marketing_prospect_lists`; 554
+email_marketing_prospect_lists
+id
+prospect_list_id
+email_marketing_id
+date_modified
+deleted
+id
+email_mp_prospects
+email_marketing_prospect_lists
+>>>>>>>   `email_templates`; 554
+email_templates
+id
+date_entered
+date_modified
+modified_user_id
+created_by
+published
+name
+description
+subject
+body
+body_html
+deleted
+assigned_user_id
+text_only
+type
+id
+idx_email_template_name
+email_templates
+>>>>>>>   `emailman`; 2
+emailman
+date_entered
+date_modified
+user_id
+id
+campaign_id
+marketing_id
+list_id
+send_date_time
+modified_user_id
+in_queue
+in_queue_date
+send_attempts
+deleted
+related_id
+related_type
+id
+idx_eman_list
+idx_eman_campaign_id
+idx_eman_relid_reltype_id
+emailman
+>>>>>>>   `emails`; 2
+emails
+id
+date_entered
+date_modified
+assigned_user_id
+modified_user_id
+created_by
+deleted
+date_sent
+message_id
+name
+type
+status
+flagged
+reply_to_status
+intent
+mailbox_id
+parent_type
+parent_id
+id
+idx_email_name
+idx_message_id
+idx_email_parent_id
+idx_email_assigned
+emails
+>>>>>>>   `emails_beans`; 4
+emails_beans
+id
+email_id
+bean_id
+bean_module
+campaign_data
+date_modified
+deleted
+id
+idx_emails_beans_bean_id
+idx_emails_beans_email_bean
+emails_beans
+>>>>>>>   `emails_email_addr_rel`; 4
+emails_email_addr_rel
+id
+email_id
+address_type
+email_address_id
+deleted
+id
+idx_eearl_email_id
+idx_eearl_address_id
+emails_email_addr_rel
+>>>>>>>   `emails_text`; 9
+emails_text
+email_id
+from_addr
+reply_to_addr
+to_addrs
+cc_addrs
+bcc_addrs
+description
+description_html
+raw_source
+deleted
+email_id
+emails_textfromaddr
+emails_text
+>>>>>>>   `epp_dabasefilters`; 10
+epp_dabasefilters
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+language
+filter_type
+filter_code
+filter_parent
+id
+epp_dabasefilters
+>>>>>>>   `epp_dabasefilters_audit`; 54
+epp_dabasefilters_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_epp_dabasefilters_parent_id
+epp_dabasefilters_audit
+>>>>>>>   `epp_personalinterests`; 54
+epp_personalinterests
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+topic_status
+topic_parent
+id
+epp_personalinterests
+>>>>>>>   `epp_personalinterests_audit`; 3
+epp_personalinterests_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_epp_personalinterests_parent_id
+epp_personalinterests_audit
+>>>>>>>   `fields_meta_data`; 3
+fields_meta_data
+id
+name
+vname
+comments
+help
+custom_module
+type
+len
+required
+default_value
+date_modified
+deleted
+audited
+massupdate
+duplicate_merge
+reportable
+importable
+ext1
+ext2
+ext3
+ext4
+id
+idx_meta_id_del
+idx_meta_cm_del
+fields_meta_data
+>>>>>>>   `folders`; 42
+folders
+id
+name
+folder_type
+parent_folder
+has_child
+is_group
+is_dynamic
+dynamic_query
+assign_to_id
+created_by
+modified_by
+deleted
+id
+idx_parent_folder
+folders
+>>>>>>>   `folders_rel`; 68
+folders_rel
+id
+folder_id
+polymorphic_module
+polymorphic_id
+deleted
+id
+idx_poly_module_poly_id
+idx_fr_id_deleted_poly
+folders_rel
+>>>>>>>   `folders_subscriptions`; 68
+folders_subscriptions
+id
+folder_id
+assigned_user_id
+id
+idx_folder_id_assigned_user_id
+folders_subscriptions
+>>>>>>>   `gii`; 68
+gii
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+kbe_kube_id_c
+risk_profile
+suitability
+appropiateness
+general_services
+income
+financial_assets
+surroundings
+surroundings_comment
+liquidity
+target_return
+risk_volatility
+other_restrictions
+investment_objectives
+knowledge
+knowledge_comment
+investment_horizon
+rate_security
+budgeted_expenses
+assets_proportion
+liability
+bankable_assets
+planned_investment
+planned_investment_specs
+risk_evaluation
+willingness
+investment_loss
+tolerance_level
+fixed_interest
+investment_strategy_income
+balanced
+growth
+capital_gains
+primary_investment
+general_risk
+additional_investment
+investment_strategy
+id
+gii
+>>>>>>>   `import_maps`; 1
+import_maps
+id
+name
+source
+enclosure
+delimiter
+module
+content
+default_values
+has_header
+deleted
+date_entered
+date_modified
+assigned_user_id
+is_published
+id
+idx_owner_module_name
+import_maps
+>>>>>>>   `inbound_email`; 1
+inbound_email
+id
+deleted
+date_entered
+date_modified
+modified_user_id
+created_by
+name
+status
+server_url
+email_user
+email_password
+port
+service
+mailbox
+delete_seen
+mailbox_type
+template_id
+stored_options
+group_id
+is_personal
+groupfolder_id
+id
+inbound_email
+>>>>>>>   `inbound_email_autoreply`; 8
+inbound_email_autoreply
+id
+deleted
+date_entered
+date_modified
+autoreplied_to
+ie_id
+id
+idx_ie_autoreplied_to
+inbound_email_autoreply
+>>>>>>>   `inbound_email_cache_ts`; 8
+inbound_email_cache_ts
+id
+ie_timestamp
+id
+inbound_email_cache_ts
+>>>>>>>   `job_queue`; 22
+job_queue
+assigned_user_id
+id
+name
+deleted
+date_entered
+date_modified
+scheduler_id
+execute_time
+status
+resolution
+message
+target
+data
+requeue
+retry_count
+failure_count
+job_delay
+client
+percent_complete
+id
+idx_status_scheduler
+idx_status_time
+idx_status_entered
+idx_status_modified
+job_queue
+>>>>>>>   `kbe_kube`; 341
+kbe_kube
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+alias
+vqf
+bvv
+vsv
+bovv
+mifid2
+kubetype
+kubenp
+kubele
+amlafileno
+kbe_vqf_id_c
+kube_lang_other
+kube_sprache
+contract_date
+geschaeftsbez_aufnahme
+finma
+fma
+bafin
+employee_id_c
+client_currency
+parent_id
+parent_type
+contract_document
+id
+kbe_kube
+>>>>>>>   `kbe_kube_accounts_c`; 16
+kbe_kube_accounts_c
+id
+date_modified
+deleted
+kbe_kube_accountsaccounts_ida
+kbe_kube_accountskbe_kube_idb
+id
+kbe_kube_accounts_ida1
+kbe_kube_accounts_alt
+kbe_kube_accounts_c
+>>>>>>>   `kbe_kube_audit`; 9
+kbe_kube_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_kbe_kube_parent_id
+kbe_kube_audit
+>>>>>>>   `kbe_kube_clientroles_c`; 56
+kbe_kube_clientroles_c
+id
+date_modified
+deleted
+kbe_kube_clientroleskbe_kube_ida
+kbe_kube_clientrolesclientroles_idb
+id
+kbe_kube_clientroles_ida1
+kbe_kube_clientroles_alt
+kbe_kube_clientroles_c
+>>>>>>>   `kbe_kube_contacts_c`; 56
+kbe_kube_contacts_c
+id
+date_modified
+deleted
+kbe_kube_contactscontacts_ida
+kbe_kube_contactskbe_kube_idb
+id
+kbe_kube_contacts_ida1
+kbe_kube_contacts_alt
+kbe_kube_contacts_c
+>>>>>>>   `kbe_kube_kbe_kuberole_c`; 6
+kbe_kube_kbe_kuberole_c
+id
+date_modified
+deleted
+kbe_kube_kbe_kuberolekbe_kube_ida
+kbe_kube_kbe_kuberolekbe_kuberole_idb
+id
+kbe_kube_kbe_kuberole_ida1
+kbe_kube_kbe_kuberole_alt
+kbe_kube_kbe_kuberole_c
+>>>>>>>   `kbe_kuberole`; 21
+kbe_kuberole
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+kuberole
+account_id_c
+contact_id_c
+document_id_c
+authorization_doc
+kube_role_signatory_r
+created_doc_date
+expiry_date
+id
+kbe_kuberole
+>>>>>>>   `kbe_kuberole_accounts_c`; 18
+kbe_kuberole_accounts_c
+id
+date_modified
+deleted
+kbe_kuberole_accountskbe_kuberole_ida
+kbe_kuberole_accountsaccounts_idb
+id
+kbe_kuberole_accounts_ida1
+kbe_kuberole_accounts_alt
+kbe_kuberole_accounts_c
+>>>>>>>   `kbe_kuberole_audit`; 18
+kbe_kuberole_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_kbe_kuberole_parent_id
+kbe_kuberole_audit
+>>>>>>>   `kbe_kuberole_contacts_c`; 18
+kbe_kuberole_contacts_c
+id
+date_modified
+deleted
+kbe_kuberole_contactskbe_kuberole_ida
+kbe_kuberole_contactscontacts_idb
+id
+kbe_kuberole_contacts_ida1
+kbe_kuberole_contacts_alt
+kbe_kuberole_contacts_c
+>>>>>>>   `kbe_vqf`; 18
+kbe_vqf
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+increasedrisk
+document_id_c
+id_issuerauth
+id_number
+id_place_of_issue
+id_valididy_period
+cid_doc_number
+document_id1_c
+cid_date_of_isue
+cid_issuer_location
+contact_id_c
+korr_tocustomer
+korr_storedatbank
+korr_tomember
+korr_thirdparty
+korr_thirdparty_add_city
+korr_thirdparty_add_state
+korr_thirdparty_add_postalcode
+korr_thirdparty_add_country
+korr_thirdparty_add
+id_valididyperiod_date
+cid_dateofissue
+vqf_risk_1
+vqf_lang
+vqf_additional_lang
+vqf_comments
+casual_customers
+vqf_casual_explanation
+vqf_risk_po_pep
+document_id2_c
+vqf_risk_2_2
+text_crisk10
+text_crisk11
+text_crisk12
+text_crisk13
+text_crisk20
+text_crisk21
+text_crisk22
+text_crisk30
+text_crisk31
+text_crisk32
+vqf_lr_2_3
+vqf_comment_crisk3
+vqf_comment_risk_2_5
+vqf_branchenrisiko_2_5
+lbl_text_crisk10
+lbl_text_crisk11
+lbl_text_crisk12
+lbl_text_crisk20
+lbl_text_crisk21
+lbl_text_crisk22
+lbl_text_crisk30
+lbl_text_crisk31
+lbl_text_crisk32
+kontaktrisiko_comment
+kontaktrisiko
+comment_prodrisk
+prodrisk
+text_own_crieteria1
+text_own_crieteria2
+text_explanation
+text_other_comment
+text_further_criteria
+later_additions
+alfdocs_identification
+document_idx_c
+risk_document
+nationality_1
+nationality_2
+nationality_3
+risk_profile
+suitability
+appropiateness
+domicile
+taxt_status
+resident
+client_profile
+check_status
+memberships
+business_exist_customer
+business_exist_owner
+business_former_customer
+business_former_owner
+business_planned_customer
+business_planned_owner
+third_party_customer
+third_party_owner
+bank_account
+bank_authorized
+bank_cards
+bank_connections
+assets_currency
+assets_relations
+assets_details
+info_docs
+info_owner
+info_family
+info_amla
+info_members
+customer_photo
+client_classification
+service
+general_services
+income
+financial_assets
+surroundings
+surroundings_comment
+liquidity
+target_return
+risk_volatility
+other_restrictions
+investment_objectives
+knowledge
+knowledge_comment
+investment_horizon
+rate_security
+budgeted_expenses
+assets_proportion
+liability
+bankable_assets
+planned_investment
+planned_investment_specs
+risk_evaluation
+willingness
+investment_loss
+tolerance_level
+fixed_interest
+investment_strategy_income
+balanced
+growth
+capital_gains
+primary_investment
+general_risk
+additional_investment
+investment_strategy
+id
+kbe_vqf
+>>>>>>>   `kbe_vqf_audit`; 9
+kbe_vqf_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_kbe_vqf_parent_id
+kbe_vqf_audit
+>>>>>>>   `kbe_vqf_calls_1_c`; 406
+kbe_vqf_calls_1_c
+id
+date_modified
+deleted
+kbe_vqf_calls_1kbe_vqf_ida
+kbe_vqf_calls_1calls_idb
+id
+kbe_vqf_calls_1_alt
+kbe_vqf_calls_1_c
+>>>>>>>   `kbe_vqf_clientroles_c`; 7
+kbe_vqf_clientroles_c
+id
+date_modified
+deleted
+kbe_vqf_clientroleskbe_vqf_ida
+kbe_vqf_clientrolesclientroles_idb
+id
+kbe_vqf_clientroles_ida1
+kbe_vqf_clientroles_alt
+kbe_vqf_clientroles_c
+>>>>>>>   `kbe_vqf_kbe_kube_c`; 7
+kbe_vqf_kbe_kube_c
+id
+date_modified
+deleted
+kbe_vqf_kbe_kubekbe_vqf_ida
+kbe_vqf_kbe_kubekbe_kube_idb
+id
+kbe_vqf_kbe_kube_ida1
+kbe_vqf_kbe_kube_idb2
+kbe_vqf_kbe_kube_c
+>>>>>>>   `kbe_vqf_kbe_kuberole_c`; 6
+kbe_vqf_kbe_kuberole_c
+id
+date_modified
+deleted
+kbe_vqf_kbe_kuberolekbe_vqf_ida
+kbe_vqf_kbe_kuberolekbe_kuberole_idb
+id
+kbe_vqf_kbe_kuberole_ida1
+kbe_vqf_kbe_kuberole_alt
+kbe_vqf_kbe_kuberole_c
+>>>>>>>   `kreports`; 9
+kreports
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+report_module
+report_status
+union_modules
+reportoptions
+listtype
+listtypeproperties
+selectionlimit
+presentation_params
+visualization_params
+integration_params
+wheregroups
+whereconditions
+listfields
+unionlistfields
+advancedoptions
+id
+idx_reminder_name
+kreports
+>>>>>>>   `kreportschedules`; 1
+kreportschedules
+id
+date_entered
+date_changed
+user_id
+report_id
+month
+dayofmonth
+dayofweek
+hour
+minutes
+action
+receipients
+deleted
+ext_desc
+int_desc
+selvar
+kreportschedules
+>>>>>>>   `kreportscheduleslog`; 1
+kreportscheduleslog
+id
+job_id
+timestamp
+status
+kreportscheduleslog
+>>>>>>>   `kreportsfavorites`; 1
+kreportsfavorites
+id
+user_id
+report_id
+description
+report_where
+kreportsfavorites
+>>>>>>>   `kreportsnapshots`; 1
+kreportsnapshots
+id
+report_id
+snapshotdate
+snapshotquery
+data
+kreportsnapshots
+>>>>>>>   `kreportsnapshotsdata`; 1
+kreportsnapshotsdata
+snapshot_id
+record_id
+data
+snapshot_id
+kreportsnapshotsdata
+>>>>>>>   `kreportstats`; 1
+kreportstats
+id
+user_id
+report_id
+date
+kreportstats
+>>>>>>>   `leads`; 1
+leads
+id
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+salutation
+first_name
+last_name
+title
+department
+do_not_call
+phone_home
+phone_mobile
+phone_work
+phone_other
+phone_fax
+primary_address_street
+primary_address_city
+primary_address_state
+primary_address_postalcode
+primary_address_country
+alt_address_street
+alt_address_city
+alt_address_state
+alt_address_postalcode
+alt_address_country
+assistant
+assistant_phone
+converted
+refered_by
+lead_source
+lead_source_description
+status
+status_description
+reports_to_id
+account_name
+account_description
+contact_id
+account_id
+opportunity_id
+opportunity_name
+opportunity_amount
+campaign_id
+birthdate
+portal_name
+portal_app
+website
+middle_name
+id
+idx_lead_acct_name_first
+idx_lead_last_first
+idx_lead_del_stat
+idx_lead_opp_del
+idx_leads_acct_del
+idx_del_user
+idx_lead_assigned
+idx_lead_contact
+idx_reports_to
+idx_lead_phone_work
+idx_leads_id_del
+leads
+>>>>>>>   `leads_audit`; 5
+leads_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_leads_parent_id
+leads_audit
+>>>>>>>   `accounts`; 5
+accounts
+id
+name
+date_entered
+date_modified
+modified_user_id
+created_by
+description
+deleted
+assigned_user_id
+account_type
+industry
+annual_revenue
+phone_fax
+billing_address_street
+billing_address_city
+billing_address_state
+billing_address_postalcode
+billing_address_country
+rating
+phone_office
+phone_alternate
+website
+ownership
+employees
+ticker_symbol
+shipping_address_street
+shipping_address_city
+shipping_address_state
+shipping_address_postalcode
+shipping_address_country
+parent_id
+sic_code
+campaign_id
+filename
+pepcheckstatus
+nxcfile_photo
+cid_doc_number
+document_id1_c
+cid_date_of_isue
+cid_issuer_location
+created_doc_date
+expiry_date
+document_id_c
+authorization_doc
+id
+idx_accnt_id_del
+idx_accnt_name_del
+idx_accnt_assigned_del
+idx_accnt_parent_id
+accounts
+>>>>>>>   `accounts_accounts_1_c`; 29
+accounts_accounts_1_c
+id
+date_modified
+deleted
+accounts_accounts_1accounts_ida
+accounts_accounts_1accounts_idb
+id
+accounts_accounts_1_alt
+accounts_accounts_1_c
+>>>>>>>   `accounts_audit`; 13
+accounts_audit
+id
+parent_id
+date_created
+created_by
+field_name
+data_type
+before_value_string
+after_value_string
+before_value_text
+after_value_text
+id
+idx_accounts_parent_id
+accounts_audit
+>>>>>>>   `accounts_bugs`; 87
+accounts_bugs
+id
+account_id
+bug_id
+date_modified
+deleted
+id
+idx_acc_bug_acc
+idx_acc_bug_bug
+idx_account_bug
+accounts_bugs
+>>>>>>>   `accounts_cases`; 87
+accounts_cases
+id
+account_id
+case_id
+date_modified
+deleted
+id
+idx_acc_case_acc
+idx_acc_acc_case
+accounts_cases
+>>>>>>>   `accounts_contacts`; 87
+accounts_contacts
+id
+contact_id
+account_id
+date_modified
+deleted
+id
+idx_account_contact
+idx_contid_del_accid
+accounts_contacts
+>>>>>>>   `accounts_cstm`; 16
+accounts_cstm
+id_c
+language_c
+skype_c
+facebook_c
+linkein_c
+company_type_c
+relationship_c
+account_id_c
+contact_id_c
+source_c
+domicile_c
+contact_id1_c
+contact_id2_c
+contact_id3_c
+contact_id4_c
+contact_id5_c
+contact_id6_c
+contact_id7_c
+conact_type_to_asset_manager_c
+taxt_status_c
+client_profile_c
+suitability_c
+knowledge_c
+experience_c
+appropriateness_c
+risk_capability_c
+risk_capacity_c
+investment_objective_c
+investment_horizont_c
+diversification_c
+name2_c
+memberships_c
+photo_field_c
+id_c
+accounts_cstm
+>>>>>>>   `accounts_opportunities`; 31
+accounts_opportunities
+id
+opportunity_id
+account_id
+date_modified
+deleted
+id
+idx_account_opportunity
+idx_oppid_del_accid
+accounts_opportunities
+>>>>>>>   `acl_actions`; 7
+acl_actions
+id
+date_entered
+date_modified
+modified_user_id
+created_by
+name
+category
+acltype
+aclaccess
+deleted
+id
+idx_aclaction_id_del
+idx_category_name
+acl_actions
+>>>>>>>   `acl_roles`; 400
+acl_roles
+id
+
+
+Traceback (most recent call last):
+  File "C:\Users\bob\Google Drive\EXE_RP\AALIVE_TRADING\NonTrading\sqldump _reader.py", line 83, in <module>
+    print fname
+  File "C:\Python27\Lib\idlelib\PyShell.py", line 1343, in write
+    return self.shell.write(s, self.tags)
+KeyboardInterrupt
+>>> ================================ RESTART ================================
+>>> 
+sqldump _reader.py
+importing envdicts from exe..
+20160505  is using this date
+20160505  is using this date
+>>>>>>>   `accounts`; 1
+>>>>>>>   `accounts_accounts_1_c`; 29
+>>>>>>>   `accounts_audit`; 13
+>>>>>>>   `accounts_bugs`; 87
+>>>>>>>   `accounts_cases`; 87
+>>>>>>>   `accounts_contacts`; 87
+>>>>>>>   `accounts_cstm`; 16
+>>>>>>>   `accounts_opportunities`; 31
+>>>>>>>   `acl_actions`; 7
+>>>>>>>   `acl_roles`; 400
+>>>>>>>   `acl_roles_actions`; 8
+>>>>>>>   `acl_roles_users`; 2256
+>>>>>>>   `address_book`; 2256
+>>>>>>>   `bugs`; 2256
+>>>>>>>   `bugs_audit`; 2256
+>>>>>>>   `calls`; 2256
+>>>>>>>   `calls_contacts`; 26
+>>>>>>>   `calls_leads`; 4
+>>>>>>>   `calls_users`; 1
+>>>>>>>   `campaign_log`; 28
+>>>>>>>   `campaign_trkrs`; 28
+>>>>>>>   `campaigns`; 28
+>>>>>>>   `campaigns_audit`; 28
+>>>>>>>   `cases`; 28
+>>>>>>>   `cases_audit`; 28
+>>>>>>>   `cases_bugs`; 28
+>>>>>>>   `client_roles`; 28
+>>>>>>>   `clientroles_accounts_c`; 28
+>>>>>>>   `clientroles_contacts_c`; 28
+>>>>>>>   `config`; 28
+>>>>>>>   `contacts`; 54
+>>>>>>>   `contacts_audit`; 21
+>>>>>>>   `contacts_bugs`; 5
+>>>>>>>   `contacts_cases`; 5
+>>>>>>>   `contacts_nxcaddfinportfolio_1_c`; 5
+>>>>>>>   `contacts_users`; 5
+>>>>>>>   `currencies`; 1
+>>>>>>>   `custom_fields`; 2
+>>>>>>>   `database_currencies`; 2
+>>>>>>>   `database_currencies_history`; 2
+>>>>>>>   `database_fundinfo`; 2
+>>>>>>>   `database_products`; 2
+>>>>>>>   `database_products_audit`; 89
+>>>>>>>   `database_products_history`; 89
+>>>>>>>   `database_products_history_audit`; 70
+>>>>>>>   `document_revisions`; 70
+>>>>>>>   `documents`; 4
+>>>>>>>   `documents_accounts`; 4
+>>>>>>>   `documents_bugs`; 3
+>>>>>>>   `documents_cases`; 3
+>>>>>>>   `documents_contacts`; 3
+>>>>>>>   `documents_opportunities`; 3
+>>>>>>>   `eapm`; 1
+>>>>>>>   `email_addr_bean_rel`; 1
+>>>>>>>   `email_addresses`; 67
+>>>>>>>   `email_cache`; 65
+>>>>>>>   `email_marketing`; 554
+>>>>>>>   `email_marketing_prospect_lists`; 554
+>>>>>>>   `email_templates`; 554
+>>>>>>>   `emailman`; 2
+>>>>>>>   `emails`; 2
+>>>>>>>   `emails_beans`; 4
+>>>>>>>   `emails_email_addr_rel`; 4
+>>>>>>>   `emails_text`; 9
+>>>>>>>   `epp_dabasefilters`; 10
+>>>>>>>   `epp_dabasefilters_audit`; 54
+>>>>>>>   `epp_personalinterests`; 54
+>>>>>>>   `epp_personalinterests_audit`; 3
+>>>>>>>   `fields_meta_data`; 3
+>>>>>>>   `folders`; 42
+>>>>>>>   `folders_rel`; 68
+>>>>>>>   `folders_subscriptions`; 68
+>>>>>>>   `gii`; 68
+>>>>>>>   `import_maps`; 1
+>>>>>>>   `inbound_email`; 1
+>>>>>>>   `inbound_email_autoreply`; 8
+>>>>>>>   `inbound_email_cache_ts`; 8
+>>>>>>>   `job_queue`; 22
+>>>>>>>   `kbe_kube`; 341
+>>>>>>>   `kbe_kube_accounts_c`; 16
+>>>>>>>   `kbe_kube_audit`; 9
+>>>>>>>   `kbe_kube_clientroles_c`; 56
+>>>>>>>   `kbe_kube_contacts_c`; 56
+>>>>>>>   `kbe_kube_kbe_kuberole_c`; 6
+>>>>>>>   `kbe_kuberole`; 21
+>>>>>>>   `kbe_kuberole_accounts_c`; 18
+>>>>>>>   `kbe_kuberole_audit`; 18
+>>>>>>>   `kbe_kuberole_contacts_c`; 18
+>>>>>>>   `kbe_vqf`; 18
+>>>>>>>   `kbe_vqf_audit`; 9
+>>>>>>>   `kbe_vqf_calls_1_c`; 406
+>>>>>>>   `kbe_vqf_clientroles_c`; 7
+>>>>>>>   `kbe_vqf_kbe_kube_c`; 7
+>>>>>>>   `kbe_vqf_kbe_kuberole_c`; 6
+>>>>>>>   `kreports`; 9
+>>>>>>>   `kreportschedules`; 1
+>>>>>>>   `kreportscheduleslog`; 1
+>>>>>>>   `kreportsfavorites`; 1
+>>>>>>>   `kreportsnapshots`; 1
+>>>>>>>   `kreportsnapshotsdata`; 1
+>>>>>>>   `kreportstats`; 1
+>>>>>>>   `leads`; 1
+>>>>>>>   `leads_audit`; 5
+>>>>>>>   `accounts`; 5
+>>>>>>>   `accounts_accounts_1_c`; 29
+>>>>>>>   `accounts_audit`; 13
+>>>>>>>   `accounts_bugs`; 87
+>>>>>>>   `accounts_cases`; 87
+>>>>>>>   `accounts_contacts`; 87
+>>>>>>>   `accounts_cstm`; 16
+>>>>>>>   `accounts_opportunities`; 31
+>>>>>>>   `acl_actions`; 7
+>>>>>>>   `acl_roles`; 400
+>>>>>>>   `acl_roles_actions`; 8
+>>>>>>>   `acl_roles_users`; 2256
+>>>>>>>   `address_book`; 2256
+>>>>>>>   `bugs`; 2256
+>>>>>>>   `bugs_audit`; 2256
+>>>>>>>   `calls`; 2256
+>>>>>>>   `calls_contacts`; 26
+>>>>>>>   `calls_leads`; 4
+>>>>>>>   `calls_users`; 1
+>>>>>>>   `campaign_log`; 28
+>>>>>>>   `campaign_trkrs`; 28
+>>>>>>>   `campaigns`; 28
+>>>>>>>   `campaigns_audit`; 28
+>>>>>>>   `cases`; 28
+>>>>>>>   `cases_audit`; 28
+>>>>>>>   `cases_bugs`; 28
+>>>>>>>   `client_roles`; 28
+>>>>>>>   `clientroles_accounts_c`; 28
+>>>>>>>   `clientroles_contacts_c`; 28
+>>>>>>>   `config`; 28
+>>>>>>>   `contacts`; 54
+>>>>>>>   `contacts_audit`; 21
+>>>>>>>   `contacts_bugs`; 5
+>>>>>>>   `contacts_cases`; 5
+>>>>>>>   `contacts_nxcaddfinportfolio_1_c`; 5
+>>>>>>>   `contacts_users`; 5
+>>>>>>>   `currencies`; 1
+>>>>>>>   `custom_fields`; 2
+>>>>>>>   `database_currencies`; 2
+>>>>>>>   `database_currencies_history`; 2
+>>>>>>>   `database_fundinfo`; 2
+>>>>>>>   `database_products`; 2
+>>>>>>>   `database_products_audit`; 89
+>>>>>>>   `database_products_history`; 89
+>>>>>>>   `database_products_history_audit`; 70
+>>>>>>>   `document_revisions`; 70
+>>>>>>>   `documents`; 4
+>>>>>>>   `documents_accounts`; 4
+>>>>>>>   `documents_bugs`; 3
+>>>>>>>   `documents_cases`; 3
+>>>>>>>   `documents_contacts`; 3
+>>>>>>>   `documents_opportunities`; 3
+>>>>>>>   `eapm`; 1
+>>>>>>>   `email_addr_bean_rel`; 1
+>>>>>>>   `email_addresses`; 67
+>>>>>>>   `email_cache`; 65
+>>>>>>>   `email_marketing`; 554
+>>>>>>>   `email_marketing_prospect_lists`; 554
+>>>>>>>   `email_templates`; 554
+>>>>>>>   `emailman`; 2
+>>>>>>>   `emails`; 2
+>>>>>>>   `emails_beans`; 4
+>>>>>>>   `emails_email_addr_rel`; 4
+>>>>>>>   `emails_text`; 9
+>>>>>>>   `epp_dabasefilters`; 10
+>>>>>>>   `epp_dabasefilters_audit`; 54
+>>>>>>>   `epp_personalinterests`; 54
+>>>>>>>   `epp_personalinterests_audit`; 3
+>>>>>>>   `fields_meta_data`; 3
+>>>>>>>   `folders`; 42
+>>>>>>>   `folders_rel`; 68
+>>>>>>>   `folders_subscriptions`; 68
+>>>>>>>   `gii`; 68
+>>>>>>>   `import_maps`; 1
+>>>>>>>   `inbound_email`; 1
+>>>>>>>   `inbound_email_autoreply`; 8
+>>>>>>>   `inbound_email_cache_ts`; 8
+>>>>>>>   `job_queue`; 22
+>>>>>>>   `kbe_kube`; 341
+>>>>>>>   `kbe_kube_accounts_c`; 16
+>>>>>>>   `kbe_kube_audit`; 9
+>>>>>>>   `kbe_kube_clientroles_c`; 56
+>>>>>>>   `kbe_kube_contacts_c`; 56
+>>>>>>>   `kbe_kube_kbe_kuberole_c`; 6
+>>>>>>>   `kbe_kuberole`; 21
+>>>>>>>   `kbe_kuberole_accounts_c`; 18
+>>>>>>>   `kbe_kuberole_audit`; 18
+>>>>>>>   `kbe_kuberole_contacts_c`; 18
+>>>>>>>   `kbe_vqf`; 18
+>>>>>>>   `kbe_vqf_audit`; 9
+>>>>>>>   `kbe_vqf_calls_1_c`; 406
+>>>>>>>   `kbe_vqf_clientroles_c`; 7
+>>>>>>>   `kbe_vqf_kbe_kube_c`; 7
+>>>>>>>   `kbe_vqf_kbe_kuberole_c`; 6
+>>>>>>>   `kreports`; 9
+>>>>>>>   `kreportschedules`; 1
+>>>>>>>   `kreportscheduleslog`; 1
+>>>>>>>   `kreportsfavorites`; 1
+>>>>>>>   `kreportsnapshots`; 1
+>>>>>>>   `kreportsnapshotsdata`; 1
+>>>>>>>   `kreportstats`; 1
+>>>>>>>   `leads`; 1
+>>>>>>>   `leads_audit`; 5
+>>>>>>>   `linked_documents`; 3
+>>> 

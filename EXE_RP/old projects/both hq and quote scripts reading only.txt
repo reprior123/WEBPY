@@ -1,0 +1,1587 @@
+// Script:  version 3.5
+// Version 3.5
+// Type:    Hidden Quote SUMO
+
+// 7/15/2010 change:
+// Added PE1 & PE2 as monthly bid/ask multiplier
+// Moved original PE6 and PE7 to PE7 and PE8
+// 8/18/2010 change:
+// Fixed PI2 not working for ITM issue
+// Update 8/19/2010:  Added PE24 as early edge multiplier
+// Update 3/16/2011:  Added PIT letter "c"
+// Update 5/11/2011:  Reversed PIT letter "j"'s meaning
+// Update 7/20/2011:  Improved stock width/reversal safety logic to use PE44/PE45
+// Update 7/22/2011:  removed width safety and add safety where min_edge must be greater the 1/10th of a penny
+// Update 8/9/2011:   check for NBBO 
+// Update 9/22/2011:  added k and r ni PET for conversion and reversal sizing
+// Update 10/04/2011: if size of nbbo is 3x join size or great make HQ size 1, unless "j" in PIT.  set different delta cutoff with AQ.
+// Update 10/11/2011: if any of PE25 to PE30 is not configured, then disable HQ for that strike
+// Update 10/12/2011: made the effect of PE31, PE2, UNDER.PI2 additive
+// Update 02/24/2011: changed definition of PE22 to minutes past 9:30AM EST
+// Update 02/24/2011: disabled safety check for PE25-PE27
+// Update 06/05/2012: moved PEs and removed PE32
+// Update 06/20/2012: fixed PEs
+// Update 06/21/2012: changed join size from PE14 to PE15, added PE23 function
+// Update 06/22/2012: replaced PE10 with PE33
+// Update 02/24/2011: re-enabled safety check for PE25-PE27
+// Update 08/30/2012: remove usage of BBO, added PE3/PE4 functionality
+// Update 10/23/2012: moved max edge function futher down the logic so 3x join size logic does not overwrite it
+// Update 09/16/2013: disable HQ after 3:59:45 EST
+//===================================================================
+//
+// UNDER.PIT :
+// "d" - Use dual-theoretical pricing
+// "b" - follow local BBO rather than NBBO
+// "c" - don't sell puts and don't buy calls
+// "f" - use nbbo mid point as price for spread quote and edge checks
+// "j" - Disable when order size greater than join size
+// "o" - enable series on HOPE imbalances
+// "s" - use spread quote
+// "w" - allow quote to be > $5 wide
+
+//
+// UNDER.PI1    :
+// UNDER.PI2    : BID/ASK Fade whole stock 1=fade BID 2=fade ASK 3=fade BOTH
+// UNDER.PI3    : Bid Edge Multiplier
+// UNDER.PI4    : Ask Edge Multiplier
+//
+//EXP	Label	Description
+//PE1	Bex	Multiplies your bid edge requirement to get an effective bid edge requirement
+//PE2	Aex	Multiplies your ask edge requirement to get an effective ask edge requirement
+//PE3	Bsx	Multiplies your bid size
+//PE4	Asx	Multiplies your ask size
+//PE5	Ex	Edge Based Sizing. Multiplies minimum edge to define the edge requirements for the 3 tiers.
+//PE6	Sx	Edge Based sizing. Defines the multiples of minimum size for the 3 tiers.
+//PE7	Dfad	Gets you off bids/offers of various delta bands. 1=off bids; 5=on both; 9=off offers.
+//PE8	cap	Maximum disseminated quote size inclusive of all multipliers. Ineffective if greater than Max Quote Quantity in LIM.
+//PE9	Od	OTM delta cutoff
+//PE10	Id	ITM delta cutoff for AQ
+//PE11	Iz	ITM size before multipliers
+//PE12	Az	ATM size before multipliers
+//PE13	Oz	OTM size before multipliers
+//PE14	Ij	ITM join quantity and HQ safety
+//PE15	Aj	ATM join quantity and HQ safety
+//PE16	Oj	OTM join quantity and HQ safety
+//PE17	IE	ITM minimum edge requirement. A //PEnny is written as 1 not .01.
+//PE18	AE	ATM minimum edge requirement
+//PE19	OE	OTM minimum edge requirement
+//PE20	Op1/5	Defines which o//PEning logic to use
+//PE21	min	Minutes after the o//PEn for early settings. 15 recommended.
+//PE22	erlyE	Early Edge Multiplier. Should be greater than or equal to 1.
+//PE23	erlyZ	Early Size Multiplier. Should be less than or equal to 1.
+//PE24		
+//PE25	HQIz	HQ ITM size
+//PE26	HQAz	HQ ATM size
+//PE27	HQOz	HQ OTM size
+//PE28	HQIe	HQ ITM edge
+//PE29	HQAe	HQ ATM edge
+//PE30	HQOe	HQ OTM edge
+//PE31	HQBA123	HQ fade. 1=off bids except ITM; 2=off offers except ITM; 3=off EVERYTHING.
+//PE32	MaxE	Safety to prevent HQs in the case of a fat finger. 50 recommended ($0.50).
+//PE33	HQId	ITM delta cutoff for HQ
+
+// PI2          : BA FADE Strike override -
+//              1=fade BID
+//              2=fade ASK
+//              3=fade BOTH
+//              4=improve BID / fade ASK
+//              5=improve ASK / fade BID
+//
+// PI4          : HQ MinEdge Override
+//===================================================================
+
+if REASON == "ReqTim" or "Enable" or "UPrice" or "Theor" then
+	if not seriesenabled ("HQuote") then seriesenable("HQuote");
+	end
+end
+
+PIT_letters     = PIT ? PIT : PET ? PET : UNDER.PIT;
+
+///Set the size multiplier
+bid_qty_mult = PE3 ? PE3 : 1.0;
+ask_qty_mult = PE4 ? PE4 : 1.0;
+
+mid_point = ADJTHEOR;
+
+if PE1 then
+	monthly_bid_mult=PE1;
+else
+	monthly_bid_mult=1;
+end
+
+if PE2 then
+	monthly_ask_mult=PE2;
+else
+	monthly_ask_mult=1;
+end
+
+
+itm_danger = 0;
+atm_danger = 0;
+otm_danger = 0;
+if (not PE28) or (not PE25) then
+	itm_danger = 1;
+end
+if (not PE29) or (not PE26) then
+	atm_danger = 1;
+end
+if (not PE30) or (not PE27) then
+	otm_danger = 1;
+end
+//**********************************
+//** Stock Inversion Safety **
+//**********************************
+
+Stock_Inversion_Safety = PE45 ? PE45/100 : 0.3;
+
+uBBid = 0;
+uBAsk = 0;
+
+if (UNDER.FBID) then
+	uBBid = UNDER.FBID;
+elsif (UNDER.BID) then
+	uBBid = UNDER.BID;
+else
+	uBBid = 0;
+end
+
+if (UNDER.FASK) then
+	uBAsk = UNDER.FASK;
+elsif (UNDER.ASK) then
+	uBAsk = UNDER.ASK;
+else
+	uBAsk = 0;
+end
+
+if (uBBid > uBAsk) and ((uBBid - uBAsk) > Stock_Inversion_Safety) then
+	flag_danger = 1;
+end
+
+if ((FBID+FASK) < 0.01) then
+	flag_danger = 1;
+end
+
+//-------------------------------------------------------------------
+// Handle the early flag
+// We increase our minimum edge if were are before a certain time of day
+//-------------------------------------------------------------------
+//Set the early multiplier based on the time of day
+//Right now we are hardcoding to 8:45(35100), if we are after 9:45 use normal //sizes, need to subtract 56* 3600 to account for time being in GMT
+
+//Daylight savings time is true
+dst = 1; 
+
+time_since_1970 = time();
+const time930am_est=52200;
+const time935am_est=52500;
+const time940am_est=52800;
+const time945am_est=53100;
+const time430pm_est=77400;
+const time930am_dst=48600;
+const time935am_dst=48900;
+const time940am_dst=49200;
+const time945am_dst=49500;
+const time430pm_dst=73800;
+const time35945pm_est=75585;
+const time35945pm_dst=71985;
+const seconds_in_aday=86400;
+
+
+if (dst == 1)
+then
+	time930am = time930am_dst;
+	time935am = time935am_dst;
+	time430pm = time430pm_dst;
+	timeHQdisable = time35945pm_dst;
+	early_end = PE21 ? PE21*60 + time930am : time945am_dst;
+else
+	time930am = time930am_est;
+	time935am = time935am_est;
+	time430pm = time430pm_est;
+	timeHQdisable = time35945pm_est;
+	early_end = PE21 ? PE21*60 + time930am : time945am_est;
+end
+
+
+now = time_since_1970 % seconds_in_aday;
+
+early_multiplier = PE23 ?  PE23 : 1.0;
+//Set the early multiplier based on the time of day
+//Right now we are hardcoding to 8:45(35100), if we are after 9:45 use normal //sizes, need to subtract 56* 3600 to account for time being in GMT
+if ( (time() % seconds_in_aday)  >early_end ) then
+  early_multiplier = 1.0;
+end
+
+if ( now  >early_end ) then
+	early_edge_multiplier = 1.0;
+else
+	early_edge_multiplier = PE22 ?  PE22 : 1.0;
+end
+ 
+if( early_edge_multiplier < 0.1) then
+	tracet("Invalid PE22 for %N with a value of %g.  Setting early edge multiplier to 1.",      early_edge_multiplier);
+    early_edge_multiplier = 1.0;
+elsif(early_edge_multiplier > 10) then
+	tracet("Invalid PE22 for %N with a value of %g.  Setting early edge multiplier to 10.",      early_edge_multiplier);
+    early_edge_multiplier = 10.0;
+end
+ 
+
+//-------------------------------------------------------------------
+// Check for and set the dual theoretical spread padding
+//-------------------------------------------------------------------
+width = UNDER.ASK - UNDER.BID;
+pad = (abs(DELTA*width)) + (GAMMA*sqr(width)/2);
+
+//-------------------------------------------------------------------
+// Check for global (underlying level) edge multiplier
+//-------------------------------------------------------------------
+bid_mult = (UNDER.PI3 ? UNDER.PI3 : 1)*monthly_bid_mult;
+ask_mult = (UNDER.PI4 ? UNDER.PI4 : 1)*monthly_ask_mult;
+max_edge = PE32 ? PE32 : 0.5;
+max_edge = max_edge>=1 ? max_edge/100 : max_edge;
+join_size = PE15 ? PE15 : 1000; 
+bid_qqty = 0; 
+ask_qqty = 0; 
+delta_low = 0.3; 
+delta_high = 0.95; 
+nbbo_bid = 0;
+nbbo_ask = 0;
+nbbo_bid_qty = 0; 
+nbbo_ask_qty = 0; 
+qqty = 0; 
+
+//-------------------------------------------------------------------
+// Check for FBID
+//-------------------------------------------------------------------
+
+if FNBID and FNBID>0 then
+	nbbo_bid_qty = FNBID;
+	nbbo_bid = FBID;
+	num_exch_bid = strlen(FBIDSRC);
+else
+	nbbo_bid_qty = 0;
+	nbbo_bid = 0;
+end
+
+//-------------------------------------------------------------------
+// Check for FASK
+//-------------------------------------------------------------------
+
+if FNASK and FNASK>0 then
+	nbbo_ask_qty = FNASK;
+	nbbo_ask = FASK;
+	num_exch_ask = strlen(FASKSRC);
+else
+	nbbo_ask_qty = 0;
+	nbbo_ask = 0;
+end
+
+//-------------------------------------------------------------------
+// Delta limits for InTheMoney and OutOfTheMoney cutoffs
+//-------------------------------------------------------------------
+if PE9 > 0 then
+  delta_low  = PE9>= 1 ? PE9/100  : PE9;
+end
+
+if PE33 and (PE33 > delta_low) then
+  delta_high = PE33>= 1 ? PE33/100  : PE33;
+  delta_high = min(delta_high ,1);
+end
+
+// set bidfade and askfade values
+// 0: no fade
+// 1: fade 
+bidfade = 0;
+askfade = 0;
+if (UNDER.PI2 == 3 or PE31 == 3 or PI2 == 3) then
+	bidfade = 1;
+	askfade = 1;
+else
+	if (PI2 == 2) then
+		askfade = 1;
+	elsif (UNDER.PI2 == 2 or PE31 == 2) and (abs(DELTA) < delta_high) then
+		askfade = 1;
+	end
+	if (PI2 == 1) then
+		bidfade = 1;
+	elsif (UNDER.PI2 == 1 or PE31 == 1) and (abs(DELTA) < delta_high) then
+		bidfade = 1;
+	end
+end
+
+//-------------------------------------------------------------------
+// set min_edge, and qqty based on Delta of option
+//-------------------------------------------------------------------
+if abs(DELTA)<delta_low then
+   qqty = PE27;
+   if PI4>0 then
+   	 min_edge = PI4>=1 ? PI4/100 : PI4;
+   else
+   	 min_edge = PE30>=1 ? PE30/100 : PE30;
+   end
+elsif abs(DELTA)<delta_high then
+   qqty = PE26;
+   if PI4>0 then
+      min_edge = PI4>=1 ? PI4/100 : PI4;
+   else
+      min_edge = PE29>=1 ? PE29/100 : PE29;
+   end
+else
+   qqty = PE25;
+   if PI4>0 then
+   	 min_edge = PI4>=1 ? PI4/100 : PI4;
+   else
+   	 min_edge = PE28>=1 ? PE28/100 : PE28;
+   end
+end
+
+if (min_edge < 0.001) then
+	flag_danger = 1;
+end
+
+if ( abs (DELTA) > delta_high) and (not (bidfade and askfade)) then 
+	bid_mult = 1; 
+	ask_mult = 1; 
+	bid_qty_mult = 1.0; 
+	ask_qty_mult = 1.0;
+end
+
+
+
+//-------------------------------------------------------------------
+// set quotes
+//-------------------------------------------------------------------
+if bidfade then
+   b = 0;
+else
+   b = prounddown(mid_point - (min_edge * bid_mult * early_edge_multiplier) - pad/2);
+end
+
+if askfade then
+   a=9999;
+else
+   a = proundup(mid_point + (min_edge * ask_mult * early_edge_multiplier) + pad/2);
+end
+
+//Calculate the bid and ask quantities
+bid_qqty = max(QUOTINGQTY, qqty) * bid_qty_mult; 
+bid_qqty = floor(bid_qqty * early_multiplier);
+ask_qqty = max(QUOTINGQTY, qqty) * ask_qty_mult; 
+ask_qqty = floor(ask_qqty * early_multiplier);
+
+//if j in PIT we enforce this rule
+//if this order size > 3 x join size then set quantity to 1
+if ( (nbbo_bid_qty >= 3*join_size) and (nbbo_bid >= ADJTHEOR) and (not substr("j", PIT_letters)) ) then 
+   ask_qqty = 1; 
+end 
+
+if ( (nbbo_ask_qty >= 3*join_size) and (nbbo_ask <= ADJTHEOR) and (not substr("j", PIT_letters)) ) then 
+   bid_qqty = 1; 
+end 
+
+///If we are in the opening rotation or preopen disable this
+if (STATUS == "PreOpen" or STATUS == "Rotatn") then 
+   bid_qqty = 0; 
+   ask_qqty = 0; 
+end 
+
+//If we have more edge than allowed do not send this quote. 
+aedge = FBID - ADJTHEOR ; 
+bedge = ADJTHEOR - FASK ; 
+if( bedge > max_edge) then 
+   bid_qqty = 0; 
+end
+if(aedge > max_edge) then 
+   ask_qqty = 0; 
+end 
+
+//if option series is not enabled for regular quoting
+if ( not seriesenabled("Auto") )then 
+   ask_qqty = 0; 
+   bid_qqty = 0 ;    
+end
+
+
+//-------------------------------------------------------------------
+// If "c" in Under.PIT, then require a lot of edge
+//-------------------------------------------------------------------
+if substr("c", PIT_letters) then
+	if ITYPE == PUT or ITYPE == "P" then
+		a = a + 100;
+		ask_qqty = 0;
+	elsif ITYPE == CALL or ITYPE == "C" then
+		b = 0;
+		bid_qqty = 0; 
+	end
+end
+
+if substr("k", PIT_letters) then
+	if (ITYPE == "C") and (bid_qqty >= 1) then
+		bid_qqty = max(1,floor(bid_qqty/10));
+	elsif (ITYPE == "P") and (ask_qqty >= 1) then
+		ask_qqty = max(1,floor(ask_qqty/10));
+	end
+end
+
+if substr("r", PIT_letters) then
+	if (ITYPE == "C") and (ask_qqty >= 1) then
+		ask_qqty = max(1,floor(ask_qqty/10));
+	elsif (ITYPE == "P") and (bid_qqty >= 1) then
+		bid_qqty = max(1,floor(bid_qqty/10));
+	end
+end
+
+if abs(DELTA)<delta_low and itm_danger then
+   bid_qqty = 0;
+   ask_qqty = 0;
+elsif abs(DELTA)>=delta_low and abs(DELTA)<delta_high and atm_danger then
+   bid_qqty = 0;
+   ask_qqty = 0;
+elsif abs(DELTA)>=delta_high and itm_danger then
+   bid_qqty = 0;
+   ask_qqty = 0;
+end
+
+if bidfade then
+	bid_qqty = 0;
+end
+
+if askfade then
+	ask_qqty = 0; 
+end
+
+if (now > timeHQdisable) then
+	flag_danger = 1;
+end
+
+if flag_danger then
+	bid_qqty = 0;
+	ask_qqty = 0; 
+end
+
+
+QNBID = bid_qqty;
+QBID = b;
+QASK = a;
+QNASK = ask_qqty;
+
+
+/////
+/////
+//============================ Sumo7.4t =========================
+// Version 7.4t
+// Script provides primary quoting functionality
+// 06/28/2012:	remove original option 4 in PE20 and changed 7 to 4.
+// 08/10/2012:  enable "SH" regardless UPRICE update or not
+// 08/12/2012:	no longer fade to next dollar when not joining market
+// 08/15/2012:  fixd months with "sf" are enabling $5 wide strikes pre-open, test "c"
+// 08/20/2012:  attempt to fix $5 wide quote at opening
+// 08/21/2012:  do not call wide if status is Rotatn, removed logging for PE20=2
+// 08/30/2012:  allow PE3 and PE4 to use value below 1
+// 09/07/2012:  fixed "c" affecting bid qty of deep puts
+// 09/25/2012:  changed @ to "at"
+// 10/03/2012:  round price to nearest dollar when backing off from market
+// 12/10/2012:  changed "at" to "at_" and "for" to "for_" in logger messages
+// 12/11/2012:	added "y" in under.PIT to allow op-in, print edge info
+// 12/12/2012:	added PE36 to op-out deep options
+// 12/20/2012:	correct typo in "y" function, where PE1 is affecting offers.
+// 03/01/2013:	fix sometimes our market is $4.90 before the opening and through the theo
+// 05/31/2013:  added PIW for volchange
+// 06/03/2013:  added 4 to opening logic
+// 06/25/2013:  Moved SAFETY=1 to beginning of script
+// 09/16/2013:	disable strike if NBBO width is greater than 5 
+// 11/07/2013:  added PIW3-8 for AIM scripts
+// 02/04/2014:  added variable size_reducer for size reduction in certain exchanges
+// 03/18/2014:  changed <jQ and A/BFadeL to both use proundup(nbbo+-hide)
+//===================================================================
+// UNDER.PIT :
+// "d" - Use dual-theoretical pricing
+// "b" - follow local BBO rather than NBBO
+// "c" - don't sell puts and don't buy calls
+// "f" - use nbbo mid point as price for spread quote and edge checks
+// "j" - do not disable when order size greater than join size
+// "k" - PET, 10 on call bids and put offers, devides call HQ bids and put offers by 10
+// "o" - enable series on HOPE imbalances
+// "r" - PET, 10 on call offers and put bids, divides our call HQ offers and put bids by 10
+// "s" - use spread quote
+// "w" - allow quote to be > $5 wide
+// UNDER.PI1 : BID/ASK Fade whole stock 1=fade BID 2=fade ASK 3=fade BOTH
+// UNDER.PI2 : BID/ASK Fade per option, 1=fade BID 2=fade ASK 3=fade BOTH
+// UNDER.PI3 : BID Edge Multiplier
+// UNDER.PI4 : ASK Edge Multiplier
+//
+// EXP	Label	Description
+//PE1	Bex	Multiplies your bid edge requirement to get an effective bid edge requirement
+//PE2	Aex	Multiplies your ask edge requirement to get an effective ask edge requirement
+//PE3	Bsx	Multiplies your bid size
+//PE4	Asx	Multiplies your ask size
+//PE5	Ex	Edge Based Sizing. Multiplies minimum edge to define the edge requirements for the 3 tiers.
+//PE6	Sx	Edge Based sizing. Defines the multiples of minimum size for the 3 tiers.
+//PE7	Dfad	Gets you off bids/offers of various delta bands. 1=off bids; 5=on both; 9=off offers.
+//PE8	cap	Maximum disseminated quote size inclusive of all multipliers. Ineffective if greater than Max Quote Quantity in LIM.
+//PE9	Od	OTM delta cutoff
+//PE10	Id	ITM delta cutoff
+//PE11	Iz	ITM size before multipliers
+//PE12	Az	ATM size before multipliers
+//PE13	Oz	OTM size before multipliers
+//PE14	Ij	ITM join quantity and HQ safety
+//PE15	Aj	ATM join quantity and HQ safety
+//PE16	Oj	OTM join quantity and HQ safety
+//PE17	IE	ITM minimum edge requirement. A //PEnny is written as 1 not .01.
+//PE18	AE	ATM minimum edge requirement
+//PE19	OE	OTM minimum edge requirement
+//PE20	Op1/5	Defines which o//PEning logic to use
+//PE21	min	Minutes after the o//PEn for early settings. 15 recommended.
+//PE22	erlyE	Early Edge Multiplier. Should be greater than or equal to 1.
+//PE23	erlyZ	Early Size Multiplier. Should be less than or equal to 1.
+//PE24		
+//PE25	HQIz	HQ ITM size
+//PE26	HQAz	HQ ATM size
+//PE27	HQOz	HQ OTM size
+//PE28	HQIe	HQ ITM edge
+//PE29	HQAe	HQ ATM edge
+//PE30	HQOe	HQ OTM edge
+//PE31	HQBA123	HQ fade. 1=off bids except ITM; 2=off offers except ITM; 3=off EVERYTHING.
+//PE32	MaxE	Safety to prevent HQs in the case of a fat finger. 50 recommended ($0.50).
+//PE33	HQId	ITM delta cutoff for HQ
+//PE38  AIMex	AIM edge multiplier
+// PE44 : Stock Width Safety
+// PE45 : Stock Inversion Safety
+// PI1 : BA FADE Strike override -
+// 1=fade BID
+// 2=fade ASK
+// 3=fade BOTH
+// 4=improve BID / fade ASK
+// 5=improve ASK / fade BID
+//
+// PI3 : AQ MinEdge Override
+//===================================================================
+
+SAFETY = 1;
+size_reducer = 1;
+
+if not isvalue(PIW2) then
+PIW1=VOLA;
+PIW2=0;
+else
+PIW2=VOLA-PIW1;
+end
+
+//**********************************
+//** Stock Width/Inversion Safety **
+//**********************************
+
+Stock_Width_Safety = PE44 ? PE44/100 : 1;
+Stock_Inversion_Safety = PE45 ? PE45/100 : 0.3;
+
+uBBid = 0;
+uBAsk = 0;
+
+if (UNDER.FBID) then
+	uBBid = UNDER.FBID;
+elsif (UNDER.BID) then
+	uBBid = UNDER.BID;
+else
+	uBBid = 0;
+end
+
+if (UNDER.FASK) then
+	uBAsk = UNDER.FASK;
+elsif (UNDER.ASK) then
+	uBAsk = UNDER.ASK;
+else
+	uBAsk = 0;
+end
+// Take the difference between the Best Ask & Best Bid and check if it's larger then the SWS
+// Then Check if the Best Bid is larger then the Best Ask and see if that diff is larger then SIS
+
+if (uBAsk - uBBid) > Stock_Width_Safety then
+	flag_danger = 1;
+end
+if (uBBid > uBAsk) and ((uBBid - uBAsk) > Stock_Inversion_Safety) then
+	flag_danger = 1;
+end
+
+// One CBOE, if the status is PreOpen or Rotatn, then do not go wide
+if (STATUS == "PreOpen" or STATUS == "Rotatn") then
+	flag_danger = 0;
+end
+//Daylight savings time is true then dst = 1
+//If Daylight savings time is not effect, then dst = 0
+dst = 1; 
+time_since_1970 = time();
+const time930am_est=52200;
+const time932am_est=52320;
+const time935am_est=52500;
+const time940am_est=52800;
+const time945am_est=53100;
+const time430pm_est=77400;
+const time930am_dst=48600;
+const time932am_dst=48720;
+const time935am_dst=48900;
+const time940am_dst=49200;
+const time945am_dst=49500;
+const time430pm_dst=73800;
+const seconds_in_aday=86400;
+
+if (dst == 1)
+then
+	time930am = time930am_dst;
+	time932am = time932am_dst;
+	time935am = time935am_dst;
+	time430pm = time430pm_dst;
+	early_end = PE21 ? PE21*60 + time930am : time945am_dst;
+else
+	time930am = time930am_est;
+	time932am = time932am_est;
+	time935am = time935am_est;
+	time430pm = time430pm_est;
+	early_end = PE21 ? PE21*60 + time930am : time945am_est;
+end
+
+now = time_since_1970 % seconds_in_aday;
+
+early_start = time932am;
+
+trade_deep = PE36 ? PE36 : 1000;
+
+if (not PE17) or (not PE18) or (not PE19) then
+	tracet("***%N DISABLED***, min edge not set.");
+	flag_danger = 1;
+end
+if (STATUS != "PreOpen") and (STATUS != "Rotatn") and (now >= time930am) then
+	if (not FNASK) then
+		tracet("***%N DISABLED***, no NBBO Ask quantity. %d", FNASK);
+		flag_danger = 1;
+	elsif (not isvalue(FASK)) then
+		tracet("***%N DISABLED***, no NBBO ask. %g",FASK);
+		flag_danger = 1;
+	elsif (FASK - FBID) > 5 then
+		tracet("***%N DISABLED***, NBBO width > 5. %g, %g",FBID,FASK);
+		flag_danger = 1;
+	end
+end
+if (flag_danger) then
+	script "Wide";
+end
+
+// Normal AQ logic below
+PIT_letters = PIT ? PIT : PET ? PET : UNDER.PIT;
+sadj = 0;
+trade_open = PE20 ? PE20 : 5;
+skew = PE7 ? PE7 : 55555;
+
+URGENCY = GROUPABLE;
+
+if PE1 then
+	monthly_bid_mult=PE1;
+else
+	monthly_bid_mult=1;
+end
+
+if PE2 then
+	monthly_ask_mult=PE2;
+else
+	monthly_ask_mult=1;
+end
+
+
+if( PE14 <2 or  PE15 < 2  or PE16 < 2) then
+	PIT_letters = PIT_letters +"sf"; 
+end
+
+
+if not seriesenabledme("SH") then
+	seriesenableme("SH");
+end
+
+if ( skew < 10000 or skew > 99999 ) then
+	trace("invalid skew parameter for_ %N with value %g", skew)
+	skew = 55555;
+end
+edge_mult = PE5 ? PE5 : 1;
+if( edge_mult < 1 ) then
+	trace("invalid edge mult of (%g) for_ %N", edge_mult);
+	edge_mult = 1.0;
+end
+
+size_mult = PE6 ? PE6 : 1;
+if( size_mult < 1 ) then
+	trace("invalid size mult of (%g) for_ %N", size_mult);
+	size_mult = 1.0;
+end
+ 
+mult_cap = PE8 ? PE8 : 500;
+if( mult_cap < 0 ) then
+	trace("invalid size mult of (%g) for_ %N", mult_cap);
+	mult_cap = 500;
+end
+
+// me_enable stores state of whether quoting should be enabled
+// 0 means do not enable, 1 means enable
+   me_enable = 0;
+
+if ((STATUS =="" or STATUS =="Opened") and (now > early_start)) then
+	seriesenable("Auto");  
+	me_enable = 1;
+	
+elsif ((STATUS =="Opened") and (now  > time930am) and (now  < early_start)) then
+	if ((abs(DELTA) < 0.3) and (now < (time930am + 6))) then
+		seriesenable("Auto");
+//		trace("PE20=%d ***%N ENABLED after 9:30AM - delta option = %g, %d seconds after 9:30.",trade_open,DELTA, now-time930am);
+		me_enable = 1;
+	elsif ((abs(DELTA) < 0.6) and (now >= (time930am + 6)) and (now < (time930am + 12))) then
+		seriesenable("Auto");
+//		trace("PE20=%d ***%N ENABLED after 9:30AM - delta option = %g, %d seconds after 9:30.",trade_open,DELTA, now-time930am);
+		me_enable = 1;
+	elsif (now > (time930am + 12)) then
+		seriesenable("Auto");
+//		trace("PE20=%d ***%N ENABLED after 9:30AM - delta option = %g, %d seconds after 9:30.",trade_open,DELTA, now-time930am);
+		me_enable = 1;
+	end
+
+elsif (STATUS =="") and (now  > time930am) and (now  < early_start) then
+	if (trade_open == 1) then
+		if (not seriesenabled("Auto")) then
+			seriesenable("Auto");
+			me_enable = 1;
+		end
+	else
+		if (seriesenabled("Auto")) then
+			seriesdisable("Auto");
+			me_enable = 0;
+		end
+	end
+
+elsif (now < time930am) then
+	if (STATUS =="") then
+		seriesdisable("Auto");
+		me_enable = 0;
+	end
+end
+
+early_multiplier = PE23 ?  PE23 : 1.0;
+//Set the early multiplier based on the time of day
+//Right now we are hardcoding to 8:45(35100), if we are after 9:45 use normal //sizes, need to subtract 56* 3600 to account for time being in GMT
+if ( (time() % seconds_in_aday)  >early_end ) then
+  early_multiplier = 1.0;
+end
+
+// Handle the early flag
+// increase our minimum edge if were are before a certain time of day
+//Right now we are hardcoding to 8:45(35100), if we are after 9:45 use normal //sizes, need to subtract 56* 3600 to account for time being in GMT
+if ( now  >early_end ) then
+	early_edge_multiplier = 1.0;
+else
+	early_edge_multiplier = PE22 ?  PE22 : 1.0;
+end
+ 
+if( early_edge_multiplier < 0.1) then
+	tracet("Invalid PE22 for_ %N with a value of %g.  Setting early edge multiplier to 1.",      early_edge_multiplier);
+    early_edge_multiplier = 1.0;
+elsif(early_edge_multiplier > 10) then
+	tracet("Invalid PE22 for_ %N with a value of %g.  Setting early edge multiplier to 10.",      early_edge_multiplier);
+    early_edge_multiplier = 10.0;
+end
+ 
+// set the dual theoretical spread padding
+pad = (abs(DELTA*(UNDER.FASK - UNDER.FBID))) + (GAMMA*sqr(UNDER.FASK - UNDER.FBID)/2);
+
+ 
+// Check for global (underlying level) edge multiplier
+del_to_use = 70;
+if PE10 then
+	del_to_use = PE10;
+end
+if abs(DELTA)<(del_to_use/100) or substr("y", UNDER.PIT) then
+	bid_mult = UNDER.PI3 ? UNDER.PI3 : 1;
+	ask_mult = UNDER.PI4 ? UNDER.PI4 : 1;
+else
+	bid_mult = 1;
+	ask_mult = 1;
+end
+ 
+///Set the size multiplier
+bid_mult_to_use = PE3 ? PE3 : 1.0;
+ask_mult_to_use = PE4 ? PE4 : 1.0;
+
+if abs(DELTA) > (del_to_use/100) then
+	bid_mult_to_use = 1.0;
+	ask_mult_to_use = 1.0;
+end
+// set a minEdge requirement based on the Delta of the option
+if PI3>0 then
+	itm_min_edge = PI3>=1 ? PI3/100 : PI3;
+	atm_min_edge = PI3>=1 ? PI3/100 : PI3;
+	otm_min_edge = PI3>=1 ? PI3/100 : PI3;
+else
+	itm_min_edge = PE17>=1 ? PE17/100 : PE17;
+	atm_min_edge = PE18>=1 ? PE18/100 : PE18;
+	otm_min_edge = PE19>=1 ? PE19/100 : PE19;
+end
+ 
+// set the number of exchanges that must be on the NBBO to join
+
+if PI1>0 then
+ba_fade = PI1;
+elsif abs(DELTA)<(del_to_use/100) then
+ba_fade = UNDER.PI1>0?UNDER.PI1:0;
+end
+
+// Variables used in script
+b = 0;
+a = 0;
+na = 0;
+join_b = 0;
+join_a = 0;
+join_qty = 0;
+min_edge = 0;
+nbbo_bid_qty = 0;
+nbbo_bid = 0;
+nbbo_ask = 0;
+nbbo_ask_qty = 0;
+nbbo_mid_point = 0;
+num_exch_bid = 0;
+num_exch_ask = 0;
+epw_multiplier = UNDER.PI1>0?UNDER.PI1:1;
+use_nbbo_mid_point = substr("f", PIT_letters);
+use_spread_quote = substr("sf", PIT_letters);
+local_bid = 0;
+local_ask = 0;
+local_bid_qty = 0;
+local_ask_qty = 0;
+bid_qqty = 0;
+ask_qqty = 0;
+bmin_edge = 0;
+amin_edge = 0;
+mspread = 5; 
+// Check for FBID
+if (NBID and NBID>0) then
+		local_bid = BID;
+		local_bid_qty = NBID;
+end
+
+if FNBID and FNBID>0 and (not substr ("b", PIT_letters)) then
+	nbbo_bid_qty = FNBID;
+	nbbo_bid = FBID;
+	num_exch_bid = strlen(FBIDSRC);
+else
+	if local_bid then
+		nbbo_bid_qty = NBID;
+		nbbo_bid = local_bid;
+//		use_local_bid = 1;
+	else
+		nbbo_bid_qty = 0;
+		nbbo_bid = 0;
+	end
+end
+
+// Check for FASK
+if (NASK and NASK>0) then
+	local_ask = ASK;
+	local_ask_qty = NASK;
+end
+if FNASK and FNASK>0 and (not substr ("b", PIT_letters)) then
+	nbbo_ask_qty = FNASK;
+	nbbo_ask = FASK;
+	num_exch_ask = strlen(FASKSRC);
+else
+	if local_ask then
+		nbbo_ask_qty = NASK;
+		nbbo_ask = local_ask;
+		use_local_ask = 1;
+	else
+		nbbo_ask_qty = 0;
+		nbbo_ask = 0;
+	end
+end
+
+// Set hide amount
+hide=0.001;
+
+if(hide > 0.90) then
+	hide = 0.90; 
+end
+///if the nbbo is more than 4.90 wide set hide = 0
+if( ((nbbo_ask - nbbo_bid ) > 3.00) and (hide >0.25)) then 
+	hide=0.25;
+elsif( (nbbo_ask - nbbo_bid ) > 4.00) then 
+	hide = 0.0; 
+end
+// Delta limits for InTheMoney and OutOfTheMoney cutoffs
+if PE9> 0 then
+	delta_low = PE9>= 1 ? PE9/100 : PE9;
+else
+	delta_low = 0.3;
+end
+
+if PE10 > DELTA_low then
+	delta_high = PE10>= 1 ? PE10/100 : PE10;
+	delta_high = min(delta_high ,1);
+else
+	delta_high = 0.8;
+end
+ 
+// set join_qty, min_edge, and qqty based on Delta of option
+if abs(DELTA)<delta_low then
+	join_qty = PE16 ? PE16 : 1000;
+	bmin_edge = otm_min_edge*monthly_bid_mult*early_edge_multiplier;
+	amin_edge = otm_min_edge*monthly_ask_mult*early_edge_multiplier;
+	qqty = PE13;
+elsif abs(DELTA)<delta_high then
+	join_qty = PE15 ? PE15 : 1000;
+	bmin_edge = atm_min_edge*monthly_bid_mult*early_edge_multiplier;
+	amin_edge = atm_min_edge*monthly_ask_mult*early_edge_multiplier;
+	qqty = PE12;
+
+else
+	join_qty = PE14 ? PE14 : 1000;
+	qqty = PE11;
+	if substr("y", UNDER.PIT) then
+		bmin_edge = itm_min_edge*monthly_bid_mult*early_edge_multiplier;
+		amin_edge = itm_min_edge*monthly_ask_mult*early_edge_multiplier;
+	else
+		bmin_edge = itm_min_edge*early_edge_multiplier;
+		amin_edge = itm_min_edge*early_edge_multiplier;
+	end
+end
+ 
+///Reduce our join qty if we are using an early multiplier
+join_qty = join_qty * early_multiplier;
+ 
+// Check for a crossed or inverted market
+// If the market is inverted widen out our market based on the magnitude
+// of the inversion.
+uspread=UNDER.ASK-UNDER.BID;
+if ( uspread < 0 ) then
+	if ( abs(uspread) <= 0.06 ) then
+        	bmin_edge = bmin_edge +(abs(uspread) * 1.5 * DELTA);
+		amin_edge = amin_edge +(abs(uspread) * 1.5 * DELTA);
+	else
+        	bmin_edge = bmin_edge +(abs(uspread) * 3.0 * DELTA );
+		amin_edge = amin_edge +(abs(uspread) * 3.0 * DELTA );
+		trace("%N widening bid min_edge to %g for_ inversion of %g with delta %g",bmin_edge, uspread, DELTA);
+		trace("%N widening ask min_edge to %g for_ inversion of %g with delta %g",amin_edge, uspread, DELTA);
+	end
+end
+ 
+// If NBBO ASK is 0 then assume no NBBO and disable that strike if
+// quoting
+if (nbbo_ask_qty == 0) and (STATUS != "PreOpen") and (STATUS != "Rotatn") and (now >= time930am) then
+	trace("%N ### NO NBBO - disabling strike ###");
+	use_spread_quote = 1;
+ 
+// IF NBBO is inverted then hide outside
+elsif (nbbo_bid > nbbo_ask) and (now >= time930am) then
+	b = prounddown(min(nbbo_bid, local_bid)-hide);
+	a = proundup(max(local_ask, nbbo_ask)+hide);
+	dqb = "L/C";
+	dqa = "L/C";
+	nbbo_mid_point = (local_bid + local_ask)/2;
+	tracet("%N ### NBBO inverted, disabling strike ###. nbbo_bid(%g), nbbo_ask(%g)",nbbo_bid,nbbo_ask);
+	seriesdisable("Auto");
+else
+	nbbo_mid_point = (nbbo_bid + nbbo_ask)/2;
+	b = prounddown(ADJTHEOR - (bmin_edge * bid_mult) - pad/2);
+	a = proundup(ADJTHEOR + (amin_edge * ask_mult) + pad/2);
+	//check join size 
+	if nbbo_bid > 0 then
+		if nbbo_bid_qty >= join_qty then
+			if ba_fade!=1 and ba_fade!=3 and floor(ba_fade)!=5 then
+					join_b = 1;
+					b = nbbo_bid;
+					dqb = "JOINN ";
+			else
+				b = prounddown(nbbo_bid-hide);
+				dqb = "BfadeN";
+			end
+		elsif local_bid_qty >= join_qty then
+			if ba_fade!=1 and ba_fade!=3 and floor(ba_fade)!=5 then
+					join_b = 1;
+					b = local_bid;
+					dqb = "JOINL ";
+			else
+				b = prounddown(nbbo_bid-hide);
+				dqb = "BfadeL";
+			end		
+		else 
+			b = prounddown(nbbo_bid-hide);
+			dqb = "<jQ";
+		end
+	end	
+	if nbbo_bid < 0.001 then
+		dqb = "0bid ";
+		b = 0;
+	end
+	//
+	if nbbo_ask > 0 then
+		if nbbo_ask_qty >= join_qty then
+			if ba_fade!=2 and ba_fade!=3 and floor(ba_fade)!=4 then
+					join_a = 1;
+					a = nbbo_ask;
+					dqa = "JOINN ";
+			else
+				a = proundup(nbbo_ask+hide);
+				dqa = "AfadeN";
+			end
+		elsif local_ask_qty >= join_qty then
+			if ba_fade!=2 and ba_fade!=3 and floor(ba_fade)!=4 then
+					join_a = 1;
+					a = local_ask;
+					dqa = "JOINL ";
+			else
+				a = proundup(nbbo_ask+hide);
+				dqa = "AfadeL";
+			end
+		else
+			
+			a = proundup(nbbo_ask+hide);
+			dqa = "<jQ";
+		end
+	end
+end
+
+// Use spread quote if necessary
+if use_spread_quote and not (STATUS == "PreOpen" or STATUS == "Rotatn") then
+	script "Wide";
+end
+				
+// If the NBBO exists the use the NBBO mid_point as price to spread
+// around. Else fall back to ADJTHEOR
+if use_nbbo_mid_point and nbbo_mid_point > 0 then
+	mid_price = nbbo_mid_point;
+else
+	mid_price = ADJTHEOR;
+end
+
+if mid_price > trade_deep then
+	script "Wide";
+end
+
+//-------------------------------------------------------------------
+// Handle the skew parameter here
+//-------------------------------------------------------------------
+//This needs to happen after the
+if ( skew != 55555 ) then
+	ignore = 0;
+  //determine the abs of put delta here
+	del = abs(DELTA);
+	if ( ITYPE == "C" ) then
+		del = max(1 - del, 0);
+	end
+ 
+  //Ignore deep in the money options, flag should have no effect
+  //@todo this does not work
+  //abs(DELTA)<(del_to_use/100)
+	if ( abs(DELTA) > abs(del_to_use/100) ) then
+		ignore = 1;
+//     trace("ignoring skew for_ %N with delta (%g) del_to_use (%g)", del, //del_to_use);
+	end
+ 
+	c = 5;
+	if ( del < 0.2) then
+		c = floor(skew/10000) %10;
+	elsif (del >= 0.2 and del < 0.4) then
+		c = floor(skew/1000) %10;
+	elsif (del >= 0.4 and del < 0.6) then
+		c = floor(skew/100) %10;
+	elsif (del >= 0.6 and del < 0.8) then
+		c = floor(skew/10) %10;
+	else
+		c = floor(skew/1) %10;
+	end
+	if (c==1) then
+        ///don't buy
+		if ( not ignore ) then
+           		bid_mult = bid_mult * 10;
+			bid_qqty = 10 ;
+		end
+	elsif(c==9) then
+   ///don't sell
+		if ( not ignore ) then
+			ask_mult = ask_mult * 10;
+			ask_qqty = 10 ;
+		end
+	elsif(c==5) then
+   ///ignore this
+		ask_mult = ask_mult;
+		bid_mult = bid_mult;
+	else
+		trace("invalid skew value (%d) for_ %N with %s", c, ptos(skew));
+	end
+
+end
+
+// Check Minimum Edge
+if bmin_edge then
+// check BID for minimal edge
+	if (mid_price - b) < ( (bmin_edge * bid_mult) + pad/2) then
+		b = prounddown(mid_price - (bmin_edge * bid_mult) - pad/2);
+		if (a -b) > 5 then
+			a = b + 4.9;
+		end
+		if use_nbbo_mid_point and nbbo_mid_point > 0 then
+			dqb = "mEd/f";
+		else
+			dqb = "mEd/th";
+		end
+	end
+ 
+// check ASK for minimal edge
+	if (a - mid_price) < ( (amin_edge * ask_mult) + pad/2) then
+		a = proundup(mid_price + (amin_edge * ask_mult) + pad/2);
+		if (a - b) > 5 then
+			b = a - 4.9;
+		end
+		if use_nbbo_mid_point and nbbo_mid_point > 0 then
+			dqa = "mEd/f";
+		else
+			dqa = "mEd/th";
+		end
+	end
+end
+
+// Improve logic for PI1 set to 4/5
+if floor(PI1)==4 then
+	jq = PI1>4 ? join_qty*(PI1-4) : join_qty;
+	if nbbo_bid_qty >= jq then
+		b = min(proundup(nbbo_bid+.01), prounddown(nbbo_ask-.01));
+		dqb = "BID+";
+	else
+		b = nbbo_bid;
+		dqb = "JOIN+";
+	end
+end
+
+if floor(PI1)==5 then
+	jq = PI1 > 5 ? join_qty*(PI1-5) : join_qty;
+	if nbbo_ask_qty >= jq then
+		a = max(prounddown(nbbo_ask-.01), proundup(nbbo_bid+.01));
+		dqa = "ASK+";
+	else
+		a = nbbo_ask;
+		dqa = "JOIN+";
+	end
+end
+ 
+//=== If worse than NBBO, fade to nearest dollar figure to reduce quoting
+if (b < nbbo_bid) then b = floor(b + BIDSTEPBACK); end
+if (a > nbbo_ask) then a = ceil(a - ASKSTEPBACK); end
+
+
+// Handle the opening rotation.
+if STATUS == "PreOpen" or STATUS == "Rotatn" or now < time935am or (nbbo_ask_qty == 0 and STATUS != "Opened") then
+  allowed_width = 1;
+  q_amount =0;
+  if ( TEXP > 1.05 ) then
+     allowed_width  = 2;
+  end
+  
+  if substr("2", PIT_letters) then
+     allowed_width = allowed_width * 2;
+  end
+  
+  if substr("3", PIT_letters) then
+     allowed_width = allowed_width * 3;
+  end
+ 
+  preopen_width = 1;
+  
+  if pround(ADJTHEOR-(allowed_width * 0.25)/2) < (2.0 + allowed_width * 0.25)  then
+     b_lw =proundup(ADJTHEOR-(allowed_width * 0.25)/2);
+     a_lw =prounddown(b_lw+(allowed_width * 0.25));     
+	 preopen_width = 0.25; 
+  elsif pround(ADJTHEOR-(allowed_width * 0.40)/2)< (5.0 + allowed_width * 0.40)  then
+     b_lw =proundup(ADJTHEOR-(allowed_width * 0.40)/2);
+     a_lw =prounddown(b_lw+(allowed_width * 0.40));
+	 preopen_width = 0.40; 
+  elsif pround(ADJTHEOR-(allowed_width * 0.50)/2) < (10.0 + allowed_width * 0.50 )  then
+     b_lw =proundup(ADJTHEOR-(allowed_width * 0.50)/2);
+     a_lw =prounddown(b_lw+(allowed_width * 0.50));
+	 preopen_width = 0.50; 
+  elsif pround(ADJTHEOR-(allowed_width * 0.80)/2) < (20.0 + allowed_width * 0.80 )  then
+     b_lw =proundup(ADJTHEOR-(allowed_width * 0.80)/2);
+     a_lw =prounddown(b_lw+(allowed_width * 0.80));
+	 preopen_width = 0.8; 
+  else
+     b_lw =proundup(ADJTHEOR-(allowed_width * 1.00)/2);
+     a_lw =prounddown(b_lw+(allowed_width * 1.00));
+  end
+ 
+  bid_qqty = qqty;
+  ask_qqty = qqty;
+ 
+  use_open_qqty=0;
+  if allowed_width ==1 then
+     dqb = strcat(dqb,"open");
+     dqb = strcat(dqb,"open");
+  elsif allowed_width ==2 then
+     dqb = strcat(dqb,"2xopn");
+     dqb = strcat(dqb,"2xopn");
+  elsif allowed_width ==3 then
+     dqb = strcat(dqb,"3xopn");
+     dqb = strcat(dqb,"3xopn");
+  elsif allowed_width ==4 then
+     dqb = strcat(dqb,"4xopn");
+     dqb = strcat(dqb,"4xopn");
+  elsif allowed_width ==6 then
+     dqb = strcat(dqb,"6xopn");
+     dqb = strcat(dqb,"6xopn");
+  end
+ 
+  quote_width=a_lw-b_lw;
+  underlying_width = UNDER.ASK-UNDER.BID;
+ 
+end
+
+// Enable/disable pre-open on CBOE
+if (STATUS == "PreOpen" or STATUS == "Rotatn") and (ba_fade != 3) and (not use_spread_quote) then
+	b = prounddown(mid_price - (bmin_edge * bid_mult) - pad/2);
+	a = proundup(mid_price + (amin_edge * ask_mult) + pad/2);
+	if (nbbo_bid == 0 and nbbo_ask ==0) then
+		b = b_lw;
+		a = a_lw;
+	elsif ((nbbo_bid > nbbo_ask) or (not FNASK) or (not isvalue(FASK))) and (STATUS == "Rotatn") then
+		b = b_lw;
+		a = a_lw;
+	end
+	if (trade_open==1) then
+		b = b_lw;
+		a = a_lw;
+		if ((b >= nbbo_ask) and (ba_fade != 1) and (nbbo_ask > 0))  then 
+			me_enable = 1;
+		elsif (a <= nbbo_bid) and (ba_fade != 2) and (a > 0) then
+			me_enable = 1;
+		elsif (abs(DELTA) <= 0.6) then
+			me_enable = 1;
+		else
+			me_enable = 0;
+		end
+	elsif trade_open == 2 then
+		if ((b >= nbbo_ask) and (ba_fade != 1) and (nbbo_ask > 0))  then 
+			a = b + preopen_width;
+			me_enable = 1;
+		elsif (a <= nbbo_bid) and (ba_fade != 2) and (a > 0) then
+			b = max(0,a - preopen_width);
+			me_enable = 1;
+		elsif (abs(DELTA) <= 0.6) then
+			b = b_lw;
+			a = a_lw;
+			me_enable = 1;
+		else
+			me_enable = 0;
+		end	
+	elsif (trade_open == 3) then		
+		if ((b >= nbbo_ask) and (ba_fade != 1) and (nbbo_ask > 0))  then 
+			a = proundup(ADJTHEOR + 0.001);
+			b = a - preopen_width;
+			me_enable = 1;
+		elsif (a <= nbbo_bid) and (ba_fade != 2) and (a > 0) then
+			b = prounddown(ADJTHEOR - 0.001);
+			a = b + preopen_width;
+			me_enable = 1;
+		elsif (abs(DELTA) <= 0.6) then
+			b = b_lw;
+			a = a_lw;
+			me_enable = 1;
+		else
+			me_enable = 0;
+		end	
+	elsif (trade_open==4) then
+		b = b_lw;
+		a = a_lw;
+		if ((b >= nbbo_ask) and (ba_fade != 1) and (nbbo_ask > 0))  then 
+			me_enable = 1;
+		elsif (a <= nbbo_bid) and (ba_fade != 2) and (a > 0) then
+			me_enable = 1;
+		else
+			me_enable = 0;
+		end
+	elsif trade_open == 5 then  
+			me_enable = 0;
+	elsif trade_open == 6 then
+		b = b_lw;
+		a = a_lw;
+
+		if (b >= nbbo_ask) and (ba_fade == 1) then
+			me_enable = 0;
+		elsif (a <= nbbo_bid) and (ba_fade == 2) then
+			me_enable = 0;
+		else
+			me_enable = 1;
+		end
+	elsif trade_open == 4 then
+		b = b_lw;
+		a = a_lw;
+		if (abs(DELTA) > 0.6) then
+			me_enable = 0;
+		elsif (b >= nbbo_ask) and (ba_fade == 1) then
+			me_enable = 0;
+		elsif (a <= nbbo_bid) and (ba_fade == 2) then
+			me_enable = 0;
+		else
+			me_enable = 1;
+		end
+	else
+		me_enable = 0;
+	end
+elsif (ba_fade == 3) then
+	me_enable = 0;
+elsif (STATUS == "PreOpen" or STATUS == "Rotatn") and use_spread_quote then
+	me_enable = 0;
+end
+
+if (STATUS == "PreOpen" or STATUS == "Rotatn") then
+	if me_enable then
+		seriesenable("Auto");
+	else
+		b = b_lw;
+		a = a_lw;
+		seriesdisable("Auto");
+	end
+end
+
+if me_enable then
+   if not seriesenabledme("AIM") then
+   	seriesenableme("AIM");
+   end
+   if not seriesenabledme("HAL") then
+   	seriesenableme("HAL");
+   end
+   if not seriesenabledme("BS") then
+   	seriesenableme("BS");
+   end
+   if not seriesenabledme("COA") then
+   	seriesenableme("COA");
+   end
+end
+if not seriesenabledme("COLA") then
+    seriesenableme("COLA");
+end
+
+// do not ever improve Market if it exists
+if (nbbo_bid > 0) and (b > nbbo_bid) and (sadj==0) and (STATUS != "Rotatn" ) and (STATUS != "PreOpen" ) then
+	b = nbbo_bid;
+	dqb = strcat(dqb,"Xi");
+end
+
+if (nbbo_ask > 0) and (a < nbbo_ask) and (sadj==0) and (STATUS != "Rotatn" ) and (STATUS != "PreOpen" ) then
+	a = nbbo_ask;
+	dqb = strcat(dqb,"Xi");
+end
+ 
+// stick to 0.00 and 5.00 if that is the NBBO
+// this is need to avoid flipping between 0.00 and 0.05 on the bid
+if nbbo_ask == 5.00 and nbbo_bid <= 0.05 and STATUS != "Rotatn" and STATUS != "PreOpen" then
+	b = nbbo_bid;
+	a = 5.00;
+end	
+
+// Handle edge based sizing
+if (edge_mult != 1 or size_mult != 1) then
+   bedge_diff = (bid_mult * edge_mult * bmin_edge) - bmin_edge;
+   aedge_diff = (ask_mult * edge_mult * amin_edge) - amin_edge;
+ 
+   size_diff = size_mult * qqty - qqty;
+ 
+   bedge = abs(ADJTHEOR - b);
+   aedge = abs(a - ADJTHEOR);
+ 
+   blevel1 = bmin_edge ;
+   blevel2 = bmin_edge + bedge_diff;
+   blevel3 = bmin_edge + bedge_diff + bedge_diff;
+ 
+   alevel1 = amin_edge ;
+   alevel2 = amin_edge + aedge_diff;
+   alevel3 = amin_edge + aedge_diff + aedge_diff;
+ 
+   bid_qqty = qqty;
+   ask_qqty = qqty;
+ 
+   //set the bid size based on current bid edge
+   if ( bedge <= blevel1 ) then
+      bid_qqty = bid_qqty ;
+      bid_below = blevel1 - bedge;
+   elsif( bedge > blevel1 and bedge <= blevel2 ) then
+      bid_qqty = bid_qqty ;
+      bid_above = bedge - blevel1;
+      bid_below = blevel2 - bedge;
+   elsif ( bedge > blevel2 and bedge <= blevel3 ) then
+      bid_qqty = bid_qqty + (size_diff * 1.0 );
+      bid_above = bedge - blevel2;
+      bid_below = blevel3 - bedge;
+   else
+      bid_qqty = bid_qqty + (size_diff * 2.0 );
+      bid_above = bedge - blevel3;
+   end
+  
+ //set the ask size based on current ask edge
+   if ( aedge <= alevel1 ) then
+      ask_qqty = ask_qqty;
+      ask_below = alevel1 - aedge;
+   elsif( aedge > alevel1 and aedge <= alevel2 ) then
+      ask_qqty = ask_qqty + (size_diff * 0.0 );
+      ask_above = aedge - alevel1;
+      ask_below = alevel2 - aedge;
+   elsif (aedge > alevel2 and aedge <= alevel3 ) then
+      ask_qqty = ask_qqty + (size_diff * 1.0 );
+      ask_above = aedge - alevel2;
+      ask_below = alevel3 - aedge;
+   elsif( aedge > alevel2 ) then
+      ask_qqty = ask_qqty + (size_diff * 2.0 );
+      ask_above = aedge - alevel3;
+   end
+ 
+   bid_qqty = max(QUOTINGQTY, bid_qqty) * bid_mult_to_use;
+   bid_qqty = floor(bid_qqty * early_multiplier);
+   bid_qqty = min(bid_qqty, mult_cap);
+ 
+   ask_qqty = max(QUOTINGQTY, ask_qqty) * ask_mult_to_use;
+   ask_qqty = floor(ask_qqty * early_multiplier);
+   ask_qqty = min(ask_qqty, mult_cap);
+ 
+end
+
+// Handle the case where we have lots of edge but do not meet our
+// join requirements
+//This needs to happen before skew adjustment
+if ( (STATUS == "Opened" or (STATUS == "" and (now > time932am)))
+and (substr("l", PIT_letters))
+and (not substr("s", PET))
+and (not substr("s", UNDER.PIT))
+and (not substr("S", PET))
+and (not substr("S", UNDER.PIT)) )then
+	if( (ba_fade != 2) and (ba_fade != 3)) then
+		if ((nbbo_ask - mid_price) > (2 *( (amin_edge * ask_mult) + pad/2.0) )
+			and ((nbbo_ask - mid_price) > 0.10) and  (join_a ==0) ) then
+			if ( nbbo_ask_qty >= 10 ) then
+				a = nbbo_ask;
+				ask_qqty = 10;
+				dqa = "<jQl";
+			end
+		end
+	end
+
+	if( (ba_fade != 1) and (ba_fade != 3)) then
+
+	   if ((mid_price - nbbo_bid) > (2 *( (bmin_edge * bid_mult) + pad/2) )
+		 and ((mid_price - nbbo_bid) > 0.10) and  (join_b ==0))  then
+	 
+		  if( nbbo_bid_qty >= 10) then
+			 b = nbbo_bid;
+			 bid_qqty = 10;
+			 dqb = "<jQl";
+		  end
+	   end
+	end
+end
+
+// if "c" is present, and not "preopen" or "rotation"
+// then don't sell puts and don't buy calls
+if  (STATUS != "PreOpen" and STATUS != "Rotatn") then
+	if substr("c", PIT_letters) then 
+		if ITYPE == "P" then
+			a = max(min(3 * a, b + 4.80),nbbo_ask);
+			ask_qqty = 10;
+		elsif ITYPE == "C" then
+			b = min(max(0.1 * b, a - 4.80),nbbo_bid);
+			bid_qqty = 10;
+		end
+	end
+end
+//b = pround(b);
+//a = pround(a);
+// Adjust if over $5 wide
+if (((a - b) > 5) and (not substr("w", PIT_letters))) then
+	dqb = strcat(dqb, "/w");
+	dqa = strcat(dqa, "/w");
+
+	script "Wide";
+
+	ask_qqty = 10;
+	bid_qqty = 10;
+end
+
+// never go over $5 wide
+if (((a - b) > 5) or (a < nbbo_ask) or (b > nbbo_bid)) then
+	if (STATUS != "Rotatn" ) and (STATUS != "PreOpen" ) and (now >= time930am) then
+		trace("%N - QUOTE > 5 WIDE! Or trying to improve market.  Disabling Autoquote Strike %g %g %g", (a - b), b, a);
+		seriesdisable("Auto");
+	end
+end
+//Trace out better edge
+if not (PI1==3) and ADJTHEOR-amin_edge >= FASK then
+	tracet("%N_%g at_ %g (%g edge)", FNASK, FASK, round(ADJTHEOR - FASK,0.01));
+elsif not (PI1==3) and ADJTHEOR+bmin_edge <= FBID then
+	tracet("%N_%g for_ %g (%g edge)",FBID,FNBID, round(FBID - ADJTHEOR,0.01));
+end
+if (not seriesenabled("Auto")) and  (STATUS == "Opened" or now >= time930am) then
+	tracet("***%N is disabled***, PE20=%g, STATUS=%s",PE20,STATUS);
+end
+ 
+if (( bid_qqty == 0 or use_open_qqty == 1)and not substr("c", PIT_letters) ) then
+	bid_qqty = (use_open_qqty == 1 )? qqty : max(QUOTINGQTY, qqty) * bid_mult_to_use;
+	bid_qqty = floor(bid_qqty * early_multiplier);
+end
+ 
+if ((ask_qqty == 0 or use_open_qqty == 1) and not substr("c", PIT_letters) )then
+	ask_qqty = (use_open_qqty == 1 )? qqty :  max(QUOTINGQTY, qqty) * ask_mult_to_use;
+	ask_qqty = floor(ask_qqty * early_multiplier);
+end
+if ((a-b) < 4.9) then
+	ask_qqty = max(ask_qqty, 10);
+	bid_qqty = max(bid_qqty, 10);
+else
+	ask_qqty = 10;
+	bid_qqty = 10;
+end
+
+if substr("k", PIT_letters) then
+	if ITYPE == "C" then
+		bid_qqty = 10;
+	elsif ITYPE == "P" then
+		ask_qqty = 10;
+	end
+end
+
+if substr("r", PIT_letters) then
+	if ITYPE == "C" then
+		ask_qqty = 10;
+	elsif ITYPE == "P" then
+		bid_qqty = 10;
+	end
+end
+
+bid_qqty = bid_qqty * size_reducer;
+ask_qqty = ask_qqty * size_reducer;
+
+PIW3 = SAFETY;
+PIW4 = VOLA;
+
+
+if not substr("WIDE", TBID) and (not flag_danger) then
+        PIW5 = bmin_edge;
+else
+        PIW5 = 0;
+end
+
+
+if not substr("WIDE", TASK) and (not flag_danger) then
+        PIW6 = amin_edge;
+else
+        PIW6 = 0;
+end
+
+
+PIW7 = bid_qqty;
+PIW8 = ask_qqty;
+ 
+QBID = b;
+QNBID = bid_qqty;
+QASK = a;
+QNASK = ask_qqty;
+TBID = dqb;
+TASK = dqa;
+
+

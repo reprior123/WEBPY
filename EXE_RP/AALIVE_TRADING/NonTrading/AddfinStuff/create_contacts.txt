@@ -1,0 +1,2 @@
+def create_contacts()
+	return dict()

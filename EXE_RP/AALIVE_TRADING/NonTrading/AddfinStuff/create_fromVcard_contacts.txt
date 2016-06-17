@@ -1,0 +1,2 @@
+def create_fromVcard_contacts()
+	return dict()
