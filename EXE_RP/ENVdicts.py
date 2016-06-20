@@ -149,7 +149,8 @@ def ENVdicts(localtag):
     libbarsweekly = libarea + 'library.bars.spaced.weekly.csv'
     
     libAllSyms = libarea + 'library.ALL.syms.csv'
-    libTickerSyms = libarea + 'library.ticker.syms.csv'
+    libTickerSyms = libarea + 'library.ALL.syms.csv'
+##    libTickerSyms = libarea + 'library.ticker.syms.csv' ##supress
     libsyms = libAllSyms
   
     cpfname = libarea + 'signalcontroller.txt'

@@ -69,25 +69,24 @@ def extract_wbmails(myusername,mypassword):
         print email_message['From'],email_message['Subject'] 
         bla = multibody(email_message)
         rpu_rp.WriteStringsToFile('BlountNewEmail.txt',bla)
-
-
 ########################
 username = 'reprior123@gmail.com'
 mypassword = 'bla'
-mypassword = raw_input('pw here: ')
+##mypassword = raw_input('pw here: ')
+mypassword= rpu_rp.rpownbingo('c4.c2.c5.c3.c3.c7.c8.c1.c0')
 extract_wbmails(username,mypassword)
+print 'this should be the actual email..'
 
 ##raw_input('remember to add weekly pivot...')
 wbfile = 'BlountNewEmail.txt'
-osCommandString = 'notepad.exe ' + wbfile 
+osCommandString = 'notepad.exe ' + wbfile
+sleep(5)
 ##osCommandString = 'cat ' + wbfile 
 ##os.system(osCommandString)
-
 ######################
 def convert_emailtolines():
     wbfile = downloads +'BlountNewEmail.txt'
     wbfile = 'BlountNewEmail.txt'
-
     lines = rpu_rp.TxtToLines(wbfile)
     full=[]
     readflag ='n'
@@ -244,13 +243,11 @@ sym ='ES'
 wbfile = libarea +'SpotsWBDaily.' + sym +'.txt'
 ##osCommandString = 'notepad.exe ' + wbfile 
 ##os.system(osCommandString)
-
 ###
 ##raw_input('remember to addnew spots...')
 wbfile = libarea +'SpotsFull.' + sym +'.txt'
 ##osCommandString = 'notepad.exe ' + wbfile 
 ##os.system(osCommandString)
-
 
 osCommandString = 'notepad.exe ' + wbfile 
 ##osCommandString = 'cat ' + wbfile 

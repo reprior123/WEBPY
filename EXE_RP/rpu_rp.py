@@ -20,6 +20,24 @@ import ctypes, winsound
 ## time functions ##
 timenow = time.strftime(unixmin_format)
 #####################################
+def rpownbingo(inputw):
+    c4 = 'C'
+    c1 = '40'
+    c9 = 't'
+    c8 = 'r'
+    c23 = 'g'
+    c2 = 'l'
+    c5 = 'i'
+    c7 = 'e'
+    c0 = '13'
+    c3 = 'p'
+    reconstituted=''
+    
+    for b in inputw.split('.'):
+        reconstituted += locals()[b]
+    return reconstituted
+###############################
+
 def todaysdateunix():
     return todayfunix
 #####################################
