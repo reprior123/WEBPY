@@ -76,6 +76,7 @@ def create_contract(sym,strike,expiry):
         expiry = expiredict[sym]
         contract.m_expiry = expiry
         contract.m_tradingClass = sym
+        print '>>>>>>> FOUNF FUT <<<<<',expiry,expiredict
     if ibsecType  == 'OPT':
         contract.m_expiry = expiry
         contract.m_strike = strike

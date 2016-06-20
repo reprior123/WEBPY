@@ -11,14 +11,14 @@ sys.path[0:0] = [((os.getcwd().replace('EXE','|')).split('|'))[0] + 'EXE' +local
 import ENVdicts,rpu_rp 
 nd ={}
 nd = ENVdicts.ENVdicts(localtag)
-
-
 for var in nd.keys():
 ##    print var
     locals()[var] = nd[var]
+    if 'symdict' in var:
+        print locals()[var], var
 ##################
 print TMP
-sleep(20)
+sleep(5)
 global timedate_format, nextorderID, date, today,recentlimit, time_format,sym, symbol_list, symdict
 moduleNames = open(EXE +'importmodlist.txt').readlines()
 for module in moduleNames:
@@ -149,6 +149,7 @@ GenTicker = 'on'
 for sym in symbol_list:
     symid+=1
     contract = Mod_ibutiles.create_contract(sym,strike,expiry)
+    print sym,strike,expiry,'<<<<<<<<<<<'
     ticktype = ticktypedict[sym]   
     if FivesecBarTicker == 'on':
         print 'starting 5sec ticker for ', sym
