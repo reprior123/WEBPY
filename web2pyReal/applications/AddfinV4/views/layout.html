@@ -98,17 +98,15 @@ layout for main views dir
 			<div class="autocompleted-list"></div>
 		</div>
 	</header>
-	<noscript class="message black-gradient simpler">Your browser does not support JavaScript! Some features won't work as expected...</noscript>
-
-	
+	<noscript class="message black-gradient simpler">Your browser does not support JavaScript! Some features won't work as expected...</noscript>	
   </div>
   <!-- end #header -->
   
 <!-- <div id="menu"> -->
    <!-- {{=MENU(response.menu)}} -->
-  <!-- </div> -->
-  
+  <!-- </div> -->  
   <!-- end #menu -->
+  
   <div id="page">
    <div id="content">
      <div id="main">
@@ -118,7 +116,6 @@ layout for main views dir
    </div>
    <!-- end content -->
    <!-- {{left_sidebar_enabled=True,right_sidebar_enabled=False,('message' in globals())}} -->
-
 
  <!--   
 	 		<nav class="main">
@@ -130,13 +127,9 @@ layout for main views dir
             </div>
 			</ul>
 			</nav>
-
--->			
-			
-				
+-->						
 	<nav class="main">
-	<ul class="level1">
-		
+	<ul class="level1">		
 				<a class="level1" href="list_crm_contacts"><span>Dashboard</span></a>
 				<a class="level1" href="list_crm_contacts"><span>Relationship Management</span></a>
 				<a class="level2" href="list_crm_contacts"><span>Create Lead From VCard</span></a>
@@ -145,15 +138,10 @@ layout for main views dir
 				<a class="link primary" href="list_crm_contacts"><span>Dashboard</span></a>
 				<a class="link primary" href="list_crm_contacts"><span>Dashboard</span></a>
 				<a class="link primary" href="list_crm_contacts"><span>Dashboard</span></a>
-				<a class="link primary" href="list_crm_contacts"><span>Dashboard</span></a>
-				<a class="link primary" href="list_crm_contacts"><span>Dashboard</span></a>
-				<a class="link primary" href="list_crm_contacts"><span>Dashboard</span></a>
-				
- <link rel="contents" href="http://php.net/manual/en/index.php">	
 			</li>
-		
+
 						<li class="icon customers current">
-				<a class="link primary" href="index.php?module=Accounts&action=index"><span>Relationship Management</span></a>
+				<a class="link primary" href="views/CRlist"><span>Relationship Management</span></a>
 														<div class="submenu-wrapper">
 						<ul class="level2">
 															<li class="submenu-title">
@@ -161,15 +149,15 @@ layout for main views dir
 									<a href="list_crm_contacts" class="collapse-link"></a>
 								</li>
 																						<li class="accordion-item">
-																			<a class="link" href="list_crm_contacts"  >Leads</a>
+													<a class="link" href="list_crm_contacts"  >Leads</a>
 																																						<ul class="level3">
 																							<li class="">
 													<a href="create_lead">Create Lead</a>
 												</li>
 												
-																							<li class="">
-													<a href="index.php?module=Leads&action=index&return_module=Leads&return_action=DetailView">View Leads</a>
-												</li>
+											<li class="">
+							<a href="index.php?module=Leads&action=index&return_module=Leads&return_action=DetailView">View Leads</a>
+					</li>
 																							<li class="">
 													<a href="index.php?module=Import&action=Step1&import_module=Leads&return_module=Leads&return_action=index">Import Leads</a>
 												</li>
