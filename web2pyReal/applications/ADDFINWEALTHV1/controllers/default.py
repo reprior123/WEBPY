@@ -207,7 +207,64 @@ def call():
     """
     session.forget()
     return service()
-	
+
 @auth.requires_login()
 def manage_things():
     return SQLFORM.grid(db.thing)
+
+def create_contacts():
+	return dict()
+def view_contacts():
+	return dict()
+def import_contacts():
+	return dict()
+def create_contacts_fromVcard():
+	return dict()
+def create_leads():
+	return dict()
+def view_leads():
+	return dict()
+def import_leads():
+	return dict()
+def create_leads_fromVcard():
+	return dict()
+def create_opportunities():
+	return dict()
+def view_opportunities():
+	return dict()
+def import_opportunities():
+	return dict()
+def create_opportunities_fromVcard():
+	return dict()
+def create_organisations():
+	return dict()
+def view_organisations():
+	return dict()
+def import_organisations():
+	return dict()
+def create_organisations_fromVcard():
+	return dict()
+def create_client_relationships():
+	return dict()
+def view_client_relationships():
+	return dict()
+def import_client_relationships():
+	return dict()
+def create_client_relationships_fromVcard():
+	return dict()
+def create_products():
+	return dict()
+def view_products():
+	return dict()
+def import_products():
+	return dict()
+def create_products_fromVcard():
+	return dict()
+def create_currencies():
+	return dict()
+def view_currencies():
+	return dict()
+def import_currencies():
+	return dict()
+def create_currencies_fromVcard():
+	return dict()
