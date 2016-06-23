@@ -1,0 +1,7 @@
+<a><i class="contacts" <i class="fa fa-fw fa-caret-down"></i></a>
+               <a><i class="leads" <i class="fa fa-fw fa-caret-down"></i></a>
+               <a><i class="opportunities" <i class="fa fa-fw fa-caret-down"></i></a>
+               <a><i class="organisations" <i class="fa fa-fw fa-caret-down"></i></a>
+               <a><i class="client_relationships" <i class="fa fa-fw fa-caret-down"></i></a>
+               <a><i class="products" <i class="fa fa-fw fa-caret-down"></i></a>
+               <a><i class="currencies"<i class="fa fa-fw fa-caret-down"></i></a>

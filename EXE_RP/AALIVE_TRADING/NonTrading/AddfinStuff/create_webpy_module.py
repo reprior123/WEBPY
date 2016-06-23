@@ -37,11 +37,23 @@ give a name of module and then create the following for it:
 menu lines for model/menu.py
 '''
 
-        
-import fileinput
-fnames = ['name','role']
-for line in fileinput.input('newtablelist'):
-    tname = line.strip()
+def create_layouts(tname):
+    modulename = tname
+    modulenameupperone = modulename.capitalize()
+    modulenameplural = modulename # +'s'
+    viewslist = ['create_', 'view_', 'import_', 'create_fromVcard_']
+    for view in viewslist:    
+        layoutname = view+modulenameplural + '.html'
+        controllername = view+modulenameplural + '.txt'
+        rpu_rp.WriteStringsToFile(layoutname,'')
+##        print view, modulenameplural, layoutname
+
+        textblob = '{{extend \'layout.html\'}}' + '\n' + '<h1>Edit Company Info</h1>'  + '\n' + '{{=form}}' + '\n' 
+        controllertext = 'def '+ view+modulenameplural +'()' + '\n'+ '\t' + 'return dict()'
+        rpu_rp.WriteStringsToFileAppend(layoutname,textblob)
+##        rpu_rp.WriteStringsToFile(controllername,controllertext)
+############
+def create_model_lines(tname):
     print 'db.define_table(' + '\'' + tname + '\'' + ','
     fncount =0
     for fn in fnames:
@@ -51,6 +63,37 @@ for line in fileinput.input('newtablelist'):
             pass
         else:
             print '\t' +'Field(' +  '\'' + fn + '\'' + '),'
+###########
+def create_view_layouts(tname):
+    print 'db.define_table(' + '\'' + tname + '\'' + ','
+    fncount =0
+    fnames = 'name'
+    for fn in fnames:
+        fncount +=1
+        if fncount == len(fnames):
+            print '\t' +'Field(' +  '\'' + fn + '\'' + '))'
+            pass
+        else:
+            print '\t' +'Field(' +  '\'' + fn + '\'' + '),'
+###########
+def create_controller_lines(tname):
+##    print 'def ' + tname + ':' + '\n\treturn dict()'
+    print 'def ' + 'create_'+tname + '():' + '\n\treturn dict()'
+    print 'def ' + 'view_'+tname + '():' + '\n\treturn dict()'
+    print 'def ' + 'import_'+tname + '():' + '\n\treturn dict()'
+    print 'def ' + 'create_'+tname + '_fromVcard' + '():' + '\n\treturn dict()'
+###########            
+import fileinput
+fnames = ['name','role']
+for line in fileinput.input('tnames.txt'):
+##    print line
+    viewname = line.split('"')[1]
+    tname = viewname
+##    create_model_lines(tname)
+##    create_view_lines(tname)
+    create_controller_lines(tname)
+    create_layouts(tname)
+
 ####
 ####                         'db.' +   Field(/''name/''),
 ####    Field('company',db.company),
@@ -87,10 +130,6 @@ heredir = 'C:/Users/bob/Google Drive/EXE_RP/AALIVE_TRADING/NonTrading/'
 dbname = 'marketing.addfin05_20150906_2142.sql'
 dbname = 'addfin_20150822_1205.sql'
 dbname = 'sugar.sql'
-import rpu_rp
-dbname = downloads + 'part1/part1'
-
-
 
 ######
 ######tablename = 'Persons' #'tradesdbase'
@@ -227,20 +266,14 @@ dbname = downloads + 'part1/part1'
 ######db.close()
 ######Performing Transactions
 ######Transactions are a mechanism that ensures data consistency. Transactions have the following four properties:
-######
 ######Atomicity: Either a transaction completes or nothing happens at all.
-######
 ######Consistency: A transaction must start in a consistent state and leave the system in a consistent state.
-######
 ######Isolation: Intermediate results of a transaction are not visible outside the current transaction.
-######
 ######Durability: Once a transaction was committed, the effects are persistent, even after a system failure.
-######
 ######The Python DB API 2.0 provides two methods to either commit or rollback a transaction.
 ######
 ######Example
 ######You already know how to implement transactions. Here is again similar example −
-######
 ####### Prepare SQL query to DELETE required records
 ######sql = "DELETE FROM EMPLOYEE WHERE AGE > '%d'" % (20)
 ######try:
@@ -290,7 +323,6 @@ dbname = downloads + 'part1/part1'
 ######
 ########################################################
 ######Inserting rows
-######
 ######The simplest way to insert rows into a table is to use a non-parameterized
 ######INSERT statement, meaning that values are specified as part of the SQL statement.
 ######A new statement is constructed and executed for each new row. As in the previous
@@ -303,7 +335,6 @@ dbname = downloads + 'part1/part1'
 ######con = sqlanydb.connect( userid="DBA", pwd="sql" )
 ######cursor = con.cursor()
 ######cursor.execute("DELETE FROM Customers WHERE ID > 800")
-######
 ######rows = ((801,'Alex','Alt','5 Blue Ave','New York','NY',
 ######        'USA','10012','5185553434','BXM'),
 ######        (802,'Zach','Zed','82 Fair St','New York','NY',
@@ -353,8 +384,7 @@ dbname = downloads + 'part1/part1'
 ######SQL statements. In the first example, the execute method is called for each
 ######row to be inserted into the table. In the second example, the executemany
 ######method is called only once to insert all the rows into the table.
-##################
-################
+
 ######Once you have obtained a handle to an open connection,
 ######you can access and modify data stored in the database.
 ######Perhaps the simplest operation is to retrieve some rows and print them out.
@@ -440,12 +470,9 @@ dbname = downloads + 'part1/part1'
 ######DT_BIT
 ######DT_LONGNVARCHAR
 ######For example, to have NUMERIC types be returned as a python Decimal object:
-######
 ######import decimal
-######
 ######def decimal_callback(valueToConvert):
 ######    return decimal.Decimal(valueToConvert)
-######
 ######sqlanydb.register_converter(sqlanydb.DT_DECIMAL, decimal_callback)
 ######'''
 ######################
